@@ -1,14 +1,15 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Container from './ui/container';
-import Input from './ui/inputField';
-import Button from './ui/button';
-import Link from 'next/link';
+import React, { useState } from "react";
+import Container from "../ui/container";
+import Input from "../ui/inputField";
+import Button from "../ui/button";
+import Link from "next/link";
+import Logo from "./logo";
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
   const [subscribe, setSubscribe] = useState(false);
 
   const validateEmail = (email: string) => {
@@ -18,11 +19,11 @@ const Footer = () => {
 
   const handleSubscribe = () => {
     if (!validateEmail(email)) {
-      setError('Enter an email address like example@mysite.com.');
+      setError("Enter an email address like example@mysite.com.");
     } else {
-      setError('');
+      setError("");
       alert(`Subscribed: ${email}`);
-      setEmail('');
+      setEmail("");
       setSubscribe(false);
     }
   };
@@ -30,9 +31,10 @@ const Footer = () => {
   return (
     <footer className="bg-[#0B3B2E] text-white mt-20">
       <Container className="pt-20 pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* Company Info & Newsletter */}
         <div className="flex flex-col gap-3">
-          <h1 className="text-3xl font-bold">TegaBus</h1>
+          <Link href="/">
+            <Logo />
+          </Link>
           <p>For our latest booking tips and tricks</p>
           <p>Subscribe below</p>
 
@@ -47,51 +49,50 @@ const Footer = () => {
             className="border-b border-white"
           />
 
-        
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-2">
-            
-              <div className="w-4 h-4 border border-white flex items-center justify-center">
-                <input
-                  type="checkbox"
-                
-                  onChange={(e) => setSubscribe(e.target.checked)}
-                  id="newsletter"
-                  className="w-full h-full opacity-0 cursor-pointer peer"
-                />
-                
-              </div>
-              <span>
-                Yes, subscribe me to your <br />
-                newsletter
-              </span>
-            
+            <div className="w-4 h-4 border border-white flex items-center justify-center">
+              <input
+                type="checkbox"
+                onChange={(e) => setSubscribe(e.target.checked)}
+                id="newsletter"
+                className="w-full h-full opacity-0 cursor-pointer peer"
+              />
+            </div>
+            <span>
+              Yes, subscribe me to your <br />
+              newsletter
+            </span>
 
             <Button onClick={handleSubscribe}>Send</Button>
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col mt-4">
           <h3 className="font-semibold text-lg">Quick Links</h3>
-          <Link href="/">Home</Link>
-          <Link href="/">About Us</Link>
-          <Link href="/">Routes</Link>
-          <Link href="/">Terms & Conditions</Link>
+          <div className=" flex flex-col mt-4 gap-2 ">
+            <Link href="/">Home</Link>
+            <Link href="/">About Us</Link>
+            <Link href="/">Routes</Link>
+            <Link href="/">Terms & Conditions</Link>
+          </div>
         </div>
 
-      
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col  mt-4">
           <h3 className="font-semibold text-lg">Socials</h3>
-          <Link href="/">Instagram</Link>
-          <Link href="/">WhatsApp</Link>
-          <Link href="/">Facebook</Link>
-          <Link href="/">Twitter</Link>
+          <div className=" flex flex-col  gap-2  mt-4">
+            <Link href="/">Instagram</Link>
+            <Link href="/">WhatsApp</Link>
+            <Link href="/">Facebook</Link>
+            <Link href="/">Twitter</Link>
+          </div>
         </div>
 
-      
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mt-4">
           <h3 className="font-semibold text-lg">Contact</h3>
-          <Link href="/">+250780396766</Link>
-          <Link href="/">support@tegabus.com</Link>
+          <div className= " flex flex-col gap-2   mt-4">
+            <Link href="/">+250780396766</Link>
+            <Link href="/">support@tegabus.com</Link>
+          </div>
         </div>
       </Container>
 
