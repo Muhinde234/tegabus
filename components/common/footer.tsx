@@ -78,20 +78,21 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col  mt-4">
-          <h3 className="font-semibold text-lg">Socials</h3>
+          <h3 className="font-semibold text-lg">Services</h3>
           <div className=" flex flex-col  gap-2  mt-4">
-            <Link href="/">Instagram</Link>
-            <Link href="/">WhatsApp</Link>
-            <Link href="/">Facebook</Link>
-            <Link href="/">Twitter</Link>
+            <Link href="/">Bus Routes</Link>
+            <Link href="/">Ticket Booking</Link>
+            <Link href="/">Customer Support</Link>
+            <Link href="/">Real-Time Updates</Link>
           </div>
         </div>
 
         <div className="flex flex-col gap-2 mt-4">
           <h3 className="font-semibold text-lg">Contact</h3>
           <div className= " flex flex-col gap-2   mt-4">
-            <Link href="/">+250780396766</Link>
-            <Link href="/">support@tegabus.com</Link>
+            <Link href="/" ><span className="text-gray-400">Email:</span>support@tegabus.com</Link>
+            <Link href="/"><span className="text-gray-400">Phone:</span>(+250)780396766</Link>
+            <Link href="/"><span className="text-gray-400">Address:</span>Kigali,Rwanda</Link>
           </div>
         </div>
       </Container>

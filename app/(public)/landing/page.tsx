@@ -1,10 +1,10 @@
-import Navbar from "@/components/common/navbar"
+import Hero from "@/components/common/hero"
 
 
 const page = () => {
   return (
     <div>
-        <Navbar/>
+     <Hero/>
     </div>
   )
 }
