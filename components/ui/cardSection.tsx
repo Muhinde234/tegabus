@@ -7,7 +7,7 @@ const CardSection = () => {
     <div>
       
         <div className="py-10 px-4 sm:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:w-[1356px]  ">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10   ">
             {features.map((feature, index) => (
               <Card
                 key={index}

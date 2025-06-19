@@ -1,10 +1,12 @@
+import Hero from "@/components/common/hero"
 
 
-
-export default function Home() {
+const Home = () => {
   return (
-    <div className="font-[family-name:var(--font-geist-sans)]">
-     
+    <div>
+     <Hero/>
     </div>
-  );
+  )
 }
+
+export default Home
