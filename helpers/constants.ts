@@ -4,3 +4,4 @@ export const links = [
   { path: "/route", label: "Routes" },
   { path: "/terms", label: "Terms & Conditions" },
 ];
+

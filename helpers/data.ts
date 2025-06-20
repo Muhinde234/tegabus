@@ -57,4 +57,51 @@ const infos = [
     { step: "4", title: "E-Ticket", desc: "Receive via SMS/email." },
   ];
 
-export {infos,features,steps};
+
+    const popularRoutes = [
+    { from: "Kigali", to: "Rusizi", buses: 50 },
+    { from: "Kigali", to: "Kampala", buses: 45 },
+    { from: "Kigali", to: "Goma", buses: 30 },
+  ];
+
+ 
+
+ const busCompanies = [
+  {
+    name: "Ritco",
+    numberOfBuses: 25,
+    routes: [
+      { from: "Kigali", to: "Huye", price: "5,000 RWF" },
+      { from: "Kigali", to: "Rubavu", price: "6,000 RWF" },
+    ],
+  },
+  {
+    name: "Trinity",
+    numberOfBuses: 18,
+    routes: [
+      { from: "Kigali", to: "Musanze", price: "4,500 RWF" },
+      { from: "Kigali", to: "Nyagatare", price: "6,200 RWF" },
+    ],
+  },
+  {
+    name: "Horizon",
+    numberOfBuses: 30,
+    routes: [
+      { from: "Kigali", to: "Rusizi", price: "7,000 RWF" },
+      { from: "Kigali", to: "Ngoma", price: "5,800 RWF" },
+    ],
+  },
+];
+
+  const busData = Array.from({ length: 16}, () => ({
+  route: 'RAC 205 C',
+  price: '12,000 Rwf',
+  date: '23rd 10 2025',
+  seatsLeft: 20,
+  departure: 'Kigali',
+  arrival: 'Uganda',
+  depTime: '09:45',
+  arrTime: '20:00',
+}));
+
+export {infos,features,steps,busData,popularRoutes,busCompanies};
