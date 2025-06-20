@@ -18,10 +18,10 @@ const AboutPage: React.FC = () => {
         
         <section className="bg-[#0B3B2E] text-white py-20 pt-42  sm:px-6 lg:px-32">
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h1 className="text-3xl  font-bold mb-6">
               Revolutionizing <span className="text-lime-400">Bus Travel</span>
             </h1>
-            <p className="text-xl  max-w-3xl mx-auto">
+            <p className="  max-w-3xl mx-auto">
               A seamless, centralized platform for booking bus tickets across multiple operators.
             </p>
           </div>

@@ -1,5 +1,6 @@
 import { ShieldCheckIcon, TicketIcon } from "lucide-react";
-import { Bus, Clock, Lock, Search, Phone, BadgePercent } from "lucide-react";
+import { Bus, Clock, Lock, Search, Phone, BadgePercent,BookText, ShieldCheck,  CreditCard  } from "lucide-react";
+
 
 const infos = [
   {
@@ -57,4 +58,78 @@ const infos = [
     { step: "4", title: "E-Ticket", desc: "Receive via SMS/email." },
   ];
 
-export {infos,features,steps};
+
+    const popularRoutes = [
+    { from: "Kigali", to: "Rusizi", buses: 50 },
+    { from: "Kigali", to: "Kampala", buses: 45 },
+    { from: "Kigali", to: "Goma", buses: 30 },
+  ];
+
+ 
+
+ const busCompanies = [
+  {
+    name: "Ritco",
+    numberOfBuses: 25,
+    routes: [
+      { from: "Kigali", to: "Huye", price: "5,000 RWF" },
+      { from: "Kigali", to: "Rubavu", price: "6,000 RWF" },
+    ],
+  },
+  {
+    name: "Trinity",
+    numberOfBuses: 18,
+    routes: [
+      { from: "Kigali", to: "Musanze", price: "4,500 RWF" },
+      { from: "Kigali", to: "Nyagatare", price: "6,200 RWF" },
+    ],
+  },
+  {
+    name: "Horizon",
+    numberOfBuses: 30,
+    routes: [
+      { from: "Kigali", to: "Rusizi", price: "7,000 RWF" },
+      { from: "Kigali", to: "Ngoma", price: "5,800 RWF" },
+    ],
+  },
+];
+
+const termsData = [
+  {
+    title: "General Terms",
+    icon: BookText,
+    content:
+      "All bookings are subject to seat availability and must comply with our policies. Changes may occur without prior notice.",
+  },
+  {
+    title: "Safety and Security",
+    icon: ShieldCheck,
+    content:
+      "Passenger safety is our top priority. Please follow all driver instructions and report any suspicious activity.",
+  },
+  {
+    title: "Booking & Cancellations",
+    icon: CreditCard,
+    content:
+      "Bookings are confirmed once payment is received. Cancellations may incur fees based on how early they are made.",
+  },
+  {
+    title: "Bus Routes and Delays",
+    icon: Bus,
+    content:
+      "Routes are subject to change. Delays may occur due to weather or traffic, but we strive to inform customers promptly.",
+  },
+];
+
+  const busData = Array.from({ length: 16}, () => ({
+  route: 'RAC 205 C',
+  price: '12,000 Rwf',
+  date: '23rd 10 2025',
+  seatsLeft: 20,
+  departure: 'Kigali',
+  arrival: 'Uganda',
+  depTime: '09:45',
+  arrTime: '20:00',
+}));
+
+export {infos,features,steps,busData,popularRoutes,busCompanies,termsData};
