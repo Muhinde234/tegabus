@@ -1,5 +1,6 @@
 import { ShieldCheckIcon, TicketIcon } from "lucide-react";
-import { Bus, Clock, Lock, Search, Phone, BadgePercent } from "lucide-react";
+import { Bus, Clock, Lock, Search, Phone, BadgePercent,BookText, ShieldCheck,  CreditCard  } from "lucide-react";
+
 
 const infos = [
   {
@@ -93,6 +94,33 @@ const infos = [
   },
 ];
 
+const termsData = [
+  {
+    title: "General Terms",
+    icon: BookText,
+    content:
+      "All bookings are subject to seat availability and must comply with our policies. Changes may occur without prior notice.",
+  },
+  {
+    title: "Safety and Security",
+    icon: ShieldCheck,
+    content:
+      "Passenger safety is our top priority. Please follow all driver instructions and report any suspicious activity.",
+  },
+  {
+    title: "Booking & Cancellations",
+    icon: CreditCard,
+    content:
+      "Bookings are confirmed once payment is received. Cancellations may incur fees based on how early they are made.",
+  },
+  {
+    title: "Bus Routes and Delays",
+    icon: Bus,
+    content:
+      "Routes are subject to change. Delays may occur due to weather or traffic, but we strive to inform customers promptly.",
+  },
+];
+
   const busData = Array.from({ length: 16}, () => ({
   route: 'RAC 205 C',
   price: '12,000 Rwf',
@@ -104,4 +132,4 @@ const infos = [
   arrTime: '20:00',
 }));
 
-export {infos,features,steps,busData,popularRoutes,busCompanies};
+export {infos,features,steps,busData,popularRoutes,busCompanies,termsData};

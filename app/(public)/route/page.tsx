@@ -27,7 +27,7 @@ const RoutesPage = () => {
     <div className="min-h-screen">
       <div className="bg-[#0B3B2E] p-6 text-white pt-42">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-2xl text-center font-bold mb-6">
+          <h1 className="text-3xl text-center font-bold mb-6">
             Find Your Perfect Bus
           </h1>
 

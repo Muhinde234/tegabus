@@ -70,7 +70,7 @@ const TermsSidebar: React.FC<TermsSidebarProps> = ({
       )}
 
       <div className="p-3">
-        <Link href="/" className="text-white">
+        <Link href="/conditions" className="text-white">
           <Logo />
         </Link>
         
