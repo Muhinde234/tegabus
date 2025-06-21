@@ -7,6 +7,9 @@ import TripCard from "../ui/TripCard";
 import CardSection from "../ui/cardSection";
 import { Phone, ThumbsUp } from "lucide-react";
 import Contact from "../ui/contactForm";
+import { popularRoutes } from "@/helpers/data";
+
+
 
 const Hero = () => {
   return (
@@ -73,8 +76,12 @@ const Hero = () => {
             </Link>
           </div>
         </div>
+      
+
+        </Container>
 
         <TripCard trips="500K+" rating={4.9} departures="99%" />
+        <Container>
         <div className="text-center mt-8 mb-16 sm:mt-20 md:mt-24">
           <h1 className=" text-2xl sm:text-3xl font-extrabold">
             Why Choose us
@@ -82,7 +89,7 @@ const Hero = () => {
         </div>
         <CardSection />
       </Container>
-    <div className="border border-lime-400 mt-18 p-8">
+    <div className=" bg-[#0B3B2E] mt-18 p-8">
   <Container className="flex flex-col sm:flex-row justify-around items-center gap8">
     
     
@@ -119,6 +126,30 @@ const Hero = () => {
  
 </div>
  <Contact/>  
+ <Container>
+  <h1  className="text-center text-3xl font-bold mb-18 mt-18">Your next move</h1>
+     <div className="mb-8 bg-gradient-to-r from-[#0B3B2E] to-lime-700 rounded-md">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 p-8">
+            {popularRoutes.map((route, index) => (
+              <div key={index}>
+                <div className="flex justify-between">
+                  <div>
+                    <h3 className="font-bold text-white text-lg">
+                      {route.from} --- {route.to}
+                    </h3>
+                    <p className="text-black">{route.buses}+ buses daily</p>
+                  </div>
+                  <Button>
+                    <Link href="/">view schedules</Link>
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+ </Container>
+ 
+ 
 
     </div>
   );
