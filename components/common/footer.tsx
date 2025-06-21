@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "../ui/container";
 import Input from "../ui/inputField";
 import Button from "../ui/button";
@@ -11,17 +11,33 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [subscribe, setSubscribe] = useState(false);
+  const [emailAlert, setEmailAlert] = useState("");
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email.toLowerCase());
   };
 
+  useEffect(() => {
+    if (validateEmail(email)) {
+      setSubscribe(true); // Auto-check the box when email becomes valid
+      setError("");
+      setEmailAlert("");
+    }
+  }, [email]);
+
   const handleSubscribe = () => {
+    if (!email.trim()) {
+      setEmailAlert("Please enter your email.");
+      return;
+    }
+
     if (!validateEmail(email)) {
       setError("Enter an email address like example@mysite.com.");
+      setEmailAlert("");
     } else {
       setError("");
+      setEmailAlert("");
       alert(`Subscribed: ${email}`);
       setEmail("");
       setSubscribe(false);
@@ -48,6 +64,9 @@ const Footer = () => {
             error={error}
             className="border-b border-white"
           />
+          {emailAlert && (
+            <p className="text-red-400 text-sm mt-1">{emailAlert}</p>
+          )}
 
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-2">
             <div className="relative w-5 h-5">
