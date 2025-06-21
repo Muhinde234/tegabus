@@ -120,7 +120,7 @@ const RoutesPage = () => {
           Popular Routes
         </h2>
         <div className="mb-8 bg-gradient-to-r from-[#0B3B2E] to-lime-700 rounded-md">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 p-8">
             {popularRoutes.map((route, index) => (
               <div key={index}>
                 <div className="flex justify-between">
