@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Bus from "../../public/images/about.png";
+import home from "../../public/images/home.jpg";
 import Container from "../ui/container";
 import Button from "../ui/button";
 import Link from "next/link";
@@ -7,119 +7,130 @@ import TripCard from "../ui/TripCard";
 import CardSection from "../ui/cardSection";
 import { Phone, ThumbsUp } from "lucide-react";
 import Contact from "../ui/contactForm";
+import { popularRoutes } from "@/helpers/data";
 
 const Hero = () => {
   return (
-    <div className="mt-32">
-      <Container>
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          <div className="w-full lg:w-1/2 space-y-6">
-            <h1 className="text-4xl font-bold leading-tight text-gray-900">
-              Book Your Journey in Minutes
-            </h1>
-            <p className="text-lg text-gray-700">
-              Experience the convenience of modern travel with our fast, secure,
-              and user-friendly online bus ticket booking system. Whether you're
-              commuting daily or planning a long-distance trip, enjoy flexible
-              scheduling, instant seat reservations, and real-time updates — all
-              from the comfort of your device.
-            </p>
-            <div className="flex gap-8 mt-18">
-              <Button>
-                <Link href="/">view schedules</Link>
-              </Button>
-              <Link
-                href="/about"
-                className="border border-[#0B3B2E] rounded-full py-2 px-4"
-              >
-                learn more
-              </Link>
-            </div>
-          </div>
-
-          <div className="w-full lg:w-1/2 mt-12">
-            <Image
-              src={Bus}
-              alt="Bus"
-              className="w-full h-auto rounded-xl shadow-md object-cover"
-              priority
-            />
-          </div>
+    <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-28 mt-16 sm:mt-20 md:mt-[84px]">
+      <section className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[700px] rounded-3xl overflow-hidden">
+      
+        <Image
+          src={home}
+          alt="Bus travel background"
+          fill
+          priority
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/50 flex flex-col px-4 sm:px-8 md:px-14 pt-8 sm:pt-10 md:pt-14">
+          <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 mt-12 sm:mt-16 md:mt-24">
+            Seamless Ticket <br /> Booking with TegaBus
+          </h1>
+          <p className="text-white text-sm sm:text-md md:text-lg lg:w-[933px] mb-4 sm:mb-6">
+            Say goodbye to long queues! Book your bus tickets instantly,
+            securely, and hassle-free. Whether you're commuting or traveling
+            long distances, TegaBus makes your journey smoother with just a
+            few clicks.
+          </p>
+          <Link href="/login">
+            <button className=" bg-[#0B3B2E] text-white rounded-lg font-semibold transition w-full sm:w-[190px] h-[45px] p-2">
+              View Schedules Now
+            </button>
+          </Link>
         </div>
-        <div className="bg-white mt-18 border border-[#0B3B2E] rounded-xl p-3 sm:p-4 md:p-6 flex flex-col sm:flex-row flex-wrap items-center justify-between gap-3 sm:gap-4 md:gap-4">
-          <select className="w-full sm:w-[48%] md:w-[23%] border border-green-600 p-3 sm:p-3 pr-10 rounded-lg focus:outline-none focus:ring-2">
-            <option className="w-[22%] sm:full ">
-              Start location
-            </option>
+
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] bg-white rounded-t-xl p-3 sm:p-4 md:p-6 flex flex-col sm:flex-row flex-wrap items-center justify-between gap-3 sm:gap-4 md:gap-6">
+          <select className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            <option>Start location</option>
           </select>
 
-          <select className="w-full sm:w-[48%] md:w-[23%] border border-green-600 p-2 sm:p-3 pr-10 rounded-lg focus:outline-none focus:ring-2">
-            <option className="w-[22%] sm:full bg-green-500">
-              End location
-            </option>
+          <select className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+            <option>End location</option>
           </select>
 
           <input
             type="date"
-            className="w-full sm:w-[48%] md:w-[23%] border border-green-600 p-2 sm:p-3 pr-10 rounded-lg focus:outline-none focus:ring-2"
+            className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
             defaultValue="2025-05-25"
           />
-
           <div className="w-full sm:w-[48%] md:w-auto">
             <Link href="/login">
-              <button className="w-full md:w-[150px] h-[45px] text-white bg-[#0B3B2E] rounded-lg hover:bg-green-700 transition">
+              <button className="w-full md:w-[150px] h-[45px] bg-[#0B3B2E] text-white font-semibold rounded-lg hover:bg--700 tgreenransition">
                 Find schedules
               </button>
             </Link>
           </div>
         </div>
+      </section>
+      <TripCard trips="500K+" rating={4.9} departures="99%" />
 
-        <TripCard trips="500K+" rating={4.9} departures="99%" />
-        <div className="text-center mt-8 mb-16 sm:mt-20 md:mt-24">
-          <h1 className=" text-2xl sm:text-3xl font-extrabold">
-            Why Choose us
-          </h1>
+      <Container>
+       
+          
+     
+
+        <section className="mb-32">
+          <div className="text-center mt-16 sm:mt-20 md:mt-24">
+            <h1 className="text-primary-100 text-2xl sm:text-3xl font-extrabold">
+              Why Choose Us
+            </h1>
+          </div>
+          <CardSection />
+        </section>
+
+        <div className="bg-[#0B3B2E] p-8 mt-20 py-12 text-white">
+          <Container className="flex flex-col sm:flex-row items-center justify-between gap-10 text-center sm:text-left">
+            <div>
+              <h3 className="uppercase text-sm tracking-wide">Ready to Ride?</h3>
+              <h1 className="text-2xl sm:text-3xl font-bold mt-2">
+                Book Your Next Journey with Confidence
+              </h1>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <div className="flex items-center justify-center border border-lime-400 rounded-full w-16 h-16">
+                <Phone size={30} className="text-lime-400" />
+              </div>
+              <div className="text-left">
+                <p className="text-sm">Call us anytime</p>
+                <h4 className="text-xl font-bold">(+250) 780 396 766</h4>
+              </div>
+            </div>
+
+            <Link
+              href="#contact"
+              className="flex items-center gap-2 border border-lime-400 rounded-full px-5 py-2 text-sm font-semibold hover:bg-lime-50 text-white hover:text-[#0B3B2E] transition"
+            >
+              <ThumbsUp className="text-lime-400" />
+              Contact Us
+            </Link>
+          </Container>
         </div>
-        <CardSection />
+
+        <Contact />
+
+        <h2 className="text-center text-3xl font-bold mt-20 mb-10">
+          Top Travel Routes
+        </h2>
+        <div className="mb-20 bg-gradient-to-r from-[#0B3B2E] to-lime-700 rounded-xl shadow-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 p-8">
+            {popularRoutes.map((route, index) => (
+              <div key={index}>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="font-bold text-white text-lg">
+                      {route.from} — {route.to}
+                    </h3>
+                    <p className="text-lime-200">{route.buses}+ buses daily</p>
+                  </div>
+                  <Button>
+                    <Link href="/">View schedules</Link>
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </Container>
-    <div className="border border-lime-400 mt-18 p-8">
-  <Container className="flex flex-col sm:flex-row justify-around items-center gap8">
-    
-    
-    <div className="flex flex-col gap-2 text-center sm:text-left">
-      <h1>CALL TO ACTION</h1>
-      <h1 className="text-2xl font-bold">Book Your Next Journey with Ease</h1>
-    </div>
-
-    
-    <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-      
-  
-      <div className="flex items-center justify-center border border-lime-400 rounded-full w-16 h-16">
-        <Phone size={35} className="text-lime-400" />
-      </div>
-
-     
-      <div className="flex flex-col items-center sm:items-start gap-1">
-        <h1>CALL US ANYTIME</h1>
-        <h1 className="text-2xl font-bold">(+250)780396766</h1>
-      </div>
-        </div>
-
-     
-      <Link
-        href="#contact"
-        className="flex items-center gap-2 border border-lime-400 rounded-full px-4 py-2 text-sm hover:bg-lime-50 transition"
-      >
-        <ThumbsUp  className="text-lime-400" />
-        <h1 className="text-lg">Contact Us</h1>
-      </Link>
-  
-  </Container>
- 
-</div>
- <Contact/>  
-
     </div>
   );
 };

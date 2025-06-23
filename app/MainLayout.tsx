@@ -6,7 +6,7 @@ import Footer from "@/components/common/footer";
 
 export default function MainLayout() {
   const pathname = usePathname();
-  const hideNavbarFooter = ['/terms'].includes(pathname);
+  const hideNavbarFooter = ['/terms','/login'].includes(pathname);
 
   return (
       <>
