@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Outfit } from "next/font/google";
-import Navbar from "@/components/common/navbar";
-import Footer from "@/components/common/footer";
 import MainLayout from "./MainLayout";
-
 
 const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["400", "500"], 
+  weight: ["400", "500"],
   display: "swap",
+  variable: '--font-outfit',
 });
 
 export const metadata: Metadata = {
   title: "TegaBus",
-  description: "Team",
+  description: "Team transportation solutions",
 };
 
 export default function RootLayout({
@@ -23,13 +21,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={outfit.className}>
+    <html lang="en" className="h-full">
+      <body className={`${outfit.className} bg-gray-100 `}>
+        <div className="flex-1">
           {children}
-        <MainLayout/>
-      
+          <MainLayout />
+        </div>
       </body>
-   
     </html>
   );
 }

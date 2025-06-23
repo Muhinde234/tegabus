@@ -4,9 +4,9 @@ import Button from "./button";
 
 const Contact = () => {
   return (
-    <div id="#contact">
+    <div id="#contact ">
     
-      <div className="text-center mt-8 mb-16 sm:mt-20 md:mt-24">
+      <div className="  text-center mt-8 mb-16 sm:mt-20 md:mt-24">
         <h1 className="text-2xl sm:text-3xl font-extrabold">Get In Touch</h1>
       </div>
 
