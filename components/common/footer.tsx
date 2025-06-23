@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "../ui/container";
 import Input from "../ui/inputField";
 import Button from "../ui/button";
@@ -11,17 +11,33 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [subscribe, setSubscribe] = useState(false);
+  const [emailAlert, setEmailAlert] = useState("");
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email.toLowerCase());
   };
 
+  useEffect(() => {
+    if (validateEmail(email)) {
+      setSubscribe(true); // Auto-check the box when email becomes valid
+      setError("");
+      setEmailAlert("");
+    }
+  }, [email]);
+
   const handleSubscribe = () => {
+    if (!email.trim()) {
+      setEmailAlert("Please enter your email.");
+      return;
+    }
+
     if (!validateEmail(email)) {
       setError("Enter an email address like example@mysite.com.");
+      setEmailAlert("");
     } else {
       setError("");
+      setEmailAlert("");
       alert(`Subscribed: ${email}`);
       setEmail("");
       setSubscribe(false);
@@ -48,16 +64,30 @@ const Footer = () => {
             error={error}
             className="border-b border-white"
           />
+          {emailAlert && (
+            <p className="text-red-400 text-sm mt-1">{emailAlert}</p>
+          )}
 
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-2">
-            <div className="w-4 h-4 border border-white flex items-center justify-center">
+            <div className="relative w-5 h-5">
               <input
                 type="checkbox"
                 onChange={(e) => setSubscribe(e.target.checked)}
+                checked={!!subscribe}
                 id="newsletter"
-                className="w-full h-full opacity-0 cursor-pointer peer"
+                className="peer appearance-none w-full h-full border border-white rounded-sm checked:bg-green-600 checked:border-transparent focus:outline-none cursor-pointer"
               />
+              <svg
+                className="absolute top-1 left-1 w-3 h-3 text-white pointer-events-none hidden peer-checked:block"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
             </div>
+
             <span>
               Yes, subscribe me to your <br />
               newsletter
@@ -69,7 +99,7 @@ const Footer = () => {
 
         <div className="flex flex-col mt-4">
           <h3 className="font-semibold text-lg">Quick Links</h3>
-          <div className=" flex flex-col mt-4 gap-2 ">
+          <div className="flex flex-col mt-4 gap-2">
             <Link href="/">Home</Link>
             <Link href="/">About Us</Link>
             <Link href="/">Routes</Link>
@@ -77,9 +107,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col  mt-4">
+        <div className="flex flex-col mt-4">
           <h3 className="font-semibold text-lg">Services</h3>
-          <div className=" flex flex-col  gap-2  mt-4">
+          <div className="flex flex-col gap-2 mt-4">
             <Link href="/">Bus Routes</Link>
             <Link href="/">Ticket Booking</Link>
             <Link href="/">Customer Support</Link>
@@ -89,10 +119,16 @@ const Footer = () => {
 
         <div className="flex flex-col gap-2 mt-4">
           <h3 className="font-semibold text-lg">Contact</h3>
-          <div className= " flex flex-col gap-2   mt-4">
-            <Link href="/" ><span className="text-gray-400">Email:</span>support@tegabus.com</Link>
-            <Link href="/"><span className="text-gray-400">Phone:</span>(+250)780396766</Link>
-            <Link href="/"><span className="text-gray-400">Address:</span>Kigali,Rwanda</Link>
+          <div className="flex flex-col gap-2 mt-4">
+            <Link href="/">
+              <span className="text-gray-400">Email:</span> support@tegabus.com
+            </Link>
+            <Link href="/">
+              <span className="text-gray-400">Phone:</span> (+250)780396766
+            </Link>
+            <Link href="/">
+              <span className="text-gray-400">Address:</span> Kigali, Rwanda
+            </Link>
           </div>
         </div>
       </Container>
