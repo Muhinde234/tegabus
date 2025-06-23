@@ -77,7 +77,7 @@ const Hero = () => {
           <CardSection />
         </section>
 
-        <div className="bg-[#0B3B2E] p-8 mt-20 py-12 text-white">
+        <div className="bg-[#0B3B2E] p-18 mt-20 py-12 text-white rounded">
           <Container className="flex flex-col sm:flex-row items-center justify-between gap-10 text-center sm:text-left">
             <div>
               <h3 className="uppercase text-sm tracking-wide">Ready to Ride?</h3>

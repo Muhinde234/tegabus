@@ -19,6 +19,7 @@ export default function TermsPage() {
             <p className=" max-w-3xl mx-auto">
            By accessing and booking through our platform, you agree to be bound by the following terms and conditions.
             </p>
+            <p>your journey our priority</p>
           </div>
         </section>
     <Container>

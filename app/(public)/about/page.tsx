@@ -23,7 +23,10 @@ const AboutPage: React.FC = () => {
             </h1>
             <p className="  max-w-3xl mx-auto">
               A seamless, centralized platform for booking bus tickets across multiple operators.
+              passengers can easily find and book bus tickets, view schedules, and track their travel.
+           .
             </p>
+            <p>your journey our priority</p>
           </div>
         </section>
 
