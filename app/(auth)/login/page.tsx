@@ -13,7 +13,6 @@ export default function LoginPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Placeholder auth logic
     if (email && password) {
       localStorage.setItem('loggedIn', 'true');
       router.push('/');
@@ -24,25 +23,27 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-start bg-white text-black">
+      {/* Green Header */}
       <div className="w-full bg-green-900 py-6 text-center text-white text-3xl font-semibold">
         Login Page
       </div>
 
-      <div className="mt-16 flex flex-col items-center w-full max-w-md px-6">
-        <Link href="/" className="flex items-center mb-6">
+      {/* Card */}
+      <div className="bg-white shadow-md border border-gray-200 mt-10 px-8 py-6 rounded-md w-full max-w-xl">
+        <Link href="/" className="flex justify-center items-center mb-6">
           <Logo />
-          <span className="text-2xl font-medium ml-2">TegaBus</span>
+          <span className="text-2xl font-semibold ml-2 text-green-900">TegaBus</span>
         </Link>
 
-        <form className="w-full space-y-4" onSubmit={handleLogin}>
+        <form className="space-y-4" onSubmit={handleLogin}>
           <div>
             <label className="block mb-1 text-sm">E-mail:</label>
             <input
               type="email"
-              placeholder="enter your email"
+              placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
+              className="w-full px-4 py-2 border border-gray-300 rounded"
               required
             />
           </div>
@@ -51,16 +52,16 @@ export default function LoginPage() {
             <label className="block mb-1 text-sm">Password:</label>
             <input
               type="password"
-              placeholder="enter your password"
+              placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-gray-400 rounded"
+              className="w-full px-4 py-2 border border-gray-300 rounded"
               required
             />
           </div>
 
           <div className="text-sm text-green-800 hover:underline">
-            <Link href="/forgot-password">Forget password?</Link>
+            <Link href="/forgot-password">Forgot password?</Link>
           </div>
 
           <button
@@ -72,9 +73,9 @@ export default function LoginPage() {
         </form>
 
         <div className="mt-6 text-sm">
-          Don’t have account?{' '}
+          Don’t have an account?{' '}
           <Link href="/register" className="text-green-900 underline">
-            register
+            Register
           </Link>
         </div>
       </div>
