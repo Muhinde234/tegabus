@@ -9,7 +9,7 @@ interface tripProps{
 
 const TripCard:React.FC<tripProps>= ({ trips, rating, departures }) => {
   return (
-    <div className="bg-[#0B3B2E]">
+    <div className="">
       <div className="container mt-18 mx-auto  md:m-w-7xl p-6">
       <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
         <div className="text-center flex  gap-2">
