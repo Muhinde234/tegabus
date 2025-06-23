@@ -1,103 +1,64 @@
-"use client"
+'use client';
 
-import Input from "@/components/ui/inputField";
-import Container from "../../../components/ui/container"
-import Logo from "@/components/common/logo";
+import Link from 'next/link';
+import { useState } from 'react';
+import Logo from '@/components/common/logo';// adjust the import path if needed
 
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-
-const LoginPage = () => {
- 
-
-
-
-  const {
-    register,
-    formState: { errors },
-  } = useForm();
-
- 
+export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
-    <Container className="h-screen flex flex-col justify-center items-center mt-12">
-  
-      <div className="min-w-[540px] border border-gray-300 rounded-lg p-6">
-        <div className="flex justify-center items-center gap-[16px]">
-         <Link href="/">
-          <Logo/>
-         </Link>
-        
-         
-        </div>
-        <div className="flex flex-col justify-center items-center gap-[6px] mt-6">
-          <h2 className="text-2xl font-extrabold">User Login</h2>
-          <p className="text-neutral-90">Fill in your details to login</p>
-        </div>
-        <div className="border-t border-gray-200 my-4"></div>
-
-       
-
-        <form  className="space-y-4">
-          <Input
-            label="Email"
-            type="email"
-            placeholder="example@email.com"
-            required
-            {...register("email", {
-              required: "Email is required",
-              pattern: {
-                value: /^\S+@\S+$/i,
-                message: "Invalid email format",
-              },
-            })}
-          />
-         
-          <Input
-            label="Password"
-            type="password"
-            placeholder="Enter your password"
-            required
-            {...register("password", {
-              required: "Password is required",
-              minLength: {
-                value: 6,
-                message: "Password must be at least 6 characters",
-              },
-            })}
-          />
-         
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-2 text-sm">
-            <Link
-              href="/forgot-password"
-              className="hover:underline text-blue-600"
-            >
-              Forgot password?
-            </Link>
-            <span>
-              Need an account?{" "}
-              <Link href="/register" className="underline text-blue-600">
-                Register
-              </Link>
-            </span>
-          </div>
-
-          <div className="text-center">
-            <button
-              type="submit"
-              className="w-full bg-[#2356CF] text-white p-2 rounded-lg mt-2 hover:bg-[#1a4bb5] transition-colors cursor-pointer"
-             
-            >
-            
-            </button>
-          </div>
-        </form>
+    <div className="min-h-screen flex flex-col items-center justify-start bg-white text-black">
+      <div className="w-full bg-green-900 py-6 text-center text-white text-3xl font-semibold">
+        Login Page
       </div>
-    </Container>
+
+      <div className="mt-16 flex flex-col items-center w-full max-w-md px-6">
+        <Link href="/" className="flex items-center mb-6">
+          <Logo />
+          <span className="text-2xl font-medium ml-2">TegaBus</span>
+        </Link>
+
+        <div className="w-full space-y-4">
+          <div>
+            <label className="block mb-1 text-sm">E-mail:</label>
+            <input
+              type="email"
+              placeholder="enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-400 rounded"
+            />
+          </div>
+
+          <div>
+            <label className="block mb-1 text-sm">Password:</label>
+            <input
+              type="password"
+              placeholder="enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-400 rounded"
+            />
+          </div>
+
+          <div className="text-sm text-green-800 hover:underline cursor-pointer">
+            <Link href="/forgot-password">Forget password?</Link>
+          </div>
+
+          <button className="w-full py-2 bg-green-900 text-white rounded hover:bg-green-800 transition">
+            Login
+          </button>
+        </div>
+
+        <div className="mt-6 text-sm">
+          Don’t have account?{' '}
+          <Link href="/register" className="text-green-900 underline">
+            register
+          </Link>
+        </div>
+      </div>
+    </div>
   );
-};
-
-export default LoginPage;
-
-
-
+}
