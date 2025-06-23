@@ -1,10 +1,12 @@
 'use client';
 
-import Link from 'next/link';
 import { useState } from 'react';
-import Logo from '@/components/common/logo'; // adjust if needed
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Logo from '@/components/common/logo';
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -19,6 +21,18 @@ export default function RegisterPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleRegister = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords don't match");
+      return;
+    }
+
+    // Placeholder for sending registration data
+    console.log('User registered:', formData);
+    router.push('/login');
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-start bg-white text-black">
       <div className="w-full bg-green-900 py-6 text-center text-white text-3xl font-semibold">
@@ -31,7 +45,7 @@ export default function RegisterPage() {
           <span className="text-2xl font-semibold ml-2 text-green-900">TegaBus</span>
         </Link>
 
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleRegister}>
           <div className="flex gap-4">
             <div className="w-1/2">
               <label className="block text-sm mb-1">First name</label>
@@ -41,6 +55,7 @@ export default function RegisterPage() {
                 placeholder="e.g. Dastina"
                 className="w-full px-4 py-2 border border-gray-300 rounded"
                 onChange={handleChange}
+                required
               />
             </div>
             <div className="w-1/2">
@@ -51,6 +66,7 @@ export default function RegisterPage() {
                 placeholder="e.g. Muhinda"
                 className="w-full px-4 py-2 border border-gray-300 rounded"
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
@@ -63,6 +79,7 @@ export default function RegisterPage() {
               placeholder="e.g. datax@gmail.com"
               className="w-full px-4 py-2 border border-gray-300 rounded"
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -74,6 +91,7 @@ export default function RegisterPage() {
               placeholder="e.g. 07800096778"
               className="w-full px-4 py-2 border border-gray-300 rounded"
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -83,13 +101,13 @@ export default function RegisterPage() {
               name="country"
               className="w-full px-4 py-2 border border-gray-300 rounded"
               onChange={handleChange}
+              required
             >
               <option value="">Select the country</option>
               <option value="rwanda">Rwanda</option>
               <option value="uganda">Uganda</option>
               <option value="kenya">Kenya</option>
               <option value="tanzania">Tanzania</option>
-              {/* Add more countries if needed */}
             </select>
           </div>
 
@@ -101,6 +119,7 @@ export default function RegisterPage() {
               placeholder="Enter your password"
               className="w-full px-4 py-2 border border-gray-300 rounded"
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -112,6 +131,7 @@ export default function RegisterPage() {
               placeholder="Re-enter the password"
               className="w-full px-4 py-2 border border-gray-300 rounded"
               onChange={handleChange}
+              required
             />
           </div>
 
