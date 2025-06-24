@@ -28,7 +28,7 @@ const Topsection = () => {
 
   return (
     <>
-      <div className=" mt-8 mb-8 flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
+      <div className=" mt-8 mb-8 flex flex-col md:flex-row items-center justify-between  gap-4">
         <h1 className="text-xl font-semibold whitespace-nowrap order-1 md:order-none">
           <Greeting/>
         </h1>

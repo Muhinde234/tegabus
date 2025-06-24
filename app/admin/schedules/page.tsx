@@ -1,9 +1,186 @@
-import React from 'react'
+'use client';
 
-const page = () => {
-  return (
-    <div>page</div>
-  )
+import React, { useState } from 'react';
+import { Edit2, Trash2, Plus, Pen } from 'lucide-react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../../components/ui/select";
+import Topsection from '@/components/dashboard/topsection';
+
+interface Driver {
+  name: string;
+  phone: string;
+  avatar: string;
 }
 
-export default page
+interface Schedule {
+  id: string;
+  busNumber: string;
+  route: string;
+  departureTime: string;
+  arrivalTime: string;
+  driver: Driver;
+  status: 'On Time' | 'Delayed' | 'Cancelled';
+}
+
+const Schedules: React.FC = () => {
+  const [activeFilter, setActiveFilter] = useState<string>('All');
+  const [timeFrame, setTimeFrame] = useState("today");
+
+  const baseSchedule: Omit<Schedule, 'id' | 'status'> = {
+    busNumber: 'RAC 456 C',
+    route: 'Kigali to Bujumbura',
+    departureTime: '08:45',
+    arrivalTime: '14:45',
+    driver: {
+      name: 'Muhinde Dosta',
+      phone: '+250791154390',
+      avatar: '/api/placeholder/32/32'
+    }
+  };
+
+  const [schedules] = useState<Schedule[]>(() => {
+    const statuses: ('On Time' | 'Delayed' | 'Cancelled')[] = ['On Time', 'Delayed', 'Cancelled'];
+    return Array.from({ length: 20 }, (_, i) => ({
+      ...baseSchedule,
+      id: (i + 1).toString(),
+      status: statuses[i % statuses.length],
+      driver: i % 5 === 0 ? { 
+        ...baseSchedule.driver, 
+        name: `Driver ${Math.floor(i / 5) + 1}` 
+      } : baseSchedule.driver
+    }));
+  });
+
+  const filters = ['All', 'On Time', 'Delayed', 'Cancelled'];
+
+  const getFilteredSchedules = () => {
+    if (activeFilter === 'All') return schedules;
+    return schedules.filter(schedule => schedule.status === activeFilter);
+  };
+
+  const getStatusBadgeClass = (status: string) => {
+    switch (status) {
+      case 'On Time':
+        return 'bg-green-100 text-green-800 border border-green-200';
+      case 'Delayed':
+        return 'bg-yellow-100 text-yellow-800 border border-yellow-200';
+      case 'Cancelled':
+        return 'bg-red-100 text-red-800 border border-red-200';
+      default:
+        return 'bg-gray-100 text-gray-800 border border-gray-200';
+    }
+  };
+
+  const getFilterButtonClass = (filter: string) => {
+    const baseClasses = 'px-4 py-2 rounded-full font-medium transition-colors';
+    
+    if (filter === activeFilter) {
+      return `${baseClasses} bg-[#1EA17E] text-white hover:bg-green-700`;
+    }
+    return `${baseClasses} bg-white text-gray-700 border border-gray-300 hover:bg-gray-50`;
+  };
+
+  return (
+    <div className=" px-6 bg-gray-50 ">
+      <Topsection/>
+      <div className="">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-2xl font-semibold text-gray-900">Schedules</h1>
+          <div className="flex gap-3 items-center">
+            <button className="flex items-center gap-2 bg-[#1EA17E] text-white px-4 py-2 rounded-full hover:bg-green-700 transition-colors">
+              <Plus size={20} />
+              Add
+            </button>
+            <Select value={timeFrame} onValueChange={setTimeFrame}>
+              <SelectTrigger className="h-10 w-[120px] border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
+                <SelectValue placeholder="Today" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="today">Today</SelectItem>
+                <SelectItem value="daily">Daily</SelectItem>
+                <SelectItem value="weekly">Weekly</SelectItem>
+                <SelectItem value="monthly">Monthly</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        <div className="flex gap-2 mb-6">
+          {filters.map((filter) => (
+            <button
+              key={filter}
+              onClick={() => setActiveFilter(filter)}
+              className={getFilterButtonClass(filter)}
+            >
+              {filter}
+            </button>
+          ))}
+        </div>
+
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">Bus number</th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">Route</th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">Departure time</th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">Arrival time</th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">Driver</th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">Status</th>
+                  <th className="text-left py-3 px-4 font-medium text-gray-700">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {getFilteredSchedules().map((schedule, index) => (
+                  <tr key={schedule.id} className={`border-b border-gray-100 hover:bg-gray-50 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
+                    <td className="py-4 px-4 font-medium text-gray-900">{schedule.busNumber}</td>
+                    <td className="py-4 px-4 text-gray-700">{schedule.route}</td>
+                    <td className="py-4 px-4 text-gray-700">{schedule.departureTime}</td>
+                    <td className="py-4 px-4 text-gray-700">{schedule.arrivalTime}</td>
+                    <td className="py-4 px-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center">
+                          <span className="text-white text-sm font-medium">
+                            {schedule.driver.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                          </span>
+                        </div>
+                        <div>
+                          <div className="font-medium text-gray-900">{schedule.driver.name}</div>
+                          <div className="text-sm text-gray-500">{schedule.driver.phone}</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="py-4 px-4">
+                      <span className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${getStatusBadgeClass(schedule.status)}`}>
+                        {schedule.status}
+                      </span>
+                    </td>
+                    <td className="py-4 px-4">
+                      <div className="flex gap-2">
+                         <button className="p-2 bg-green-100 text-green-700 rounded-full hover:bg-green-200 transition-colors">
+                        <Pen size={16} />
+                        
+                      </button>
+                      <button className="p-2 bg-red-100 text-red-700 rounded-full hover:bg-red-200 transition-colors">
+                        <Trash2 size={16} />
+                      </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Schedules;

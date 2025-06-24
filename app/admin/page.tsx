@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { MoveDownRight, MoveUpRight } from "lucide-react";
+import { Bell, MoveDownRight, MoveUpRight } from "lucide-react";
 import DashboardCard from "../../components/dashboard/dashboardCard";
 import {
   Select,
@@ -37,6 +37,8 @@ const Greeting = () => {
 };
 
 const Dashboard = () => {
+  const [timeFrame, setTimeFrame] = useState("monthly");
+
   const stats = [
     {
       title: "Total earnings",
@@ -72,7 +74,25 @@ const Dashboard = () => {
 
   return (
     <div className=" mt-8 mb-4 px-6 bg-white max-h-screen">
-      <Greeting />
+      <div className="flex justify-between">
+        <Greeting />
+        <div className="flex items-center gap-2 shrink-0 order-2 md:order-3 mb-8">
+          <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-100 transition-colors">
+            <Bell size={20} className="text-gray-600" />
+          </button>
+
+          <div className="flex items-center gap-2 bg-gray-300 hover:bg-gray-200 rounded-full pl-2 pr-3 py-1 transition-colors cursor-pointer">
+            <Image
+              src={avatar}
+              className="w-8 h-8 rounded-full object-cover border border-gray-200"
+              alt="User avatar"
+            />
+            <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
+              Dositha
+            </span>
+          </div>
+        </div>
+      </div>
 
       <div className="flex gap-4 p-4 rounded-sm bg-gray-200">
         <div className="w-[75%]">
@@ -146,22 +166,25 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="flex  justify-between rounded-lg  bg-white p-8">
+          <div className="flex justify-between items-center rounded-lg bg-white p-8">
             <div className="flex flex-col gap-2">
               <h1 className="font-bold">Recent Bookings</h1>
               <p className="text-sm text-gray-400">Show 10 of 50 bookings</p>
             </div>
-            <div className="flex gap-2">
-              <Select>
-                <SelectTrigger className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
-                  <SelectValue placeholder="monthly" />
+            <div className="flex gap-3 items-center">
+              {" "}
+           
+              <Select value={timeFrame} onValueChange={setTimeFrame}>
+                <SelectTrigger className="h-10 w-[120px] border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <SelectValue placeholder="Timeframe" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="light">daily</SelectItem>
-                  <SelectItem value="dark">weekly</SelectItem>
+                  <SelectItem value="daily">Daily</SelectItem>
+                  <SelectItem value="weekly">Weekly</SelectItem>
+                  <SelectItem value="monthly">Monthly</SelectItem>
                 </SelectContent>
               </Select>
-              <button className="flex items-center px-4 py-2 text-white bg-[#1EA17E] hover:bg-green-200 rounded-full text-sm font-medium transition-colors whitespace-nowrap mt-2">
+              <button className="h-10 flex items-center px-4 py-2 text-white bg-[#1EA17E] hover:bg-green-700 rounded-full text-sm font-medium transition-colors whitespace-nowrap">
                 Add Bus <span className="ml-1 text-xl leading-none">＋</span>
               </button>
             </div>
