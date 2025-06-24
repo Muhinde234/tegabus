@@ -4,7 +4,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { Edit2, Trash2, Plus } from 'lucide-react';
 import Topsection from '@/components/dashboard/topsection';
 
-// Types
+
 interface Route {
   id: string;
   from: string;
