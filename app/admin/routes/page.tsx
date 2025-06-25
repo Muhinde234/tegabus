@@ -3,6 +3,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import { Edit2, Trash2, Plus } from 'lucide-react';
 import Topsection from '@/components/dashboard/topsection';
+import ActionButton from '@/components/dashboard/ActionButton';
 
 
 interface Route {
@@ -21,29 +22,7 @@ interface ActionButtonProps {
 }
 
 
-const ActionButton: React.FC<ActionButtonProps> = ({ 
-  onClick, 
-  variant, 
-  'aria-label': ariaLabel 
-}) => {
-  const baseClasses = "p-2 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
-  const variantClasses = {
-    edit: "text-gray-600 hover:text-blue-600 hover:bg-blue-50 focus:ring-blue-500",
-    delete: "text-gray-600 hover:text-red-600 hover:bg-red-50 focus:ring-red-500"
-  };
 
-  const Icon = variant === 'edit' ? Edit2 : Trash2;
-
-  return (
-    <button
-      onClick={onClick}
-      className={`${baseClasses} ${variantClasses[variant]}`}
-      aria-label={ariaLabel}
-    >
-      <Icon size={16} />
-    </button>
-  );
-};
 
 const TableHeader: React.FC = () => (
   <thead className="bg-gray-50 border-b border-gray-200">
@@ -98,18 +77,7 @@ const TableRow: React.FC<TableRowProps> = ({
       <td className="py-4 px-4 text-gray-700">{route.travelTime}</td>
       <td className="py-4 px-4 text-gray-700">{route.distance}</td>
       <td className="py-4 px-4">
-        <div className="flex gap-2">
-          <ActionButton
-            onClick={handleEdit}
-            variant="edit"
-            aria-label={`Edit route from ${route.from} to ${route.to}`}
-          />
-          <ActionButton
-            onClick={handleDelete}
-            variant="delete"
-            aria-label={`Delete route from ${route.from} to ${route.to}`}
-          />
-        </div>
+      <ActionButton/>
       </td>
     </tr>
   );
