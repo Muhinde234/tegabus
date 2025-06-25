@@ -8,12 +8,18 @@ import CardSection from "../ui/cardSection";
 import { Phone, ThumbsUp } from "lucide-react";
 import Contact from "../ui/contactForm";
 import { popularRoutes } from "@/helpers/data";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 const Hero = () => {
   return (
     <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-28 mt-16 sm:mt-20 md:mt-[84px]">
       <section className="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[700px] rounded-3xl overflow-hidden">
-      
         <Image
           src={home}
           alt="Bus travel background"
@@ -25,28 +31,38 @@ const Hero = () => {
           <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 mt-12 sm:mt-16 md:mt-24">
             Seamless Ticket <br /> Booking with TegaBus
           </h1>
-          <p className="text-white text-sm sm:text-md md:text-lg lg:w-[933px] mb-4 sm:mb-6">
+          <p className="text-white text-sm sm:text-md md:text-lg lg:w-[930px] mb-4 sm:mb-6">
             Say goodbye to long queues! Book your bus tickets instantly,
             securely, and hassle-free. Whether you're commuting or traveling
-            long distances, TegaBus makes your journey smoother with just a
-            few clicks.
+            long distances, TegaBus makes your journey smoother with just a few
+            clicks.
           </p>
           <Link href="/login">
             <button className=" bg-[#0B3B2E] text-white rounded-lg font-semibold transition w-full sm:w-[190px] h-[45px] p-2">
-              View Schedules Now
+              View Schedules
             </button>
           </Link>
         </div>
 
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] bg-white rounded-t-xl p-3 sm:p-4 md:p-6 flex flex-col sm:flex-row flex-wrap items-center justify-between gap-3 sm:gap-4 md:gap-6">
-          <select className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-            <option>Start location</option>
-          </select>
-
-          <select className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-            <option>End location</option>
-          </select>
-
+          <Select>
+            <SelectTrigger className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+              <SelectValue placeholder="Start location" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="light">Kigali</SelectItem>
+              <SelectItem value="dark">Rusomo</SelectItem>
+            </SelectContent>
+          </Select>
+          <Select>
+            <SelectTrigger className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+              <SelectValue placeholder="End location" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="light">Kigali</SelectItem>
+              <SelectItem value="dark">Rusomo</SelectItem>
+            </SelectContent>
+          </Select>
           <input
             type="date"
             className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
@@ -64,10 +80,6 @@ const Hero = () => {
       <TripCard trips="500K+" rating={4.9} departures="99%" />
 
       <Container>
-       
-          
-     
-
         <section className="mb-32">
           <div className="text-center mt-16 sm:mt-20 md:mt-24">
             <h1 className="text-primary-100 text-2xl sm:text-3xl font-extrabold">
@@ -80,7 +92,9 @@ const Hero = () => {
         <div className="bg-[#0B3B2E] p-18 mt-20 py-12 text-white rounded">
           <Container className="flex flex-col sm:flex-row items-center justify-between gap-10 text-center sm:text-left">
             <div>
-              <h3 className="uppercase text-sm tracking-wide">Ready to Ride?</h3>
+              <h3 className="uppercase text-sm tracking-wide">
+                Ready to Ride?
+              </h3>
               <h1 className="text-2xl sm:text-3xl font-bold mt-2">
                 Book Your Next Journey with Confidence
               </h1>

@@ -1,5 +1,6 @@
 import { ShieldCheckIcon, TicketIcon } from "lucide-react";
 import { Bus, Clock, Lock, Search, Phone, BadgePercent,BookText, ShieldCheck,  CreditCard  } from "lucide-react";
+import { describe } from "node:test";
 
 
 const infos = [
@@ -120,6 +121,20 @@ const termsData = [
       "Routes are subject to change. Delays may occur due to weather or traffic, but we strive to inform customers promptly.",
   },
 ];
+  const scheduleItems = [
+    {
+      id: 'RAC 320 D',
+      timeLabel: 'Next',
+      route: 'Kigali to Uganda',
+      departureTime: '07:50 am',
+    },
+    {
+      id: 'RAC 400 B',
+      timeLabel: 'Later',
+      route: 'Kigali to Kinshasa',
+      departureTime: '08:30 am',
+    },
+  ];
 
   const busData = Array.from({ length: 16}, () => ({
   route: 'RAC 205 C',
@@ -132,4 +147,18 @@ const termsData = [
   arrTime: '20:00',
 }));
 
-export {infos,features,steps,busData,popularRoutes,busCompanies,termsData};
+const tickets= Array.from({ length: 16}, () => ({
+ 
+ holder_firstname:"Dosta",
+ holder_lastname:"Muhinde",
+ holder_phonenumber:"0780396766",
+ origin:"Kigali",
+ destination:"Uganda",
+  date:"23rd 10 2025",
+ time:"09:54",
+  seats:"A1"
+}))
+
+
+
+export {infos,features,steps,busData,popularRoutes,busCompanies,termsData,scheduleItems,tickets};

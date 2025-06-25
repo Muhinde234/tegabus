@@ -1,9 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Container from "../ui/container";
+
 import Input from "../ui/inputField";
 import Button from "../ui/button";
+import { links } from "../../helpers/constants";
 import Link from "next/link";
 import Logo from "./logo";
 
@@ -12,6 +15,8 @@ const Footer = () => {
   const [error, setError] = useState("");
   const [subscribe, setSubscribe] = useState(false);
   const [emailAlert, setEmailAlert] = useState("");
+   const pathname = usePathname(); 
+   
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,7 +25,7 @@ const Footer = () => {
 
   useEffect(() => {
     if (validateEmail(email)) {
-      setSubscribe(true); // Auto-check the box when email becomes valid
+      setSubscribe(true);
       setError("");
       setEmailAlert("");
     }
@@ -84,7 +89,11 @@ const Footer = () => {
                 strokeWidth="2"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
             </div>
 
@@ -100,10 +109,17 @@ const Footer = () => {
         <div className="flex flex-col mt-4">
           <h3 className="font-semibold text-lg">Quick Links</h3>
           <div className="flex flex-col mt-4 gap-2">
-            <Link href="/">Home</Link>
-            <Link href="/">About Us</Link>
-            <Link href="/">Routes</Link>
-            <Link href="/">Terms & Conditions</Link>
+            {links.map((link, idx) => (
+              <Link
+                key={idx}
+                href={link.path}
+                className={`hover:text-green-600 transition-colors duration-200 ${
+                  pathname === link.path ? "font-medium text-green-600" : ""
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
 
