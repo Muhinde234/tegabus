@@ -38,7 +38,7 @@ const Hero = () => {
             clicks.
           </p>
           <Link href="/login">
-            <button className=" bg-[#0B3B2E] text-white rounded-lg font-semibold transition w-full sm:w-[190px] h-[45px] p-2">
+            <button className=" bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-full sm:w-[190px] h-[45px] p-2 cursor-pointer">
               View Schedules
             </button>
           </Link>
@@ -70,7 +70,7 @@ const Hero = () => {
           />
           <div className="w-full sm:w-[48%] md:w-auto">
             <Link href="/login">
-              <button className="w-full md:w-[150px] h-[45px] bg-[#0B3B2E] text-white font-semibold rounded-lg hover:bg--700 tgreenransition">
+              <button className="w-full md:w-[150px] h-[45px] bg-[#0B3B2E] text-white font-semibold rounded-lg hover:bg-green-700 transition cursor-pointer">
                 Find schedules
               </button>
             </Link>
@@ -119,6 +119,41 @@ const Hero = () => {
             </Link>
           </Container>
         </div>
+        <Container>
+           <h2 className="text-center text-3xl font-bold mt-20 mb-10">
+          Our Patterns
+        </h2>
+          <div className="flex justify-around  mt-18">
+            <Image
+              src="/images/logoipsum-380.png"
+              alt="logo"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />
+            <Image
+              src="/images/logoipsum-380.png"
+              alt="logo"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />{" "}
+            <Image
+              src="/images/logoipsum-380.png"
+              alt="logo"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />{" "}
+            <Image
+              src="/images/logoipsum-380.png"
+              alt="logo"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />
+          </div>
+        </Container>
 
         <Contact />
 

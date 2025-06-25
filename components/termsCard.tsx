@@ -8,7 +8,7 @@ interface TermsCardProps {
 
 const TermsCard: React.FC<TermsCardProps> = ({ icon: Icon, title, content }) => {
   return (
-    <div className="max-w-md w-full mx-auto p-6 border border-[#0B3B2E] rounded-lg shadow-sm bg-white">
+    <div className="max-w-md w-full mx-auto p-6 border  border-gray-300  rounded-lg shadow-sm bg-white">
       <div className="flex items-center justify-center mb-4">
         <div className="border border-lime-400 rounded-full w-14 h-14 flex items-center justify-center">
           <Icon size={28} className="text-lime-400" />

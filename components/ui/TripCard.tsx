@@ -14,7 +14,7 @@ const TripCard:React.FC<tripProps>= ({ trips, rating, departures }) => {
       <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
         <div className="text-center flex  gap-2">
           <p className="text-5xl font-bold ">{trips}</p>
-          <p className="text-white mt-2">Safe Trips</p>
+          <p className="text-black mt-2">Safe Trips</p>
         </div>
         <div className="text-center">
           <div className="flex gap-2 justify-center items-center">
@@ -29,13 +29,13 @@ const TripCard:React.FC<tripProps>= ({ trips, rating, departures }) => {
               ))}
             </div>
           </div>
-          <p className="ml-18 text-white">Customer Ratings</p>
+          <p className="ml-18 text-black">Customer Ratings</p>
         </div>
         <div className="text-center flex">
           <p className="text-5xl font-bold   border-r border-gray-400 p-2">
             {departures}
           </p>
-          <p className="text-white p-3">On-Time Departures</p>
+          <p className="text-black p-3">On-Time Departures</p>
         </div>
       </div>
     </div>

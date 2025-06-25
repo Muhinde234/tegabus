@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Outfit } from "next/font/google";
-import MainLayout from "./MainLayout";
+import NProgressProvider from "@/context/nprogresbarprovider";
 
 const outfit = Outfit({
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
-  variable: '--font-outfit',
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
@@ -23,10 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body className={`${outfit.className} bg-gray-100 `}>
-        <div className="flex-1">
+        <NProgressProvider>
           {children}
-          <MainLayout />
-        </div>
+        </NProgressProvider>
       </body>
     </html>
   );

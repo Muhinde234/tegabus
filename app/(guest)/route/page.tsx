@@ -64,7 +64,7 @@ const RoutesPage = () => {
             <button
               onClick={handleSearch}
               disabled={loading}
-              className="bg-[#0B3B2E] hover:bg-green-600 text-white font-bold py-3 px-6 rounded flex items-center justify-center"
+              className="bg-[#0B3B2E] hover:bg-green-600 text-white font-bold py-3 px-6 rounded flex items-center justify-center cursor-pointer"
             >
               {loading ? <Loader2 className="animate-spin" /> : "Search Buses"}
             </button>
@@ -83,7 +83,7 @@ const RoutesPage = () => {
       </div>
 
       {showFilters && (
-        <div className="border border-[#0B3B2E] p-4 shadow-sm">
+        <div className="border border-gray-300  rounded-lg shadow-md">
           <div className="max-w-7xl mx-auto">
              
             <div className="flex justify-between items-center mb-4">

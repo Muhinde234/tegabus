@@ -95,7 +95,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="flex gap-4 p-4 rounded-sm bg-gray-200">
+      <div className="flex gap-4 p-4 rounded-sm">
         <div className="w-[75%]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {stats.map((stat, index) => (
