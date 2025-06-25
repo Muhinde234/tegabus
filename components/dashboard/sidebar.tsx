@@ -14,7 +14,7 @@ const Sidebar = () => {
      
       <div className="flex-1 overflow-y-auto custom-scrollbar">
      
-        <div className="p-6 text-2xl font-bold flex items-center space-x-2">
+        <div className="px-6 text-2xl font-bold flex items-center space-x-2">
           <Link href="/">
             <Logo />
           </Link>

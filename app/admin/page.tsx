@@ -21,6 +21,7 @@ import avatar from "../../public/images/avatar.png";
 
 import { getGreeting } from "../../utils/getGreeting";
 import BusSchedules from "@/components/dashboard/BusSchedules";
+import FlightSchedule from "@/components/dashboard/flightSchedule";
 
 const Greeting = () => {
   const [greeting, setGreeting] = useState("");
@@ -224,7 +225,13 @@ const Dashboard = () => {
               Add Bus <span className="ml-1 text-xl leading-none">＋</span>
             </button>
           </div>
+          <div>
+        <FlightSchedule/>
+          </div>
+         
         </div>
+      
+       
       </div>
     </div>
   );
