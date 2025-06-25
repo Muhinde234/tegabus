@@ -52,7 +52,7 @@ export default function RegisterPage() {
               <input
                 type="text"
                 name="firstName"
-                placeholder="e.g. Dastina"
+                placeholder="e.g. John"
                 className="w-full px-4 py-2 border border-gray-300 rounded"
                 onChange={handleChange}
                 required
@@ -63,7 +63,7 @@ export default function RegisterPage() {
               <input
                 type="text"
                 name="lastName"
-                placeholder="e.g. Muhinda"
+                placeholder="e.g. Doe"
                 className="w-full px-4 py-2 border border-gray-300 rounded"
                 onChange={handleChange}
                 required
@@ -76,7 +76,7 @@ export default function RegisterPage() {
             <input
               type="email"
               name="email"
-              placeholder="e.g. datax@gmail.com"
+              placeholder="e.g. johndoe@gmail.com"
               className="w-full px-4 py-2 border border-gray-300 rounded"
               onChange={handleChange}
               required
@@ -88,7 +88,7 @@ export default function RegisterPage() {
             <input
               type="tel"
               name="phone"
-              placeholder="e.g. 07800096778"
+              placeholder="e.g. +250788123456"
               className="w-full px-4 py-2 border border-gray-300 rounded"
               onChange={handleChange}
               required
