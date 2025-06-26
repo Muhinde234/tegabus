@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { steps } from "../../../helpers/data";
 import FeatureSection from "@/components/ui/featureSection";
+import { Button } from "@/components/ui/button";
 
 const AboutPage: React.FC = () => {
   return (
@@ -97,9 +98,10 @@ const AboutPage: React.FC = () => {
             <h2 className="text-3xl font-bold text-[#0B3B2E] mb-6">
               Ready to Travel Smarter?
             </h2>
-            <button className="bg-[#0B3B2E] text-white px-8 py-3 rounded-lg hover:bg-green-700 font-semibold hover:bg-[#0a3529] transition-colors cursor-pointer">
+            <Button variant="default" className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-full sm:w-[190px] h-[45px] cursor-pointer py-2 px-2">
               Start Booking Now
-            </button>
+            </Button>
+            
           </div>
         </section>
       </div>

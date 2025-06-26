@@ -2,7 +2,7 @@
 
 const FlightSchedule = () => {
   return (
-    <div className="bg-white rounded mt-2 p-4 flex space-x-4">
+    <div className="bg-white rounded shadow-lg border border-gray-200 mt-2 p-4 flex space-x-4">
   
       <div className="flex flex-col items-center space-y-6 mt-12">
         <div className="bg-gradient-to-r from-[#1EA17E] to-[#1EA17E] text-white px-3 py-1 rounded-r-full text-sm font-semibold">

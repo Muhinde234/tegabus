@@ -4,6 +4,7 @@ import Container from "@/components/ui/container";
 import TermsCard from "../../../components/termsCard";
 import { termsData } from "@/helpers/data";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function TermsPage() {
   return (
@@ -34,14 +35,20 @@ export default function TermsPage() {
         </div>
         <div className="flex justify-center items-center gap-5 my-18 ">
           <Link href="">
-            <button className=" inline bg-[#0B3B2E] text-white rounded-sm px-4 py-2 cursor-pointer">
+            <Button
+              variant="default"
+              className=" inline bg-[#0B3B2E] text-white rounded-sm px-4 py-2 cursor-pointer"
+            >
               Book now
-            </button>
+            </Button>
           </Link>
           <Link href="/terms">
-            <button className="inline border border-[#0B3B2E] rounded-sm px-4 py-2 cursor-pointer">
+            <Button
+              variant="outline"
+              className="inline b rounded-sm px-4 py-2 cursor-pointer"
+            >
               View More
-            </button>
+            </Button>
           </Link>
         </div>
       </Container>

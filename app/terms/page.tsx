@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 import { Book, Shield, CreditCard, X, User, Info, Menu } from "lucide-react";
-import Button from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import TermsSidebar from "@/components/termsSidebar";
 
 
@@ -25,6 +25,7 @@ const Conditions = () => {
             <Menu size={16} />
             <span>Quick Navigation</span>
           </Button>
+
         </div>
 
         <TermsSidebar

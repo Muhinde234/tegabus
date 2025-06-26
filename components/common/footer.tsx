@@ -3,9 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Container from "../ui/container";
-
-import Input from "../ui/inputField";
-import Button from "../ui/button";
+import {Input} from "../ui/inputField";
+import {Button}from "../ui/button";
 import { links } from "../../helpers/constants";
 import Link from "next/link";
 import Logo from "./logo";
@@ -75,7 +74,7 @@ const Footer = () => {
 
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-2">
             <div className="relative w-5 h-5">
-              <input
+              <Input
                 type="checkbox"
                 onChange={(e) => setSubscribe(e.target.checked)}
                 checked={!!subscribe}
@@ -102,7 +101,7 @@ const Footer = () => {
               newsletter
             </span>
 
-            <Button onClick={handleSubscribe}>Send</Button>
+            <Button onClick={handleSubscribe} className="bg-lime-400 text-white rounded-full font-semibold transition hover:bg-lime-200  py-4 px-6 cursor-pointer ">Send</Button>
           </div>
         </div>
 
