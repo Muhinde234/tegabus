@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Outfit } from "next/font/google";
-import NProgressProvider from "@/context/nprogresbarprovider";
+import Providers from '../components/progressProvider';
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -22,10 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body className={`${outfit.className} bg-gray-100 `}>
-        <NProgressProvider>
-          {children}
-        </NProgressProvider>
+      <body className={`${outfit.className} bg-gray-100`}>
+    
+        
+          <Providers>
+            {children}
+          </Providers>
+       
       </body>
     </html>
   );

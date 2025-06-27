@@ -1,18 +1,19 @@
-"use client";
+'use client';
 
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
-import type { AppProps } from 'next/app';
 
-export default function App({ Component, pageProps }: AppProps) {
+const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <Component {...pageProps} />
+      {children}
       <ProgressBar
-        height="5px"
+        height="4px"
         color="#fffd00"
         options={{ showSpinner: false }}
         shallowRouting
       />
     </>
   );
-}
+};
+
+export default Providers

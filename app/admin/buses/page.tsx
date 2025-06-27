@@ -113,26 +113,19 @@ const BusManagementDashboard: React.FC = () => {
                   Add
                 </button>
 
-                <Select
-                  value={activeFilter}
-                  onValueChange={(value: "All" | Bus["status"]) =>
-                    setActiveFilter(value)
-                  }
-                >
-                  <SelectTrigger className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
-                    <SelectValue>{activeFilter}</SelectValue>{" "}
+              
                  
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="All">All</SelectItem>
-                    <SelectItem value="Active">Active</SelectItem>
-                    <SelectItem value="Retired">Retired</SelectItem>
-                    <SelectItem value="In Maintenance">
-                      In Maintenance
-                    </SelectItem>
-                    <SelectItem value="Available">Available</SelectItem>
-                  </SelectContent>
-                </Select>
+                 <Select>
+                <SelectTrigger className="w-full  border border-green-300 p-2 sm:p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <SelectValue placeholder="All" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">Active</SelectItem>
+                  <SelectItem value="dark">Retired</SelectItem>
+                  <SelectItem value="white">In Maintenance</SelectItem>
+                  <SelectItem value="yellow">Availabe</SelectItem>
+                </SelectContent>
+              </Select>
               </div>
             </div>
 
