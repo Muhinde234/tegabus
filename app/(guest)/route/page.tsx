@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { MapPin, Filter, X, Loader2 } from "lucide-react";
 import Link from "next/link";
-import Button from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import BusCard from "@/components/busCard";
 import Container from "@/components/ui/container";
 import BusCompanyCard from "@/components/BusCompanyCard";
@@ -61,29 +61,31 @@ const RoutesPage = () => {
               className="p-3 border border-[#0B3B2E] rounded text-gray-800"
             />
 
-            <button
+            <Button
+            variant="default"
               onClick={handleSearch}
               disabled={loading}
-              className="bg-[#0B3B2E] hover:bg-green-600 text-white font-bold py-3 px-6 rounded flex items-center justify-center"
+              className="bg-[#0B3B2E] hover:bg-green-600 text-white font-bold py-3 px-6 rounded flex items-center justify-center cursor-pointer"
             >
               {loading ? <Loader2 className="animate-spin" /> : "Search Buses"}
-            </button>
+            </Button>
           </div>
 
           <div className="flex items-center justify-between">
-            <button
+            <Button
+            
               onClick={() => setShowFilters(!showFilters)}
-              className="flex items-center text-sm text-lime-300"
+              className="flex items-center text-sm text-lime-300 cursor-pointer"
             >
               <Filter size={16} className="mr-1" />
               {showFilters ? "Hide Bus Companies" : "Show Bus Companies"}
-            </button>
+            </Button>
           </div>
         </div>
       </div>
 
       {showFilters && (
-        <div className="border border-[#0B3B2E] p-4 shadow-sm">
+        <div className="border border-gray-300  rounded-lg shadow-md">
           <div className="max-w-7xl mx-auto">
              
             <div className="flex justify-between items-center mb-4">
@@ -130,7 +132,7 @@ const RoutesPage = () => {
                     </h3>
                     <p className="text-black">{route.buses}+ buses daily</p>
                   </div>
-                  <Button>
+                  <Button variant="default" className="bg-lime-400 hover:bg-lime-300 rounded-lg py-2 px-2">
                     <Link href="/">view schedules</Link>
                   </Button>
                 </div>

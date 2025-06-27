@@ -1,6 +1,7 @@
 import { MailOpen, MapPin, Phone } from "lucide-react";
 import Container from "./container";
-import Button from "./button";
+import {Button} from "../ui/button";
+import { Input } from "./inputField";
 
 const Contact = () => {
   return (
@@ -20,12 +21,12 @@ const Contact = () => {
           <form className="flex flex-col gap-4 mt-4 w-full max-w-md">
           
             <div className="flex flex-col sm:flex-row gap-4">
-              <input
+              <Input
                 type="text"
                 placeholder="Your Name"
                 className="border border-lime-400 rounded-md p-2 w-full"
               />
-              <input
+              <Input
                 type="text"
                 placeholder="Phone No"
                 className="border border-lime-400 rounded-md p-2 w-full"
@@ -34,12 +35,12 @@ const Contact = () => {
 
            
             <div className="flex flex-col sm:flex-row gap-4">
-              <input
+              <Input
                 type="text"
                 placeholder="E-mail Address"
                 className="border border-lime-400 rounded-md p-2 w-full"
               />
-              <input
+              <Input
                 type="text"
                 placeholder="Subject"
                 className="border border-lime-400 rounded-md p-2 w-full"
@@ -53,7 +54,7 @@ const Contact = () => {
             ></textarea>
 
          
-            <Button>
+            <Button variant="ghost" className="bg-lime-400">
                 
               Send Message
             </Button>

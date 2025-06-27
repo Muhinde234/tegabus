@@ -13,7 +13,7 @@ const Navbar = () => {
   const pathname = usePathname(); 
 
   return (
-    <div className="fixed w-full top-0 z-50 bg-white border-b border-green-800 shadow-sm p-4 lg:p-0">
+    <div className="fixed w-full top-0 z-50 bg-white  shadow-sm p-4 lg:p-0">
       <Container>
         <div className="flex justify-between items-center h-16 md:h-20">
           <Link href="/" className="flex items-center">

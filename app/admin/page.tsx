@@ -95,7 +95,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="flex gap-4 p-4 rounded-sm bg-gray-200">
+      <div className="flex gap-4 p-4 rounded-sm">
         <div className="w-[75%]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {stats.map((stat, index) => (
@@ -110,7 +110,7 @@ const Dashboard = () => {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-12 bg-white p-4 rounded-xl">
+          <div className="grid grid-cols-2 gap-12 mt-4 bg-white p-4 rounded-xl">
             <div className="flex justify-between">
               <div className="flex flex-col">
                 <p className="text-xl font-medium">Bus List</p>
@@ -167,7 +167,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="flex justify-between items-center rounded-lg bg-white p-8">
+          <div className="flex justify-between items-center mt-4  rounded-xl shadow-sm bg-white p-8">
             <div className="flex flex-col gap-2">
               <h1 className="font-bold">Recent Bookings</h1>
               <p className="text-sm text-gray-400">Show 10 of 50 bookings</p>

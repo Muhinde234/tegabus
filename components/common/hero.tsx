@@ -1,13 +1,13 @@
 import Image from "next/image";
 import home from "../../public/images/home.jpg";
 import Container from "../ui/container";
-import Button from "../ui/button";
 import Link from "next/link";
 import TripCard from "../ui/TripCard";
 import CardSection from "../ui/cardSection";
 import { Phone, ThumbsUp } from "lucide-react";
 import Contact from "../ui/contactForm";
 import { popularRoutes } from "@/helpers/data";
+import { Button } from "@/components/ui/button"
 import {
   Select,
   SelectContent,
@@ -38,9 +38,8 @@ const Hero = () => {
             clicks.
           </p>
           <Link href="/login">
-            <button className=" bg-[#0B3B2E] text-white rounded-lg font-semibold transition w-full sm:w-[190px] h-[45px] p-2">
-              View Schedules
-            </button>
+        
+            <Button variant="default" className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-full sm:w-[190px] h-[45px] cursor-pointer">View Schedules</Button>
           </Link>
         </div>
 
@@ -70,9 +69,9 @@ const Hero = () => {
           />
           <div className="w-full sm:w-[48%] md:w-auto">
             <Link href="/login">
-              <button className="w-full md:w-[150px] h-[45px] bg-[#0B3B2E] text-white font-semibold rounded-lg hover:bg--700 tgreenransition">
+              <Button variant="secondary" className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-full sm:w-[190px] h-[45px] cursor-pointer py-2 px-2">
                 Find schedules
-              </button>
+              </Button>
             </Link>
           </div>
         </div>
@@ -119,6 +118,41 @@ const Hero = () => {
             </Link>
           </Container>
         </div>
+        <Container>
+           <h2 className="text-center text-3xl font-bold mt-20 mb-10">
+          Our Patterns
+        </h2>
+          <div className="flex justify-around  mt-18">
+            <Image
+              src="/images/logoipsum-380.png"
+              alt="logo"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />
+            <Image
+              src="/images/logoipsum-380.png"
+              alt="logo"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />{" "}
+            <Image
+              src="/images/logoipsum-380.png"
+              alt="logo"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />{" "}
+            <Image
+              src="/images/logoipsum-380.png"
+              alt="logo"
+              width={100}
+              height={100}
+              className="rounded-full"
+            />
+          </div>
+        </Container>
 
         <Contact />
 
@@ -136,7 +170,7 @@ const Hero = () => {
                     </h3>
                     <p className="text-lime-200">{route.buses}+ buses daily</p>
                   </div>
-                  <Button>
+                  <Button variant="default" className="bg-lime-400 hover:bg-lime-300 rounded-lg py-2 px-2">
                     <Link href="/">View schedules</Link>
                   </Button>
                 </div>
