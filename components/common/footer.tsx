@@ -101,7 +101,7 @@ const Footer = () => {
               newsletter
             </span>
 
-            <Button onClick={handleSubscribe} className="bg-lime-400 text-white rounded-full font-semibold transition hover:bg-lime-200  py-4 px-6 cursor-pointer ">Send</Button>
+            <Button onClick={handleSubscribe} className="bg-lime-500 text-white rounded-full font-semibold transition hover:bg-lime-400  py-4 px-6 cursor-pointer ">Send</Button>
           </div>
         </div>
 
@@ -125,10 +125,10 @@ const Footer = () => {
         <div className="flex flex-col mt-4">
           <h3 className="font-semibold text-lg">Services</h3>
           <div className="flex flex-col gap-2 mt-4">
-            <Link href="/">Bus Routes</Link>
-            <Link href="/">Ticket Booking</Link>
-            <Link href="/">Customer Support</Link>
-            <Link href="/">Real-Time Updates</Link>
+            <Link href="/routes">Bus Routes</Link>
+            <Link href="/login">Ticket Booking</Link>
+            <Link href="/condition">Customer Support</Link>
+            <Link href="/routes">Real-Time Updates</Link>
           </div>
         </div>
 

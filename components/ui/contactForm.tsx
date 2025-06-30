@@ -2,6 +2,7 @@ import { MailOpen, MapPin, Phone } from "lucide-react";
 import Container from "./container";
 import {Button} from "../ui/button";
 import { Input } from "./inputField";
+import { Textarea } from "@/components/ui/textarea"
 
 const Contact = () => {
   return (
@@ -48,10 +49,10 @@ const Contact = () => {
             </div>
 
            
-            <textarea
+            <Textarea
               placeholder="Message"
               className="border border-lime-400 rounded-md p-2 min-h-[120px] w-full"
-            ></textarea>
+            ></Textarea>
 
          
             <Button variant="ghost" className="bg-lime-400">

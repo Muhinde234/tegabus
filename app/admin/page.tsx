@@ -22,6 +22,10 @@ import avatar from "../../public/images/avatar.png";
 import { getGreeting } from "../../utils/getGreeting";
 import BusSchedules from "@/components/dashboard/BusSchedules";
 import FlightSchedule from "@/components/dashboard/flightSchedule";
+import { Button } from "@/components/ui/button";
+import { BookingFormDialog } from "@/components/dialogs/bookingForm";
+import AddBusForm from "@/components/dialogs/addBus";
+
 
 const Greeting = () => {
   const [greeting, setGreeting] = useState("");
@@ -78,9 +82,12 @@ const Dashboard = () => {
       <div className="flex justify-between">
         <Greeting />
         <div className="flex items-center gap-2 shrink-0 order-2 md:order-3 mb-8">
-          <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-100 transition-colors">
+          <Button
+            variant="ghost"
+            className="p-2 rounded-full bg-gray-200 hover:bg-gray-100 transition-colors"
+          >
             <Bell size={20} className="text-gray-600" />
-          </button>
+          </Button>
 
           <div className="flex items-center gap-2 bg-gray-300 hover:bg-gray-200 rounded-full pl-2 pr-3 py-1 transition-colors cursor-pointer">
             <Image
@@ -151,30 +158,48 @@ const Dashboard = () => {
                   <h1 className="font-bold">Kigali-Uganda</h1>
                   <p className="text-sm text-gray-400">RAB 240X</p>
                 </div>
-                <div className="flex flex-col">
+                <div className="flex gap-2">
+                   <div className="flex flex-col font-bold">
                   <h1>KIG</h1>
                   <h1>UGA</h1>
                 </div>
-                <Image src={image} alt="image" className="text-black" />
+                <div className="bg-[#1EA17E] rounded-xl p-2">
+            <Image src={image} alt="image" className="" />
+                </div>
+
+                </div>
               </div>
-              <div className="bg-[#1EA17E] p-4 rounded-lg ">
-                <h1 className="font-bold">Kigali-Uganda</h1>
-                <p className="text-sm text-gray-400">RAB 240X</p>
+              <div className="bg-[#1EA17E] flex justify-between p-4 rounded-lg ">
+                <div className="flex flex-col ">
+                 <h1 className="font-bold text-black">Kigali-Uganda</h1>
+                <p className="text-sm text-white">RAB 240X</p>
+                </div>
+
+                  <div className="flex gap-2">
+                   <div className="flex flex-col font-bold">
+                  <h1>KIG</h1>
+                  <h1>UGA</h1>
+                </div>
+                <div className="bg-black rounded-xl p-2">
+            <Image src={image} alt="image" className="" />
+                </div>
+                </div>
               </div>
-              <div className="border border-[#C1C1C1] p-4 rounded-lg">
-                <h1 className="font-bold">Kigali-Uganda</h1>
-                <p className="text-sm text-gray-400">RAB 240X</p>
+            </div>
+
+            <div className="flex flex-col gap-6">
+              <div className="border border-gray-200 flex justify-center items-center h-full">
+                <h1>Map coming soon</h1>
               </div>
             </div>
           </div>
-          <div className="flex justify-between items-center mt-4  rounded-xl shadow-sm bg-white p-8">
+
+          <div className="flex justify-between items-center mt-4 rounded-xl shadow-sm bg-white p-8">
             <div className="flex flex-col gap-2">
               <h1 className="font-bold">Recent Bookings</h1>
               <p className="text-sm text-gray-400">Show 10 of 50 bookings</p>
             </div>
             <div className="flex gap-3 items-center">
-              {" "}
-           
               <Select value={timeFrame} onValueChange={setTimeFrame}>
                 <SelectTrigger className="h-10 w-[120px] border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
                   <SelectValue placeholder="Timeframe" />
@@ -185,9 +210,7 @@ const Dashboard = () => {
                   <SelectItem value="monthly">Monthly</SelectItem>
                 </SelectContent>
               </Select>
-              <button className="h-10 flex items-center px-4 py-2 text-white bg-[#1EA17E] hover:bg-green-700 rounded-full text-sm font-medium transition-colors whitespace-nowrap">
-                Add Bus <span className="ml-1 text-xl leading-none">＋</span>
-              </button>
+              <BookingFormDialog mode="add" />
             </div>
           </div>
           <BusSchedules />
@@ -221,17 +244,12 @@ const Dashboard = () => {
               </p>
             </div>
 
-            <button className="flex items-center px-4 py-2 text-white bg-[#1EA17E] hover:bg-green-200 rounded-full text-sm font-medium transition-colors whitespace-nowrap mt-2">
-              Add Bus <span className="ml-1 text-xl leading-none">＋</span>
-            </button>
+            <AddBusForm/>
           </div>
           <div>
-        <FlightSchedule/>
+            <FlightSchedule />
           </div>
-         
         </div>
-      
-       
       </div>
     </div>
   );

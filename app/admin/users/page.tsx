@@ -1,101 +1,159 @@
+"use client"
+
 import ActionButton from "@/components/dashboard/ActionButton";
-import StatsCard from "@/components/dashboard/statCard"
-import Topsection from "@/components/dashboard/topsection"
-import { Plus } from "lucide-react"
+import StatsCard from "@/components/dashboard/statCard";
+import Topsection from "@/components/dashboard/topsection";
+import { AddUserForm } from "@/components/dialogs/addUser";
+import { useState, useEffect } from "react";
 
+type User = {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  role: "Admin" | "User" | "Verifier";
+  country: string;
+};
 
-const users = Array.from({ length: 20 }, (_, i) => ({
-  firstName: `First${i + 1}`,
-  lastName: `Last${i + 1}`,
-  phone: `+25078${String(i).padStart(6, "0")}`,
-  role: i % 2 === 0 ? "Admin" : "User",
-  country: ["Rwanda", "Kenya", "Uganda", "Tanzania", "DRC"][i % 5],
+const tableHeads = [
+  "First-name",
+  "Last-name",
+  "Phone",
+  "Role",
+  "Country",
+  "Actions",
+];
 
-}));
+// Function to generate phone numbers (now only called client-side)
+const generatePhoneNumber = () => `+250${Math.floor(10000000 + Math.random() * 90000000)}`;
 
+export default function UsersPage() {
+  const [users, setUsers] = useState<User[]>([]);
+  const [stats, setStats] = useState({
+    passengers: 30,
+    managers: 20,
+    administrators: 1,
+    verifiers: 2,
+  });
 
-const page = () => {
+  useEffect(() => {
+    // Generate sample users only on client side after hydration
+    const roles: Array<"Admin" | "User" | "Verifier"> = ["Admin", "User", "Verifier"];
+    const countries = ["Rwanda", "Tanzania", "Uganda", "Burundi", "Kenya", "Rwanda"];
+    
+    const sampleUsers = Array.from({ length: 20 }, (_, i) => ({
+      firstName: `User${i + 1}`,
+      lastName: `Last${i + 1}`,
+      phone: generatePhoneNumber(),
+      role: roles[i % roles.length],
+      country: countries[i % countries.length]
+    }));
+
+    setUsers(sampleUsers);
+    setStats(prev => ({
+      ...prev,
+      administrators: prev.administrators + sampleUsers.filter(u => u.role === "Admin").length,
+      verifiers: prev.verifiers + sampleUsers.filter(u => u.role === "Verifier").length
+    }));
+  }, []);
+
+  const handleAddUser = (newUser: User) => {
+    setUsers(prevUsers => [...prevUsers, {
+      ...newUser,
+      phone: generatePhoneNumber()
+    }]);
+    
+    setStats(prev => {
+      const updatedStats = {...prev};
+      switch(newUser.role) {
+        case "Admin":
+          updatedStats.administrators += 1;
+          break;
+        case "User":
+          updatedStats.passengers += 1;
+          break;
+        case "Verifier":
+          updatedStats.verifiers += 1;
+          break;
+      }
+      return updatedStats;
+    });
+  };
+
   return (
     <div className="px-6">
-        <Topsection/>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <StatsCard
-            title="Passengers"
-            value={30}
-            description="End Users of our stystem"
-            color="green"
-          />
-          <StatsCard
-            title="Managers"
-            value={20}
-            description="Managers of our system"
-            color="blue"
-          />
-          <StatsCard
-            title="Administrator"
-            value={1}
-            description="controls the over all system"
-            color="orange"
-          />
-          <StatsCard
-            title="Verifiers"
-            value={2}
-            description="Verifiers who verify the tickets"
-            color="teal"
-          />   
-     
-        </div>
-        <div className="flex justify-between">
-    <h1 className="text-2xl font-bold ">Users  List </h1>
-      <button
-               
-                  className="flex items-center gap-2 bg-[#1EA17E] text-white px-4 py-2 rounded-full hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
-                  
-                >
-                  <Plus size={20} />
-                  
-                  Add New User
-                </button>
-        </div>
- <div className="p-8">
-    
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white shadow-md rounded">
-          <thead className="bg-gray-100 text-left">
-            <tr>
-              <th className="py-2 px-4">First Name</th>
-              <th className="py-2 px-4">Last Name</th>
-              <th className="py-2 px-4">Phone</th>
-              <th className="py-2 px-4">Role</th>
-              <th className="py-2 px-4">Country</th>
-              <th className="py-2 px-4">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <tr key={index} >
-                <td className="py-4 px-4">{user.firstName}</td>
-                <td className="py-4 px-4">{user.lastName}</td>
-                <td className="py-4 px-4">{user.phone}</td>
-                <td className="py-4 px-4">{user.role}</td>
-                <td className="py-4 px-4">{user.country}</td>
-                 <td className="py-4 px-4">
-            <ActionButton/>
-                    
-         </td>
+      <Topsection />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <StatsCard
+          title="Passengers"
+          value={stats.passengers}
+          description="End Users of our system"
+          color="green"
+        />
+        <StatsCard
+          title="Managers"
+          value={stats.managers}
+          description="Managers of our system"
+          color="blue"
+        />
+        <StatsCard
+          title="Administrator"
+          value={stats.administrators}
+          description="Controls the overall system"
+          color="orange"
+        />
+        <StatsCard
+          title="Verifiers"
+          value={stats.verifiers}
+          description="Verifiers who verify the tickets"
+          color="teal"
+        />
+      </div>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold">Users List</h1>
+        <AddUserForm onAddUser={handleAddUser} />
+      </div>
+      <div className="border border-gray-200 rounded-lg overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-100">
+              <tr>
+                {tableHeads.map((head, idx) => (
+                  <th
+                    key={idx}
+                    className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6"
+                  >
+                    {head}
+                  </th>
+                ))}
               </tr>
-            ))}
-            <tr>
-
-            </tr>
-           
-
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {users.map((user, index) => (
+                <tr key={index}>
+                  <td className="py-4 px-6 whitespace-nowrap">{user.firstName}</td>
+                  <td className="py-4 px-6 whitespace-nowrap">{user.lastName}</td>
+                  <td className="py-4 px-6 whitespace-nowrap">{user.phone}</td>
+                  <td className="py-4 px-6 whitespace-nowrap">
+                    <span className={`px-2 py-1 text-xs rounded-full ${
+                      user.role === "Admin" 
+                        ? "bg-orange-100 text-orange-800" 
+                        : user.role === "Verifier" 
+                          ? "bg-teal-100 text-teal-800" 
+                          : "bg-blue-100 text-blue-800"
+                    }`}>
+                      {user.role}
+                    </span>
+                  </td>
+                  <td className="py-4 px-6 whitespace-nowrap">{user.country}</td>
+                  <td className="py-4 px-6 whitespace-nowrap">
+                    <ActionButton />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-    </div>
-  )
+  );
 }
-
-export default page

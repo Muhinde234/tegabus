@@ -1,14 +1,13 @@
-"use client"
+"use client";
 
 import SearchBar from "../dashboard/searchBar";
 import { useEffect, useState } from "react";
 import avatar from "../../public/images/avatar.png";
 import { Bell } from "lucide-react";
 import Image from "next/image";
-
-
-
 import { getGreeting } from "../../utils/getGreeting";
+
+
 
 const Greeting = () => {
   const [greeting, setGreeting] = useState("");
@@ -24,14 +23,10 @@ const Greeting = () => {
   );
 };
 const Topsection = () => {
- 
-
   return (
     <>
       <div className=" mt-8 mb-8 flex flex-col md:flex-row items-center justify-between  gap-4">
-        <h1 className="text-xl font-semibold whitespace-nowrap order-1 md:order-none">
-          <Greeting/>
-        </h1>
+        <Greeting  />
 
         <div className="w-full md:max-w-2xl order-3 md:order-2 md:px-4">
           <SearchBar />

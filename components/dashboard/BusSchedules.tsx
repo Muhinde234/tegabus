@@ -1,8 +1,9 @@
 import { tickets } from "../../helpers/data"
 import avatar from "../../public/images/avatar.png";
-import {  Pen, Trash2} from "lucide-react";
 import Image from "next/image";
 import ActionButton from "./ActionButton";
+
+
 
 const BusSchedules = () => {
 const tableHeads = ["Passenger", "Route", "Date", "Time", "Seat", "Actions"];
