@@ -1,75 +1,4 @@
-<<<<<<< HEAD
-'use client';
-
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import Logo from '@/components/common/logo';
-
-export default function RegisterPage() {
-  const router = useRouter();
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    country: '',
-    password: '',
-    confirmPassword: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleRegister = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords don't match");
-      return;
-    }
-
-    // Placeholder for sending registration data
-    console.log('User registered:', formData);
-    router.push('/login');
-  };
-
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-start bg-white text-black">
-      <div className="w-full bg-green-900 py-6 text-center text-white text-3xl font-semibold">
-        Register
-      </div>
-
-      <div className="bg-white shadow-md border border-gray-200 mt-10 px-8 py-6 rounded-md w-full max-w-xl">
-        <Link href="/" className="flex justify-center items-center mb-6">
-          <Logo />
-          <span className="text-2xl font-semibold ml-2 text-green-900">TegaBus</span>
-        </Link>
-
-        <form className="space-y-4" onSubmit={handleRegister}>
-          <div className="flex gap-4">
-            <div className="w-1/2">
-              <label className="block text-sm mb-1">First name</label>
-              <input
-                type="text"
-                name="firstName"
-                placeholder="e.g. John"
-                className="w-full px-4 py-2 border border-gray-300 rounded"
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="w-1/2">
-              <label className="block text-sm mb-1">Last name</label>
-              <input
-                type="text"
-                name="lastName"
-                placeholder="e.g. Doe"
-                className="w-full px-4 py-2 border border-gray-300 rounded"
-                onChange={handleChange}
-                required
-=======
-"use client"
+"use client";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
@@ -90,12 +19,11 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center px-4">
       <div className="border border-gray-300 bg-white rounded-lg shadow-md w-full max-w-xl p-8">
-     <div className="flex justify-center mb-3">
+        <div className="flex justify-center mb-3">
           <Link href="/">
             <Logo />
           </Link>
         </div>
-
 
         <div className="text-center mb-6">
           <h2 className="text-xl font-semibold text-gray-800">User Registration</h2>
@@ -126,22 +54,11 @@ export default function RegisterPage() {
                 id="lastName"
                 placeholder="e.g: Muhinde"
                 className="mt-1 w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
->>>>>>> origin/main
               />
             </div>
           </div>
 
           <div>
-<<<<<<< HEAD
-            <label className="block text-sm mb-1">Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="e.g. johndoe@gmail.com"
-              className="w-full px-4 py-2 border border-gray-300 rounded"
-              onChange={handleChange}
-              required
-=======
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email
             </label>
@@ -150,21 +67,10 @@ export default function RegisterPage() {
               id="email"
               placeholder="e.g: dosta@gmail.com"
               className="mt-1 w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
->>>>>>> origin/main
             />
           </div>
 
           <div>
-<<<<<<< HEAD
-            <label className="block text-sm mb-1">Phone number</label>
-            <input
-              type="tel"
-              name="phone"
-              placeholder="e.g. +250788123456"
-              className="w-full px-4 py-2 border border-gray-300 rounded"
-              onChange={handleChange}
-              required
-=======
             <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
               Phone number
             </label>
@@ -173,80 +79,25 @@ export default function RegisterPage() {
               id="phone"
               placeholder="e.g: 07800396778"
               className="mt-1 w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
->>>>>>> origin/main
             />
           </div>
 
           <div>
-<<<<<<< HEAD
-            <label className="block text-sm mb-1">Country of origin</label>
-            <select
-              name="country"
-              className="w-full px-4 py-2 border border-gray-300 rounded"
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select the country</option>
-              <option value="rwanda">Rwanda</option>
-              <option value="uganda">Uganda</option>
-              <option value="kenya">Kenya</option>
-              <option value="tanzania">Tanzania</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-sm mb-1">Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              className="w-full px-4 py-2 border border-gray-300 rounded"
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm mb-1">Confirm password</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Re-enter the password"
-              className="w-full px-4 py-2 border border-gray-300 rounded"
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full mt-4 bg-green-900 text-white py-2 rounded hover:bg-green-800 transition"
-          >
-            Register
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-}
-=======
             <label htmlFor="country" className="block text-sm font-medium text-gray-700">
               Country of origin
             </label>
-           
-            
-              <Select>
-                <SelectTrigger className="mt-1 w-full border border-gray-300 rounded px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-green-600">
-                  <SelectValue placeholder="Select the country" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="light">Rwanda</SelectItem>
-                  <SelectItem value="dark">Kenya</SelectItem>
-                  <SelectItem value="green">Uganda</SelectItem>
-                  <SelectItem value="yellow">Tanzania</SelectItem>
-                  <SelectItem value="white">Burundi</SelectItem>
-                </SelectContent>
-              </Select>
+            <Select>
+              <SelectTrigger className="mt-1 w-full border border-gray-300 rounded px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-green-600">
+                <SelectValue placeholder="Select the country" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="rwanda">Rwanda</SelectItem>
+                <SelectItem value="kenya">Kenya</SelectItem>
+                <SelectItem value="uganda">Uganda</SelectItem>
+                <SelectItem value="tanzania">Tanzania</SelectItem>
+                <SelectItem value="burundi">Burundi</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <div>
@@ -291,19 +142,17 @@ export default function RegisterPage() {
             </div>
           </div>
 
-        
           <Button
-           variant="ghost"
+            variant="ghost"
             type="submit"
             className="w-full  bg-[#0B3B2E] text-white py-2 rounded hover:bg-green-700 transition-colors"
           >
             Register
           </Button>
-          
         </form>
-          <div className="mt-6 text-center text-sm text-gray-600">
+        <div className="mt-6 text-center text-sm text-gray-600">
           <p>
-             have an account?{" "}
+            have an account?{" "}
             <Link href="/login" className="text-green-700 hover:underline">
               Login
             </Link>
@@ -313,4 +162,3 @@ export default function RegisterPage() {
     </div>
   );
 }
->>>>>>> origin/main
