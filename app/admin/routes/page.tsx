@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 import React, { useState, useCallback, useMemo } from 'react';
-import { Edit2, Trash2, Plus } from 'lucide-react';
 import Topsection from '@/components/dashboard/topsection';
 import ActionButton from '@/components/dashboard/ActionButton';
+import { AddRouteForm } from '@/components/dialogs/addRoute';
 
 
 interface Route {
@@ -15,30 +15,21 @@ interface Route {
   distance: string;
 }
 
-interface ActionButtonProps {
-  onClick: () => void;
-  variant: 'edit' | 'delete';
-  'aria-label': string;
-}
-
-
-
-
 const TableHeader: React.FC = () => (
-  <thead className="bg-gray-50 border-b border-gray-200">
+  <thead className="bg-gray-100">
     <tr>
       {[
         { key: 'from', label: 'From' },
         { key: 'to', label: 'To' },
-        { key: 'price', label: 'Price/Rwf' },
+        { key: 'price', label: 'Price (RWF)' },
         { key: 'travel-time', label: 'Travel Time' },
         { key: 'distance', label: 'Distance' },
-        { key: 'action', label: 'Action' }
+        { key: 'action', label: 'Actions' }
       ].map(({ key, label }) => (
         <th 
           key={key}
           scope="col"
-          className="text-left py-3 px-4 font-medium text-gray-700 text-sm"
+          className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6"
         >
           {label}
         </th>
@@ -69,83 +60,68 @@ const TableRow: React.FC<TableRowProps> = ({
         index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'
       }`}
     >
-      <td className="py-4 px-4 text-gray-900 font-medium">{route.from}</td>
-      <td className="py-4 px-4 text-gray-700">{route.to}</td>
-      <td className="py-4 px-4 text-gray-700">
+      <td className="py-4 px-4 text-gray-900 font-medium whitespace-nowrap">{route.from}</td>
+      <td className="py-4 px-4 text-gray-700 whitespace-nowrap">{route.to}</td>
+      <td className="py-4 px-4 text-gray-700 whitespace-nowrap">
         {route.priceRwf.toLocaleString()}
       </td>
-      <td className="py-4 px-4 text-gray-700">{route.travelTime}</td>
-      <td className="py-4 px-4 text-gray-700">{route.distance}</td>
-      <td className="py-4 px-4">
-      <ActionButton/>
+      <td className="py-4 px-4 text-gray-700 whitespace-nowrap">{route.travelTime}</td>
+      <td className="py-4 px-4 text-gray-700 whitespace-nowrap">{route.distance}</td>
+      <td className="py-4 px-4 whitespace-nowrap">
+        <ActionButton/>
       </td>
     </tr>
   );
 };
 
-
 const RoutesManagement: React.FC = () => {
-
-  const [routes] = useState<Route[]>(() => 
+  const [routes, setRoutes] = useState<Route[]>(() => 
     Array.from({ length: 11 }, (_, index) => ({
       id: `route-${index + 1}`,
       from: 'Kigali',
-      to: 'Uganda',
-      priceRwf: 20000,
-      travelTime: '9h 50min',
-      distance: '120 km'
+      to: ['Uganda', 'Tanzania', 'Burundi', 'DRC'][index % 4],
+      priceRwf: 15000 + (index * 2000),
+      travelTime: `${8 + index % 4}h ${30 + (index * 10) % 60}min`,
+      distance: `${100 + (index * 20)} km`
     }))
   );
 
-
-  const handleAddRoute = useCallback(() => {
-    console.log('Add new route');
-  
+  const handleAddRoute = useCallback((newRoute: Route) => {
+    setRoutes(prev => [...prev, newRoute]);
   }, []);
 
   const handleEditRoute = useCallback((route: Route) => {
     console.log('Edit route:', route);
-   
+    // Implement edit functionality here
   }, []);
 
   const handleDeleteRoute = useCallback((routeId: string) => {
     console.log('Delete route:', routeId);
-
+    // Implement delete functionality here
   }, []);
 
- 
   const displayedRoutesCount = useMemo(() => routes.length, [routes]);
-  const totalRoutesCount = 50; 
+  const totalRoutesCount = routes.length; // You can change this if you have pagination
 
   return (
     <div className="px-6 bg-gray-50 min-h-screen">
       <Topsection/>
-      <div>
-    
-        <header className="flex justify-between items-center mb-4">
+      <div className="py-6">
+        <header className="flex justify-between items-center mb-6">
           <div>
             <h1 className="text-2xl font-semibold text-gray-900 mb-1">
-              Routes
+              Routes Management
             </h1>
             <p className="text-sm text-gray-500">
               Showing {displayedRoutesCount} of {totalRoutesCount} routes
             </p>
           </div>
-          
-          <button
-            onClick={handleAddRoute}
-            className="flex items-center gap-2 bg-[#1EA17E] text-white px-4 py-2 rounded-full hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
-            aria-label="Add new route"
-          >
-            <Plus size={20} />
-            Add
-          </button>
+          <AddRouteForm onAddRoute={handleAddRoute} />
         </header>
 
-        
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full table-auto">
+            <table className="min-w-full divide-y divide-gray-200">
               <TableHeader />
               <tbody>
                 {routes.map((route, index) => (
@@ -162,16 +138,10 @@ const RoutesManagement: React.FC = () => {
           </div>
         </div>
 
-     
         {routes.length === 0 && (
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
             <p className="text-gray-500 text-lg mb-4">No routes found</p>
-            <button
-              onClick={handleAddRoute}
-              className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
-            >
-              Add your first route
-            </button>
+            <AddRouteForm onAddRoute={handleAddRoute} />
           </div>
         )}
       </div>

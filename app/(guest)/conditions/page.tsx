@@ -34,10 +34,10 @@ export default function TermsPage() {
           ))}
         </div>
         <div className="flex justify-center items-center gap-5 my-18 ">
-          <Link href="">
+          <Link href="/login">
             <Button
               variant="default"
-              className=" inline bg-[#0B3B2E] text-white rounded-sm px-4 py-2 cursor-pointer"
+              className=" inline bg-[#0B3B2E] text-white rounded-sm px-4 py-2 hover:bg-green-700 cursor-pointer"
             >
               Book now
             </Button>
@@ -45,7 +45,7 @@ export default function TermsPage() {
           <Link href="/terms">
             <Button
               variant="outline"
-              className="inline b rounded-sm px-4 py-2 cursor-pointer"
+              className="inline b rounded-sm px-4 py-2 cursor-pointer hover:bg-green-300"
             >
               View More
             </Button>

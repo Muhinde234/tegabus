@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState, useCallback, useMemo } from "react";
-import { Plus } from "lucide-react";
+
 import StatsCard from "../../../components/dashboard/statCard";
 import BusTableRow from "../../../components/dashboard/BusTableRow";
 import BusDetailsCard from "../../../components/dashboard/BusDetailsCard";
 import { Bus, BusStats } from "../../../types/type";
 import Topsection from "@/components/dashboard/topsection";
+import AddBusForm from "@/components/dialogs/addBus";
 
 import {
   Select,
@@ -28,6 +29,8 @@ const BusManagementDashboard: React.FC = () => {
     availableBuses: 50,
   });
 
+  const tableHeads = ["Bus-number", "Status", "Route", "Driver", "Actions"];
+
   const [buses] = useState<Bus[]>(() =>
     Array.from({ length: 9 }, (_, index) => ({
       id: `bus-${index + 1}`,
@@ -48,10 +51,6 @@ const BusManagementDashboard: React.FC = () => {
   }, [buses, activeFilter]);
 
   const selectedBus = useMemo(() => buses[0], [buses]);
-
-  const handleAddBus = useCallback(() => {
-    console.log("Add new bus");
-  }, []);
 
   const handleEditBus = useCallback((bus: Bus) => {
     console.log("Edit bus:", bus);
@@ -104,51 +103,36 @@ const BusManagementDashboard: React.FC = () => {
                 </p>
               </div>
               <div className="flex gap-3">
-                <button
-                  onClick={handleAddBus}
-                  className="flex items-center gap-2 bg-[#1EA17E] text-white px-4 py-2 rounded-full hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
-                  aria-label="Add new route"
-                >
-                  <Plus size={20} />
-                  Add
-                </button>
+                <AddBusForm />
 
-              
-                 
-                 <Select>
-                <SelectTrigger className="w-full  border border-green-300 p-2 sm:p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
-                  <SelectValue placeholder="All" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="light">Active</SelectItem>
-                  <SelectItem value="dark">Retired</SelectItem>
-                  <SelectItem value="white">In Maintenance</SelectItem>
-                  <SelectItem value="yellow">Availabe</SelectItem>
-                </SelectContent>
-              </Select>
+                <Select onValueChange={(val) => setActiveFilter(val as any)}>
+                  <SelectTrigger className="w-full  border border-green-300 p-2 sm:p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <SelectValue placeholder="All" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="All">All</SelectItem>
+                    <SelectItem value="Active">Active</SelectItem>
+                    <SelectItem value="Retired">Retired</SelectItem>
+                    <SelectItem value="In Maintenance">In Maintenance</SelectItem>
+                    <SelectItem value="Available">Available</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </div>
 
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
               <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead className="bg-gray-50 border-b border-gray-200">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-100">
                     <tr>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700 text-sm">
-                        Bus number
-                      </th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700 text-sm">
-                        Status
-                      </th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700 text-sm">
-                        Route
-                      </th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700 text-sm">
-                        Driver
-                      </th>
-                      <th className="text-left py-3 px-4 font-medium text-gray-700 text-sm">
-                        Action
-                      </th>
+                      {tableHeads.map((head, idx) => (
+                        <th
+                          key={idx}
+                          className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6"
+                        >
+                          {head}
+                        </th>
+                      ))}
                     </tr>
                   </thead>
                   <tbody>
