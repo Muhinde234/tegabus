@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MapPin, Filter, X, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import BusCompanyCard from "@/components/BusCompanyCard";
 import { busData, popularRoutes } from "@/helpers/data";
 import busCompanies from "../../../helpers/companies";
 import { Input } from "@/components/ui/inputField";
+import Loader from "@/components/ui/loader";
 
 const RoutesPage = () => {
   const [from, setFrom] = useState("");
@@ -17,11 +18,23 @@ const RoutesPage = () => {
   const [date, setDate] = useState("");
   const [showFilters, setShowFilters] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+   
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500); 
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSearch = () => {
     setLoading(true);
     setTimeout(() => setLoading(false), 1500);
   };
+
+  if (isLoading) return <Loader />;
 
   return (
     <div className="min-h-screen">
@@ -141,8 +154,6 @@ const RoutesPage = () => {
             </div>
           </div>
       </Container>
-
-           
     </div>
   );
 };
