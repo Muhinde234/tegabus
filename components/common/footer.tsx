@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Container from "../ui/container";
-import Input from "../ui/inputField";
-import Button from "../ui/button";
+import {Input} from "../ui/inputField";
+import {Button}from "../ui/button";
+import { links } from "../../helpers/constants";
 import Link from "next/link";
 import Logo from "./logo";
 
@@ -12,6 +14,8 @@ const Footer = () => {
   const [error, setError] = useState("");
   const [subscribe, setSubscribe] = useState(false);
   const [emailAlert, setEmailAlert] = useState("");
+   const pathname = usePathname(); 
+   
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,7 +24,7 @@ const Footer = () => {
 
   useEffect(() => {
     if (validateEmail(email)) {
-      setSubscribe(true); // Auto-check the box when email becomes valid
+      setSubscribe(true);
       setError("");
       setEmailAlert("");
     }
@@ -45,7 +49,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0B3B2E] text-white mt-20">
+    <footer className="bg-[#0B3B2E] text-white">
       <Container className="pt-20 pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div className="flex flex-col gap-3">
           <Link href="/">
@@ -70,7 +74,7 @@ const Footer = () => {
 
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-2">
             <div className="relative w-5 h-5">
-              <input
+              <Input
                 type="checkbox"
                 onChange={(e) => setSubscribe(e.target.checked)}
                 checked={!!subscribe}
@@ -84,7 +88,11 @@ const Footer = () => {
                 strokeWidth="2"
                 viewBox="0 0 24 24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
             </div>
 
@@ -93,27 +101,34 @@ const Footer = () => {
               newsletter
             </span>
 
-            <Button onClick={handleSubscribe}>Send</Button>
+            <Button onClick={handleSubscribe} className="bg-lime-500 text-white rounded-full font-semibold transition hover:bg-lime-400  py-4 px-6 cursor-pointer ">Send</Button>
           </div>
         </div>
 
         <div className="flex flex-col mt-4">
           <h3 className="font-semibold text-lg">Quick Links</h3>
           <div className="flex flex-col mt-4 gap-2">
-            <Link href="/">Home</Link>
-            <Link href="/">About Us</Link>
-            <Link href="/">Routes</Link>
-            <Link href="/">Terms & Conditions</Link>
+            {links.map((link, idx) => (
+              <Link
+                key={idx}
+                href={link.path}
+                className={`hover:text-green-600 transition-colors duration-200 ${
+                  pathname === link.path ? "font-medium text-green-600" : ""
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
 
         <div className="flex flex-col mt-4">
           <h3 className="font-semibold text-lg">Services</h3>
           <div className="flex flex-col gap-2 mt-4">
-            <Link href="/">Bus Routes</Link>
-            <Link href="/">Ticket Booking</Link>
-            <Link href="/">Customer Support</Link>
-            <Link href="/">Real-Time Updates</Link>
+            <Link href="/routes">Bus Routes</Link>
+            <Link href="/login">Ticket Booking</Link>
+            <Link href="/condition">Customer Support</Link>
+            <Link href="/routes">Real-Time Updates</Link>
           </div>
         </div>
 
