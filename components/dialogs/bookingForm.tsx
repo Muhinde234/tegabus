@@ -11,7 +11,7 @@ import {
   AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/Dialog";
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/inputField";
 import { Label } from "@/components/ui/label";
 import { Button } from "../ui/button";
@@ -49,7 +49,7 @@ export function BookingFormDialog({ mode, initialData }: BookingFormProps) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button className="flex items-center px-4 py-2 text-green-300 bg-[#1EA17E] hover:bg-green-700 rounded-full text-sm font-medium transition-colors">
+        <Button className="flex items-center px-4 py-2  bg-[#1EA17E] hover:bg-green-700 rounded-full text-sm font-medium transition-colors">
           {mode === "add" ? "Add Booking" : "Edit Booking"}
           <span className="ml-1 text-xl leading-none">＋</span>
         </Button>
@@ -64,17 +64,17 @@ export function BookingFormDialog({ mode, initialData }: BookingFormProps) {
 
         <div className="space-y-4 mt-4">
           <div className="space-y-1">
-            <Label htmlFor="name" className="text-green-500">Passenger Name</Label>
+            <Label htmlFor="name" >Passenger Name</Label>
             <Input id="name" name="name" value={form.name} onChange={handleChange} />
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="route" className="text-green-500">Route</Label>
+            <Label htmlFor="route" >Route</Label>
             <Input id="route" name="route" value={form.route} onChange={handleChange} />
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="seats" className="text-green-500">Seats</Label>
+            <Label htmlFor="seats" >Seats</Label>
             <Input
               id="seats"
               name="seats"
@@ -85,7 +85,7 @@ export function BookingFormDialog({ mode, initialData }: BookingFormProps) {
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="date" className="text-green-500">Date</Label>
+            <Label htmlFor="date" >Date</Label>
             <Input
               id="date"
               name="date"

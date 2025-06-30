@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { Button } from "@/components/ui/button";
-
+import { getGreeting } from "@/utils/getGreeting";
+import avatar from "@/public/images/avatar.png";
 import { Bell, LifeBuoy, Mail, MessageSquare, Phone, FileText, ChevronDown, Shield, Database, Users, CreditCard, Bus, HelpCircle, Download } from "lucide-react";
+import Image from "next/image";
 
 export default function AdminHelpSupportPage() {
   const [activeTab, setActiveTab] = useState("contact");
@@ -93,12 +95,46 @@ export default function AdminHelpSupportPage() {
     }
   ];
 
+  const Greeting = () => {
+    const [greeting, setGreeting] = useState("");
+  
+    useEffect(() => {
+      setGreeting(getGreeting());
+    }, []);
+  
+    return (
+      <h1 className="text-xl font-semibold text-gray-800 mb-4">
+        {greeting}, welcome back!
+      </h1>
+    );
+  };
+
   const filteredFaqs = activeFaqCategory === "all" 
     ? adminFaqs 
     : adminFaqs.filter(faq => faq.category === activeFaqCategory);
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
+    <div className=" mt-8 px-6  bg-white max-h-screen overflow-y-auto">
+       <div className="flex justify-between">
+        <Greeting />
+        <div className="flex items-center gap-2 shrink-0 order-2 md:order-3 mb-8">
+          <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-100 transition-colors">
+            <Bell size={20} className="text-gray-600" />
+          </button>
+
+          <div className="flex items-center gap-2 bg-gray-300 hover:bg-gray-200 rounded-full pl-2 pr-3 py-1 transition-colors cursor-pointer">
+            <Image
+              src={avatar}
+              className="w-8 h-8 rounded-full object-cover border border-gray-200"
+              alt="User avatar"
+            />
+            
+            <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
+              Dositha
+            </span>
+          </div>
+        </div>
+      </div>
       <div className="mb-8">
         <div className="flex items-start justify-between">
           <div>
@@ -113,7 +149,7 @@ export default function AdminHelpSupportPage() {
         </div>
       </div>
 
-      {/* Tabs Navigation */}
+ 
       <div className="flex gap-1 mb-8 border-b border-gray-200">
         {["contact", "faq", "resources"].map((tab) => (
           <button
@@ -133,7 +169,7 @@ export default function AdminHelpSupportPage() {
         ))}
       </div>
 
-      {/* Tab Contents */}
+
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         {activeTab === "contact" && (
           <div className="space-y-8">

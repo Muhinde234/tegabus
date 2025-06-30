@@ -25,9 +25,9 @@ const Greeting = () => {
 
 export default function SettingsPage() {
   const tabs = [
-    { name: "Profile", icon: <UserCog size={18} className="mr-2" /> },
-    { name: "Preferences", icon: <Clock size={18} className="mr-2" /> },
-    { name: "Company", icon: <Building size={18} className="mr-2" /> },
+    { name: "Profile", icon: <UserCog size={20} className="mr-2 " /> },
+    { name: "Preferences", icon: <Clock size={18} className="mr-2 " /> },
+    { name: "Company", icon: <Building size={18} className="mr-2 " /> },
     { name: "Pricing", icon: <CreditCard size={18} className="mr-2" /> },
     { name: "Security", icon: <Shield size={18} className="mr-2" /> },
     { name: "Bus Management", icon: <Bus size={18} className="mr-2" /> },
@@ -100,7 +100,7 @@ export default function SettingsPage() {
         <p className="text-gray-600">Configure all system settings for TegaBus operations</p>
       </div>
 
-      {/* Tabs Navigation */}
+    
       <div className="flex gap-1 mb-8 border-b border-gray-200 overflow-x-auto">
         {tabs.map((tab) => (
           <button
@@ -118,7 +118,6 @@ export default function SettingsPage() {
         ))}
       </div>
 
-      {/* Tab Contents */}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
         {activeTab === "Profile" && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -137,6 +136,7 @@ export default function SettingsPage() {
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} 
                 placeholder="Admin email"
+              
               />
             </div>
             <div>
@@ -271,7 +271,7 @@ export default function SettingsPage() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Fare Per KM</label>
               <div className="flex">
-                <Select value={currency} onValueChange={setCurrency} className="w-24 mr-2">
+                <Select value={currency} onValueChange={setCurrency} >
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
@@ -449,7 +449,7 @@ export default function SettingsPage() {
         )}
       </div>
 
-      {/* Save Button */}
+    
       <div className="mt-8 flex justify-end gap-4 pb-8">
         <Button variant="outline" className="border-gray-300">
           Cancel
