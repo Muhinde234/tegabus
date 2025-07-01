@@ -92,16 +92,16 @@ const RoutesManagement: React.FC = () => {
 
   const handleEditRoute = useCallback((route: Route) => {
     console.log('Edit route:', route);
-    // Implement edit functionality here
+   
   }, []);
 
   const handleDeleteRoute = useCallback((routeId: string) => {
     console.log('Delete route:', routeId);
-    // Implement delete functionality here
+    
   }, []);
 
   const displayedRoutesCount = useMemo(() => routes.length, [routes]);
-  const totalRoutesCount = routes.length; // You can change this if you have pagination
+  const totalRoutesCount = routes.length; 
 
   return (
     <div className="px-6 bg-gray-50 min-h-screen">

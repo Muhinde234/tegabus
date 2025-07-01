@@ -59,13 +59,13 @@ const Footer = () => {
           <p>Subscribe below</p>
 
           <Input
-            label="Email "
+          
             name="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="example@tegabus.com"
-            error={error}
+           
             className="border-b border-white"
           />
           {emailAlert && (

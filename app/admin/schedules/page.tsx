@@ -117,7 +117,7 @@ const Schedules: React.FC = () => {
               <SelectTrigger className="h-10 w-[120px] border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
                 <SelectValue placeholder="Today" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="border border-gray-300">
                 <SelectItem value="today">Today</SelectItem>
                 <SelectItem value="daily">Daily</SelectItem>
                 <SelectItem value="weekly">Weekly</SelectItem>

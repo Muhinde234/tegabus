@@ -22,7 +22,7 @@ import {
   AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/Dialog";
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/inputField";
 import { Label } from "@/components/ui/label";
 
@@ -135,7 +135,7 @@ export default function Bookings() {
               <SelectTrigger className="w-[100px] border border-green-300 p-2 sm:p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
                 <SelectValue placeholder="Select timeframe" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="border border-gray-300">
                 <SelectItem value="daily">Daily</SelectItem>
                 <SelectItem value="weekly">Weekly</SelectItem>
                 <SelectItem value="monthly">Monthly</SelectItem>
