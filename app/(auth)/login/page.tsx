@@ -1,106 +1,82 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Eye, EyeOff } from "lucide-react";
-import Link from "next/link";
-import Logo from "@/components/common/logo";
-import { Button } from "@/components/ui/button";
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import Logo from '@/components/common/logo';
+import Link from 'next/link';
 
 export default function LoginPage() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("dosta@gmail.com");
-  const [password, setPassword] = useState("password123");
   const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (email === "dosta@gmail.com" && password === "password123") {
-      router.push("/admin");
+    if (email && password) {
+      localStorage.setItem('loggedIn', 'true');
+      router.push('/');
     } else {
-      alert("Invalid credentials");
+      alert('Please enter email and password');
     }
   };
 
   return (
-    <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center px-4">
-      <div className="border border-gray-200 bg-white rounded-lg shadow-md w-full max-w-md p-8">
-        <div className="flex justify-center mb-3">
-          <Link href="/">
-            <Logo />
-          </Link>
-        </div>
+    <div className="min-h-screen flex flex-col items-center justify-start bg-white text-black">
+      {/* Green Header */}
+      <div className="w-full bg-green-900 py-6 text-center text-white text-3xl font-semibold">
+        Login Page
+      </div>
 
-        <div className="text-center mb-6">
-          <h2 className="text-xl font-semibold text-gray-800">User Login</h2>
-          <p className="mt-1 text-gray-500 text-sm">Fill in your credentials to login</p>
-        </div>
+      {/* Card */}
+      <div className="bg-white shadow-md border border-gray-200 mt-10 px-8 py-6 rounded-md w-full max-w-xl">
+        <Link href="/" className="flex justify-center items-center mb-6">
+          <Logo />
+          <span className="text-2xl font-semibold ml-2 text-green-900">TegaBus</span>
+        </Link>
 
-        <hr className="mb-6 border-gray-200" />
-
-        <form className="space-y-5" onSubmit={handleSubmit}>
+        <form className="space-y-4" onSubmit={handleLogin}>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
+            <label className="block mb-1 text-sm">E-mail:</label>
             <input
               type="email"
-              id="email"
+              placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
+              className="w-full px-4 py-2 border border-gray-300 rounded"
+              required
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
-            </label>
-            <div className="relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600 pr-10"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500"
-              >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-              </button>
-            </div>
-
-            {/* Forgot Password Link */}
-            <div className="text-right mt-2">
-              <Link
-                href="/forgot-password"
-                className="text-sm text-green-700 hover:underline"
-              >
-                Forgot password?
-              </Link>
-            </div>
+            <label className="block mb-1 text-sm">Password:</label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded"
+              required
+            />
           </div>
 
-          <Button
-            variant="ghost"
+          <div className="text-sm text-green-800 hover:underline">
+            <Link href="/forgot-password">Forgot password?</Link>
+          </div>
+
+          <button
             type="submit"
-            className="w-full bg-[#0B3B2E] text-white py-2 rounded hover:bg-green-700 transition-colors"
+            className="w-full py-2 bg-green-900 text-white rounded hover:bg-green-800 transition"
           >
             Login
-          </Button>
+          </button>
         </form>
 
-        <div className="mt-6 text-center text-sm text-gray-600">
-          <p>
-            Don’t have an account?{" "}
-            <Link href="/register" className="text-green-700 hover:underline">
-              Register
-            </Link>
-          </p>
+        <div className="mt-6 text-sm">
+          Don’t have an account?{' '}
+          <Link href="/register" className="text-green-900 underline">
+            Register
+          </Link>
         </div>
       </div>
     </div>
