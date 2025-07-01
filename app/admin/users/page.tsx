@@ -23,7 +23,7 @@ const tableHeads = [
   "Actions",
 ];
 
-// Function to generate phone numbers (now only called client-side)
+
 const generatePhoneNumber = () => `+250${Math.floor(10000000 + Math.random() * 90000000)}`;
 
 export default function UsersPage() {
@@ -36,7 +36,7 @@ export default function UsersPage() {
   });
 
   useEffect(() => {
-    // Generate sample users only on client side after hydration
+    
     const roles: Array<"Admin" | "User" | "Verifier"> = ["Admin", "User", "Verifier"];
     const countries = ["Rwanda", "Tanzania", "Uganda", "Burundi", "Kenya", "Rwanda"];
     
