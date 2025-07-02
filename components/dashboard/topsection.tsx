@@ -37,7 +37,7 @@ const Topsection = () => {
             <Bell size={20} className="text-gray-600" />
           </button>
 
-          <div className="flex items-center gap-2 bg-gray-300 hover:bg-gray-200 rounded-full pl-2 pr-3 py-1 transition-colors cursor-pointer">
+          <div className="flex items-center gap-2 bg-gray-200 hover:bg-gray-200 rounded-full pl-2 pr-3 py-1 transition-colors cursor-pointer">
             <Image
               src={avatar}
               className="w-8 h-8 rounded-full object-cover border border-gray-200"

@@ -19,12 +19,16 @@ import person from "../../public/images/person.png";
 import image from "../../public/images/image.png";
 import avatar from "../../public/images/avatar.png";
 
+
 import { getGreeting } from "../../utils/getGreeting";
 import BusSchedules from "@/components/dashboard/BusSchedules";
 import FlightSchedule from "@/components/dashboard/flightSchedule";
 import { Button } from "@/components/ui/button";
 import { BookingFormDialog } from "@/components/dialogs/bookingForm";
 import AddBusForm from "@/components/dialogs/addBus";
+import Map from "@/components/dashboard/map";
+
+const DEFAULT_CENTER: [number, number] = [-1.9499500, 30.0588500]
 
 
 const Greeting = () => {
@@ -89,7 +93,7 @@ const Dashboard = () => {
             <Bell size={20} className="text-gray-600" />
           </Button>
 
-          <div className="flex items-center gap-2 bg-gray-300 hover:bg-gray-200 rounded-full pl-2 pr-3 py-1 transition-colors cursor-pointer">
+          <div className="flex items-center gap-2 bg-gray-200 hover:bg-gray-200 rounded-full pl-2 pr-3 py-1 transition-colors cursor-pointer">
             <Image
               src={avatar}
               className="w-8 h-8 rounded-full object-cover border border-gray-200"
@@ -188,8 +192,9 @@ const Dashboard = () => {
             </div>
 
             <div className="flex flex-col gap-6">
-              <div className="border border-gray-200 flex justify-center items-center h-full">
-                <h1>Map coming soon</h1>
+              <div className="border border-gray-200 flex justify-center items-center h-full relative z-1">
+              <Map width={500} height={200} center={DEFAULT_CENTER} zoom={6} className="rounded-lg " />
+
               </div>
             </div>
           </div>

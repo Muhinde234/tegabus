@@ -44,14 +44,14 @@ const RoutesPage = () => {
             Find Your Perfect Bus
           </h1>
 
-          <div className="bg-white p-5 rounded-lg grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+          <div className="bg-white border border-gray-400 p-5 rounded-lg grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
             <div className="relative">
               <Input
                 type="text"
                 placeholder="From"
                 value={from}
                 onChange={(e) => setFrom(e.target.value)}
-                className="w-full p-3 border border-[#0B3B2E] rounded text-gray-800"
+                className="w-full p-3 border border-gray-300 rounded text-gray-800"
               />
               <MapPin className="absolute right-3 top-2 text-gray-500" />
             </div>
@@ -62,7 +62,7 @@ const RoutesPage = () => {
                 placeholder="To"
                 value={to}
                 onChange={(e) => setTo(e.target.value)}
-                className="w-full p-3 border border-[#0B3B2E] rounded text-gray-800"
+                className="w-full p-3 border border-gray-300 rounded text-gray-800"
               />
               <MapPin className="absolute right-3 top-2 text-gray-500" />
             </div>
@@ -71,7 +71,7 @@ const RoutesPage = () => {
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="p-3 border border-[#0B3B2E] rounded text-gray-800"
+              className="p-3 border border-gray-300 rounded text-gray-800"
             />
 
             <Button

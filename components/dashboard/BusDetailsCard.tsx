@@ -4,6 +4,10 @@ import {  BusFront } from 'lucide-react';
 import { BusDetailsCardProps } from '../../types/type';
 import StatusBadge from '../dashboard/statusBadge';
 import DriverInfo from './DriverInfo';
+import Map from "@/components/dashboard/map";
+
+
+const DEFAULT_CENTER: [number, number] = [-1.9499500, 30.0588500]
 
 const BusDetailsCard: React.FC<BusDetailsCardProps> = ({ 
   bus, 
@@ -73,12 +77,12 @@ const BusDetailsCard: React.FC<BusDetailsCardProps> = ({
         </div>
       </div>
 
-      <div className="mt-4 h-32 bg-gray-100 rounded-lg flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-gray-400 mb-1">🗺️</div>
-          <div className="text-sm text-gray-500">MAP COMING SOON</div>
-        </div>
-      </div>
+    
+     <div className="border border-gray-200 flex justify-center items-center h-full">
+                   <Map width={500} height={200} center={DEFAULT_CENTER} zoom={6} className="rounded-lg" />
+          
+                   </div>
+      
     </div>
   </div>
 );
