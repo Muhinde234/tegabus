@@ -139,7 +139,7 @@ const SeatSelectionPage: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-rows-10 gap-3 max-w-md mx-auto">
+                  <div className="  grid grid-rows-10 gap-3 max-w-md mx-auto">
                     {Array.from({ length: 10 }, (_, rowIndex) => (
                       <div key={rowIndex} className="flex items-center gap-3">
                         <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-bold text-green-700">

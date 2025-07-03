@@ -11,7 +11,7 @@ const Sidebar = () => {
   const pathname = usePathname();
   const [active, setActive] = useState('');
 
-  // Set active path when component mounts or pathname changes
+ 
   useEffect(() => {
     setActive(pathname);
   }, [pathname]);

@@ -20,10 +20,10 @@ export default function TermsPage() {
         </div>
       </section>
       <Container>
-        <h1 className="text-3xl text-center font-bold  mt-18 text-[#0B3B2E]">
+        <h1 className="text-2xl md:text-3xl text-center font-bold  mt-18 text-[#0B3B2E]">
           Our System Policy
         </h1>
-        <div className="grid grid-cols-4 gap-4 mt-18">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-18 m-3">
           {termsData.map((term) => (
             <TermsCard
               key={term.title}

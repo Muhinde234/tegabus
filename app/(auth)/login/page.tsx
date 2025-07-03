@@ -18,7 +18,7 @@ export default function LoginPage() {
     e.preventDefault();
 
     if (email === "dosta@gmail.com" && password === "password123") {
-      router.push("/schedule");
+      router.push("/admin");
     } else {
       alert("Invalid credentials");
     }
@@ -34,7 +34,7 @@ export default function LoginPage() {
           </Link>
         </div>
 
-        {/* Title */}
+      
         <div className="text-center mb-6">
           <h2 className="text-xl font-semibold text-gray-800">User Login</h2>
           <p className="mt-1 text-gray-500 text-sm">Fill in your credentials to login</p>
@@ -42,7 +42,6 @@ export default function LoginPage() {
 
         <hr className="mb-6 border-gray-200" />
 
-        {/* Login Form */}
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">

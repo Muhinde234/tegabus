@@ -15,8 +15,8 @@ const AboutPage: React.FC = () => {
         />
       </Head>
 
-      <div className="min-h-screen  bg-gray-50">
-        <section className="bg-[#0B3B2E] text-white py-20 pt-42  sm:px-6 lg:px-32">
+      <div className="min-h-scree mt-18 bg-gray-50">
+        <section className=" bg-[#0B3B2E] text-white py-16 md:py-20 px-4 sm:px-6 lg:px-8 xl:px-0">
           <div className="max-w-7xl mx-auto text-center">
             <h1 className="text-3xl  font-bold mb-6">
               Revolutionizing <span className="text-lime-400">Bus Travel</span>
@@ -30,11 +30,11 @@ const AboutPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="py-20 px-4 sm:px-8 lg:px-16 bg-gradient-to-br from-white via-gray-50 to-lime-50">
+        <section className="py-20 px-4 sm:px-8 lg:px-16 ">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-              <div className="bg-white shadow-lg rounded-2xl p-8 text-center border border-lime-300 hover:shadow-2xl transition-all duration-300">
-                <h2 className="text-4xl font-extrabold text-[#0B3B2E] mb-4 tracking-tight">
+              <div className="bg-white md:shadow-lg rounded-2xl p-8 text-center border border-lime-300 hover:shadow-xl transition-all duration-300">
+                <h2 className="text-2xl md:text-4xl font-extrabold text-[#0B3B2E] mb-4 tracking-tight">
                   Our Mission
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed">
@@ -46,8 +46,8 @@ const AboutPage: React.FC = () => {
                 </p>
               </div>
 
-              <div className="bg-white shadow-lg rounded-2xl p-8 text-center border border-lime-300 hover:shadow-2xl transition-all duration-300">
-                <h2 className="text-4xl font-extrabold text-[#0B3B2E] mb-4 tracking-tight">
+              <div className="bg-white md:shadow-lg rounded-2xl p-8 text-center border border-lime-300 hover:shadow-xl transition-all duration-300">
+                <h2 className="text-2xl md:text-4xl  font-extrabold text-[#0B3B2E] mb-4 tracking-tight">
                   Our Vision
                 </h2>
                 <p className="text-lg text-gray-700 leading-relaxed">
@@ -64,7 +64,7 @@ const AboutPage: React.FC = () => {
 
         <section className="py-16 bg-white px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-[#0B3B2E] text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0B3B2E] text-center mb-12">
               Our System Features
             </h2>
             <FeatureSection />
@@ -73,7 +73,7 @@ const AboutPage: React.FC = () => {
 
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0B3B2E] text-white">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
               How It <span className="text-lime-400">Works</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -98,7 +98,7 @@ const AboutPage: React.FC = () => {
             <h2 className="text-3xl font-bold text-[#0B3B2E] mb-6">
               Ready to Travel Smarter?
             </h2>
-            <Button variant="default" className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-full sm:w-[190px] h-[40px] cursor-pointer py-2 px-2">
+            <Button variant="default" className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-[150px] sm:w-[190px] h-[40px] cursor-pointer py-2 px-2">
               Start Booking Now
             </Button>
             

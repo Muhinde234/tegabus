@@ -97,7 +97,7 @@ const RoutesPage = () => {
       </div>
 
       {showFilters && (
-        <div className="border border-gray-300  rounded-lg shadow-md">
+        <div className="border border-gray-300  rounded-lg shadow-md p-2">
           <div className="max-w-7xl mx-auto">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-bold text-[#0B3B2E] text-center text-xl">
@@ -117,11 +117,11 @@ const RoutesPage = () => {
         </div>
       )}
 
-      <h1 className="mt-32 mb-8 text-3xl font-bold text-center text-[#0B3B2E]">
+      <h1 className="mt-32 mb-8 text-2xl md:text-3xl font-bold text-center text-[#0B3B2E]">
         Available Buses
       </h1>
       <Container>
-        <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 justify-items-center">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 justify-items-center">
           {busData.map((data, index) => (
             <BusCard key={index} {...data} />
           ))}
