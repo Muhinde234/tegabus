@@ -11,7 +11,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "TegaBus",
+  title: "TegaBus|Travel with us",
   description: "Team transportation solutions",
 };
 

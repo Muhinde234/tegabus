@@ -49,8 +49,8 @@ const ActionButton: React.FC<ActionButtonProps> = ({ onEdit, onDelete }) => {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={onDelete}>
+            <AlertDialogCancel className="border border-black">Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={onDelete} className="bg-red-700 text-white hover:bg-red-900">
               Confirm
             </AlertDialogAction>
           </AlertDialogFooter>

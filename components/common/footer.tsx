@@ -49,7 +49,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0B3B2E] text-white">
+    <footer className="bg-[#0B3B2E] text-white p-4">
       <Container className="pt-20 pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div className="flex flex-col gap-3">
           <Link href="/">

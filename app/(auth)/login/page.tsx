@@ -26,8 +26,8 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center px-4">
-      <div className="border border-gray-300 bg-white rounded-lg shadow-md w-full max-w-md p-8">
-        {/* Logo */}
+      <div className="border border-gray-300 bg-white rounded-lg shadow-sm md:shadow-md w-full max-w-md p-8">
+       
         <div className="flex justify-center mb-6">
           <Link href="/">
             <Logo />

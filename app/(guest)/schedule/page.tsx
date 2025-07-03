@@ -77,7 +77,7 @@ const SeatSelectionPage: React.FC = () => {
   const totalPrice = selectedSeats.length * 2500;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gray-50">
       <div className="overflow-hidden bg-[#0B3B2E] text-white py-20 pt-38 sm:px-6 lg:px-32">
         <Container>
           <div className="max-w-4xl mx-auto text-center">
@@ -110,7 +110,7 @@ const SeatSelectionPage: React.FC = () => {
         <Container>
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
+              <div className="lg:col-span-2 bg-white rounded-xl shadow-sm p-8 border border-gray-300">
                 <div className="mb-6">
                   <h2 className="text-2xl font-bold text-gray-800 mb-2">Select Your Seats</h2>
                   <p className="text-gray-600">Choose your preferred seats to continue with booking</p>
@@ -118,15 +118,15 @@ const SeatSelectionPage: React.FC = () => {
 
                 <div className="flex flex-wrap items-center gap-6 mb-8 p-4 bg-gray-50 rounded-xl">
                   <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 bg-gray-400 border border-gray-500 rounded-lg opacity-70"></div>
+                    <div className="w-8 h-8 bg-gray-400 border border-gray-500  opacity-70"></div>
                     <span className="text-sm font-medium text-gray-700">Reserved</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 bg-gradient-to-br from-white to-gray-50 border-2 border-gray-300 rounded-lg"></div>
+                    <div className="w-8 h-8 bg-gradient-to-br from-white to-gray-50 border-2 border-gray-300 "></div>
                     <span className="text-sm font-medium text-gray-700">Available</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 bg-gradient-to-br from-yellow-400 to-yellow-500 border border-yellow-600 rounded-lg"></div>
+                    <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-500 border border-yellow-600 "></div>
                     <span className="text-sm font-medium text-gray-700">Selected</span>
                   </div>
                 </div>
@@ -191,7 +191,7 @@ const SeatSelectionPage: React.FC = () => {
               </div>
 
               <div className="lg:col-span-1 ">
-                <div className="bg-white rounded-2xl shadow-sm  p-6 border border-gray-100 sticky top-6">
+                <div className="bg-white rounded-2xl shadow-sm  p-6 border border-gray-300 sticky top-6">
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
                     <span className="text-xl font-bold text-gray-800">RAC 458 C</span>
                     <span className="bg-gradient-to-r from-lime-500 to-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
@@ -280,7 +280,7 @@ const SeatSelectionPage: React.FC = () => {
                   <Button
                     className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 transform ${
                       selectedSeats.length > 0
-                        ? 'bg-gradient-to-r from-green-600 to-green-700 text-white hover:from-green-700 hover:to-green-800 hover:scale-105 shadow-xl hover:shadow-2xl'
+                        ? 'bg-gradient-to-r from-green-900 to-green-700 text-white hover:from-green-700 hover:to-green-800 hover:scale-105 shadow-xl hover:shadow-2xl'
                         : 'bg-gray-200 text-gray-500 cursor-not-allowed'
                     }`}
                     disabled={selectedSeats.length === 0}

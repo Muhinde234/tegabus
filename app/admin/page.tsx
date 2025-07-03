@@ -232,7 +232,7 @@ const Dashboard = () => {
               <p className="text-sm md:text-base">
                 Secure the seat and enjoy your journey!
               </p>
-              <MoveUpRight className="w-6 h-6 bg-white rounded-full p-1 text-black group-hover:bg-blue-500 group-hover:text-white transition-colors" />
+              <MoveUpRight className="w-6 h-6 bg-white rounded-full p-1 text-black group-hover:bg-green-500 group-hover:text-white transition-colors" />
             </div>
           </div>
 

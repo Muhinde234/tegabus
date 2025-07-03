@@ -6,7 +6,7 @@ const CardSection = () => {
   return (
     <div>
       
-        <div className="py-10 px-4 sm:px-10 ">
+        <div className=" py-5 md:py-10 px-4 sm:px-10 ">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10   ">
             {infos.map((info, index) => (
               <Card
