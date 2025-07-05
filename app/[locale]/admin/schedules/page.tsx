@@ -7,7 +7,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "../../../../components/ui/select";
 import Topsection from "@/components/dashboard/topsection";
 import ActionButton from "@/components/dashboard/ActionButton";
 import { Button } from "@/components/ui/button";

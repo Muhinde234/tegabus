@@ -2,10 +2,10 @@
 
 import React, { useState, useCallback, useMemo } from "react";
 
-import StatsCard from "../../../components/dashboard/statCard";
-import BusTableRow from "../../../components/dashboard/BusTableRow";
-import BusDetailsCard from "../../../components/dashboard/BusDetailsCard";
-import { Bus, BusStats } from "../../../types/type";
+import StatsCard from "../../../../components/dashboard/statCard";
+import BusTableRow from "../../../../components/dashboard/BusTableRow";
+import BusDetailsCard from "../../../../components/dashboard/BusDetailsCard";
+import { Bus, BusStats } from "../../../../types/type";
 import Topsection from "@/components/dashboard/topsection";
 import AddBusForm from "@/components/dialogs/addBus";
 
@@ -15,7 +15,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "../../../../components/ui/select";
 
 const BusManagementDashboard: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<"All" | Bus["status"]>(

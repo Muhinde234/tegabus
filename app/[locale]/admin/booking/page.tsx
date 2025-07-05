@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Topsection from "../../../components/dashboard/topsection";
-import { tickets } from "../../../helpers/data";
+import Topsection from "../../../../components/dashboard/topsection";
+import { tickets } from "../../../../helpers/data";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "../../../../components/ui/select";
 import BusSchedules from "@/components/dashboard/BusSchedules";
 import { Button } from "@/components/ui/button";
 import {

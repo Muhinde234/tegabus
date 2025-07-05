@@ -18,7 +18,7 @@ export default function LoginPage() {
     e.preventDefault();
 
     if (email === "dosta@gmail.com" && password === "password123") {
-      router.push("/admin");
+      router.push("/schedule");
     } else {
       alert("Invalid credentials");
     }

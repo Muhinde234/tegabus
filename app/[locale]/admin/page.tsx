@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Bell, MoveDownRight, MoveUpRight } from "lucide-react";
-import DashboardCard from "../../components/dashboard/dashboardCard";
+import DashboardCard from "../../../components/dashboard/dashboardCard";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../components/ui/select";
+} from "../../../components/ui/select";
 
 import wallet from "../../public/images/wallet.png";
 import trend from "../../public/images/trend.png";
@@ -20,7 +20,7 @@ import image from "../../public/images/image.png";
 import avatar from "../../public/images/avatar.png";
 
 
-import { getGreeting } from "../../utils/getGreeting";
+import { getGreeting } from "../../../utils/getGreeting";
 import BusSchedules from "@/components/dashboard/BusSchedules";
 import FlightSchedule from "@/components/dashboard/flightSchedule";
 import { Button } from "@/components/ui/button";
