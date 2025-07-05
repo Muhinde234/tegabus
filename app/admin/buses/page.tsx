@@ -109,7 +109,7 @@ const BusManagementDashboard: React.FC = () => {
                   <SelectTrigger className="w-full  border border-green-300 p-2 sm:p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
                     <SelectValue placeholder="All" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="border border-gray-300">
                     <SelectItem value="All">All</SelectItem>
                     <SelectItem value="Active">Active</SelectItem>
                     <SelectItem value="Retired">Retired</SelectItem>

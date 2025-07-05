@@ -45,7 +45,7 @@ export default function TermsPage() {
           <Link href="/terms">
             <Button
               variant="outline"
-              className="inline b rounded-sm px-4 py-2 cursor-pointer hover:bg-green-300"
+              className="inline b rounded-sm px-4 py-2 border border-gray-500 cursor-pointer hover:bg-green-300"
             >
               View More
             </Button>

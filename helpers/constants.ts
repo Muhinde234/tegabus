@@ -4,6 +4,7 @@ import {
   Clock,
   HelpCircle,
   House,
+  Route,
   Settings,
   Ticket,
   Users,
@@ -24,7 +25,7 @@ export const navItems = [
   { path: "/dashboard/bookings", icon: Ticket, label: "Booking", allowedRoles:['admin', 'manager'] },
   { path: "/dashboard/schedules", icon: Clock, label: "Schedule", allowedRoles:['admin', 'manager'] },
   { path: "/dashboard/buses", icon: BusFront, label: "Bus Management", allowedRoles:['admin', 'manager'] },
-  { path: "/dashboard/routes", icon: BusFront, label: "Route Management", allowedRoles:['admin', 'manager'] },
+  { path: "/dashboard/routes", icon: Route, label: "Route Management", allowedRoles:['admin', 'manager'] },
   { path: "/dashboard/users", icon: Users, label: "User Management", allowedRoles:['admin'] },
   { path: "/dashboard/report", icon: ChartLine, label: "Report", allowedRoles:['admin', 'manager'] },
 ];

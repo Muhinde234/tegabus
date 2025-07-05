@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Logo from "@/components/common/logo";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/inputField"; // ✅ Reusable input
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -13,8 +14,6 @@ export default function ForgotPasswordPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    
     setSubmitted(true);
 
     setTimeout(() => {
@@ -24,13 +23,15 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center px-4">
-      <div className="border border-gray-200 bg-white rounded-lg shadow-md w-full max-w-md p-8">
+      <div className="border border-gray-300 bg-white rounded-lg shadow-md w-full max-w-md p-8">
+        {/* Logo */}
         <div className="flex justify-center mb-3">
           <Link href="/">
             <Logo />
           </Link>
         </div>
 
+        {/* Title */}
         <div className="text-center mb-6">
           <h2 className="text-xl font-semibold text-gray-800">Forgot Password</h2>
           <p className="mt-1 text-gray-500 text-sm">
@@ -43,21 +44,21 @@ export default function ForgotPasswordPage() {
         {!submitted ? (
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                 Email
               </label>
-              <input
+              <Input
                 type="email"
                 id="email"
                 required
+                placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-600"
               />
             </div>
 
             <Button
-               variant="ghost"
+              variant="ghost"
               type="submit"
               className="w-full bg-[#0B3B2E] text-white py-2 rounded hover:bg-green-700 transition-colors"
             >
@@ -65,8 +66,8 @@ export default function ForgotPasswordPage() {
             </Button>
           </form>
         ) : (
-          <div className="text-center text-green-700">
-             If an account exists for <strong>{email}</strong>, you’ll receive a reset link shortly.<br />
+          <div className="text-center text-green-700 text-sm">
+            If an account exists for <strong>{email}</strong>, you’ll receive a reset link shortly. <br />
             Redirecting to login...
           </div>
         )}

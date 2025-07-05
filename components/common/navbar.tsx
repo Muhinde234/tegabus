@@ -12,7 +12,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // 🔒 Don't show navbar on login or register page
+  
   const hideNavbar = pathname === "/login" || pathname === "/register";
   if (hideNavbar) return null;
 
@@ -38,7 +38,7 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* Desktop "Get Started" */}
+        
           <Link
             href="/login"
             className="bg-[#0B3B2E] rounded-full py-2 px-4 text-white hover:bg-green-700"
@@ -46,7 +46,7 @@ const Navbar = () => {
             Get started
           </Link>
 
-          {/* Mobile menu toggle */}
+          
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}

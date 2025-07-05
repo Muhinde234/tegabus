@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
@@ -92,7 +92,7 @@ const handleTabChange = (tabName: string): void => {
       
       <div className="">
        
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center mb-3 ">
           <Greeting />
           
           <div className="flex items-center gap-4">
@@ -225,7 +225,7 @@ const handleTabChange = (tabName: string): void => {
                     <SelectTrigger className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0B3B2E] focus:border-[#0B3B2E]">
                       <SelectValue placeholder="Select language" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="border border-gray-300">
                       {languages.map((lang) => (
                         <SelectItem key={lang} value={lang} className="hover:bg-gray-100">{lang}</SelectItem>
                       ))}
@@ -238,7 +238,7 @@ const handleTabChange = (tabName: string): void => {
                     <SelectTrigger className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0B3B2E] focus:border-[#0B3B2E]">
                       <SelectValue placeholder="Select timezone" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="border border-gray-300">
                       {timezones.map((tz) => (
                         <SelectItem key={tz} value={tz} className="hover:bg-gray-100">{tz}</SelectItem>
                       ))}
@@ -341,7 +341,7 @@ const handleTabChange = (tabName: string): void => {
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="border border-gray-300">
                         {currencies.map((curr) => (
                           <SelectItem key={curr} value={curr}>{curr}</SelectItem>
                         ))}
@@ -427,7 +427,7 @@ const handleTabChange = (tabName: string): void => {
                     <SelectTrigger>
                       <SelectValue placeholder="Select columns" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="border border-gray-300">
                       {seatConfigs.map((col) => (
                         <SelectItem key={col} value={col}>{col} columns (A-{String.fromCharCode(64 + parseInt(col))})</SelectItem>
                       ))}
@@ -494,7 +494,7 @@ const handleTabChange = (tabName: string): void => {
                     <SelectTrigger>
                       <SelectValue placeholder="Select format" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="border border-gray-300">
                       {ticketFormats.map((format) => (
                         <SelectItem key={format} value={format}>{format}</SelectItem>
                       ))}
@@ -542,4 +542,4 @@ const handleTabChange = (tabName: string): void => {
       </div>
     </div>
   );
-}
+} 

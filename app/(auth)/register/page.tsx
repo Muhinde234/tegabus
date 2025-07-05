@@ -1,70 +1,73 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import Logo from '@/components/common/logo';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Logo from "@/components/common/logo";
+import { Input } from "@/components/ui/inputField";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 export default function RegisterPage() {
   const router = useRouter();
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    country: '',
-    password: '',
-    confirmPassword: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    country: "",
+    password: "",
+    confirmPassword: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords don't match");
       return;
     }
 
-    // Placeholder for sending registration data
-    console.log('User registered:', formData);
-    router.push('/login');
+    console.log("User registered:", formData);
+    router.push("/login");
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start bg-white text-black">
-      <div className="w-full bg-green-900 py-6 text-center text-white text-3xl font-semibold">
-        Register
-      </div>
-
-      <div className="bg-white shadow-md border border-gray-200 mt-10 px-8 py-6 rounded-md w-full max-w-xl">
+    <div className="min-h-screen pt-18 flex flex-col items-center justify-start bg-white text-black px-4">
+      <div className="bg-white  border border-gray-300 mt-10 px-8 py-6 rounded-md w-full max-w-xl">
         <Link href="/" className="flex justify-center items-center mb-6">
           <Logo />
-          <span className="text-2xl font-semibold ml-2 text-green-900">TegaBus</span>
+      
         </Link>
 
         <form className="space-y-4" onSubmit={handleRegister}>
           <div className="flex gap-4">
             <div className="w-1/2">
               <label className="block text-sm mb-1">First name</label>
-              <input
-                type="text"
+              <Input
                 name="firstName"
                 placeholder="e.g. John"
-                className="w-full px-4 py-2 border border-gray-300 rounded"
+                value={formData.firstName}
                 onChange={handleChange}
                 required
               />
             </div>
             <div className="w-1/2">
               <label className="block text-sm mb-1">Last name</label>
-              <input
-                type="text"
+              <Input
                 name="lastName"
                 placeholder="e.g. Doe"
-                className="w-full px-4 py-2 border border-gray-300 rounded"
+                value={formData.lastName}
                 onChange={handleChange}
                 required
               />
@@ -73,11 +76,11 @@ export default function RegisterPage() {
 
           <div>
             <label className="block text-sm mb-1">Email</label>
-            <input
+            <Input
               type="email"
               name="email"
               placeholder="e.g. johndoe@gmail.com"
-              className="w-full px-4 py-2 border border-gray-300 rounded"
+              value={formData.email}
               onChange={handleChange}
               required
             />
@@ -85,11 +88,11 @@ export default function RegisterPage() {
 
           <div>
             <label className="block text-sm mb-1">Phone number</label>
-            <input
+            <Input
               type="tel"
               name="phone"
               placeholder="e.g. +250788123456"
-              className="w-full px-4 py-2 border border-gray-300 rounded"
+              value={formData.phone}
               onChange={handleChange}
               required
             />
@@ -97,27 +100,29 @@ export default function RegisterPage() {
 
           <div>
             <label className="block text-sm mb-1">Country of origin</label>
-            <select
-              name="country"
-              className="w-full px-4 py-2 border border-gray-300 rounded"
-              onChange={handleChange}
+            <Select
               required
+              onValueChange={(value) => setFormData({ ...formData, country: value })}
             >
-              <option value="">Select the country</option>
-              <option value="rwanda">Rwanda</option>
-              <option value="uganda">Uganda</option>
-              <option value="kenya">Kenya</option>
-              <option value="tanzania">Tanzania</option>
-            </select>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select the country" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="rwanda">Rwanda</SelectItem>
+                <SelectItem value="uganda">Uganda</SelectItem>
+                <SelectItem value="kenya">Kenya</SelectItem>
+                <SelectItem value="tanzania">Tanzania</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
           <div>
             <label className="block text-sm mb-1">Password</label>
-            <input
+            <Input
               type="password"
               name="password"
               placeholder="Enter your password"
-              className="w-full px-4 py-2 border border-gray-300 rounded"
+              value={formData.password}
               onChange={handleChange}
               required
             />
@@ -125,23 +130,27 @@ export default function RegisterPage() {
 
           <div>
             <label className="block text-sm mb-1">Confirm password</label>
-            <input
+            <Input
               type="password"
               name="confirmPassword"
-              placeholder="Re-enter the password"
-              className="w-full px-4 py-2 border border-gray-300 rounded"
+              placeholder="Re-enter your password"
+              value={formData.confirmPassword}
               onChange={handleChange}
               required
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full mt-4 bg-green-900 text-white py-2 rounded hover:bg-green-800 transition"
-          >
+          <Button type="submit" className="w-full mt-4 bg-[#0B3B2E] hover:bg-green-700">
             Register
-          </button>
+          </Button>
         </form>
+
+        <p className="mt-6 text-center text-sm text-gray-600">
+          Already have an account?{" "}
+          <Link href="/login" className="text-green-700 hover:underline">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );

@@ -62,8 +62,8 @@ const Hero = () => {
               <SelectTrigger className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
                 <SelectValue placeholder="Start location" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="light">Kigali</SelectItem>
+              <SelectContent className="border border-gray-300">
+                <SelectItem value="light" >Kigali</SelectItem>
                 <SelectItem value="dark">Rusomo</SelectItem>
               </SelectContent>
             </Select>
@@ -71,7 +71,7 @@ const Hero = () => {
               <SelectTrigger className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
                 <SelectValue placeholder="End location" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="border border-gray-300">
                 <SelectItem value="light">Kigali</SelectItem>
                 <SelectItem value="dark">Rusomo</SelectItem>
               </SelectContent>
