@@ -22,7 +22,7 @@ import {
   AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 import { Input } from "@/components/ui/inputField";
 import { Label } from "@/components/ui/label";
 
@@ -49,14 +49,14 @@ export default function Bookings() {
 
   return (
     <>
-      <div className="px-6 bg-white">
-        <div>
+      <div className="w-full px-6 bg-white">
+        <div className="w-full">
           <Topsection />
         </div>
 
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
           <div>
-            <h1 className="text-2xl font-bold">All Bookings list</h1>
+            <h1 className="text-xl lg:text-2xl font-bold">All Bookings list</h1>
             <p className="text-sm text-gray-500">
               Showing {tickets.length} bookings
             </p>
