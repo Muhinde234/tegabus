@@ -1,7 +1,775 @@
 {
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "routes": "Routes",
+    "conditions": "Conditions",
+    "language": "Language",
+    "getStarted": "Get started"
+  },
+  "dashboard": {
+    "greeting": "Good morning",
+    "welcomeBack": "welcome back!",
+    "totalEarnings": "Total Earnings",
+    "todaysBookings": "Today's Bookings"
+  },
+  "termsPage": {
+    "title": "Terms and Conditions",
+    "subtitle": "These Terms and Conditions govern your use of the VeloTick online booking platform and related services. Please read them carefully before proceeding with any booking.",
+    "quickNavigation": "Quick Navigation",
+    "sections": {
+      "general": {
+        "title": "1. General Terms",
+        "welcome": "Welcome to VeloTick, the online bus ticket booking platform. By accessing or using our website, mobile applications, or any other services provided by VeloTick (collectively, the \"Services\"), you agree to be bound by these Terms and Conditions.",
+        "binding": "These Terms and Conditions constitute a legally binding agreement between you and VeloTick regarding your use of the Services. If you do not agree to these Terms and Conditions, you may not access or use the Services.",
+        "modifications": "VeloTick reserves the right to modify these Terms and Conditions at any time. Your continued use of the Services following the posting of modified Terms and Conditions means that you accept and agree to the changes."
+      },
+      "booking": {
+        "title": "2. Booking Policy",
+        "process": {
+          "title": "2.1 Booking Process",
+          "content": "To book a ticket through our Services, you must provide accurate and complete information, including valid identification where required. All provided information must match the identification used during travel."
+        },
+        "confirmation": {
+          "title": "2.2 Confirmation",
+          "content": "Upon successful booking and payment, you will receive a booking confirmation via email or SMS. This confirmation serves as your ticket and must be presented during boarding."
+        },
+        "seatAllocation": {
+          "title": "2.3 Seat Allocation",
+          "content": "Seat numbers are allocated on a first-come, first-served basis, or as per the bus operator's policy. VeloTick does not guarantee the availability of specific seats unless explicitly stated during the booking process."
+        },
+        "ageRequirements": {
+          "title": "2.4 Age Requirements",
+          "content": "Passengers under the age of 18 may be required to travel with an adult. For specific age policies, please refer to the respective bus operator's terms."
+        }
+      },
+      "payments": {
+        "title": "3. Payments",
+        "methods": {
+          "title": "3.1 Payment Methods",
+          "content": "We accept various payment methods including credit cards, debit cards, net banking, and digital wallets. All payments are processed through secure payment gateways."
+        },
+        "currency": {
+          "title": "3.2 Currency",
+          "content": "All prices are displayed in the local currency and include applicable taxes and fees unless otherwise stated. Additional bank charges may apply for international transactions."
+        },
+        "priceChanges": {
+          "title": "3.3 Price Changes",
+          "content": "Ticket prices are subject to change without prior notice. However, once a booking is confirmed and paid for, the price will not be altered."
+        }
+      },
+      "cancellations": {
+        "title": "4. Cancellations & Refunds",
+        "policy": {
+          "title": "4.1 Cancellation Policy",
+          "content": "Tickets may be cancelled through our website or mobile application. Cancellation policies vary by bus operator and route."
+        },
+        "refundProcess": {
+          "title": "4.2 Refund Process",
+          "content": "Refunds for cancelled tickets are processed according to the applicable cancellation policy. The refund amount depends on the timing of cancellation relative to the departure time."
+        },
+        "noShow": {
+          "title": "4.3 No-Show Policy",
+          "content": "If you fail to board the bus at the scheduled departure time without prior cancellation, it will be considered a \"no-show\" and no refund will be provided."
+        }
+      },
+      "userResponsibilities": {
+        "title": "5. User Responsibilities",
+        "accountSecurity": {
+          "title": "5.1 Account Security",
+          "content": "You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account."
+        },
+        "accurateInfo": {
+          "title": "5.2 Accurate Information",
+          "content": "You must provide accurate, current, and complete information during the registration and booking processes."
+        },
+        "prohibited": {
+          "title": "5.3 Prohibited Activities",
+          "content": "You agree not to use our Services for any illegal or unauthorized purpose. You must not attempt to gain unauthorized access to any part of our Services or interfere with the proper working of our platform."
+        }
+      },
+      "privacy": {
+        "title": "6. Privacy Policy",
+        "dataCollection": {
+          "title": "6.1 Data Collection",
+          "content": "We collect personal information necessary for providing our Services, including but not limited to name, contact details, and payment information."
+        },
+        "dataUsage": {
+          "title": "6.2 Data Usage",
+          "content": "Your data is used for processing bookings, providing customer support, improving our services, and complying with legal obligations."
+        },
+        "dataSecurity": {
+          "title": "6.3 Data Security",
+          "content": "We implement appropriate security measures to protect your personal information. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security."
+        }
+      },
+      "contact": {
+        "title": "7. Contact Information",
+        "description": "If you have any questions or concerns regarding these Terms and Conditions, please contact our customer support:",
+        "customerSupport": "Customer Support",
+        "phone": "Phone",
+        "hours": "Hours",
+        "address": "Address",
+        "email": "support@tegabus.com",
+        "phoneNumber": "+250780396766",
+        "operatingHours": "24/7",
+        "location": "Kigali"
+      }
+    }
+  },
+  "footer": {
+    "latestTips": "For our latest booking tips and tricks",
+    "subscribe": "Subscribe below",
+    "emailPlaceholder": "example@tegabus.com",
+    "enterEmail": "Please enter your email.",
+    "invalidEmail": "Enter an email address like example@mysite.com.",
+    "subscribeNewsletter": "Yes, subscribe me to your newsletter.",
+    "companyName": "TegaBus",
+    "companyDescription": "Your trusted partner for comfortable and reliable bus travel across the region.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "contact": "Contact Us",
+    "followUs": "Follow Us",
+    "allRightsReserved": "All rights reserved.",
+  "bus_routes": "Bus Routes",
+  "ticket_booking": "Ticket Booking",
+  "customer_support": "Customer Support",
+  "real_time_updates": "Real-Time Updates",
+   "email_label": "Email",
+  "phone_label": "Phone",
+  "address_label": "Address"
+
+
+  },
+  "auth": {
+    "login": {
+      "title": "User Login",
+      "subtitle": "Fill in your credentials to login",
+      "email": "Email",
+      "password": "Password",
+      "emailPlaceholder": "e.g. dosta@gmail.com",
+      "passwordPlaceholder": "Enter your password",
+      "forgotPassword": "Forgot password?",
+      "loginButton": "Login",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Register",
+      "invalidCredentials": "Invalid credentials"
+    },
+    "register": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "phone": "Phone number",
+      "country": "Country of origin",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "firstNamePlaceholder": "e.g. John",
+      "lastNamePlaceholder": "e.g. Doe",
+      "emailPlaceholder": "e.g. johndoe@gmail.com",
+      "phonePlaceholder": "e.g. +250788123456",
+      "countryPlaceholder": "Select the country",
+      "passwordPlaceholder": "Enter your password",
+      "confirmPasswordPlaceholder": "Re-enter your password",
+      "registerButton": "Register",
+      "haveAccount": "Already have an account?",
+      "loginLink": "Login",
+      "passwordMismatch": "Passwords don't match",
+      "countries": {
+        "rwanda": "Rwanda",
+        "uganda": "Uganda",
+        "kenya": "Kenya",
+        "tanzania": "Tanzania"
+      }
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "subtitle": "Enter your email to receive a password reset link.",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "sendResetButton": "Send Reset Link",
+      "backToLogin": "Back to Login",
+      "successMessage": "If an account exists for {email}, you'll receive a reset link shortly.",
+      "redirectMessage": "Redirecting to login..."
+    }
+  },
+  "about": {
+    "pageTitle": "About Us",
+    "pageDescription": "Learn about our mission, features, and how we simplify bus travel.",
+    "hero": {
+      "title": "Revolutionizing",
+      "titleHighlight": "Bus Travel",
+      "description": "A seamless, centralized platform for booking bus tickets across multiple operators. Passengers can easily find and book bus tickets, view schedules, and track their travel.",
+      "tagline": "your journey our priority"
+   
+
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "Making bus travel",
+      "highlight": "convenient, affordable, and hassle-free",
+      "suffix": "for everyone."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "Empowering communities with a",
+      "highlight": "smart, connected, and accessible",
+      "suffix": "transport system."
+    },
+    "features": {
+      "title": "Our System Features"
+    },
+    "howItWorks": {
+      "title": "How It",
+      "titleHighlight": "Works"
+    },
+    "cta": {
+      "title": "Ready to Travel Smarter?",
+      "button": "Start Booking Now"
+    }
+  },
+  "routes-dashboard": {
+    "title": "Routes Management",
+    "showingRoutes": "Showing {displayed} of {total} routes",
+    "noRoutesFound": "No routes found",
+    "table": {
+      "from": "From",
+      "to": "To",
+      "price": "Price (RWF)",
+      "travelTime": "Travel Time",
+      "distance": "Distance",
+      "actions": "Actions"
+    }
+  },
+  "conditions": {
+    "pageTitle": "Terms & Conditions",
+    "hero": {
+      "title": "Terms & Conditions",
+      "description": "By accessing and booking through our platform, you agree to be bound by the following terms and conditions.",
+      "tagline": "your journey our priority"
+    },
+    "policy": {
+      "title": "Our System Policy"
+    },
+    "actions": {
+      "bookNow": "Book now",
+      "viewMore": "View More"
+    }
+  },
+  "schedule": {
+    "pageTitle": "Select Your Seats",
+    "hero": {
+      "title": "At right place",
+      "titleHighlight": "TegaBus",
+      "description": "Experience seamless Bus booking with our advanced seat selection platform. Choose your perfect seat and embark on your journey with confidence.",
+      "features": {
+        "secure": "Secure Booking",
+        "premium": "Premium Service",
+        "support": "24/7 Support"
+      }
+    },
+    "seatSelection": {
+      "title": "Select Your Seats",
+      "subtitle": "Choose your preferred seats to continue with booking",
+      "legend": {
+        "reserved": "Reserved",
+        "available": "Available",
+        "selected": "Selected"
+      },
+      "cockpit": "Cockpit",
+      "seat": "Seat"
+    },
+    "busInfo": {
+      "driver": "Driver",
+      "driverPhone": "+250780990000",
+      "busNumber": "RAC 458 C",
+      "route": "Kigali → Uganda",
+      "departureTime": "10:00 AM",
+      "arrivalTime": "12:00 PM",
+      "totalSeats": "Total seats",
+      "availableSeats": "Available seats",
+      "seats": "Seats",
+      "hours": "Hours",
+      "departure": "Departure",
+      "arrival": "Arrival"
+    },
+    "booking": {
+      "active": "Active",
+      "pricePerSeat": "Price per seat:",
+      "selectedSeats": "Selected seats:",
+      "total": "Total:",
+      "bookButton": "Book Selected Seats",
+      "selected": "Selected:",
+      "currency": "Frw"
+    }
+  },
+  "features": {
+    "oneStopBooking": {
+      "title": "One-Stop Booking",
+      "description": "Multiple bus operators in one place."
+    },
+    "realTimeAvailability": {
+      "title": "Real-Time Availability",
+      "description": "Instant confirmations & live seat tracking."
+    },
+    "securePayments": {
+      "title": "Secure Payments",
+      "description": "UPI, cards, wallets, and more."
+    },
+    "smartSearch": {
+      "title": "Smart Search",
+      "description": "Filters for routes, timings, and amenities."
+    },
+    "support": {
+      "title": "24/7 Support",
+      "description": "Dedicated help via chat, email, or phone."
+    },
+    "discounts": {
+      "title": "Exclusive Discounts",
+      "description": "Loyalty programs for frequent travelers."
+    }
+  },
+  "steps": {
+    "search": {
+      "title": "Search",
+      "description": "Enter route, date, and passengers."
+    },
+    "compare": {
+      "title": "Compare",
+      "description": "Choose buses, seats, and prices."
+    },
+    "book": {
+      "title": "Book & Pay",
+      "description": "Secure checkout."
+    },
+    "ticket": {
+      "title": "E-Ticket",
+      "description": "Receive via SMS/email."
+    }
+  },
+  "terms": {
+    "generalTerms": {
+      "title": "General Terms",
+      "content": "All bookings are subject to seat availability and must comply with our policies. Changes may occur without prior notice."
+    },
+    "safety": {
+      "title": "Safety and Security",
+      "content": "Passenger safety is our top priority. Please follow all driver instructions and report any suspicious activity."
+    },
+    "booking": {
+      "title": "Booking & Cancellations",
+      "content": "Bookings are confirmed once payment is received. Cancellations may incur fees based on how early they are made."
+    },
+    "routes": {
+      "title": "Bus Routes and Delays",
+      "content": "Routes are subject to change. Delays may occur due to weather or traffic, but we strive to inform customers promptly."
+    }
+  },
+  "hero": {
+    "title": "Seamless Ticket Booking with TegaBus",
+    "description": "Say goodbye to long queues! Book your bus tickets instantly, securely, and hassle-free. Whether you're commuting or traveling long distances, TegaBus makes your journey smoother with just a few clicks.",
+    "viewSchedules": "View Schedules",
+    "search": {
+      "from": "From",
+      "to": "To",
+      "date": "Departure Date",
+      "findBus": "Find Bus"
+    },
+    "ready": "Ready to Ride?",
+  "headline": "Book Your Next Journey with Confidence",
+  "call_us": "Call us anytime",
+  "phone": "(+250) 780 396 766",
+  "contact_button": "Contact Us",
+  "patterns_title": "Our Patterns",
+  "safe_trips": "Safe Trips",
+  "customer_ratings": "Customer Ratings",
+  "on_time_departures": "On-Time Departures",
+    "quickBooking": "Quick Booking",
+    "popularRoutes": "Popular Routes",
+    "whyChoose": "Why Choose TegaBus?"
+  },
+  "settings": {
+    "title": "Settings Dashboard",
+    "description": "Configure all system settings for TegaBus operations",
+    "tabs": {
+      "profile": "Profile",
+      "preferences": "Preferences",
+      "company": "Company",
+      "pricing": "Pricing",
+      "security": "Security",
+      "busManagement": "Bus Management",
+      "routeManagement": "Route Management",
+      "ticketSettings": "Ticket Settings"
+    },
+    "profile": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "passwordSettings": "Password Settings",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmNewPassword": "Confirm New Password",
+      "placeholders": {
+        "adminName": "Admin name",
+        "adminEmail": "Admin email",
+        "supportContact": "Support contact"
+      }
+    },
+    "preferences": {
+      "language": "Language",
+      "timezone": "Timezone",
+      "notificationPreferences": "Notification Preferences",
+      "enableEmailNotifications": "Enable Email Notifications",
+      "enableSmsAlerts": "Enable SMS Alerts (Twilio Integration)",
+      "placeholders": {
+        "selectLanguage": "Select language",
+        "selectTimezone": "Select timezone"
+      }
+    },
+    "company": {
+      "companyName": "Company Name",
+      "supportContact": "Support Contact",
+      "companyAddress": "Company Address",
+      "companyLogo": "Company Logo",
+      "uploadNewLogo": "Upload New Logo",
+      "recommendedSize": "Recommended size: 256x256px",
+      "placeholders": {
+        "enterCompanyAddress": "Enter company address"
+      }
+    },
+    "pricing": {
+      "farePerKm": "Fare Per KM",
+      "priceAdjustment": "Price Adjustment (%)",
+      "priceAdjustmentNote": "Positive for increase, negative for decrease"
+    },
+    "security": {
+      "authentication": "Authentication",
+      "enableTwoFactorAuth": "Enable Two-Factor Authentication (OTP)",
+      "twoFactorNote": "Extra security layer using Twilio SMS verification",
+      "sessionManagement": "Session Management",
+      "logoutAllDevices": "Logout All Devices",
+      "forceLogoutNote": "Force logout from all active sessions",
+      "auditLogs": "Audit Logs",
+      "viewRecentActivity": "View Recent Activity"
+    },
+    "busManagement": {
+      "busCapacity": "Bus Capacity",
+      "seatColumns": "Seat Columns",
+      "defaultBusLayout": "Default Bus Layout",
+      "placeholders": {
+        "selectColumns": "Select columns"
+      }
+    },
+    "routeManagement": {
+      "routeStartPoint": "Route Start Point",
+      "routeEndPoint": "Route End Point",
+      "intermediateStops": "Intermediate Stops",
+      "placeholders": {
+        "enterStops": "Enter stops separated by commas"
+      }
+    },
+    "ticketSettings": {
+      "ticketFormat": "Ticket Format",
+      "enableUssdBooking": "Enable USSD Booking",
+      "bookingConfirmationMessage": "Booking Confirmation Message",
+      "placeholders": {
+        "selectFormat": "Select format"
+      },
+      "defaultConfirmationMessage": "Your booking with TegaBus is confirmed. Reference: {CODE}. Departure: {TIME} from {LOCATION}."
+    },
+    "actions": {
+      "edit": "Edit",
+      "cancel": "Cancel",
+      "saveSettings": "Save Settings",
+      "settingsSavedSuccessfully": "Settings saved successfully!"
+    }
+  },
+  "support": {
+    "title": "Admin Support Center",
+    "subtitle": "Technical Assistance",
+    "description": "Get help with system administration, troubleshooting, and technical support",
+    "emergencySupport": "Emergency Support",
+    "tabs": {
+      "contact": "Contact",
+      "faq": "FAQ",
+      "resources": "Resources"
+    },
+    "contact": {
+      "technicalSupport": "Technical Support",
+      "adminHotline": "Admin Hotline",
+      "priorityResponse": "Priority response for system issues",
+      "availableHours": "Available 7AM-7PM (GMT+2)",
+      "emailSupport": "Email Support",
+      "callNow": "Call Now",
+      "submitTechnicalTicket": "Submit Technical Ticket",
+      "issueType": "Issue Type",
+      "detailedDescription": "Detailed Description",
+      "criticalSystemIssue": "Critical System Issue",
+      "attachedScreenshots": "Attached screenshots",
+      "submitTechnicalTicketButton": "Submit Technical Ticket",
+      "ticketSubmittedMessage": "Support ticket submitted. Our team will respond within 2 business hours.",
+      "cancel": "Cancel",
+      "placeholders": {
+        "selectIssueType": "Select issue type",
+        "descriptionPlaceholder": "Include: 1) Steps to reproduce 2) Expected vs actual behavior 3) Screenshots if applicable"
+      },
+      "issueTypes": {
+        "system": "System Configuration",
+        "payments": "Payment Integration",
+        "users": "User Management",
+        "reports": "Reporting Issues",
+        "other": "Other Technical Issue"
+      }
+    },
+    "faq": {
+      "categories": {
+        "all": "All Questions",
+        "system": "System Setup",
+        "users": "User Management",
+        "payments": "Payments",
+        "fleet": "Fleet Management",
+        "security": "Security"
+      },
+      "noQuestionsFound": "No questions found in this category",
+      "questions": {
+        "systemSetup": "How do I set up the system for the first time?",
+        "systemSetupAnswer": "Navigate to System Settings > Initial Setup. Follow the step-by-step wizard to configure your company details, routes, and payment integration.",
+        "addUsers": "How to add new admin users with different access levels?",
+        "addUsersAnswer": "Go to User Management > Add User. Assign roles (Admin, Manager, Cashier) with appropriate permissions. Managers can manage bookings but not system settings."
+      }
+    },
+    "resources": {
+      "title": "Administrator Resources",
+      "systemTools": "System Tools",
+      "adminSystemManual": "Admin System Manual",
+      "completeGuide": "Complete guide to all admin features and settings",
+      "databaseBackup": "Database Backup",
+      "securityAudit": "Security Audit",
+      "generateSystemReport": "Generate System Report"
+    }
+  },
+  "users": {
+    "title": "Users List",
+    "stats": {
+      "passengers": "Passengers",
+      "passengersDescription": "End Users of our system",
+      "managers": "Managers",
+      "managersDescription": "Managers of our system",
+      "administrator": "Administrator",
+      "administratorDescription": "Controls the overall system",
+      "verifiers": "Verifiers",
+      "verifiersDescription": "Verifiers who verify the tickets"
+    },
+    "table": {
+      "firstName": "First-name",
+      "lastName": "Last-name",
+      "phone": "Phone",
+      "role": "Role",
+      "country": "Country",
+      "actions": "Actions"
+    },
+    "roles": {
+      "admin": "Admin",
+      "user": "User",
+      "verifier": "Verifier"
+    }
+  },
+  "reports": {
+    "title": "Tegabus Operations Report",
+    "todayIs": "Today is",
+    "dateRanges": {
+      "last24Hours": "Last 24 Hours",
+      "last7Days": "Last 7 Days",
+      "last30Days": "Last 30 Days",
+      "placeholder": "Date Range"
+    },
+    "filterTypes": {
+      "allData": "All Data",
+      "bookingsOnly": "Bookings Only",
+      "revenueOnly": "Revenue Only",
+      "placeholder": "Filter Type"
+    },
+    "exportButtons": {
+      "csv": "CSV",
+      "pdf": "PDF",
+      "pdfAlert": "PDF export functionality would be implemented here"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "routes": "Routes",
+      "passengers": "Passengers"
+    },
+    "overview": {
+      "totalEarnings": "Total Earnings",
+      "todaysBookings": "Today's Bookings",
+      "successfulDepartures": "Successful Departures",
+      "activeRoutes": "Active Routes",
+      "revenueBookingsTrend": "Revenue & Bookings Trend",
+      "bookingStatusDistribution": "Booking Status Distribution",
+      "activeBusesThroughoutDay": "Active Buses Throughout Day",
+      "routesCovered": "Routes Covered",
+      "totalOperationalRoutes": "Total operational routes",
+      "passengerSatisfaction": "Passenger Satisfaction",
+      "basedOnSurveys": "Based on recent surveys",
+      "incidentReports": "Incident Reports",
+      "thisMonth": "This month",
+      "averageOccupancy": "Average Occupancy",
+      "acrossAllRoutes": "Across all routes"
+    },
+    "routes": {
+      "routePerformance": "Route Performance",
+      "sortBy": "Sort By",
+      "routeUtilization": "Route Utilization",
+      "routePopularity": "Route Popularity",
+      "sortOptions": {
+        "efficiency": "Efficiency",
+        "revenue": "Revenue"
+      }
+    },
+    "passengers": {
+      "passengerDemographics": "Passenger Demographics",
+      "passengerGrowth": "Passenger Growth",
+      "peakTravelTimes": "Peak Travel Times"
+    }
+  },
+  "schedules": {
+    "title": "Schedules",
+    "filters": {
+      "all": "All",
+      "onTime": "On Time",
+      "delayed": "Delayed",
+      "cancelled": "Cancelled"
+    },
+    "timeFrames": {
+      "today": "Today",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly"
+    },
+    "table": {
+      "busNumber": "Bus-Number",
+      "route": "Route",
+      "departureTime": "Departure-Time",
+      "arrivalTime": "Arrival-Time",
+      "driver": "Driver",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "status": {
+      "onTime": "On Time",
+      "delayed": "Delayed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "booking": {
+    "title": "All Bookings list",
+    "showingBookings": "Showing {count} bookings",
+    "addBooking": "Add Booking",
+    "addNewBooking": "Add New Booking",
+    "fillFormDescription": "Fill out the form to add a new booking.",
+    "form": {
+      "passengerName": "Passenger Name",
+      "route": "Route",
+      "seats": "Seats",
+      "date": "Date",
+      "createBooking": "Create Booking"
+    },
+    "timeFrames": {
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "selectTimeframe": "Select timeframe"
+    },
+    "cancel": "Cancel"
+  },
+  "buses": {
+    "title": "Bus List",
+    "stats": {
+      "totalBuses": "Total Buses",
+      "totalBusesDescription": "Full fleet size for operations",
+      "activeBuses": "Active Buses",
+      "activeBusesDescription": "Buses currently in service",
+      "inMaintenance": "In Maintenance",
+      "inMaintenanceDescription": "Buses in repair or check-up",
+      "availableBuses": "Available Buses",
+      "availableBusesDescription": "Ready for schedule assignment"
+    },
+    "showing": "Showing {displayed} of {total} buses",
+    "table": {
+      "busNumber": "Bus-number",
+      "status": "Status",
+      "route": "Route",
+      "driver": "Driver",
+      "actions": "Actions"
+    },
+    "status": {
+      "all": "All",
+      "active": "Active",
+      "retired": "Retired",
+      "inMaintenance": "In Maintenance",
+      "available": "Available"
+    }
+  },
   "systemSettings": {
     "actions": {
       "edit": "Edit"
     }
-  }
+  },
+  "routes": {
+    "pageTitle": "Find Your Perfect Bus",
+    "search": {
+      "from": "From",
+      "to": "To",
+      "searchButton": "Search for Buses",
+      "showFilters": "Show Bus Company Filters",
+      "hideFilters": "Hide Bus Company Filters"
+    },
+    "busCompanies": {
+      "title": "Bus Companies"
+    },
+    "availableBuses": {
+      "title": "Available Buses"
+    },
+    "popularRoutes": {
+      "title": "Popular Routes",
+      "buses": "daily buses",
+      "viewSchedules": "View Schedules"
+    }
+  },
+  "contact":{
+    
+  "title": "Get In Touch",
+  "contact_us": "CONTACT US",
+  "subtitle": "Get In Touch with Us",
+  "placeholders": {
+    "name": "Your Name",
+    "phone": "Phone No",
+    "email": "E-mail Address",
+    "subject": "Subject",
+    "message": "Message"
+  },
+  "send_message": "Send Message",
+  "description": "For inquiries, feedback, or assistance, feel free to reach out. We’re here to ensure your travel experience is smooth and enjoyable.",
+  "call_us": "Call us anytime",
+  "email_us": "Email Us",
+  "location": "Our Location",
+  "address": "Kigali, Rwanda"
+
+
+  },
+  "info":
+  {
+  "title_1": "Fast & Easy Booking",
+  "description_1": "Reserve your seat in seconds with our intuitive platform",
+
+  "title_2": "Secure Payments",
+  "description_2": "Pay with confidence using reliable and safe payment options",
+
+  "title_3": "Real-Time Availability",
+  "description_3": "Get instant updates on bus schedules and seat availability"
+},
+"company":{
+   "buses_label": "Buses: {count}",
+  "view_routes": "View Routes"
+}
+
 }

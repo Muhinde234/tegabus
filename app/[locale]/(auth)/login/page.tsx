@@ -2,13 +2,15 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import Logo from "@/components/common/logo";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/inputField"; // ← Your reusable input
+import { Input } from "@/components/ui/inputField"; 
 
 export default function LoginPage() {
+  const t = useTranslations("auth.login");
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("dosta@gmail.com");
   const [password, setPassword] = useState("password123");
@@ -18,26 +20,24 @@ export default function LoginPage() {
     e.preventDefault();
 
     if (email === "dosta@gmail.com" && password === "password123") {
-      router.push("/schedule");
+      router.push("/admin");
     } else {
-      alert("Invalid credentials");
+      alert(t("invalidCredentials"));
     }
   };
 
   return (
     <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center px-4">
       <div className="border border-gray-300 bg-white rounded-lg shadow-sm md:shadow-md w-full max-w-md p-8">
-       
         <div className="flex justify-center mb-6">
           <Link href="/">
             <Logo />
           </Link>
         </div>
 
-      
         <div className="text-center mb-6">
-          <h2 className="text-xl font-semibold text-gray-800">User Login</h2>
-          <p className="mt-1 text-gray-500 text-sm">Fill in your credentials to login</p>
+          <h2 className="text-xl font-semibold text-gray-800">{t("title")}</h2>
+          <p className="mt-1 text-gray-500 text-sm">{t("subtitle")}</p>
         </div>
 
         <hr className="mb-6 border-gray-200" />
@@ -45,21 +45,21 @@ export default function LoginPage() {
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              Email
+              {t("email")}
             </label>
             <Input
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="e.g. dosta@gmail.com"
+              placeholder={t("emailPlaceholder")}
               required
             />
           </div>
 
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-              Password
+              {t("password")}
             </label>
             <div className="relative">
               <Input
@@ -67,7 +67,7 @@ export default function LoginPage() {
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
+                placeholder={t("passwordPlaceholder")}
                 required
                 className="pr-10"
               />
@@ -83,7 +83,7 @@ export default function LoginPage() {
 
             <div className="text-right mt-2">
               <Link href="/forgot-password" className="text-sm text-green-700 hover:underline">
-                Forgot password?
+                {t("forgotPassword")}
               </Link>
             </div>
           </div>
@@ -92,15 +92,15 @@ export default function LoginPage() {
             type="submit"
             className="w-full bg-[#0B3B2E] text-white py-2 rounded hover:bg-green-700 transition-colors"
           >
-            Login
+            {t("loginButton")}
           </Button>
         </form>
 
         <div className="mt-6 text-center text-sm text-gray-600">
           <p>
-            Don’t have an account?{" "}
+            {t("noAccount")}{" "}
             <Link href="/register" className="text-green-700 hover:underline">
-              Register
+              {t("registerLink")}
             </Link>
           </p>
         </div>

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Bus } from '../../types/type';
 import StatusBadge from '../dashboard/statusBadge';
 import DriverInfo from './DriverInfo';
@@ -15,9 +15,8 @@ const BusTableRow: React.FC<BusTableRowProps> = ({ bus, index }) => {
 
 
   return (
-    <tr className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${
-      index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'
-    }`}>
+    <tr className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'
+      }`}>
       <td className="py-4 px-4 font-medium text-gray-900">{bus.busNumber}</td>
       <td className="py-4 px-4">
         <StatusBadge status={bus.status} />
@@ -28,7 +27,7 @@ const BusTableRow: React.FC<BusTableRowProps> = ({ bus, index }) => {
       </td>
       <td className="py-4 px-4">
         <div className="flex gap-2">
-         <ActionButton/>
+          <ActionButton />
         </div>
       </td>
     </tr>

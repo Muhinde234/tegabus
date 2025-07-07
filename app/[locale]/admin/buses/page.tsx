@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 "use client";
 
 import React, { useState, useCallback, useMemo } from "react";
@@ -105,7 +106,10 @@ const BusManagementDashboard: React.FC = () => {
               <div className="flex gap-3">
                 <AddBusForm />
 
-                <Select onValueChange={(val) => setActiveFilter(val as any)}>
+
+                <Select
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  onValueChange={(val) => setActiveFilter(val as any)}>
                   <SelectTrigger className="w-full  border border-green-300 p-2 sm:p-3 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
                     <SelectValue placeholder="All" />
                   </SelectTrigger>

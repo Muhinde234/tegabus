@@ -1,15 +1,13 @@
 import { Book, Shield, CreditCard, X, User, Info } from "lucide-react";
 import Logo from "../components/common/logo";
 import Link from "next/link";
-
-
+import { useTranslations } from "next-intl";
 
 interface TermsSidebarProps {
   className?: string;
   isMobileOpen: boolean;
   onMobileClose: () => void;
 }
-
 
 interface Section {
   id: string;
@@ -22,14 +20,16 @@ const TermsSidebar: React.FC<TermsSidebarProps> = ({
   isMobileOpen,
   onMobileClose,
 }) => {
+  const t = useTranslations("termsPage");
+
   const sections: Section[] = [
-    { id: "general", title: "General Terms", icon: <Book size={18} /> },
-    { id: "booking", title: "Booking Policy", icon: <Shield size={18} /> },
-    { id: "payments", title: "Payments", icon: <CreditCard size={18} /> },
-    { id: "cancellations", title: "Cancellations", icon: <X size={18} /> },
-    { id: "user", title: "User Responsibilities", icon: <User size={18} /> },
-    { id: "privacy", title: "Privacy", icon: <Shield size={18} /> },
-    { id: "contact", title: "Contact Info", icon: <Info size={18} /> },
+    { id: "general", title: t("sections.general.title"), icon: <Book size={18} /> },
+    { id: "booking", title: t("sections.booking.title"), icon: <Shield size={18} /> },
+    { id: "payments", title: t("sections.payments.title"), icon: <CreditCard size={18} /> },
+    { id: "cancellations", title: t("sections.cancellations.title"), icon: <X size={18} /> },
+    { id: "user", title: t("sections.userResponsibilities.title"), icon: <User size={18} /> },
+    { id: "privacy", title: t("sections.privacy.title"), icon: <Shield size={18} /> },
+    { id: "contact", title: t("sections.contact.title"), icon: <Info size={18} /> },
   ];
 
   const scrollToSection = (id: string) => {
@@ -50,10 +50,9 @@ const TermsSidebar: React.FC<TermsSidebarProps> = ({
     <aside
       className={`
         bg-[#0B3B2E] min-h-screen transition-all duration-300 ease-in-out
-        ${
-          isMobileOpen
-            ? "fixed inset-y-0 left-0 z-40 w-64 shadow-lg"
-            : "hidden lg:block w-64 fixed self-start"
+        ${isMobileOpen
+          ? "fixed inset-y-0 left-0 z-40 w-64 shadow-lg"
+          : "hidden lg:block w-64 fixed self-start"
         }
         ${className}
       `}
@@ -73,7 +72,7 @@ const TermsSidebar: React.FC<TermsSidebarProps> = ({
         <Link href="/" className="text-white">
           <Logo />
         </Link>
-        
+
         <nav className="space-y-1 mt-6">
           {sections.map((section) => (
             <button

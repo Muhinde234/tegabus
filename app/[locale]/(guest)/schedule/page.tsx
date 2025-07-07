@@ -1,12 +1,14 @@
-"use client"
+"use client";
 
 import React, { useState } from 'react';
-import { Star, Shield, Clock, MapPin, Route, Car, Bus } from 'lucide-react';
+import { useTranslations } from "next-intl";
+import { Star, Shield, Clock, MapPin, Route, Bus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import avatar from "@/public/images/avatar.png";
 import Container from '@/components/ui/container';
 import Map from "@/components/dashboard/map";
 import Image from 'next/image';
+import getStripe from "@/utils/get-stripejs";
 
 const DEFAULT_CENTER: [number, number] = [-1.9499500, 30.0588500];
 
@@ -18,6 +20,7 @@ interface SeatStatus {
 }
 
 const SeatSelectionPage: React.FC = () => {
+  const t = useTranslations("schedule");
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
   const initializeSeats = (): SeatStatus[] => {
@@ -76,30 +79,61 @@ const SeatSelectionPage: React.FC = () => {
 
   const totalPrice = selectedSeats.length * 2500;
 
+
+  const handleBooking = async () => {
+    if (selectedSeats.length === 0) return;
+
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          selectedSeats,
+          totalPrice,
+        }),
+      });
+
+
+      const { sessionId } = await response.json();
+
+      const stripe = await getStripe();
+
+      // @ts-expect-error stripe.redirectToCheckout is not typed
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+      if (error) {
+        console.error(error);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50">
       <div className="overflow-hidden bg-[#0B3B2E] text-white py-20 pt-38 sm:px-6 lg:px-32">
         <Container>
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-2xl font-bold text-white mb-6 leading-tight">
-              At right place <span className="text-lime-300">TegaBus</span>
+              {t("hero.title")} <span className="text-lime-300">{t("hero.titleHighlight")}</span>
             </h1>
             <p className="mb-8 max-w-2xl mx-auto">
-              Experience seamless Bus booking with our advanced seat selection platform.
-              Choose your perfect seat and embark on your journey with confidence.
+              {t("hero.description")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="flex items-center gap-2 text-green-100">
                 <Shield className="w-5 h-5 text-lime-300" />
-                <span>Secure Booking</span>
+                <span>{t("hero.features.secure")}</span>
               </div>
               <div className="flex items-center gap-2 text-green-100">
                 <Star className="w-5 h-5 text-lime-300" />
-                <span>Premium Service</span>
+                <span>{t("hero.features.premium")}</span>
               </div>
               <div className="flex items-center gap-2 text-green-100">
                 <Clock className="w-5 h-5 text-lime-300" />
-                <span>24/7 Support</span>
+                <span>{t("hero.features.support")}</span>
               </div>
             </div>
           </div>
@@ -110,24 +144,24 @@ const SeatSelectionPage: React.FC = () => {
         <Container>
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2 bg-white rounded-xl shadow-sm p-8 border border-gray-300">
+              <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm p-8 border border-gray-100">
                 <div className="mb-6">
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2">Select Your Seats</h2>
-                  <p className="text-gray-600">Choose your preferred seats to continue with booking</p>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2">{t("seatSelection.title")}</h2>
+                  <p className="text-gray-600">{t("seatSelection.subtitle")}</p>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-6 mb-8 p-4 bg-gray-50 rounded-xl">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gray-400 border border-gray-500  opacity-70"></div>
-                    <span className="text-sm font-medium text-gray-700">Reserved</span>
+                    <div className="w-5 h-5 bg-gray-400 border border-gray-500 rounded-lg opacity-70"></div>
+                    <span className="text-sm font-medium text-gray-700">{t("seatSelection.legend.reserved")}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-white to-gray-50 border-2 border-gray-300 "></div>
-                    <span className="text-sm font-medium text-gray-700">Available</span>
+                    <div className="w-5 h-5 bg-gradient-to-br from-white to-gray-50 border-2 border-gray-300 rounded-lg"></div>
+                    <span className="text-sm font-medium text-gray-700">{t("seatSelection.legend.available")}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-yellow-500 border border-yellow-600 "></div>
-                    <span className="text-sm font-medium text-gray-700">Selected</span>
+                    <div className="w-5 h-5 bg-gradient-to-br from-yellow-400 to-yellow-500 border border-yellow-600 rounded-lg"></div>
+                    <span className="text-sm font-medium text-gray-700">{t("seatSelection.legend.selected")}</span>
                   </div>
                 </div>
 
@@ -135,11 +169,11 @@ const SeatSelectionPage: React.FC = () => {
                   <div className="flex justify-center mb-6">
                     <div className="bg-gradient-to-r from-green-300 to-green-700 text-white px-6 py-3 rounded-full flex items-center gap-2 shadow-lg">
                       <Route className="w-6 h-6" />
-                      <span className="font-semibold">Cockpit</span>
+                      <span className="font-semibold">{t("seatSelection.cockpit")}</span>
                     </div>
                   </div>
 
-                  <div className="  grid grid-rows-10 gap-3 max-w-md mx-auto">
+                  <div className="grid grid-rows-10 gap-3 max-w-md mx-auto">
                     {Array.from({ length: 10 }, (_, rowIndex) => (
                       <div key={rowIndex} className="flex items-center gap-3">
                         <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-bold text-green-700">
@@ -154,7 +188,7 @@ const SeatSelectionPage: React.FC = () => {
                                 key={seatId}
                                 onClick={() => handleSeatClick(seatId)}
                                 className={getSeatClassName(seat?.status || 'available')}
-                                title={`Seat ${seatId}`}
+                                title={`${t("seatSelection.seat")} ${seatId}`}
                               >
                                 <span className="text-xs font-medium text-gray-600">
                                   {pos}
@@ -175,7 +209,7 @@ const SeatSelectionPage: React.FC = () => {
                                 key={seatId}
                                 onClick={() => handleSeatClick(seatId)}
                                 className={getSeatClassName(seat?.status || 'available')}
-                                title={`Seat ${seatId}`}
+                                title={`${t("seatSelection.seat")} ${seatId}`}
                               >
                                 <span className="text-xs font-medium text-gray-600">
                                   {pos}
@@ -191,11 +225,11 @@ const SeatSelectionPage: React.FC = () => {
               </div>
 
               <div className="lg:col-span-1 ">
-                <div className="bg-white rounded-2xl shadow-sm  p-6 border border-gray-300 sticky top-6">
+                <div className="bg-white rounded-2xl shadow-sm  p-6 border border-gray-100 sticky top-6">
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
-                    <span className="text-xl font-bold text-gray-800">RAC 458 C</span>
+                    <span className="text-xl font-bold text-gray-800">{t("busInfo.busNumber")}</span>
                     <span className="bg-gradient-to-r from-lime-500 to-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
-                      Active
+                      {t("booking.active")}
                     </span>
                   </div>
 
@@ -210,42 +244,42 @@ const SeatSelectionPage: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <p className="font-bold text-gray-800">Driver</p>
-                      <p className="text-sm text-gray-500">+250780990000</p>
+                      <p className="font-bold text-gray-800">{t("busInfo.driver")}</p>
+                      <p className="text-sm text-gray-500">{t("busInfo.driverPhone")}</p>
                     </div>
                   </div>
 
-                  
-                    <div className="flex items-center justify-between text-sm p-3 rounded-lg">
-                      <div className='flex gap-2 border border-dashed border-green-300 p-2'>
-                        <Bus/>
-                        <div className='flex flex-col'>
-                          <p className='text-sm'>Total seats</p>
-                          <p>50</p>
-                        </div>
-                      </div>
-                    
-                    
-                      <div className='flex gap-2  border border-dashed border-lime-300 p-2'>
-                        <Bus />
-                        <div className='flex flex-col'>
-                          <p className='text-sm'>Available seats</p>
-                          <p>5</p>
-                        </div>
+
+                  <div className="flex items-center justify-between text-sm p-3 rounded-lg">
+                    <div className='flex gap-2 border border-dashed border-green-300 p-2'>
+                      <Bus />
+                      <div className='flex flex-col'>
+                        <p className='text-sm'>{t("busInfo.totalSeats")}</p>
+                        <p>50</p>
                       </div>
                     </div>
-                   
+
+
+                    <div className='flex gap-2  border border-dashed border-lime-300 p-2'>
+                      <Bus />
+                      <div className='flex flex-col'>
+                        <p className='text-sm'>{t("busInfo.availableSeats")}</p>
+                        <p>5</p>
+                      </div>
+                    </div>
+                  </div>
+
 
                   <div className="text-center p-4 bg-gray-50 rounded-xl">
                     <div className="flex items-center justify-center gap-4 mb-3">
                       <div className="text-center">
                         <div className="text-2xl font-bold text-gray-800">50</div>
-                        <div className="text-xs text-gray-500">Seats</div>
+                        <div className="text-xs text-gray-500">{t("busInfo.seats")}</div>
                       </div>
                       <div className="flex-1 h-px bg-gradient-to-r from-blue-300 to-purple-300"></div>
                       <div className="text-center">
                         <div className="text-2xl font-bold text-gray-800">4</div>
-                        <div className="text-xs text-gray-500">Hours</div>
+                        <div className="text-xs text-gray-500">{t("busInfo.hours")}</div>
                       </div>
                     </div>
                   </div>
@@ -253,9 +287,9 @@ const SeatSelectionPage: React.FC = () => {
                   <div className="p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
                     <div className="flex items-center gap-2 mb-2">
                       <MapPin className="w-4 h-4 text-green-600" />
-                      <p className="font-bold text-gray-800">Kigali → Uganda</p>
+                      <p className="font-bold text-gray-800">{t("busInfo.route")}</p>
                     </div>
-                    <p className="text-sm text-gray-600">Departure 10:00 AM • Arrival 12:00 PM</p>
+                    <p className="text-sm text-gray-600">{t("busInfo.departure")} {t("busInfo.departureTime")} • {t("busInfo.arrival")} {t("busInfo.arrivalTime")}</p>
                   </div>
 
                   <div className="border border-gray-200 flex justify-center items-center h-full relative z-1 mt-6">
@@ -264,34 +298,34 @@ const SeatSelectionPage: React.FC = () => {
 
                   <div className="space-y-3 mb-6 p-4 bg-gray-50 rounded-xl mt-6">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Price per seat:</span>
-                      <span className="font-bold text-lg">2,500 Frw</span>
+                      <span className="text-gray-600">{t("booking.pricePerSeat")}</span>
+                      <span className="font-bold text-lg">2,500 {t("booking.currency")}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Selected seats:</span>
+                      <span className="text-gray-600">{t("booking.selectedSeats")}</span>
                       <span className="font-bold text-lg text-green-600">{selectedSeats.length}</span>
                     </div>
                     <div className="flex justify-between items-center text-xl font-bold border-t pt-3 border-gray-200">
-                      <span className="text-gray-800">Total:</span>
-                      <span className="text-green-600">{totalPrice.toLocaleString()} Frw</span>
+                      <span className="text-gray-800">{t("booking.total")}</span>
+                      <span className="text-green-600">{totalPrice.toLocaleString()} {t("booking.currency")}</span>
                     </div>
                   </div>
 
                   <Button
-                    className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 transform ${
-                      selectedSeats.length > 0
-                        ? 'bg-gradient-to-r from-green-900 to-green-700 text-white hover:from-green-700 hover:to-green-800 hover:scale-105 shadow-xl hover:shadow-2xl'
-                        : 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                    }`}
+                    onClick={handleBooking}
+                    className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 transform ${selectedSeats.length > 0
+                      ? 'bg-gradient-to-r from-green-600 to-green-700 text-white hover:from-green-700 hover:to-green-800 hover:scale-105 shadow-xl hover:shadow-2xl'
+                      : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                      }`}
                     disabled={selectedSeats.length === 0}
                   >
-                    {selectedSeats.length > 0 ? 'Continue to Booking' : 'Select Seats to Continue'}
+                    {t("booking.bookButton")}
                   </Button>
 
                   {selectedSeats.length > 0 && (
                     <div className="mt-4 text-center">
                       <p className="text-sm text-gray-500">
-                        Selected: {selectedSeats.join(', ')}
+                        {t("booking.selected")} {selectedSeats.join(', ')}
                       </p>
                     </div>
                   )}

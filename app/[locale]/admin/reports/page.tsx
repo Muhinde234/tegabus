@@ -55,7 +55,7 @@ export default function ReportDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
 
   const filteredData = useMemo(() => {
-    let data = { ...mockData };
+    const data = { ...mockData };
 
     if (dateRange === "1d") {
       data.earningsData = data.earningsData.slice(-1);
@@ -64,7 +64,7 @@ export default function ReportDashboard() {
     }
 
     return data;
-  }, [dateRange, filterType]);
+  }, [dateRange]);
 
   const exportToPDF = () => {
     alert("PDF export functionality would be implemented here");
@@ -181,34 +181,31 @@ export default function ReportDashboard() {
         {/* Navigation Tabs */}
         <div className="flex border-b border-gray-200 mb-6">
           <Button
-          variant="ghost"
-            className={`px-4 py-2 font-medium text-sm ${
-              activeTab === "overview"
+            variant="ghost"
+            className={`px-4 py-2 font-medium text-sm ${activeTab === "overview"
                 ? "text-green-600 border-b-4 border-green-900"
                 : "text-gray-500 hover:text-gray-700"
-            }`}
+              }`}
             onClick={() => setActiveTab("overview")}
           >
             Overview
           </Button>
           <Button
-          variant="ghost"
-            className={`px-4 py-2 font-medium text-sm ${
-              activeTab === "routes"
+            variant="ghost"
+            className={`px-4 py-2 font-medium text-sm ${activeTab === "routes"
                 ? "text-green-600 border-b-4 border-green-600"
                 : "text-gray-500 hover:text-gray-700"
-            }`}
+              }`}
             onClick={() => setActiveTab("routes")}
           >
             Routes
           </Button>
           <Button
-          variant="ghost"
-            className={`px-4 py-2 font-medium text-sm ${
-              activeTab === "passengers"
+            variant="ghost"
+            className={`px-4 py-2 font-medium text-sm ${activeTab === "passengers"
                 ? "text-green-600 border-b-4 border-green-600"
                 : "text-gray-500 hover:text-gray-700"
-            }`}
+              }`}
             onClick={() => setActiveTab("passengers")}
           >
             Passengers

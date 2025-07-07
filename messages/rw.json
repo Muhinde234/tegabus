@@ -1,7 +1,797 @@
 {
-  "systemSettings": {
-    "actions": {
-      "edit": "Hindura"
-    }
-  }
+       "navigation": {
+         "home": "Ahabanza",
+         "about": "Ibituranga",
+         "routes": "Amaroute",
+         "conditions": "Amategeko",
+         "language": "Ururimi",
+         "getStarted": "Tangira"
+       },
+       "dashboard": {
+         "greeting": "turakwakira!",
+         "totalEarnings": "Amafar Angie yose yinjijwe",
+         "todaysBookings": "Amadeni y'uyu munsi",
+         "successfulDepartures": "Kugenda gushoboka",
+         "notifications": "Amakuru",
+         "userProfile": "Umwirondoro w'ukoresha",
+         "manageYourBuses": "Gahunda amamodoka yawe",
+         "addNewBus": "Ongeraho imodoka nshya",
+         "welcomeBack": "turakwakira!",
+         "sidebar": {
+           "dashboard": "Ikiyaga",
+           "booking": "Gutumiza",
+           "schedule": "Gahunda",
+           "busManagement": "Gucunga Amamodoka",
+           "routeManagement": "Gucunga Inzira",
+           "userManagement": "Gucunga Abakoresha",
+           "report": "Raporo",
+           "settings": "Igenamiterere",
+           "helpSupport": "Ubufasha n'Ubwiyunge",
+           "logout": "Sohoka"
+         }
+       },
+       "termsPage": {
+         "title": "Amategeko n'Amabwiriza",
+         "subtitle": "Aya mategeko n'amabwiriza agena uburyo ukoresha ikurikirana rya VeloTick ryo gutumiza ku rubuga n'ubundi bwiyunge bujyanye nabyo. Nyamuneka ubasomere neza mbere yo gukomeza gutumiza.",
+         "quickNavigation": "Kugenda Byihuse",
+         "sections": {
+           "general": {
+             "title": "1. Amategeko Rusange",
+             "welcome": "Murakaza neza kuri VeloTick, ikurikirana ryo gutumiza amatike y'amamodoka ku rubuga. Mu kugera cyangwa gukoresha urubuga rwacu, porogaramu z'igikoresho, cyangwa ubundi bwiyunge butangwa na VeloTick (hamwe, \"Ubwiyunge\"), wemeye kugorana n'aya mategeko n'amabwiriza.",
+             "binding": "Aya mategeko n'amabwiriza ari amasezerano y'amategeko akomeye hagati yawe na VeloTick bijyanye no gukoresha ubwiyunge. Niba utemera aya mategeko n'amabwiriza, ntushobora kugera cyangwa gukoresha ubwiyunge.",
+             "modifications": "VeloTick ifite uburenganzira bwo guhindura aya mategeko n'amabwiriza igihe icyo aricyo cyose. Gukomeza gukoresha ubwiyunge nyuma yo gushyiraho amategeko n'amabwiriza yahinduwe bivuze ko wemeye kandi wiyuze n'impinduka."
+           },
+           "booking": {
+             "title": "2. Politiki yo Gutumiza",
+             "process": {
+               "title": "2.1 Inzira yo Gutumiza",
+               "content": "Kugira ngo utumize itike binyuze mu bwiyunge bwacu, ugomba gutanga amakuru yukuri kandi yuzuye, harimo n'indangamuntu yemewe aho bisabwa. Amakuru yose yatanzwe agomba guhura n'indangamuntu ikoreshwa mu rugendo."
+               },
+             "confirmation": {
+               "title": "2.2 Kwemeza",
+               "content": "Nyuma yo gutumiza no kwishura neza, uzakira kwemeza gutumiza binyuze muri imeyili cyangwa SMS. Iri kwemeza rikora nk'itike ryawe kandi rigomba kwerekwa mu gihe cyo kwinjira."
+             },
+             "seatAllocation": {
+               "title": "2.3 Kugabana Intebe",
+               "content": "Imibare y'intebe itangwa hakurikijwe amahame ya mbere-aza-mbere-ahabwa, cyangwa ukurikije politiki y'ukuyobora imodoka. VeloTick ntiyishingiye ko intebe zihariye ziboneka keretse byavuzwe mu buryo bweruye mu nzira yo gutumiza."
+             },
+             "ageRequirements": {
+               "title": "2.4 Ibisabwa ku Myaka",
+               "content": "Abagenzi bafite munsi y'imyaka 18 bashobora gusabwa gusafara hamwe n'umuntu mukuru. Kuri politiki y'imyaka zihariye, nyamuneka urebe amategeko y'ukuyobora imodoka."
+             }
+           },
+           "payments": {
+             "title": "3. Kwishura",
+             "methods": {
+               "title": "3.1 Uburyo bwo Kwishura",
+               "content": "Twemera uburyo butandukanye bwo kwishura harimo amakarte y'inguzanyo, amakarte yo kwishura, banki ku rubuga, n'imifuka ya digitale. Kwishura kwose gukorwa binyuze mu nzira z'umutekano z'kwishura."
+             },
+             "currency": {
+               "title": "3.2 Ifaranga",
+               "content": "Ibiciro byose byerekanwa mu ifaranga ry'aho kandi birimo umusoro n'ibiciro bikurikizwa keretse byavuzwe ubundi. Ibiciro by'inyongera by'amabanki bishobora gukurikizwa ku micungire mpuzamahanga."
+             },
+             "priceChanges": {
+               "title": "3.3 Guhindura Ibiciro",
+               "content": "Ibiciro by'amatike bishobora guhinduka nta kumenyesha mbere. Ariko, rimwe gutumiza kwemejwe kandi kwishywe, ibiciro ntibizahinduka."
+             }
+           },
+           "cancellations": {
+             "title": "4. Gusiba no Gusubiza Amafaranga",
+             "policy": {
+               "title": "4.1 Politiki yo Gusiba",
+               "content": "Amatike ashobora gusibwa binyuze ku rubuga rwacu cyangwa porogaramu y'igikoresho. Politiki yo gusiba itandukanye ukurikije ukuyobora imodoka n'inzira."
+             },
+             "refundProcess": {
+               "title": "4.2 Inzira yo Gusubiza Amafaranga",
+               "content": "Gusubiza amafaranga ku matike yasibwe gukorwa ukurikije politiki yo gusiba ikurikizwa. Umubare w'amafaranga asubizwa aterwa n'igihe cyo gusiba ugereranije n'igihe cyo kugenda."
+             },
+             "noShow": {
+               "title": "4.3 Politiki yo Kutagaragara",
+               "content": "Niba wananiwe kwinjira mu modoka mu gihe cyateganijwe nta gusiba mbere, bizafatwa nka \"kutagaragara\" kandi nta mafaranga azasubizwa."
+             }
+           },
+           "userResponsibilities": {
+             "title": "5. Inshingano z'Ukoresha",
+             "accountSecurity": {
+               "title": "5.1 Umutekano w'Akarito",
+               "content": "Ushinzwe kubika ibanga amakuru y'ukwinjira kwawe no kubika ibikorwa byose bibera ku karito kawe."
+             },
+             "accurateInfo": {
+               "title": "5.2 Amakuru Y'ukuri",
+               "content": "Ugomba gutanga amakuru yukuri, agezweho kandi yuzuye mu nzira z'iyandikishe no gutumiza."
+             },
+             "prohibited": {
+               "title": "5.3 Ibikorwa Bibujijwe",
+               "content": "Wemera kutagira ubwiyunge bwacu mu ntego zitemewe cyangwa zitemewe. Ntugomba kugerageza kubona inzira y'ukwinjira itemewe mu gice icyo aricyo cyose cy'ubwiyunge bwacu cyangwa kugira ingaruka ku mukoro mwiza w'ikurikirana ryacu."
+             }
+           },
+           "privacy": {
+             "title": "6. Politiki y'Ubwoba",
+             "dataCollection": {
+               "title": "6.1 Gukusanya Amakuru",
+               "content": "Dukusanya amakuru y'umuntu ku giti cye akenewe mu gutanga ubwiyunge bwacu, harimo ariko atari byo gusa amazina, amakuru y'itumanaho, n'amakuru yo kwishura."
+             },
+             "dataUsage": {
+               "title": "6.2 Gukoresha Amakuru",
+               "content": "Amakuru yawe akoreshwa mu gutunganya amadeni, gutanga ubufasha ku bakiriya, kuzamura ubwiyunge bwacu, no kubahiriza inshingano z'amategeko."
+             },
+             "dataSecurity": {
+               "title": "6.3 Umutekano w'Amakuru",
+               "content": "Dushyira mu bikorwa ingamba z'umutekano zikwiye kurinda amakuru yawe y'umuntu ku giti cye. Ariko, nta buryo bwo kohereza kuri interineti cyangwa kubika amakuru bwumutse 100%, kandi ntidushobora kwishingira umutekano wuzuye."
+             }
+           },
+           "contact": {
+             "title": "7. Amakuru yo Kuvugana",
+             "description": "Niba ufite ibibazo cyangwa impungenge ku birebana n'aya mategeko n'amabwiriza, nyamuneka uvugane n'ubufasha bw'abakiriya:",
+             "customerSupport": "Ubufasha bw'Abakiriya",
+             "phone": "Telefoni",
+             "hours": "Amasaha",
+             "address": "Aderesi",
+             "email": "support@tegabus.com",
+             "phoneNumber": "+250780396766",
+             "operatingHours": "24/7",
+             "location": "Kigali"
+           }
+         }
+       },
+       "footer": {
+         "latestTips": "Kubona amakuru yanyuma yo gutumiza n'ubuhanga",
+         "subscribe": "Iyandikishe hasi",
+         "emailPlaceholder": "urugero@tegabus.com",
+         "enterEmail": "Nyamuneka andika imeyili yawe.",
+         "invalidEmail": "Andika aderesi ya imeyili nka urugero@urubuga.com.",
+         "subscribeNewsletter": "Yego, nyandikishe ku makuru yawe.",
+         "companyName": "TegaBus",
+         "companyDescription": "Umunyangendahabi wawe wizera mu rugendo rw'amamodoka rutuje kandi rwizewe mu karere.",
+         "quickLinks": "Ihuza Byihuse",
+         "services": "Serivisi",
+         "contact": "Duhamagare",
+         "followUs": "Dukurikirane",
+         "allRightsReserved": "Uburenganzira bwose bwarabitswe.", 
+        "bus_routes": "Imihanda y’imodoka",
+        "ticket_booking": "Kubika amatike",
+        "customer_support": "Serivisi y’abakiriya",
+        "real_time_updates": "Amakuru kugihe",
+         "email_label": "Imeyili",
+        "phone_label": "Telefoni",
+        "address_label": "Aho duherereye"
+
+
+       },
+       "auth": {
+         "login": {
+           "title": "Kwinjira kw'Umukoresha",
+           "subtitle": "Uzuza amakuru yawe kugira ngo winjire",
+           "email": "Imeyili",
+           "password": "Ijambo ry'ibanga",
+           "emailPlaceholder": "urugero: dosta@gmail.com",
+           "passwordPlaceholder": "Andika ijambo ryawe ry'ibanga",
+           "forgotPassword": "Wibagiwe ijambo ry'ibanga?",
+           "loginButton": "Injira",
+           "noAccount": "Ntufite konti?",
+           "registerLink": "Iyandikishe",
+           "invalidCredentials": "Amakuru atari yo"
+         },
+         "register": {
+           "firstName": "Izina rya mbere",
+           "lastName": "Izina ry'umuryango",
+           "email": "Imeyili",
+           "phone": "Numero ya telefoni",
+           "country": "Igihugu cyawe",
+           "password": "Ijambo ry'ibanga",
+           "confirmPassword": "Menya ijambo ry'ibanga",
+           "firstNamePlaceholder": "urugero: Yohana",
+           "lastNamePlaceholder": "urugero: Mukamana",
+           "emailPlaceholder": "urugero: yohanamukamana@gmail.com",
+           "phonePlaceholder": "urugero: +250788123456",
+           "countryPlaceholder": "Hitamo igihugu",
+           "passwordPlaceholder": "Andika ijambo ryawe ry'ibanga",
+           "confirmPasswordPlaceholder": "Ongera wandike ijambo ryawe ry'ibanga",
+           "registerButton": "Iyandikishe",
+           "haveAccount": "Usanzwe ufite konti?",
+           "loginLink": "Injira",
+           "passwordMismatch": "Amagambo y'ibanga ntabwo ahura",
+           "countries": {
+             "rwanda": "U Rwanda",
+             "uganda": "Ubugande",
+             "kenya": "Keniya",
+             "tanzania": "Tanzaniya"
+           }
+         },
+         "forgotPassword": {
+           "title": "Wibagiwe Ijambo ry'Ibanga",
+           "subtitle": "Andika imeyili yawe kugira ngo uhabwe uburyo bwo guhindura ijambo ry'ibanga.",
+           "email": "Imeyili",
+           "emailPlaceholder": "wowe@urugero.com",
+           "sendResetButton": "Ohereza Uburyo bwo Guhindura",
+           "backToLogin": "Garuka ku Kwinjira",
+           "successMessage": "Niba konti ibaho kuri {email}, uzakira uburyo bwo guhindura vuba.",
+           "redirectMessage": "Guhindukira ku kwinjira..."
+         }
+       },
+       "about": {
+         "pageTitle": "Ibidukikije",
+         "pageDescription": "Menya intego yacu, Uburyo ikora, n'uburyo dushobora koroshya urugendo rw'amamodoka.",
+         "hero": {
+           "title": "Guhindura",
+           "titleHighlight": "Urugendo rw'Amamodoka",
+           "description": "Ikurikirana ryoroshye, rimwe kandi rigezweho ryo gutumiza amatike y'amamodoka ahuriye n'abakoresha benshi. abagenzi barashobora byoroshye gushaka no gutumiza amatike y'amamodoka, kuraba gahunda, no gukurikirana urugendo rwabo.",
+           "tagline": "urugendo rwawe ni priorite yacu"
+         },
+         "mission": {
+           "title": "Intego Yacu",
+           "description": "Gukora urugendo rw'amamodoka",
+           "highlight": "rureshye, ruhendutse kandi rudafite ibibazo",
+           "suffix": "kuri bose."
+         },
+         "vision": {
+           "title": "Icyerekezo Cyacu",
+           "description": "Guha imbaraga umuryango hamwe na",
+           "highlight": "sisitemu y'ubwikorezi ubwenge, ihuriweho kandi ishoboka",
+           "suffix": "."
+         },
+         "features": {
+           "title": "Uburyo Ikora"
+         },
+         "howItWorks": {
+           "title": "Uburyo",
+           "titleHighlight": "Bukora"
+         },
+         "cta": {
+           "title": "Witeguye Gutangira Urugendo Rwubwenge?",
+           "button": "Tangira Gutumiza Ubu"
+         }
+       },
+       "routes-dashboard": {
+         "title": "Gucunga Inzira",
+         "showingRoutes": "Erekana {displayed} kuri {total} inzira",
+         "noRoutesFound": "Nta nzira yabonetse",
+         "table": {
+           "from": "Kuva",
+           "to": "Kuri",
+           "price": "Igiciro (RWF)",
+           "travelTime": "Igihe cy'Urugendo",
+           "distance": "Intera",
+           "actions": "Ibikorwa"
+         }
+       },
+       "conditions": {
+         "pageTitle": "Amategeko n'Amabwiriza",
+         "hero": {
+           "title": "Amategeko n'Amabwiriza",
+           "description": "Mu kugera no gutumiza ukoresheje ikurikirana ryacu, wemeye gukurikiza amategeko n'amabwiriza akurikira.",
+           "tagline": "urugendo rwawe ni priorite yacu"
+         },
+         "policy": {
+           "title": "Politike y'Uburyo Bwacu"
+         },
+         "actions": {
+           "bookNow": "Tumiza ubu",
+           "viewMore": "Reba Byinshi"
+         }
+       },
+       "schedule": {
+         "pageTitle": "Hitamo Intebe Zawe",
+         "hero": {
+           "title": "Waribwo ahantu heza",
+           "titleHighlight": "TegaBus",
+           "description": "Fumira urugendo rw'imodoka rutagira ibibazo hamwe n'ikurikirana ryacu ryingenzi ryo guhitamo intebe. Hitamo intebe yawe nziza kandi utangire urugendo rwawe wiizeye.",
+           "features": {
+             "secure": "Gutumiza Kwizewe",
+             "premium": "Serivisi Nziza",
+             "support": "Ubufasha 24/7"
+           }
+         },
+         "seatSelection": {
+           "title": "Hitamo Intebe Zawe",
+           "subtitle": "Hitamo intebe ukunda kugira ngo ukomeze gutumiza",
+           "legend": {
+             "reserved": "Byabitswe",
+             "available": "Biraboneka",
+             "selected": "Byahiswemo"
+           },
+           "cockpit": "Icyicaro cy'Umushoferi",
+           "seat": "Intebe"
+         },
+         "busInfo": {
+           "driver": "Umushoferi",
+           "driverPhone": "+250780990000",
+           "busNumber": "RAC 458 C",
+           "route": "Kigali → Uganda",
+           "departureTime": "10:00 AM",
+           "arrivalTime": "12:00 PM",
+           "totalSeats": "Intebe zose",
+           "availableSeats": "Intebe ziraboneka",
+           "seats": "Intebe",
+           "hours": "Amasaha",
+           "departure": "Gusohoka",
+           "arrival": "Kugera"
+         },
+         "booking": {
+           "active": "Birakora",
+           "pricePerSeat": "Igiciro kuri buri ntebe:",
+           "selectedSeats": "Intebe zahiswemo:",
+           "total": "Igiteranyo:",
+           "bookButton": "Tumiza Intebe Zahiswemo",
+           "selected": "Byahiswemo:",
+           "currency": "Frw"
+         }
+       },
+       "features": {
+         "oneStopBooking": {
+           "title": "Gutumiza Kumwe",
+           "description": "Abakoresha b'amamodoka benshi ahantu hamwe."
+         },
+         "realTimeAvailability": {
+           "title": "Kuboneka mu Gihe Nyacyo",
+           "description": "Kwemeza ako kanya no gukurikirana intebe mu buzima."
+         },
+         "securePayments": {
+           "title": "Kwishura Kwizewe",
+           "description": "UPI, amakarte, amasakoshi, n'ibindi."
+         },
+         "smartSearch": {
+           "title": "Gushakisha Kwubwenge",
+           "description": "Inyunganizi z'inzira, ibihe, n'amakora."
+         },
+         "support": {
+           "title": "Ubufasha 24/7",
+           "description": "Ubufasha bwihariye binyuze mu gusubiranya, imeyili cyangwa telefoni."
+         },
+         "discounts": {
+           "title": "Kugabanya Byihariye",
+           "description": "Porogaramu z'ubwenge bw'abagenzi bakunze kugenda."
+         }
+       },
+       "steps": {
+         "search": {
+           "title": "Shakisha",
+           "description": "Andika inzira, itariki, n'abagenzi."
+         },
+         "compare": {
+           "title": "Gereranya",
+           "description": "Hitamo amamodoka, intebe, n'ibiciro."
+         },
+         "book": {
+           "title": "Tumiza & Wishyure",
+           "description": "Kwishura kwizewe."
+         },
+         "ticket": {
+           "title": "E-Ticket",
+           "description": "Yakira na SMS/imeyili."
+         }
+       },
+       "terms": {
+         "generalTerms": {
+           "title": "Amategeko Rusange",
+           "content": "Amadeni yose agomba kubaho intebe kandi agomba gukurikiza politike zacu. Impinduka zirashobora kubaho zitabanje kubimenyesha."
+         },
+         "safety": {
+           "title": "Umutekano n'Ubuzima",
+           "content": "Umutekano w'abagenzi ni priorite yacu ya mbere. Nyamuneka ukurikize amabwiriza yose y'umushoferi kandi umenyeshe igikorwa icyo aricyo cyose giteye inkeke."
+         },
+         "booking": {
+           "title": "Gutumiza & Gusiba",
+           "content": "Amadeni yemezwa iyo amafaranga yashowe. Gusiba birashobora gutanga ibiciro ukurikije uko bitangwa hakiri kare."
+         },
+         "routes": {
+           "title": "Inzira z'Amamodoka & Gutinda",
+           "content": "Inzira zirashobora guhinduka. Gutinda birashobora kubaho kubera ibihe cyangwa urugendo, ariko turimo gushaka kumenya abakiriya vuba."
+         }
+       },
+       "hero": {
+         "title": "Gutumiza Amatike Byoroshye na TegaBus",
+         "description": "Siga umurongo muremure! Tumiza amatike yawe y'imodoka ako kanya, muburyo bwizewe kandi butagira ibibazo. Niba uri mu kugenda cyangwa urugendo rurerure, TegaBus ikora urugendo rwawe ruroroshye mu kanda rimwe na rimwe.",
+         "viewSchedules": "Reba Gahunda",
+         "search": {
+           "from": "Kuva",
+           "to": "Kugera",
+           "date": "Itariki yo Kugenda",
+           "findBus": "Shakisha Imodoka"
+         },
+         "quickBooking": "Gutumiza Vuba",
+         "popularRoutes": "Inzira Zikunda",
+         "whyChoose": "Kuki Wahitamo TegaBus?",
+         
+          "ready": "Witeguye gutangira urugendo?",
+          "headline": "Bika urugendo rwawe rutaha wizeye umutekano",
+          "call_us": "Duhamagare igihe cyose",
+          "phone": "(+250) 780 396 766",
+          "contact_button": "Twandikire",
+          "patterns_title": "Abo dukorana",
+          "safe_trips": "Ingendo zizewe",
+          "customer_ratings": "Amanota y'abakiriya",
+          "on_time_departures": "Guhaguruka ku gihe"
+
+
+
+
+       },
+       "settings": {
+         "title": "Ikiyaga cy'Igenamiterere",
+         "description": "Gushiraho igenamiterere ryose rya sisitemu ku bikorwa bya TegaBus",
+         "tabs": {
+           "profile": "Umwirondoro",
+           "preferences": "Byifuzwa",
+           "company": "Ikigo",
+           "pricing": "Ibiciro",
+           "security": "Umutekano",
+           "busManagement": "Gucunga Amamodoka",
+           "routeManagement": "Gucunga Inzira",
+           "ticketSettings": "Igenamiterere ry'Amatike"
+         },
+         "profile": {
+           "fullName": "Izina Ryose",
+           "email": "Imeyili",
+           "phoneNumber": "Numero ya Telefoni",
+           "passwordSettings": "Igenamiterere ry'Ijambo ry'Ibanga",
+           "currentPassword": "Ijambo ry'Ibanga Rikoreshwa",
+           "newPassword": "Ijambo ry'Ibanga Rishya",
+           "confirmNewPassword": "Emeza Ijambo ry'Ibanga Rishya",
+           "placeholders": {
+             "adminName": "Izina ry'umuyobozi",
+             "adminEmail": "Imeyili y'umuyobozi",
+             "supportContact": "Itumanaho ry'ubufasha"
+           }
+         },
+         "preferences": {
+           "language": "Ururimi",
+           "timezone": "Agace k'Igihe",
+           "notificationPreferences": "Byifuzwa ku Makuru",
+           "enableEmailNotifications": "Gushoboza Amakuru mu Imeyili",
+           "enableSmsAlerts": "Gushoboza Amakuru mu SMS (Twilio Integration)",
+           "placeholders": {
+             "selectLanguage": "Hitamo ururimi",
+             "selectTimezone": "Hitamo agace k'igihe"
+           }
+         },
+         "company": {
+           "companyName": "Izina ry'Ikigo",
+           "supportContact": "Itumanaho ry'Ubufasha",
+           "companyAddress": "Aderesi y'Ikigo",
+           "companyLogo": "Logo y'Ikigo",
+           "uploadNewLogo": "Kuraguza Logo Nshya",
+           "recommendedSize": "Ingano isabwa: 256x256px",
+           "placeholders": {
+             "enterCompanyAddress": "Injiza aderesi y'ikigo"
+           }
+         },
+         "pricing": {
+           "farePerKm": "Igiciro kuri KM",
+           "priceAdjustment": "Guhindura Igiciro (%)",
+           "priceAdjustmentNote": "Positive ikongera, negative ikagabanya"
+         },
+         "security": {
+           "authentication": "Kwemeza",
+           "enableTwoFactorAuth": "Gushoboza Kwemeza k'Intambwe Ebyiri (OTP)",
+           "twoFactorNote": "Umutekano w'inyongera ukoresheje Twilio SMS verification",
+           "sessionManagement": "Gucunga Igihe cy'Ukoresha",
+           "logoutAllDevices": "Gusohoka muri Ibikoresho byose",
+           "forceLogoutNote": "Guhagarika igihe cy'ukoresha muri byose bikorwa",
+           "auditLogs": "Inyandiko z'Ukurikirana",
+           "viewRecentActivity": "Reba Ibikorwa vuba"
+         },
+         "busManagement": {
+           "busCapacity": "Ubushobozi bw'Imodoka",
+           "seatColumns": "Inkingi z'Intebe",
+           "defaultBusLayout": "Imiterere y'Imodoka Isanzwe",
+           "placeholders": {
+             "selectColumns": "Hitamo inkingi"
+           }
+         },
+         "routeManagement": {
+           "routeStartPoint": "Ahantu Hatangirirwaho",
+           "routeEndPoint": "Ahantu Harangirirwaho",
+           "intermediateStops": "Ahagarara hagati",
+           "placeholders": {
+             "enterStops": "Injiza ahagarara hatandukanyijwe n'akamku"
+           }
+         },
+         "ticketSettings": {
+           "ticketFormat": "Imiterere y'Itike",
+           "enableUssdBooking": "Gushoboza Gutumiza na USSD",
+           "bookingConfirmationMessage": "Ubutumwa bwo Kwemeza Gutumiza",
+           "placeholders": {
+             "selectFormat": "Hitamo imiterere"
+           },
+           "defaultConfirmationMessage": "Gutumiza kwawe na TegaBus kwemejwe. Kode: {CODE}. Gusohoka: {TIME} kuva {LOCATION}."
+         },
+         "actions": {
+           "edit": "Hindura",
+           "cancel": "Kuraguza",
+           "saveSettings": "Kubika Igenamiterere",
+           "settingsSavedSuccessfully": "Igenamiterere ryabitswe neza!"
+         }
+       },
+       "support": {
+         "title": "Ikigo cy'Ubufasha bw'Umuyobozi",
+         "subtitle": "Ubufasha bw'Ikoranabuhanga",
+         "description": "Bona ubufasha ku bucuruzi bwa sisitemu, gukemura ibibazo n'ubufasha bw'ikoranabuhanga",
+         "emergencySupport": "Ubufasha bw'Ihutabana",
+         "tabs": {
+           "contact": "Kuvugana",
+           "faq": "Ibibazo Bikunze Kubazwa",
+           "resources": "Ibikoresho"
+         },
+         "contact": {
+           "technicalSupport": "Ubufasha bw'Ikoranabuhanga",
+           "adminHotline": "Telefoni y'Umuyobozi",
+           "priorityResponse": "Igisubizo cy'ibambere ku bibazo bya sisitemu",
+           "availableHours": "Biraboneka 7h-19h (GMT+2)",
+           "emailSupport": "Ubufasha bw'Imeyili",
+           "callNow": "Hamagara Ubu",
+           "submitTechnicalTicket": "Kohereza Itike ry'Ikoranabuhanga",
+           "issueType": "Ubwoko bw'Ikibazo",
+           "detailedDescription": "Ibisobanuro birambuye",
+           "criticalSystemIssue": "Ikibazo gikomeye cya Sisitemu",
+           "attachedScreenshots": "Amafoto y'ecran yometse",
+           "submitTechnicalTicketButton": "Kohereza Itike ry'Ikoranabuhanga",
+           "ticketSubmittedMessage": "Itike ry'ubufasha ryoherejwe. Itsinda ryacu rizasubiza mu masaha 2 y'akazi.",
+           "cancel": "Kuraguza",
+           "placeholders": {
+             "selectIssueType": "Hitamo ubwoko bw'ikibazo",
+             "descriptionPlaceholder": "Shyiramo: 1) Intambwe zo kubyongera 2) Imyitwarire yitezwe vs nyayo 3) Amafoto y'ecran niba aribyo"
+           },
+           "issueTypes": {
+             "system": "Gushiraho Sisitemu",
+             "payments": "Kwishongora kw'Ibyishyurwa",
+             "users": "Gucunga Abakoresha",
+             "reports": "Ibibazo by'Ibyamamaza",
+             "other": "Ikindi Kibazo cy'Ikoranabuhanga"
+           }
+         },
+         "faq": {
+           "categories": {
+             "all": "Ibibazo byose",
+             "system": "Gushiraho Sisitemu",
+             "users": "Gucunga Abakoresha",
+             "payments": "Ibyishyurwa",
+             "fleet": "Gucunga Amamodoka",
+             "security": "Umutekano"
+           },
+           "noQuestionsFound": "Nta kibazo cyabonetse muri iki kiciro",
+           "questions": {
+             "systemSetup": "Gute nashiraho sisitemu ku nshuro ya mbere?",
+             "systemSetupAnswer": "Jya kuri Igenamiterere rya Sisitemu > Gushiraho kwa Mbere. Kurikiza umuyobora w'intambwe kugira ngo ushireho amakuru y'ikigo cyawe, inzira n'ishyirwamo ry'ibyishyurwa.",
+             "addUsers": "Gute nongeraho abakoresha bashya b'umuyobozi bafite urwego rutandukanye rw'ukwinjira?",
+             "addUsersAnswer": "Jya ku Gucunga Abakoresha > Kongeraho Ukoresha. Tegura uruhare (Umuyobozi, Umuyobora, Ukoresha) hamwe n'ububasha bukwiye. Abayobora bashobora gucunga amadeni ariko ntibashobore igenamiterere rya sisitemu."
+           }
+         },
+         "resources": {
+           "title": "Ibikoresho by'Umuyobozi",
+           "systemTools": "Ibikoresho bya Sisitemu",
+           "adminSystemManual": "Igitabo cy'Ubunyangamugayo bwa Sisitemu y'Umuyobozi",
+           "completeGuide": "Igitabo cyuzuye cy'ibintu byose by'umuyobozi n'igenamiterere",
+           "databaseBackup": "Gufata Kopi y'Ububiko bw'Amakuru",
+           "securityAudit": "Ubugenzuzi bw'Umutekano",
+           "generateSystemReport": "Kora Raporo ya Sisitemu"
+         }
+       },
+       "users": {
+         "title": "Urutonde rw'Abakoresha",
+         "stats": {
+           "passengers": "Abagenzi",
+           "passengersDescription": "Abakoresha nyir'amaherezo ba sisitemu yacu",
+           "managers": "Abayobora",
+           "managersDescription": "Abayobora ba sisitemu yacu",
+           "administrator": "Umuyobozi",
+           "administratorDescription": "Agenzura sisitemu yose",
+           "verifiers": "Abemeza",
+           "verifiersDescription": "Abemeza bemeza amatike"
+         },
+         "table": {
+           "firstName": "Izina rya Mbere",
+           "lastName": "Izina ry'Umuryango",
+           "phone": "Telefoni",
+           "role": "Uruhare",
+           "country": "Igihugu",
+           "actions": "Ibikorwa"
+         },
+         "roles": {
+           "admin": "Umuyobozi",
+           "user": "Ukoresha",
+           "verifier": "Umemezi"
+         }
+       },
+       "reports": {
+         "title": "Raporo y'Ibikorwa bya TegaBus",
+         "todayIs": "Uyu munsi ni",
+         "dateRanges": {
+           "last24Hours": "Amasaha 24 ashize",
+           "last7Days": "Iminsi 7 ishize",
+           "last30Days": "Iminsi 30 ishize",
+           "placeholder": "Ikurikiranyeho ry'Amatariki"
+         },
+         "filterTypes": {
+           "allData": "Amakuru yose",
+           "bookingsOnly": "Amadeni gusa",
+           "revenueOnly": "Amafaranga gusa",
+           "placeholder": "Ubwoko bw'Ushyungu"
+         },
+         "exportButtons": {
+           "csv": "CSV",
+           "pdf": "PDF",
+           "pdfAlert": "Ibishobora gusohora PDF bizashyirwaho hano"
+         },
+         "tabs": {
+           "overview": "Incamake",
+           "routes": "Inzira",
+           "passengers": "Abagenzi"
+         },
+         "overview": {
+           "totalEarnings": "Amafaranga yose Yinjijwe",
+           "todaysBookings": "Amadeni y'Uyu Munsi",
+           "successfulDepartures": "Kugenda Gushoboka",
+           "activeRoutes": "Inzira Zikorera",
+           "revenueBookingsTrend": "Icyerekezo cy'Amafaranga n'Amadeni",
+           "bookingStatusDistribution": "Ikwirakwizwa ry'Imiterere y'Amadeni",
+           "activeBusesThroughoutDay": "Amamodoka Akorera mu Munsi",
+           "routesCovered": "Inzira Zifashijwe",
+           "totalOperationalRoutes": "Umubare w'inzira zikorera",
+           "passengerSatisfaction": "Kwishima kw'Abagenzi",
+           "basedOnSurveys": "Bishingiye ku bushakashatsi bwakozwe vuba",
+           "incidentReports": "Raporo z'Ibintu bibaye",
+           "thisMonth": "Uku kwezi",
+           "averageOccupancy": "Ubuzuzwa buri Kinini",
+           "acrossAllRoutes": "Ku nzira zose"
+         },
+         "routes": {
+           "routePerformance": "Imikorere y'Inzira",
+           "sortBy": "Tangira ku",
+           "routeUtilization": "Gukoresha Inzira",
+           "routePopularity": "Kugendwa kw'Inzira",
+           "sortOptions": {
+             "efficiency": "Ubwiza",
+             "revenue": "Amafaranga"
+           }
+         },
+         "passengers": {
+           "passengerDemographics": "Ubwoko bw'Abagenzi",
+           "passengerGrowth": "Kwiyongera kw'Abagenzi",
+           "peakTravelTimes": "Igihe cy'Urugendo Gikomeye"
+         }
+       },
+       "schedules": {
+         "title": "Gahunda",
+         "filters": {
+           "all": "Byose",
+           "onTime": "Ku Gihe",
+           "delayed": "Cyatinze",
+           "cancelled": "Byahagariswe"
+         },
+         "timeFrames": {
+           "today": "Uyu Munsi",
+           "daily": "Buri Munsi",
+           "weekly": "Icyumweru",
+           "monthly": "Ukwezi"
+         },
+         "table": {
+           "busNumber": "Numero-y-Imodoka",
+           "route": "Inzira",
+           "departureTime": "Igihe-cy-Kugenda",
+           "arrivalTime": "Igihe-cy-Kugera",
+           "driver": "Umushoferi",
+           "status": "Imiterere",
+           "actions": "Ibikorwa"
+         },
+         "status": {
+           "onTime": "Ku Gihe",
+           "delayed": "Cyatinze",
+           "cancelled": "Byahagariswe"
+         }
+       },
+       "booking": {
+         "title": "Urutonde rw'amadeni yose",
+         "showingBookings": "Erekana amadeni {count}",
+         "addBooking": "Kongeraho Ideni",
+         "addNewBooking": "Kongeraho Ideni Rishya",
+         "fillFormDescription": "Uzuza ifishi kugira ngo wongeraho ideni rishya.",
+         "form": {
+           "passengerName": "Izina ry'Umugenzi",
+           "route": "Inzira",
+           "seats": "Intebe",
+           "date": "Itariki",
+           "createBooking": "Kora Ideni"
+         },
+         "timeFrames": {
+           "daily": "Buri Munsi",
+           "weekly": "Icyumweru",
+           "monthly": "Ukwezi",
+           "selectTimeframe": "Hitamo igihe"
+         },
+         "cancel": "Kuraguza"
+       },
+       "buses": {
+         "title": "Urutonde rw'Amamodoka",
+         "stats": {
+           "totalBuses": "Amamodoka yose",
+           "totalBusesDescription": "Ingano y'amamodoka yose mu bikorwa",
+           "activeBuses": "Amamodoka Akorera",
+           "activeBusesDescription": "Amamodoka akoresha mu gihe cyose",
+           "inMaintenance": "Mu Gisesengura",
+           "inMaintenanceDescription": "Amamodoka arimo gusesengurwa cyangwa gusuzumwa",
+           "availableBuses": "Amamodoka Aboneka",
+           "availableBusesDescription": "Yiteguye gutegurwa amategeko"
+         },
+         "showing": "Erekana {displayed} kuri {total} amamodoka",
+         "table": {
+           "busNumber": "Numero y'Imodoka",
+           "status": "Imiterere",
+           "route": "Inzira",
+           "driver": "Umushoferi",
+           "actions": "Ibikorwa"
+         },
+         "status": {
+           "all": "Byose",
+           "active": "Ikorera",
+           "retired": "Yahagariswe",
+           "inMaintenance": "Mu Gisesengura",
+           "available": "Iraboneka"
+         }
+       },
+       "systemSettings": {
+         "actions": {
+           "edit": "Hindura"
+         }
+       },
+       "routes": {
+         "pageTitle": "Inzira Z'Amamodoka",
+         "search": {
+           "from": "Kuva",
+           "to": "Kugera",
+           "searchButton": "Shakisha Amamodoka",
+           "showFilters": " Amasosiyete y'Amamodoka",
+           "hideFilters": "Amasosiyete y'Amamodoka"
+         },
+         "busCompanies": {
+           "title": "Amasosiyete y'Amamodoka"
+         },
+         "availableBuses": {
+           "title": "Amamodoka Aboneka"
+         },
+         "popularRoutes": {
+           "title": "Inzira Zikundwa Cyane",
+           "buses": "amamodoka buri munsi",
+           "viewSchedules": "Reba amategeko"
+         }
+       },
+       "contact":{
+        
+
+  "title": "Twandikire",
+  "contact_us": "TWANDIKIRE",
+  "subtitle": "Gira icyo utubwira",
+  "placeholders": {
+    "name": "Izina ryawe",
+    "phone": "Nimero ya telefone",
+    "email": "Imeyili",
+    "subject": "Impamvu",
+    "message": "Ubutumwa"
+  },
+  "send_message": "Ohereza ubutumwa",
+  "description": "Niba ufite ikibazo, igitekerezo cyangwa ukeneye ubufasha, ntutinye kutwandikira. Turi hano kugirango urugendo rwawe rugende neza kandi rwishimirwe.",
+  "call_us": "Duhamagare igihe cyose",
+  "email_us": "Twoherereze imeyili",
+  "location": "Aho duherereye",
+  "address": "Kigali, Rwanda"
+},
+"info":{
+  "title_1": "Kubika byihuse kandi byoroshye",
+  "description_1": "Bika intebe yawe mu masegonda ukoresheje urubuga rworoshye gukoresha",
+
+  "title_2": "Ubwishyu bwizewe",
+  "description_2": "Ishyura wizeye ukoresheje uburyo bwizewe kandi butekanye",
+
+  "title_3": "Amakuru y'igihe nyacyo",
+  "description_3": "Menya ako kanya gahunda z’imodoka n’intebe zitarabikwa"
+},
+"company":{
+   "buses_label": "Imodoka : {count}",
+  "view_routes": "Reba imihanda"
 }
+
+
+
+
+       }
+     

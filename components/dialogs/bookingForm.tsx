@@ -11,12 +11,12 @@ import {
   AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 import { Input } from "@/components/ui/inputField";
 import { Label } from "@/components/ui/label";
 import { Button } from "../ui/button";
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 type BookingFormProps = {
   mode: "add" | "edit";
@@ -43,7 +43,7 @@ export function BookingFormDialog({ mode, initialData }: BookingFormProps) {
 
   const handleSubmit = () => {
     console.log(mode === "add" ? "Creating booking" : "Updating booking", form);
-  
+
   };
 
   return (
@@ -98,7 +98,7 @@ export function BookingFormDialog({ mode, initialData }: BookingFormProps) {
 
         <AlertDialogFooter className="mt-6">
           <AlertDialogCancel >Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleSubmit}  className={cn(buttonVariants({ variant: "default" }) )}>
+          <AlertDialogAction onClick={handleSubmit} className={cn(buttonVariants({ variant: "default" }))}>
             {mode === "add" ? "Create Booking" : "Update Booking"}
           </AlertDialogAction>
         </AlertDialogFooter>

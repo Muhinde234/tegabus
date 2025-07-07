@@ -12,7 +12,7 @@ import {
   AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 import { Input } from "@/components/ui/inputField";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -33,13 +33,13 @@ export default function AddBusForm() {
 
   const handleSubmit = () => {
     console.log("New Bus Added:", form);
-   
+
   };
 
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-       <Button className="flex items-center px-4 py-2 text-white bg-[#1EA17E] hover:bg-green-700 rounded-full text-sm font-medium transition-colors">
+        <Button className="flex items-center px-4 py-2 text-white bg-[#1EA17E] hover:bg-green-700 rounded-full text-sm font-medium transition-colors">
           Add Bus
           <span className="ml-1 text-xl leading-none">＋</span>
         </Button>

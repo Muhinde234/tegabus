@@ -22,7 +22,7 @@ import {
   AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 import { Input } from "@/components/ui/inputField";
 import { Label } from "@/components/ui/label";
 
@@ -44,26 +44,26 @@ export default function Bookings() {
 
   const handleSubmit = () => {
     console.log("New Booking:", form);
- 
+
   };
 
   return (
     <>
-      <div className="px-6 bg-white">
-        <div>
+      <div className="w-full px-6 bg-white">
+        <div className="w-full">
           <Topsection />
         </div>
 
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
           <div>
-            <h1 className="text-2xl font-bold">All Bookings list</h1>
+            <h1 className="text-xl lg:text-2xl font-bold">All Bookings list</h1>
             <p className="text-sm text-gray-500">
               Showing {tickets.length} bookings
             </p>
           </div>
 
           <div className="flex items-center gap-3">
-         
+
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="ghost" className="flex items-center px-4 py-2 text-white bg-[#1EA17E] hover:bg-green-700 rounded-full text-sm font-medium transition-colors whitespace-nowrap">

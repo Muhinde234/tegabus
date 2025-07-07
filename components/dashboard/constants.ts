@@ -6,7 +6,7 @@ import {
   House,
   Settings,
   Ticket,
-  Users, 
+  Users,
   LogOutIcon
 } from "lucide-react";
 
@@ -14,24 +14,25 @@ export type UserRole = 'admin' | 'manager' | 'user';
 
 export interface NavItem {
   path: string;
-  icon: React.ComponentType<{ size?: number }>;
+  icon: React.ComponentType<{ size?: number; }>;
   label: string;
   allowedRoles?: UserRole[];
 }
 
+// Note: These are now keys for translation - actual translations are handled in components
 export const navItems: NavItem[] = [
-  { path: "/admin", icon: House, label: "Dashboard", allowedRoles: ['admin', 'manager'] },
-  { path: "/admin/booking", icon: Ticket, label: "Booking", allowedRoles: ['admin', 'manager'] },
-  { path: "/admin/schedules", icon: Clock, label: "Schedule", allowedRoles: ['admin', 'manager'] },
-  { path: "/admin/buses", icon: BusFront, label: "Bus Management", allowedRoles: ['admin', 'manager'] },
-  { path: "/admin/routes", icon: BusFront, label: "Route Management", allowedRoles: ['admin', 'manager'] },
-  { path: "/admin/users", icon: Users, label: "User Management", allowedRoles: ['admin'] },
-  { path: "/admin/reports", icon: ChartLine, label: "Report", allowedRoles: ['admin', 'manager'] },
+  { path: "/admin", icon: House, label: "sidebar.dashboard", allowedRoles: ['admin', 'manager'] },
+  { path: "/admin/booking", icon: Ticket, label: "sidebar.booking", allowedRoles: ['admin', 'manager'] },
+  { path: "/admin/schedules", icon: Clock, label: "sidebar.schedule", allowedRoles: ['admin', 'manager'] },
+  { path: "/admin/buses", icon: BusFront, label: "sidebar.busManagement", allowedRoles: ['admin', 'manager'] },
+  { path: "/admin/routes", icon: BusFront, label: "sidebar.routeManagement", allowedRoles: ['admin', 'manager'] },
+  { path: "/admin/users", icon: Users, label: "sidebar.userManagement", allowedRoles: ['admin'] },
+  { path: "/admin/reports", icon: ChartLine, label: "sidebar.report", allowedRoles: ['admin', 'manager'] },
 ];
 
 export const bottomNavItems: NavItem[] = [
-  { path: "/admin/settings", icon: Settings, label: "Settings" },
-  { path: "/admin/support", icon: HelpCircle, label: "Help & Support" },
-  {path:"/login", icon:LogOutIcon,label:"Logout"}
+  { path: "/admin/settings", icon: Settings, label: "sidebar.settings" },
+  { path: "/admin/support", icon: HelpCircle, label: "sidebar.helpSupport" },
+  { path: "/login", icon: LogOutIcon, label: "sidebar.logout" }
 ];
 

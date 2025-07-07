@@ -3,19 +3,28 @@
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Container from "../ui/container";
-import {Input} from "../ui/inputField";
-import {Button}from "../ui/button";
+import { Input } from "../ui/inputField";
+import { Button } from "../ui/button";
 import { links } from "../../helpers/constants";
 import Link from "next/link";
 import Logo from "./logo";
+import { useTranslations } from "next-intl";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
   const [subscribe, setSubscribe] = useState(false);
   const [emailAlert, setEmailAlert] = useState("");
-   const pathname = usePathname(); 
-   
+  const pathname = usePathname();
+  const t = useTranslations("footer");
+  const nav = useTranslations("navigation");
+
+  const translatedLinks = [
+    { path: "/", label: nav("home") },
+    { path: "/about", label: nav("about") },
+    { path: "/route", label: nav("routes") },
+    { path: "/conditions", label: nav("conditions") },
+  ];
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -32,12 +41,12 @@ const Footer = () => {
 
   const handleSubscribe = () => {
     if (!email.trim()) {
-      setEmailAlert("Please enter your email.");
+      setEmailAlert(t("enterEmail"));
       return;
     }
 
     if (!validateEmail(email)) {
-      setError("Enter an email address like example@mysite.com.");
+      setError(t("invalidEmail"));
       setEmailAlert("");
     } else {
       setError("");
@@ -55,17 +64,15 @@ const Footer = () => {
           <Link href="/">
             <Logo />
           </Link>
-          <p>For our latest booking tips and tricks</p>
-          <p>Subscribe below</p>
+          <p>{t("latestTips")}</p>
+          <p>{t("subscribe")}</p>
 
           <Input
-          
             name="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="example@tegabus.com"
-           
+            placeholder={t("emailPlaceholder")}
             className="border-b border-white"
           />
           {emailAlert && (
@@ -96,19 +103,21 @@ const Footer = () => {
               </svg>
             </div>
 
-            <span>
-              Yes, subscribe me to your <br />
-              newsletter
-            </span>
+            <span>{t("subscribeNewsletter")}</span>
 
-            <Button onClick={handleSubscribe} className="bg-lime-500 text-white rounded-full font-semibold transition hover:bg-lime-400  py-4 px-6 cursor-pointer ">Send</Button>
+            <Button
+              onClick={handleSubscribe}
+              className="bg-lime-500 text-white rounded-full font-semibold transition hover:bg-lime-400  py-4 px-6 cursor-pointer "
+            >
+              Send
+            </Button>
           </div>
         </div>
 
         <div className="flex flex-col mt-4">
-          <h3 className="font-semibold text-lg">Quick Links</h3>
+          <h3 className="font-semibold text-lg">{t("quickLinks")}</h3>
           <div className="flex flex-col mt-4 gap-2">
-            {links.map((link, idx) => (
+            {translatedLinks.map((link, idx) => (
               <Link
                 key={idx}
                 href={link.path}
@@ -123,26 +132,29 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col mt-4">
-          <h3 className="font-semibold text-lg">Services</h3>
+          <h3 className="font-semibold text-lg">{t("services")}</h3>
           <div className="flex flex-col gap-2 mt-4">
-            <Link href="/routes">Bus Routes</Link>
-            <Link href="/login">Ticket Booking</Link>
-            <Link href="/condition">Customer Support</Link>
-            <Link href="/routes">Real-Time Updates</Link>
+            <Link href="/routes">{t("bus_routes")}</Link>
+            <Link href="/login">{t("ticket_booking")}</Link>
+            <Link href="/condition">{t("customer_support")}</Link>
+            <Link href="/routes">{t("real_time_updates")}</Link>
           </div>
         </div>
 
         <div className="flex flex-col gap-2 mt-4">
-          <h3 className="font-semibold text-lg">Contact</h3>
+          <h3 className="font-semibold text-lg">{t("contact")}</h3>
           <div className="flex flex-col gap-2 mt-4">
             <Link href="/">
-              <span className="text-gray-400">Email:</span> support@tegabus.com
+              <span className="text-gray-400">{t("email_label")}:</span>{" "}
+              support@tegabus.com
             </Link>
             <Link href="/">
-              <span className="text-gray-400">Phone:</span> (+250)780396766
+              <span className="text-gray-400">{t("phone_label")}:</span>{" "}
+              (+250)780396766
             </Link>
             <Link href="/">
-              <span className="text-gray-400">Address:</span> Kigali, Rwanda
+              <span className="text-gray-400">{t("address_label")}:</span>{" "}
+              Kigali, Rwanda
             </Link>
           </div>
         </div>
@@ -150,7 +162,9 @@ const Footer = () => {
 
       <Container>
         <div className="text-center text-sm text-white py-6 border-t border-green-800">
-          <p>© 2025 TegaBus. All rights reserved</p>
+          <p>
+            © 2025 {t("companyName")}. {t("allRightsReserved")}
+          </p>
         </div>
       </Container>
     </footer>

@@ -18,47 +18,54 @@
 }
 
 .theme-loader {
- @apply container mx-auto;
- position: fixed;
- width: 100%;
- height: 100%;
- background: transparent;
- z-index: 9999999999;
+  @apply container mx-auto;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 9999999999;
 }
+
 .spinner {
- position: absolute;
- top: 50%;
- left: 50%;
- transform: translateX(-50%) translateY(-50%);
- display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
 }
+
 .spinner-bounce {
- will-change: transform;
- height: 45px;
- width: 45px;
- border-radius: 50%;
- background: linear-gradient(to right, #0B3B2E, #1EA17E);
- display: inline-block;
- animation: bounces 1s ease-in-out infinite alternate;
- transform-origin: 50% 50%;
- &.one {
-  margin-right: 15px;
- }
- &.two {
-  margin-right: 15px;
-  animation-delay: .4s;
- }
- &.three {
-  animation-delay: .8s;
- }
+  will-change: transform;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  background: linear-gradient(to right, #0B3B2E, #1EA17E);
+  display: inline-block;
+  animation: bounces 1s ease-in-out infinite alternate;
+  transform-origin: 50% 50%;
+
+  &.one {
+    margin-right: 15px;
+  }
+
+  &.two {
+    margin-right: 15px;
+    animation-delay: .4s;
+  }
+
+  &.three {
+    animation-delay: .8s;
+  }
 }
+
 @keyframes bounces {
- 0% {
-  transform: scale(0.8);
- }
- 100% {
-  transform: scale(.2);
- }
+  0% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(.2);
+  }
 }
 
 @theme inline {
@@ -168,10 +175,13 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }

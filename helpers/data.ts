@@ -1,25 +1,10 @@
-import { ShieldCheckIcon, TicketIcon } from "lucide-react";
+
+
 import { Bus, Clock, Lock, Search, Phone, BadgePercent,BookText, ShieldCheck,  CreditCard  } from "lucide-react";
-import { describe } from "node:test";
 
 
-const infos = [
-  {
-    icon: TicketIcon,
-    title: "Fast & Easy Booking",
-    description: "Reserve your seat in seconds with our intuitive platform",
-  },
-  {
-    icon: ShieldCheckIcon,
-    title: "Secure Payments",
-    description: "Pay with confidence using reliable and safe payment options",
-  },
-  {
-    icon: TicketIcon,
-    title: "Real-Time Availability",
-    description: "Get instant updates on bus schedules and seat availability",
-  },
-];
+
+
   const features = [
     {
       title: "One-Stop Booking",
@@ -161,4 +146,4 @@ const tickets= Array.from({ length: 16}, () => ({
 
 
 
-export {infos,features,steps,busData,popularRoutes,busCompanies,termsData,scheduleItems,tickets};
+export {features,steps,busData,popularRoutes,busCompanies,termsData,scheduleItems,tickets};

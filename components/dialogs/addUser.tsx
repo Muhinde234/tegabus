@@ -11,7 +11,7 @@ import {
   AlertDialogFooter,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 import { Input } from "@/components/ui/inputField";
 import { Label } from "@/components/ui/label";
 import {
@@ -23,7 +23,9 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 
-export function AddUserForm({ onAddUser }: { onAddUser: (user: any) => void }) {
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function AddUserForm({ onAddUser }: { onAddUser: (user: any) => void; }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",

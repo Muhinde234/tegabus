@@ -12,7 +12,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 
 type ActionButtonProps = {
   onEdit?: () => void;
@@ -49,8 +49,8 @@ const ActionButton: React.FC<ActionButtonProps> = ({ onEdit, onDelete }) => {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border border-black">Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={onDelete} className="bg-red-700 text-white hover:bg-red-900">
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={onDelete}>
               Confirm
             </AlertDialogAction>
           </AlertDialogFooter>

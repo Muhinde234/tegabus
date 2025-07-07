@@ -11,7 +11,7 @@ import {
   AlertDialogFooter,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 import { Input } from "@/components/ui/inputField";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -25,7 +25,7 @@ interface Route {
   distance: string;
 }
 
-export function AddRouteForm({ onAddRoute }: { onAddRoute: (route: Route) => void }) {
+export function AddRouteForm({ onAddRoute }: { onAddRoute: (route: Route) => void; }) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     from: "",
@@ -37,9 +37,9 @@ export function AddRouteForm({ onAddRoute }: { onAddRoute: (route: Route) => voi
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ 
-      ...prev, 
-      [name]: name === "priceRwf" ? Number(value) : value 
+    setFormData(prev => ({
+      ...prev,
+      [name]: name === "priceRwf" ? Number(value) : value
     }));
   };
 

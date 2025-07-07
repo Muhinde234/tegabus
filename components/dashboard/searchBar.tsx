@@ -21,7 +21,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   onChange,
 }) => {
   return (
-    <div className={`flex items-center w-full max-w-md bg-gray-200 rounded-full ${className}`}>
+    <div className={`flex items-center w-full bg-gray-200 rounded-full ${className}`}>
       <div className={`bg-gray-300 rounded-full p-2 flex items-center justify-center ${iconContainerClassName}`}>
         <Search className={`h-4 w-4 text-white ${iconClassName}`} />
       </div>

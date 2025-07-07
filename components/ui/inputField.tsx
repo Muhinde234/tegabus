@@ -1,9 +1,9 @@
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-function Input({ className, type,required, ...props }: React.ComponentProps<"input">) {
-  return ( 
+function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  return (
     <input
       type={type}
       data-slot="input"
@@ -15,7 +15,7 @@ function Input({ className, type,required, ...props }: React.ComponentProps<"inp
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { Input }
+export { Input };

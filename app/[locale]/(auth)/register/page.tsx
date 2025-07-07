@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Logo from "@/components/common/logo";
 import { Input } from "@/components/ui/inputField";
@@ -15,6 +16,7 @@ import {
 } from "@/components/ui/select";
 
 export default function RegisterPage() {
+  const t = useTranslations("auth.register");
   const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -34,7 +36,7 @@ export default function RegisterPage() {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Passwords don't match");
+      alert(t("passwordMismatch"));
       return;
     }
 
@@ -44,29 +46,28 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen pt-18 flex flex-col items-center justify-start bg-white text-black px-4">
-      <div className="bg-white  border border-gray-300 mt-10 px-8 py-6 rounded-md w-full max-w-xl">
+      <div className="bg-white border border-gray-300 mt-10 px-8 py-6 rounded-md w-full max-w-xl">
         <Link href="/" className="flex justify-center items-center mb-6">
           <Logo />
-      
         </Link>
 
         <form className="space-y-4" onSubmit={handleRegister}>
           <div className="flex gap-4">
             <div className="w-1/2">
-              <label className="block text-sm mb-1">First name</label>
+              <label className="block text-sm mb-1">{t("firstName")}</label>
               <Input
                 name="firstName"
-                placeholder="e.g. John"
+                placeholder={t("firstNamePlaceholder")}
                 value={formData.firstName}
                 onChange={handleChange}
                 required
               />
             </div>
             <div className="w-1/2">
-              <label className="block text-sm mb-1">Last name</label>
+              <label className="block text-sm mb-1">{t("lastName")}</label>
               <Input
                 name="lastName"
-                placeholder="e.g. Doe"
+                placeholder={t("lastNamePlaceholder")}
                 value={formData.lastName}
                 onChange={handleChange}
                 required
@@ -75,11 +76,11 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label className="block text-sm mb-1">Email</label>
+            <label className="block text-sm mb-1">{t("email")}</label>
             <Input
               type="email"
               name="email"
-              placeholder="e.g. johndoe@gmail.com"
+              placeholder={t("emailPlaceholder")}
               value={formData.email}
               onChange={handleChange}
               required
@@ -87,11 +88,11 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label className="block text-sm mb-1">Phone number</label>
+            <label className="block text-sm mb-1">{t("phone")}</label>
             <Input
               type="tel"
               name="phone"
-              placeholder="e.g. +250788123456"
+              placeholder={t("phonePlaceholder")}
               value={formData.phone}
               onChange={handleChange}
               required
@@ -99,29 +100,29 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label className="block text-sm mb-1">Country of origin</label>
+            <label className="block text-sm mb-1">{t("country")}</label>
             <Select
               required
               onValueChange={(value) => setFormData({ ...formData, country: value })}
             >
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select the country" />
+                <SelectValue placeholder={t("countryPlaceholder")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="rwanda">Rwanda</SelectItem>
-                <SelectItem value="uganda">Uganda</SelectItem>
-                <SelectItem value="kenya">Kenya</SelectItem>
-                <SelectItem value="tanzania">Tanzania</SelectItem>
+                <SelectItem value="rwanda">{t("countries.rwanda")}</SelectItem>
+                <SelectItem value="uganda">{t("countries.uganda")}</SelectItem>
+                <SelectItem value="kenya">{t("countries.kenya")}</SelectItem>
+                <SelectItem value="tanzania">{t("countries.tanzania")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div>
-            <label className="block text-sm mb-1">Password</label>
+            <label className="block text-sm mb-1">{t("password")}</label>
             <Input
               type="password"
               name="password"
-              placeholder="Enter your password"
+              placeholder={t("passwordPlaceholder")}
               value={formData.password}
               onChange={handleChange}
               required
@@ -129,11 +130,11 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label className="block text-sm mb-1">Confirm password</label>
+            <label className="block text-sm mb-1">{t("confirmPassword")}</label>
             <Input
               type="password"
               name="confirmPassword"
-              placeholder="Re-enter your password"
+              placeholder={t("confirmPasswordPlaceholder")}
               value={formData.confirmPassword}
               onChange={handleChange}
               required
@@ -141,14 +142,14 @@ export default function RegisterPage() {
           </div>
 
           <Button type="submit" className="w-full mt-4 bg-[#0B3B2E] hover:bg-green-700">
-            Register
+            {t("registerButton")}
           </Button>
         </form>
 
         <p className="mt-6 text-center text-sm text-gray-600">
-          Already have an account?{" "}
+          {t("haveAccount")}{" "}
           <Link href="/login" className="text-green-700 hover:underline">
-            Login
+            {t("loginLink")}
           </Link>
         </p>
       </div>

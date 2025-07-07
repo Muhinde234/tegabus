@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   Select,
   SelectContent,
@@ -33,6 +34,8 @@ const Schedules: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>("All");
   const [timeFrame, setTimeFrame] = useState("today");
 
+  const t = useTranslations("schedules");
+
   const baseSchedule: Omit<Schedule, "id" | "status"> = {
     busNumber: "RAC 456 C",
     route: "Kigali to Bujumbura",
@@ -58,22 +61,28 @@ const Schedules: React.FC = () => {
       driver:
         i % 5 === 0
           ? {
-              ...baseSchedule.driver,
-              name: `Driver ${Math.floor(i / 5) + 1}`,
-            }
+            ...baseSchedule.driver,
+            name: `Driver ${Math.floor(i / 5) + 1}`,
+          }
           : baseSchedule.driver,
     }));
   });
 
-  const filters = ["All", "On Time", "Delayed", "Cancelled"];
+  const filters = [
+    { key: "All", label: t("filters.all") },
+    { key: "On Time", label: t("filters.onTime") },
+    { key: "Delayed", label: t("filters.delayed") },
+    { key: "Cancelled", label: t("filters.cancelled") },
+  ];
+
   const tableHeads = [
-    "Bus-Number",
-    "Route",
-    "Departure-Time",
-    "Arrival-Time",
-    "Driver",
-    "Status",
-    "Actions",
+    t("table.busNumber"),
+    t("table.route"),
+    t("table.departureTime"),
+    t("table.arrivalTime"),
+    t("table.driver"),
+    t("table.status"),
+    t("table.actions"),
   ];
 
   const getFilteredSchedules = () => {
@@ -104,24 +113,47 @@ const Schedules: React.FC = () => {
     return `${baseClasses} bg-white text-gray-700 border border-gray-300  hover:bg-green-300`;
   };
 
+  const getStatusTranslation = (status: string) => {
+    switch (status) {
+      case "On Time":
+        return t("status.onTime");
+      case "Delayed":
+        return t("status.delayed");
+      case "Cancelled":
+        return t("status.cancelled");
+      default:
+        return status;
+    }
+  };
+
   return (
     <div className=" px-6 bg-gray-50 ">
       <Topsection />
       <div className="">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-semibold text-gray-900">Schedules</h1>
+          <h1 className="text-2xl font-semibold text-gray-900">
+            {t("title")}
+          </h1>
           <div className="flex gap-3 items-center">
             <AddScheduleForm />
 
             <Select value={timeFrame} onValueChange={setTimeFrame}>
               <SelectTrigger className="h-10 w-[120px] border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
-                <SelectValue placeholder="Today" />
+                <SelectValue placeholder={t("timeFrames.today")} />
               </SelectTrigger>
               <SelectContent className="border border-gray-300">
-                <SelectItem value="today">Today</SelectItem>
-                <SelectItem value="daily">Daily</SelectItem>
-                <SelectItem value="weekly">Weekly</SelectItem>
-                <SelectItem value="monthly">Monthly</SelectItem>
+                <SelectItem value="today">
+                  {t("timeFrames.today")}
+                </SelectItem>
+                <SelectItem value="daily">
+                  {t("timeFrames.daily")}
+                </SelectItem>
+                <SelectItem value="weekly">
+                  {t("timeFrames.weekly")}
+                </SelectItem>
+                <SelectItem value="monthly">
+                  {t("timeFrames.monthly")}
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -131,11 +163,11 @@ const Schedules: React.FC = () => {
           {filters.map((filter) => (
             <Button
               variant="outline"
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={getFilterButtonClass(filter)}
+              key={filter.key}
+              onClick={() => setActiveFilter(filter.key)}
+              className={getFilterButtonClass(filter.key)}
             >
-              {filter}
+              {filter.label}
             </Button>
           ))}
         </div>
@@ -159,9 +191,8 @@ const Schedules: React.FC = () => {
                 {getFilteredSchedules().map((schedule, index) => (
                   <tr
                     key={schedule.id}
-                    className={`border-b border-gray-100 hover:bg-gray-50 ${
-                      index % 2 === 0 ? "bg-white" : "bg-gray-50/50"
-                    }`}
+                    className={`border-b border-gray-100 hover:bg-gray-50 ${index % 2 === 0 ? "bg-white" : "bg-gray-50/50"
+                      }`}
                   >
                     <td className="py-4 px-4 font-medium text-gray-900">
                       {schedule.busNumber}
@@ -202,7 +233,7 @@ const Schedules: React.FC = () => {
                           schedule.status
                         )}`}
                       >
-                        {schedule.status}
+                        {getStatusTranslation(schedule.status)}
                       </span>
                     </td>
                     <td className="py-4 px-4">

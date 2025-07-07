@@ -1,7 +1,6 @@
 
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 
@@ -20,9 +19,9 @@ export function FAQItem({ question, answer, isExpanded, onToggle }: FAQItemProps
         onClick={onToggle}
       >
         <span className="font-medium text-gray-800">{question}</span>
-        <ChevronDown 
-          size={20} 
-          className={`text-gray-500 transition-transform ${isExpanded ? 'rotate-180' : ''}`} 
+        <ChevronDown
+          size={20}
+          className={`text-gray-500 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
         />
       </button>
       {isExpanded && (

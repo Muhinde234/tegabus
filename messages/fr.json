@@ -1,7 +1,777 @@
 {
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos",
+    "routes": "Itinéraires",
+    "conditions": "Conditions",
+    "language": "Langue",
+    "getStarted": "Commencer"
+  },
+  "dashboard": {
+    "greeting": "Bonjour",
+    "welcomeBack": "bienvenue !",
+    "totalEarnings": "Revenus Totaux",
+    "todaysBookings": "Réservations d'Aujourd'hui"
+  },
+  "termsPage": {
+    "title": "Termes et Conditions",
+    "subtitle": "Ces Termes et Conditions régissent votre utilisation de la plateforme de réservation en ligne VeloTick et des services connexes. Veuillez les lire attentivement avant de procéder à toute réservation.",
+    "quickNavigation": "Navigation Rapide",
+    "sections": {
+      "general": {
+        "title": "1. Termes Généraux",
+        "welcome": "Bienvenue sur VeloTick, la plateforme de réservation de billets de bus en ligne. En accédant ou en utilisant notre site web, nos applications mobiles, ou tout autre service fourni par VeloTick (collectivement, les \"Services\"), vous acceptez d'être lié par ces Termes et Conditions.",
+        "binding": "Ces Termes et Conditions constituent un accord juridiquement contraignant entre vous et VeloTick concernant votre utilisation des Services. Si vous n'acceptez pas ces Termes et Conditions, vous ne pouvez pas accéder ou utiliser les Services.",
+        "modifications": "VeloTick se réserve le droit de modifier ces Termes et Conditions à tout moment. Votre utilisation continue des Services après la publication de Termes et Conditions modifiés signifie que vous acceptez et convenez des changements."
+      },
+      "booking": {
+        "title": "2. Politique de Réservation",
+        "process": {
+          "title": "2.1 Processus de Réservation",
+          "content": "Pour réserver un billet via nos Services, vous devez fournir des informations exactes et complètes, y compris une identification valide si requise. Toutes les informations fournies doivent correspondre à l'identification utilisée pendant le voyage."
+        },
+        "confirmation": {
+          "title": "2.2 Confirmation",
+          "content": "Après une réservation et un paiement réussis, vous recevrez une confirmation de réservation par email ou SMS. Cette confirmation sert de billet et doit être présentée lors de l'embarquement."
+        },
+        "seatAllocation": {
+          "title": "2.3 Attribution des Sièges",
+          "content": "Les numéros de sièges sont attribués selon le principe du premier arrivé, premier servi, ou selon la politique de l'opérateur de bus. VeloTick ne garantit pas la disponibilité de sièges spécifiques sauf indication explicite pendant le processus de réservation."
+        },
+        "ageRequirements": {
+          "title": "2.4 Exigences d'Âge",
+          "content": "Les passagers de moins de 18 ans peuvent être tenus de voyager avec un adulte. Pour les politiques d'âge spécifiques, veuillez vous référer aux termes de l'opérateur de bus respectif."
+        }
+      },
+      "payments": {
+        "title": "3. Paiements",
+        "methods": {
+          "title": "3.1 Méthodes de Paiement",
+          "content": "Nous acceptons diverses méthodes de paiement incluant les cartes de crédit, cartes de débit, banque en ligne, et portefeuilles numériques. Tous les paiements sont traités via des passerelles de paiement sécurisées."
+        },
+        "currency": {
+          "title": "3.2 Devise",
+          "content": "Tous les prix sont affichés dans la devise locale et incluent les taxes et frais applicables sauf indication contraire. Des frais bancaires supplémentaires peuvent s'appliquer pour les transactions internationales."
+        },
+        "priceChanges": {
+          "title": "3.3 Changements de Prix",
+          "content": "Les prix des billets sont sujets à changement sans préavis. Cependant, une fois qu'une réservation est confirmée et payée, le prix ne sera pas modifié."
+        }
+      },
+      "cancellations": {
+        "title": "4. Annulations et Remboursements",
+        "policy": {
+          "title": "4.1 Politique d'Annulation",
+          "content": "Les billets peuvent être annulés via notre site web ou application mobile. Les politiques d'annulation varient selon l'opérateur de bus et l'itinéraire."
+        },
+        "refundProcess": {
+          "title": "4.2 Processus de Remboursement",
+          "content": "Les remboursements pour billets annulés sont traités selon la politique d'annulation applicable. Le montant du remboursement dépend du moment de l'annulation par rapport à l'heure de départ."
+        },
+        "noShow": {
+          "title": "4.3 Politique de Non-Présentation",
+          "content": "Si vous ne montez pas dans le bus à l'heure de départ prévue sans annulation préalable, cela sera considéré comme une \"non-présentation\" et aucun remboursement ne sera fourni."
+        }
+      },
+      "userResponsibilities": {
+        "title": "5. Responsabilités de l'Utilisateur",
+        "accountSecurity": {
+          "title": "5.1 Sécurité du Compte",
+          "content": "Vous êtes responsable du maintien de la confidentialité de vos identifiants de compte et de toutes les activités qui se produisent sous votre compte."
+        },
+        "accurateInfo": {
+          "title": "5.2 Informations Exactes",
+          "content": "Vous devez fournir des informations exactes, actuelles et complètes pendant les processus d'inscription et de réservation."
+        },
+        "prohibited": {
+          "title": "5.3 Activités Interdites",
+          "content": "Vous acceptez de ne pas utiliser nos Services à des fins illégales ou non autorisées. Vous ne devez pas tenter d'obtenir un accès non autorisé à toute partie de nos Services ou interférer avec le bon fonctionnement de notre plateforme."
+        }
+      },
+      "privacy": {
+        "title": "6. Politique de Confidentialité",
+        "dataCollection": {
+          "title": "6.1 Collecte de Données",
+          "content": "Nous collectons les informations personnelles nécessaires pour fournir nos Services, incluant mais sans s'y limiter le nom, les détails de contact, et les informations de paiement."
+        },
+        "dataUsage": {
+          "title": "6.2 Utilisation des Données",
+          "content": "Vos données sont utilisées pour traiter les réservations, fournir un support client, améliorer nos services, et se conformer aux obligations légales."
+        },
+        "dataSecurity": {
+          "title": "6.3 Sécurité des Données",
+          "content": "Nous mettons en place des mesures de sécurité appropriées pour protéger vos informations personnelles. Cependant, aucune méthode de transmission sur Internet ou de stockage électronique n'est sûre à 100%, et nous ne pouvons garantir une sécurité absolue."
+        }
+      },
+      "contact": {
+        "title": "7. Informations de Contact",
+        "description": "Si vous avez des questions ou préoccupations concernant ces Termes et Conditions, veuillez contacter notre support client:",
+        "customerSupport": "Support Client",
+        "phone": "Téléphone",
+        "hours": "Heures",
+        "address": "Adresse",
+        "email": "support@tegabus.com",
+        "phoneNumber": "+250780396766",
+        "operatingHours": "24/7",
+        "location": "Kigali"
+      }
+    }
+  },
+  "footer": {
+    "latestTips": "Pour nos derniers conseils et astuces de réservation",
+    "subscribe": "Abonnez-vous ci-dessous",
+    "emailPlaceholder": "exemple@tegabus.com",
+    "enterEmail": "Veuillez entrer votre email.",
+    "invalidEmail": "Entrez une adresse email comme exemple@monsite.com.",
+    "subscribeNewsletter": "Oui, abonnez-moi à votre newsletter.",
+    "companyName": "TegaBus",
+    "companyDescription": "Votre partenaire de confiance pour des voyages en bus confortables et fiables dans la région.",
+    "quickLinks": "Liens Rapides",
+    "services": "Services",
+    "contact": "Nous Contacter",
+    "followUs": "Suivez-Nous",
+    "allRightsReserved": "Tous droits réservés.", 
+    "bus_routes": "Itinéraires de bus",
+    "ticket_booking": "Réservation de billets",
+    "customer_support": "Service client",
+    "real_time_updates": "Mises à jour en temps réel",
+    "email_label": "E-mail",
+  "phone_label": "Téléphone",
+  "address_label": "Adresse"
+
+
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion Utilisateur",
+      "subtitle": "Saisissez vos identifiants pour vous connecter",
+      "email": "Email",
+      "password": "Mot de passe",
+      "emailPlaceholder": "ex. dosta@gmail.com",
+      "passwordPlaceholder": "Entrez votre mot de passe",
+      "forgotPassword": "Mot de passe oublié?",
+      "loginButton": "Se connecter",
+      "noAccount": "Vous n'avez pas de compte?",
+      "registerLink": "S'inscrire",
+      "invalidCredentials": "Identifiants invalides"
+    },
+    "register": {
+      "firstName": "Prénom",
+      "lastName": "Nom de famille",
+      "email": "Email",
+      "phone": "Numéro de téléphone",
+      "country": "Pays d'origine",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "firstNamePlaceholder": "ex. Jean",
+      "lastNamePlaceholder": "ex. Dupont",
+      "emailPlaceholder": "ex. jeandupont@gmail.com",
+      "phonePlaceholder": "ex. +250788123456",
+      "countryPlaceholder": "Sélectionnez le pays",
+      "passwordPlaceholder": "Entrez votre mot de passe",
+      "confirmPasswordPlaceholder": "Ressaisissez votre mot de passe",
+      "registerButton": "S'inscrire",
+      "haveAccount": "Vous avez déjà un compte?",
+      "loginLink": "Se connecter",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "countries": {
+        "rwanda": "Rwanda",
+        "uganda": "Ouganda",
+        "kenya": "Kenya",
+        "tanzania": "Tanzanie"
+      }
+    },
+    "forgotPassword": {
+      "title": "Mot de passe oublié",
+      "subtitle": "Entrez votre email pour recevoir un lien de réinitialisation.",
+      "email": "Email",
+      "emailPlaceholder": "vous@exemple.com",
+      "sendResetButton": "Envoyer le lien de réinitialisation",
+      "backToLogin": "Retour à la connexion",
+      "successMessage": "Si un compte existe pour {email}, vous recevrez bientôt un lien de réinitialisation.",
+      "redirectMessage": "Redirection vers la connexion..."
+    }
+  },
+  "about": {
+    "pageTitle": "À Propos de Nous",
+    "pageDescription": "Découvrez notre mission, nos fonctionnalités et comment nous simplifions les voyages en bus.",
+    "hero": {
+      "title": "Révolutionner",
+      "titleHighlight": "les Voyages en Bus",
+      "description": "Une plateforme centralisée et transparente pour réserver des billets de bus auprès de multiples opérateurs. Les passagers peuvent facilement trouver et réserver des billets de bus, consulter les horaires et suivre leur voyage.",
+      "tagline": "votre voyage, notre priorité"
+     
+
+
+    },
+    "mission": {
+      "title": "Notre Mission",
+      "description": "Rendre les voyages en bus",
+      "highlight": "pratiques, abordables et sans tracas",
+      "suffix": "pour tous."
+    },
+    "vision": {
+      "title": "Notre Vision",
+      "description": "Autonomiser les communautés avec un",
+      "highlight": "système de transport intelligent, connecté et accessible",
+      "suffix": "."
+    },
+    "features": {
+      "title": "Fonctionnalités de Notre Système"
+    },
+    "howItWorks": {
+      "title": "Comment Ça",
+      "titleHighlight": "Fonctionne"
+    },
+    "cta": {
+      "title": "Prêt à Voyager Plus Intelligemment?",
+      "button": "Commencer à Réserver"
+    }
+  },
+  "routes-dashboard": {
+    "title": "Gestion des Itinéraires",
+    "showingRoutes": "Affichage de {displayed} sur {total} itinéraires",
+    "noRoutesFound": "Aucun itinéraire trouvé",
+    "table": {
+      "from": "De",
+      "to": "À",
+      "price": "Prix (RWF)",
+      "travelTime": "Temps de Voyage",
+      "distance": "Distance",
+      "actions": "Actions"
+    }
+  },
+  "conditions": {
+    "pageTitle": "Termes et Conditions",
+    "hero": {
+      "title": "Termes et Conditions",
+      "description": "En accédant et en réservant via notre plateforme, vous acceptez d'être lié par les termes et conditions suivants.",
+      "tagline": "votre voyage, notre priorité"
+    },
+    "policy": {
+      "title": "Notre Politique Système"
+    },
+    "actions": {
+      "bookNow": "Réserver maintenant",
+      "viewMore": "Voir Plus"
+    }
+  },
+  "schedule": {
+    "pageTitle": "Sélectionnez Vos Sièges",
+    "hero": {
+      "title": "Au bon endroit",
+      "titleHighlight": "TegaBus",
+      "description": "Vivez une réservation de bus transparente avec notre plateforme avancée de sélection de sièges. Choisissez votre siège parfait et embarquez pour votre voyage en toute confiance.",
+      "features": {
+        "secure": "Réservation Sécurisée",
+        "premium": "Service Premium",
+        "support": "Support 24/7"
+      }
+    },
+    "seatSelection": {
+      "title": "Sélectionnez Vos Sièges",
+      "subtitle": "Choisissez vos sièges préférés pour continuer la réservation",
+      "legend": {
+        "reserved": "Réservé",
+        "available": "Disponible",
+        "selected": "Sélectionné"
+      },
+      "cockpit": "Cockpit",
+      "seat": "Siège"
+    },
+    "busInfo": {
+      "driver": "Chauffeur",
+      "driverPhone": "+250780990000",
+      "busNumber": "RAC 458 C",
+      "route": "Kigali → Ouganda",
+      "departureTime": "10h00",
+      "arrivalTime": "12h00",
+      "totalSeats": "Sièges totaux",
+      "availableSeats": "Sièges disponibles",
+      "seats": "Sièges",
+      "hours": "Heures",
+      "departure": "Départ",
+      "arrival": "Arrivée"
+    },
+    "booking": {
+      "active": "Actif",
+      "pricePerSeat": "Prix par siège :",
+      "selectedSeats": "Sièges sélectionnés :",
+      "total": "Total :",
+      "bookButton": "Réserver les Sièges Sélectionnés",
+      "selected": "Sélectionné :",
+      "currency": "Frw"
+    }
+  },
+  "features": {
+    "oneStopBooking": {
+      "title": "Réservation Unique",
+      "description": "Plusieurs opérateurs de bus en un seul endroit."
+    },
+    "realTimeAvailability": {
+      "title": "Disponibilité en Temps Réel",
+      "description": "Confirmations instantanées et suivi des sièges en direct."
+    },
+    "securePayments": {
+      "title": "Paiements Sécurisés",
+      "description": "UPI, cartes, portefeuilles et plus encore."
+    },
+    "smartSearch": {
+      "title": "Recherche Intelligente",
+      "description": "Filtres pour itinéraires, horaires et commodités."
+    },
+    "support": {
+      "title": "Support 24/7",
+      "description": "Aide dédiée par chat, email ou téléphone."
+    },
+    "discounts": {
+      "title": "Remises Exclusives",
+      "description": "Programmes de fidélité pour voyageurs fréquents."
+    }
+  },
+  "steps": {
+    "search": {
+      "title": "Rechercher",
+      "description": "Entrez l'itinéraire, la date et les passagers."
+    },
+    "compare": {
+      "title": "Comparer",
+      "description": "Choisissez les bus, sièges et prix."
+    },
+    "book": {
+      "title": "Réserver et Payer",
+      "description": "Paiement sécurisé."
+    },
+    "ticket": {
+      "title": "E-Ticket",
+      "description": "Reçu par SMS/email."
+    }
+  },
+  "terms": {
+    "generalTerms": {
+      "title": "Conditions Générales",
+      "content": "Toutes les réservations sont soumises à la disponibilité des sièges et doivent se conformer à nos politiques. Des changements peuvent survenir sans préavis."
+    },
+    "safety": {
+      "title": "Sécurité et Sûreté",
+      "content": "La sécurité des passagers est notre priorité absolue. Veuillez suivre toutes les instructions du conducteur et signaler toute activité suspecte."
+    },
+    "booking": {
+      "title": "Réservation et Annulations",
+      "content": "Les réservations sont confirmées une fois le paiement reçu. Les annulations peuvent entraîner des frais selon leur précocité."
+    },
+    "routes": {
+      "title": "Itinéraires de Bus et Retards",
+      "content": "Les itinéraires peuvent changer. Des retards peuvent survenir en raison de la météo ou du trafic, mais nous nous efforçons d'informer rapidement les clients."
+    }
+  },
+  "hero": {
+    "title": "Réservation de Billets Transparente avec TegaBus",
+    "description": "Dites adieu aux longues files d'attente! Réservez vos billets de bus instantanément, en toute sécurité et sans tracas. Que vous fassiez la navette ou voyagiez sur de longues distances, TegaBus rend votre voyage plus fluide en quelques clics.",
+    "viewSchedules": "Voir les Horaires",
+    "search": {
+      "from": "De",
+      "to": "À",
+      "date": "Date de Départ",
+      "findBus": "Trouver un Bus"
+    },
+    
+      "safe_trips": "Voyages en toute sécurité",
+      "customer_ratings": "Avis des clients",
+      "on_time_departures": "Départs à l'heure",
+
+     "ready": "Prêt à partir ?",
+    "headline": "Réservez votre prochain voyage en toute confiance",
+    "call_us": "Appelez-nous à tout moment",
+    "phone": "(+250) 780 396 766",
+    "contact_button": "Contactez-nous",
+    "patterns_title": "Nos modèles",
+    "quickBooking": "Réservation Rapide",
+    "popularRoutes": "Itinéraires Populaires",
+    "whyChoose": "Pourquoi Choisir TegaBus?"
+  },
+  "settings": {
+    "title": "Tableau de Bord des Paramètres",
+    "description": "Configurer tous les paramètres système pour les opérations TegaBus",
+    "tabs": {
+      "profile": "Profil",
+      "preferences": "Préférences",
+      "company": "Entreprise",
+      "pricing": "Tarification",
+      "security": "Sécurité",
+      "busManagement": "Gestion des Bus",
+      "routeManagement": "Gestion des Itinéraires",
+      "ticketSettings": "Paramètres des Billets"
+    },
+    "profile": {
+      "fullName": "Nom Complet",
+      "email": "Email",
+      "phoneNumber": "Numéro de Téléphone",
+      "passwordSettings": "Paramètres de Mot de Passe",
+      "currentPassword": "Mot de Passe Actuel",
+      "newPassword": "Nouveau Mot de Passe",
+      "confirmNewPassword": "Confirmer le Nouveau Mot de Passe",
+      "placeholders": {
+        "adminName": "Nom de l'administrateur",
+        "adminEmail": "Email de l'administrateur",
+        "supportContact": "Contact de support"
+      }
+    },
+    "preferences": {
+      "language": "Langue",
+      "timezone": "Fuseau Horaire",
+      "notificationPreferences": "Préférences de Notification",
+      "enableEmailNotifications": "Activer les Notifications Email",
+      "enableSmsAlerts": "Activer les Alertes SMS (Intégration Twilio)",
+      "placeholders": {
+        "selectLanguage": "Sélectionner la langue",
+        "selectTimezone": "Sélectionner le fuseau horaire"
+      }
+    },
+    "company": {
+      "companyName": "Nom de l'Entreprise",
+      "supportContact": "Contact de Support",
+      "companyAddress": "Adresse de l'Entreprise",
+      "companyLogo": "Logo de l'Entreprise",
+      "uploadNewLogo": "Télécharger un Nouveau Logo",
+      "recommendedSize": "Taille recommandée : 256x256px",
+      "placeholders": {
+        "enterCompanyAddress": "Entrer l'adresse de l'entreprise"
+      }
+    },
+    "pricing": {
+      "farePerKm": "Tarif par KM",
+      "priceAdjustment": "Ajustement de Prix (%)",
+      "priceAdjustmentNote": "Positif pour augmentation, négatif pour diminution"
+    },
+    "security": {
+      "authentication": "Authentification",
+      "enableTwoFactorAuth": "Activer l'Authentification à Deux Facteurs (OTP)",
+      "twoFactorNote": "Couche de sécurité supplémentaire utilisant la vérification SMS Twilio",
+      "sessionManagement": "Gestion des Sessions",
+      "logoutAllDevices": "Déconnecter Tous les Appareils",
+      "forceLogoutNote": "Forcer la déconnexion de toutes les sessions actives",
+      "auditLogs": "Journaux d'Audit",
+      "viewRecentActivity": "Voir l'Activité Récente"
+    },
+    "busManagement": {
+      "busCapacity": "Capacité du Bus",
+      "seatColumns": "Colonnes de Sièges",
+      "defaultBusLayout": "Disposition par Défaut du Bus",
+      "placeholders": {
+        "selectColumns": "Sélectionner les colonnes"
+      }
+    },
+    "routeManagement": {
+      "routeStartPoint": "Point de Départ",
+      "routeEndPoint": "Point d'Arrivée",
+      "intermediateStops": "Arrêts Intermédiaires",
+      "placeholders": {
+        "enterStops": "Entrer les arrêts séparés par des virgules"
+      }
+    },
+    "ticketSettings": {
+      "ticketFormat": "Format du Billet",
+      "enableUssdBooking": "Activer la Réservation USSD",
+      "bookingConfirmationMessage": "Message de Confirmation de Réservation",
+      "placeholders": {
+        "selectFormat": "Sélectionner le format"
+      },
+      "defaultConfirmationMessage": "Votre réservation avec TegaBus est confirmée. Référence : {CODE}. Départ : {TIME} de {LOCATION}."
+    },
+    "actions": {
+      "edit": "Modifier",
+      "cancel": "Annuler",
+      "saveSettings": "Enregistrer les Paramètres",
+      "settingsSavedSuccessfully": "Paramètres enregistrés avec succès !"
+    }
+  },
+  "support": {
+    "title": "Centre de Support Administrateur",
+    "subtitle": "Assistance Technique",
+    "description": "Obtenez de l'aide pour l'administration système, le dépannage et le support technique",
+    "emergencySupport": "Support d'Urgence",
+    "tabs": {
+      "contact": "Contact",
+      "faq": "FAQ",
+      "resources": "Ressources"
+    },
+    "contact": {
+      "technicalSupport": "Support Technique",
+      "adminHotline": "Ligne d'Assistance Admin",
+      "priorityResponse": "Réponse prioritaire pour les problèmes système",
+      "availableHours": "Disponible 7h-19h (GMT+2)",
+      "emailSupport": "Support Email",
+      "callNow": "Appeler Maintenant",
+      "submitTechnicalTicket": "Soumettre un Ticket Technique",
+      "issueType": "Type de Problème",
+      "detailedDescription": "Description Détaillée",
+      "criticalSystemIssue": "Problème Système Critique",
+      "attachedScreenshots": "Captures d'écran jointes",
+      "submitTechnicalTicketButton": "Soumettre le Ticket Technique",
+      "ticketSubmittedMessage": "Ticket de support soumis. Notre équipe répondra dans les 2 heures ouvrables.",
+      "cancel": "Annuler",
+      "placeholders": {
+        "selectIssueType": "Sélectionner le type de problème",
+        "descriptionPlaceholder": "Inclure : 1) Étapes à reproduire 2) Comportement attendu vs réel 3) Captures d'écran si applicable"
+      },
+      "issueTypes": {
+        "system": "Configuration Système",
+        "payments": "Intégration de Paiement",
+        "users": "Gestion des Utilisateurs",
+        "reports": "Problèmes de Rapports",
+        "other": "Autre Problème Technique"
+      }
+    },
+    "faq": {
+      "categories": {
+        "all": "Toutes les Questions",
+        "system": "Configuration Système",
+        "users": "Gestion des Utilisateurs",
+        "payments": "Paiements",
+        "fleet": "Gestion de Flotte",
+        "security": "Sécurité"
+      },
+      "noQuestionsFound": "Aucune question trouvée dans cette catégorie",
+      "questions": {
+        "systemSetup": "Comment configurer le système pour la première fois ?",
+        "systemSetupAnswer": "Accédez à Paramètres Système > Configuration Initiale. Suivez l'assistant étape par étape pour configurer les détails de votre entreprise, les itinéraires et l'intégration de paiement.",
+        "addUsers": "Comment ajouter de nouveaux utilisateurs admin avec différents niveaux d'accès ?",
+        "addUsersAnswer": "Allez à Gestion des Utilisateurs > Ajouter un Utilisateur. Attribuez des rôles (Admin, Manager, Caissier) avec les permissions appropriées. Les managers peuvent gérer les réservations mais pas les paramètres système."
+      }
+    },
+    "resources": {
+      "title": "Ressources Administrateur",
+      "systemTools": "Outils Système",
+      "adminSystemManual": "Manuel Système Admin",
+      "completeGuide": "Guide complet de toutes les fonctionnalités et paramètres admin",
+      "databaseBackup": "Sauvegarde Base de Données",
+      "securityAudit": "Audit de Sécurité",
+      "generateSystemReport": "Générer un Rapport Système"
+    }
+  },
+  "users": {
+    "title": "Liste des Utilisateurs",
+    "stats": {
+      "passengers": "Passagers",
+      "passengersDescription": "Utilisateurs finaux de notre système",
+      "managers": "Gestionnaires",
+      "managersDescription": "Gestionnaires de notre système",
+      "administrator": "Administrateur",
+      "administratorDescription": "Contrôle l'ensemble du système",
+      "verifiers": "Vérificateurs",
+      "verifiersDescription": "Vérificateurs qui vérifient les billets"
+    },
+    "table": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "phone": "Téléphone",
+      "role": "Rôle",
+      "country": "Pays",
+      "actions": "Actions"
+    },
+    "roles": {
+      "admin": "Admin",
+      "user": "Utilisateur",
+      "verifier": "Vérificateur"
+    }
+  },
+  "reports": {
+    "title": "Rapport des Opérations TegaBus",
+    "todayIs": "Aujourd'hui c'est",
+    "dateRanges": {
+      "last24Hours": "Dernières 24 Heures",
+      "last7Days": "7 Derniers Jours",
+      "last30Days": "30 Derniers Jours",
+      "placeholder": "Plage de Dates"
+    },
+    "filterTypes": {
+      "allData": "Toutes les Données",
+      "bookingsOnly": "Réservations Seulement",
+      "revenueOnly": "Revenus Seulement",
+      "placeholder": "Type de Filtre"
+    },
+    "exportButtons": {
+      "csv": "CSV",
+      "pdf": "PDF",
+      "pdfAlert": "La fonctionnalité d'exportation PDF serait implémentée ici"
+    },
+    "tabs": {
+      "overview": "Aperçu",
+      "routes": "Itinéraires",
+      "passengers": "Passagers"
+    },
+    "overview": {
+      "totalEarnings": "Revenus Totaux",
+      "todaysBookings": "Réservations d'Aujourd'hui",
+      "successfulDepartures": "Départs Réussis",
+      "activeRoutes": "Itinéraires Actifs",
+      "revenueBookingsTrend": "Tendance Revenus et Réservations",
+      "bookingStatusDistribution": "Distribution du Statut des Réservations",
+      "activeBusesThroughoutDay": "Bus Actifs Durant la Journée",
+      "routesCovered": "Itinéraires Couverts",
+      "totalOperationalRoutes": "Total des itinéraires opérationnels",
+      "passengerSatisfaction": "Satisfaction des Passagers",
+      "basedOnSurveys": "Basé sur des enquêtes récentes",
+      "incidentReports": "Rapports d'Incidents",
+      "thisMonth": "Ce mois",
+      "averageOccupancy": "Occupation Moyenne",
+      "acrossAllRoutes": "Sur tous les itinéraires"
+    },
+    "routes": {
+      "routePerformance": "Performance des Itinéraires",
+      "sortBy": "Trier Par",
+      "routeUtilization": "Utilisation des Itinéraires",
+      "routePopularity": "Popularité des Itinéraires",
+      "sortOptions": {
+        "efficiency": "Efficacité",
+        "revenue": "Revenus"
+      }
+    },
+    "passengers": {
+      "passengerDemographics": "Démographie des Passagers",
+      "passengerGrowth": "Croissance des Passagers",
+      "peakTravelTimes": "Heures de Pointe de Voyage"
+    }
+  },
+  "schedules": {
+    "title": "Horaires",
+    "filters": {
+      "all": "Tous",
+      "onTime": "À l'Heure",
+      "delayed": "En Retard",
+      "cancelled": "Annulé"
+    },
+    "timeFrames": {
+      "today": "Aujourd'hui",
+      "daily": "Quotidien",
+      "weekly": "Hebdomadaire",
+      "monthly": "Mensuel"
+    },
+    "table": {
+      "busNumber": "Numéro-de-Bus",
+      "route": "Itinéraire",
+      "departureTime": "Heure-de-Départ",
+      "arrivalTime": "Heure-d'Arrivée",
+      "driver": "Chauffeur",
+      "status": "Statut",
+      "actions": "Actions"
+    },
+    "status": {
+      "onTime": "À l'Heure",
+      "delayed": "En Retard",
+      "cancelled": "Annulé"
+    }
+  },
+  "booking": {
+    "title": "Liste de toutes les réservations",
+    "showingBookings": "Affichage de {count} réservations",
+    "addBooking": "Ajouter une Réservation",
+    "addNewBooking": "Ajouter une Nouvelle Réservation",
+    "fillFormDescription": "Remplissez le formulaire pour ajouter une nouvelle réservation.",
+    "form": {
+      "passengerName": "Nom du Passager",
+      "route": "Itinéraire",
+      "seats": "Sièges",
+      "date": "Date",
+      "createBooking": "Créer une Réservation"
+    },
+    "timeFrames": {
+      "daily": "Quotidien",
+      "weekly": "Hebdomadaire",
+      "monthly": "Mensuel",
+      "selectTimeframe": "Sélectionner la période"
+    },
+    "cancel": "Annuler"
+  },
+  "buses": {
+    "title": "Liste des Bus",
+    "stats": {
+      "totalBuses": "Total des Bus",
+      "totalBusesDescription": "Taille complète de la flotte pour les opérations",
+      "activeBuses": "Bus Actifs",
+      "activeBusesDescription": "Bus actuellement en service",
+      "inMaintenance": "En Maintenance",
+      "inMaintenanceDescription": "Bus en réparation ou vérification",
+      "availableBuses": "Bus Disponibles",
+      "availableBusesDescription": "Prêts pour l'attribution d'horaire"
+    },
+    "showing": "Affichage de {displayed} sur {total} bus",
+    "table": {
+      "busNumber": "Numéro de Bus",
+      "status": "Statut",
+      "route": "Itinéraire",
+      "driver": "Conducteur",
+      "actions": "Actions"
+    },
+    "status": {
+      "all": "Tous",
+      "active": "Actif",
+      "retired": "Retiré",
+      "inMaintenance": "En Maintenance",
+      "available": "Disponible"
+    }
+  },
   "systemSettings": {
     "actions": {
       "edit": "Modifier"
     }
-  }
+  },
+  "routes": {
+    "pageTitle": "Itinéraires de Bus",
+    "search": {
+      "from": "De",
+      "to": "À",
+      "searchButton": "Rechercher des Bus",
+      "showFilters": "Afficher les Filtres des Compagnies de Bus",
+      "hideFilters": "Masquer les Filtres des Compagnies de Bus"
+    },
+    "busCompanies": {
+      "title": "Compagnies de Bus"
+    },
+    "availableBuses": {
+      "title": "Bus Disponibles"
+    },
+    "popularRoutes": {
+      "title": "Itinéraires Populaires",
+      "buses": "bus quotidiens",
+      "viewSchedules": "Voir les Horaires"
+    }
+  },
+  "contact":{
+  "title": "Contactez-nous",
+  "contact_us": "NOUS CONTACTER",
+  "subtitle": "Entrez en contact avec nous",
+  "placeholders": {
+    "name": "Votre nom",
+    "phone": "Numéro de téléphone",
+    "email": "Adresse e-mail",
+    "subject": "Objet",
+    "message": "Message"
+  },
+  "send_message": "Envoyer le message",
+  "description": "Pour toute question, suggestion ou assistance, n'hésitez pas à nous contacter. Nous sommes là pour rendre votre expérience de voyage agréable et sans souci.",
+  "call_us": "Appelez-nous à tout moment",
+  "email_us": "Envoyez-nous un e-mail",
+  "location": "Notre emplacement",
+  "address": "Kigali, Rwanda"
+},
+"info":
+{
+  "title_1": "Réservation rapide et facile",
+  "description_1": "Réservez votre siège en quelques secondes grâce à notre plateforme intuitive",
+
+  "title_2": "Paiements sécurisés",
+  "description_2": "Payez en toute confiance grâce à des options de paiement sûres et fiables",
+
+  "title_3": "Disponibilité en temps réel",
+  "description_3": "Recevez des mises à jour instantanées sur les horaires de bus et la disponibilité des sièges"
+},
+"company":{
+   "buses_label": "Bus : {count}",
+  "view_routes": "Voir les itinéraires"
+}
+
+
+  
 }
