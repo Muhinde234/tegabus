@@ -7,6 +7,7 @@ import avatar from "@/public/images/avatar.png";
 import Container from '@/components/ui/container';
 import Map from "@/components/dashboard/map";
 import Image from 'next/image';
+import getStripe from "@/utils/get-stripejs";
 
 const DEFAULT_CENTER: [number, number] = [-1.9499500, 30.0588500];
 
@@ -75,6 +76,38 @@ const SeatSelectionPage: React.FC = () => {
   };
 
   const totalPrice = selectedSeats.length * 2500;
+
+
+  const handleBooking = async () => {
+    if (selectedSeats.length === 0) return;
+
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          selectedSeats,
+          totalPrice,
+        }),
+      });
+
+
+      const { sessionId } = await response.json();
+
+      const stripe = await getStripe();
+
+      // @ts-ignore
+      const { error } = await stripe.redirectToCheckout({ sessionId });
+      if (error) {
+        console.error(error);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50">
@@ -278,6 +311,7 @@ const SeatSelectionPage: React.FC = () => {
                   </div>
 
                   <Button
+                      onClick={handleBooking}
                     className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 transform ${
                       selectedSeats.length > 0
                         ? 'bg-gradient-to-r from-green-600 to-green-700 text-white hover:from-green-700 hover:to-green-800 hover:scale-105 shadow-xl hover:shadow-2xl'
