@@ -12,7 +12,7 @@ import {
   AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 import { Input } from "@/components/ui/inputField";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";

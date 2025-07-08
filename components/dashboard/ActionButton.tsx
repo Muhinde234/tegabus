@@ -12,7 +12,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/components/ui/Dialog";
 
 type ActionButtonProps = {
   onEdit?: () => void;
