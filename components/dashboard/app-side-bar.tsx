@@ -11,7 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import Logo from '../common/logo';
+import Logo from '@/components/common/logo';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';

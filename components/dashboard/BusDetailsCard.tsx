@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import {  BusFront } from 'lucide-react';
-import { BusDetailsCardProps } from '../../types/type';
-import StatusBadge from '../dashboard/statusBadge';
+import { BusDetailsCardProps } from '@/types/type';
+import StatusBadge from './statusBadge';
 import DriverInfo from './DriverInfo';
 import Map from "@/components/dashboard/map";
 

@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import Container from "../ui/container";
 import { Input } from "../ui/inputField";
 import { Button } from "../ui/button";
-import { links } from "../../helpers/constants";
 import Link from "next/link";
 import Logo from "./logo";
 import { useTranslations } from "next-intl";

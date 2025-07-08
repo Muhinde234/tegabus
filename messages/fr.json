@@ -7,22 +7,58 @@
     "language": "Langue",
     "getStarted": "Commencer"
   },
+ "nav":{
+  "notifications": "Notifications"
+ },
   "dashboard": {
-    "greeting": "Bonjour",
-    "welcomeBack": "bienvenue !",
-    "totalEarnings": "Revenus Totaux",
-    "todaysBookings": "Réservations d'Aujourd'hui"
+    "seats": "Sièges",
+    "fully": "Complet",
+  "driver": "Chauffeur",
+  "list": "Liste des Bus",
+  "bus": "Bus en Service",
+  "active": "actif",
+  "inactive": "inactif",
+  "retired": "retiré",
+  "timeframe": "Période",
+  "daily":"Quotidien",
+  "weekly": "Hebdomadaire",
+  "monthly": "Mensuel",
+  "welcome":"Réservez votre siège et profitez de votre voyage",
+  "activity":"activite",
+  "today":"Aujourd'hui, c'est le",
+ "booking": "Réservations Récentes",
+  "greeting": "Bienvenue !",
+  "totalEarnings": "Gains totaux",
+  "todaysBookings": "Réservations du jour",
+  "successfulDepartures": "Départs réussis",
+  "notifications": "Notifications",
+  "userProfile": "Profil de l'utilisateur",
+  "manageYourBuses": "Gérer vos bus",
+  "addNewBus": "Ajouter un nouveau bus",
+  "welcomeBack": "Bon retour !",
+  "sidebar": {
+    "dashboard": "Tableau de bord",
+    "booking": "Réservation",
+    "schedule": "Emploi du temps",
+    "busManagement": "Gestion des bus",
+    "routeManagement": "Gestion des itinéraires",
+    "userManagement": "Gestion des utilisateurs",
+    "report": "Rapport",
+    "settings": "Paramètres",
+    "helpSupport": "Aide & Support",
+    "logout": "Déconnexion"
+  }
   },
   "termsPage": {
     "title": "Termes et Conditions",
-    "subtitle": "Ces Termes et Conditions régissent votre utilisation de la plateforme de réservation en ligne VeloTick et des services connexes. Veuillez les lire attentivement avant de procéder à toute réservation.",
+    "subtitle": "Ces Termes et Conditions régissent votre utilisation de la plateforme de réservation en ligne TegaBus et des services connexes. Veuillez les lire attentivement avant de procéder à toute réservation.",
     "quickNavigation": "Navigation Rapide",
     "sections": {
       "general": {
         "title": "1. Termes Généraux",
-        "welcome": "Bienvenue sur VeloTick, la plateforme de réservation de billets de bus en ligne. En accédant ou en utilisant notre site web, nos applications mobiles, ou tout autre service fourni par VeloTick (collectivement, les \"Services\"), vous acceptez d'être lié par ces Termes et Conditions.",
-        "binding": "Ces Termes et Conditions constituent un accord juridiquement contraignant entre vous et VeloTick concernant votre utilisation des Services. Si vous n'acceptez pas ces Termes et Conditions, vous ne pouvez pas accéder ou utiliser les Services.",
-        "modifications": "VeloTick se réserve le droit de modifier ces Termes et Conditions à tout moment. Votre utilisation continue des Services après la publication de Termes et Conditions modifiés signifie que vous acceptez et convenez des changements."
+        "welcome": "Bienvenue sur TegaBus, la plateforme de réservation de billets de bus en ligne. En accédant ou en utilisant notre site web, nos applications mobiles, ou tout autre service fourni par VeloTick (collectivement, les \"Services\"), vous acceptez d'être lié par ces Termes et Conditions.",
+        "binding": "Ces Termes et Conditions constituent un accord juridiquement contraignant entre vous et TegaBus concernant votre utilisation des Services. Si vous n'acceptez pas ces Termes et Conditions, vous ne pouvez pas accéder ou utiliser les Services.",
+        "modifications": "TegaBus se réserve le droit de modifier ces Termes et Conditions à tout moment. Votre utilisation continue des Services après la publication de Termes et Conditions modifiés signifie que vous acceptez et convenez des changements."
       },
       "booking": {
         "title": "2. Politique de Réservation",
@@ -141,6 +177,7 @@
 
 
   },
+  
   "auth": {
     "login": {
       "title": "Connexion Utilisateur",
@@ -176,7 +213,7 @@
       "passwordMismatch": "Les mots de passe ne correspondent pas",
       "countries": {
         "rwanda": "Rwanda",
-        "uganda": "Ouganda",
+        "uganda": "Uganda",
         "kenya": "Kenya",
         "tanzania": "Tanzanie"
       }
@@ -279,6 +316,18 @@
       "cockpit": "Cockpit",
       "seat": "Siège"
     },
+   
+    "busSchedule": {
+  "tableHeads": {
+    "passenger": "Passager",
+    "route": "Itinéraire",
+    "date": "Date",
+    "time": "Heure",
+    "seat": "Siège",
+    "Actions": "Actions"
+  }
+},
+
     "busInfo": {
       "driver": "Chauffeur",
       "driverPhone": "+250780990000",
@@ -372,6 +421,7 @@
     "search": {
       "from": "De",
       "to": "À",
+
       "date": "Date de Départ",
       "findBus": "Trouver un Bus"
     },

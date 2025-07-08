@@ -1,12 +1,25 @@
-import { tickets } from "../../helpers/data";
-import avatar from "../../public/images/avatar.png";
+"use client"
+
+import { tickets } from "@/helpers/data";
+import avatar from "@/public/images/avatar.png";
 import Image from "next/image";
 import ActionButton from "./ActionButton";
 
 
 
+
+
 const BusSchedules = () => {
-  const tableHeads = ["Passenger", "Route", "Date", "Time", "Seat", "Actions"];
+  const tableHeads = [
+  "passenger",
+  "route",
+  "date",
+  "time",    
+  "seat",
+  "Actions"
+];
+
+ 
   return (
     <>
       <div className="overflow-x-auto rounded-lg shadow-sm border border-gray-200">
@@ -68,3 +81,4 @@ const BusSchedules = () => {
 };
 
 export default BusSchedules;
+

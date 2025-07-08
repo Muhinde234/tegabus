@@ -3,9 +3,9 @@
 
 import React, { useState, useCallback, useMemo } from "react";
 
-import StatsCard from "../../../../components/dashboard/statCard";
-import BusTableRow from "../../../../components/dashboard/BusTableRow";
-import BusDetailsCard from "../../../../components/dashboard/BusDetailsCard";
+import StatsCard from "@/components/dashboard/statCard";
+import BusTableRow from "@/components/dashboard/BusTableRow";
+import BusDetailsCard from "@/components/dashboard/BusDetailsCard";
 import { Bus, BusStats } from "../../../../types/type";
 import Topsection from "@/components/dashboard/topsection";
 import AddBusForm from "@/components/dialogs/addBus";

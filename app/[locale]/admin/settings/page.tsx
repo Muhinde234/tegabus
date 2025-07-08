@@ -73,7 +73,6 @@ export default function SettingsPage() {
   const [intermediateStops, setIntermediateStops] = useState("");
   const [ticketFormat, setTicketFormat] = useState("QR Code");
   const [enableUSSD, setEnableUSSD] = useState(true);
-
   const languages = ["English", "French", "Kinyarwanda"];
   const timezones = ["Africa/Kigali", "Africa/Nairobi", "Africa/Johannesburg"];
   const currencies = ["RWF", "USD", "EUR"];
@@ -100,9 +99,9 @@ export default function SettingsPage() {
           <Greeting />
 
           <div className="flex items-center gap-4">
-            <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-100 transition-colors ">
+            <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-100 transition-colors cursor-pointer ">
               <Bell size={20} className="text-gray-600" />
-              <span className="sr-only">{nav("notifications")}</span>
+              
             </button>
 
             <div className="flex items-center gap-2 bg-gray-200 hover:bg-gray-50 rounded-full pl-2 pr-4 py-1 transition-colors cursor-pointer ">

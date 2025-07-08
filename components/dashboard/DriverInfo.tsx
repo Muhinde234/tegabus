@@ -1,5 +1,5 @@
 import React from 'react';
-import { Driver } from '../../types/type';
+import { Driver } from '@/types/type';
 import Image from 'next/image';
 
 interface DriverInfoProps {

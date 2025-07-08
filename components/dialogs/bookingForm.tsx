@@ -11,7 +11,7 @@ import {
   AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/Dialog";
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/inputField";
 import { Label } from "@/components/ui/label";
 import { Button } from "../ui/button";

@@ -1,13 +1,11 @@
 "use client";
 
-import SearchBar from "../dashboard/searchBar";
+import SearchBar from "./searchBar";
 import { useEffect, useState } from "react";
-import avatar from "../../public/images/avatar.png";
+import avatar from "@/public/images/avatar.png";
 import { Bell } from "lucide-react";
 import Image from "next/image";
-import { getGreeting } from "../../utils/getGreeting";
-
-
+import { getGreeting } from "@/utils/getGreeting";
 
 const Greeting = () => {
   const [greeting, setGreeting] = useState("");
@@ -51,7 +49,6 @@ const Topsection = () => {
         <div className="w-full lg:max-w-2xl order-3 md:order-2 lg:px-4">
           <SearchBar />
         </div>
-
       </div>
     </>
   );

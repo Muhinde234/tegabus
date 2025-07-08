@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 
 export default function TermsPage() {
   const t = useTranslations("conditions");
-  const tTerms = useTranslations("terms");
+
 
   return (
     <main className="">

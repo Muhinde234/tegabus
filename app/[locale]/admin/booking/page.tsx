@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Topsection from "../../../../components/dashboard/topsection";
+import Topsection from "@/components/dashboard/topsection";
 import { tickets } from "../../../../helpers/data";
 import {
   Select,
@@ -22,7 +22,7 @@ import {
   AlertDialogDescription,
   AlertDialogCancel,
   AlertDialogAction,
-} from "@/components/ui/Dialog";
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/inputField";
 import { Label } from "@/components/ui/label";
 

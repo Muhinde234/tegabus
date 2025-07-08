@@ -1,6 +1,6 @@
 import React from 'react';
-import { Bus } from '../../types/type';
-import StatusBadge from '../dashboard/statusBadge';
+import { Bus } from '@/types/type';
+import StatusBadge from './statusBadge';
 import DriverInfo from './DriverInfo';
 import ActionButton from './ActionButton';
 

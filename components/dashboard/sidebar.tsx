@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import clsx from 'clsx';
-import Logo from '../common/logo';
+import Logo from '@/components/common/logo';
 import { navItems, bottomNavItems } from './constants';
 
 const Sidebar = () => {

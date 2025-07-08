@@ -3,12 +3,11 @@
 import { useState} from "react";
 import { useTranslations } from "next-intl";
 import { MapPin, Filter, X, Loader2 } from "lucide-react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import BusCard from "@/components/busCard";
 import Container from "@/components/ui/container";
 import BusCompanyCard from "@/components/BusCompanyCard";
-import { busData, popularRoutes } from "@/helpers/data";
+import { busData } from "@/helpers/data";
 import busCompanies from "../../../../helpers/companies";
 import { Input } from "@/components/ui/inputField";
 import PopularRoutesSection from "@/components/popularRoute";

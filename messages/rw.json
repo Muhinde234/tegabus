@@ -7,7 +7,28 @@
          "language": "Ururimi",
          "getStarted": "Tangira"
        },
+       "nav":{
+        "notifications": "Amakuru"
+
+    
+       },
+
        "dashboard": {
+         "seats": "Imyanya",
+         "driver": "Umushoferi",
+         "list": "Urutonde rw'Amamodoka",
+         "bus": "Imodoka z'irigukora",
+         "active": "Izikora",
+         "inactive": "izidakora",
+         "booking":"izafashwe",
+         "fully": "Yuzuye",
+         "timeframe":"igengabihe",
+         "daily":"Buri Munsi",
+         "weekly":"Buri Icyumweru", 
+         "monthly":"Buri kwezi",
+         "welcome":"ihutire kwita kurugendo rwawe",
+         "activity": "Ibikorwa",
+         "today":"uyu munsi turi",
          "greeting": "turakwakira!",
          "totalEarnings": "Amafar Angie yose yinjijwe",
          "todaysBookings": "Amadeni y'uyu munsi",
@@ -18,7 +39,7 @@
          "addNewBus": "Ongeraho imodoka nshya",
          "welcomeBack": "turakwakira!",
          "sidebar": {
-           "dashboard": "Ikiyaga",
+           "dashboard": "ahabanza",
            "booking": "Gutumiza",
            "schedule": "Gahunda",
            "busManagement": "Gucunga Amamodoka",
@@ -26,20 +47,20 @@
            "userManagement": "Gucunga Abakoresha",
            "report": "Raporo",
            "settings": "Igenamiterere",
-           "helpSupport": "Ubufasha n'Ubwiyunge",
+           "helpSupport": "Ubufasha ",
            "logout": "Sohoka"
          }
        },
        "termsPage": {
          "title": "Amategeko n'Amabwiriza",
-         "subtitle": "Aya mategeko n'amabwiriza agena uburyo ukoresha ikurikirana rya VeloTick ryo gutumiza ku rubuga n'ubundi bwiyunge bujyanye nabyo. Nyamuneka ubasomere neza mbere yo gukomeza gutumiza.",
+         "subtitle": "Aya mategeko n'amabwiriza agena uburyo ukoresha ikurikirana rya TegaBus ryo gutumiza ku rubuga n'ubundi bwiyunge bujyanye nabyo. Nyamuneka ubasomere neza mbere yo gukomeza gutumiza.",
          "quickNavigation": "Kugenda Byihuse",
          "sections": {
            "general": {
              "title": "1. Amategeko Rusange",
              "welcome": "Murakaza neza kuri VeloTick, ikurikirana ryo gutumiza amatike y'amamodoka ku rubuga. Mu kugera cyangwa gukoresha urubuga rwacu, porogaramu z'igikoresho, cyangwa ubundi bwiyunge butangwa na VeloTick (hamwe, \"Ubwiyunge\"), wemeye kugorana n'aya mategeko n'amabwiriza.",
-             "binding": "Aya mategeko n'amabwiriza ari amasezerano y'amategeko akomeye hagati yawe na VeloTick bijyanye no gukoresha ubwiyunge. Niba utemera aya mategeko n'amabwiriza, ntushobora kugera cyangwa gukoresha ubwiyunge.",
-             "modifications": "VeloTick ifite uburenganzira bwo guhindura aya mategeko n'amabwiriza igihe icyo aricyo cyose. Gukomeza gukoresha ubwiyunge nyuma yo gushyiraho amategeko n'amabwiriza yahinduwe bivuze ko wemeye kandi wiyuze n'impinduka."
+             "binding": "Aya mategeko n'amabwiriza ari amasezerano y'amategeko akomeye hagati yawe na TegaBus bijyanye no gukoresha ubwiyunge. Niba utemera aya mategeko n'amabwiriza, ntushobora kugera cyangwa gukoresha ubwiyunge.",
+             "modifications": "TegaBus ifite uburenganzira bwo guhindura aya mategeko n'amabwiriza igihe icyo aricyo cyose. Gukomeza gukoresha ubwiyunge nyuma yo gushyiraho amategeko n'amabwiriza yahinduwe bivuze ko wemeye kandi wiyuze n'impinduka."
            },
            "booking": {
              "title": "2. Politiki yo Gutumiza",
@@ -755,6 +776,17 @@
            "viewSchedules": "Reba amategeko"
          }
        },
+
+       "busSchedule": {
+  "tableHeads": {
+    "passenger": "Umugenzi",
+    "route": "Inzira",
+    "date": "Itariki",
+    "seat": "Intebe",
+    "Actions": "Ibikorwa"
+  }
+},
+
        "contact":{
         
 
@@ -783,7 +815,7 @@
   "description_2": "Ishyura wizeye ukoresheje uburyo bwizewe kandi butekanye",
 
   "title_3": "Amakuru y'igihe nyacyo",
-  "description_3": "Menya ako kanya gahunda z’imodoka n’intebe zitarabikwa"
+  "description_3": "Menya ako kanya gahunda z’imodoka n’intebe zitarashira"
 },
 "company":{
    "buses_label": "Imodoka : {count}",
@@ -793,5 +825,5 @@
 
 
 
-       }
+}
      

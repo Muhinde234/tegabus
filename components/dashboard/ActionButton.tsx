@@ -1,7 +1,7 @@
 "use client";
 
 import { Pen, Trash2 } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,7 +12,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/Dialog";
+} from "@/components/ui/dialog";
 
 type ActionButtonProps = {
   onEdit?: () => void;

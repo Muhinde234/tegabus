@@ -8,11 +8,45 @@
     "getStarted": "Get started"
   },
   "dashboard": {
-    "greeting": "Good morning",
-    "welcomeBack": "welcome back!",
-    "totalEarnings": "Total Earnings",
-    "todaysBookings": "Today's Bookings"
-  },
+    "seats": "Seats",
+    "fully": "Fully packed",
+    "driver": "Driver",
+    "list": "Bus List",
+    "active": " Active ",
+    "inactive": "Inactive",
+    "retired": "retired",
+     "booking":"Recent Bookings",
+     "timeframe": "Timeframe",
+     "daily": "Daily",
+     "monthly": "Monthly",
+     "weekly": "Weekly",
+    "bus": "Today's Active Buses",
+  "welcome": "Secure the seat and enjoy your journey",
+  "activity":"Activity",
+  "today":"today is",
+  "greeting": "Welcome!",
+  "totalEarnings": "Total Earnings",
+  "todaysBookings": "Today's Bookings",
+  "successfulDepartures": "Successful Departures",
+  "notifications": "Notifications",
+  "userProfile": "User Profile",
+  "manageYourBuses": "Manage Your Buses",
+  "addNewBus": "Add New Bus",
+  "welcomeBack": "Welcome Back!",
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "booking": "Booking",
+    "schedule": "Schedule",
+    "busManagement": "Bus Management",
+    "routeManagement": "Route Management",
+    "userManagement": "User Management",
+    "report": "Report",
+    "settings": "Settings",
+    "helpSupport": "Help & Support",
+    "logout": "Logout"
+  }
+},
+
   "termsPage": {
     "title": "Terms and Conditions",
     "subtitle": "These Terms and Conditions govern your use of the VeloTick online booking platform and related services. Please read them carefully before proceeding with any booking.",
@@ -20,8 +54,8 @@
     "sections": {
       "general": {
         "title": "1. General Terms",
-        "welcome": "Welcome to VeloTick, the online bus ticket booking platform. By accessing or using our website, mobile applications, or any other services provided by VeloTick (collectively, the \"Services\"), you agree to be bound by these Terms and Conditions.",
-        "binding": "These Terms and Conditions constitute a legally binding agreement between you and VeloTick regarding your use of the Services. If you do not agree to these Terms and Conditions, you may not access or use the Services.",
+        "welcome": "Welcome to TegaBus, the online bus ticket booking platform. By accessing or using our website, mobile applications, or any other services provided by VeloTick (collectively, the \"Services\"), you agree to be bound by these Terms and Conditions.",
+        "binding": "These Terms and Conditions constitute a legally binding agreement between you and TegaBus regarding your use of the Services. If you do not agree to these Terms and Conditions, you may not access or use the Services.",
         "modifications": "VeloTick reserves the right to modify these Terms and Conditions at any time. Your continued use of the Services following the posting of modified Terms and Conditions means that you accept and agree to the changes."
       },
       "booking": {
@@ -277,6 +311,16 @@
       },
       "cockpit": "Cockpit",
       "seat": "Seat"
+    },
+     "busSchedule": {
+      "tableHeads":{
+        "passenger":"Passenger",
+        "route":"Route",
+        "date":"Date",
+        "time":"Time",
+        "seat":"Seat",
+        "Actions":"Actions"
+      }
     },
     "busInfo": {
       "driver": "Driver",
