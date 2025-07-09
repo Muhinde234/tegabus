@@ -49,8 +49,8 @@ export default function Bookings() {
 
   return (
     <>
-      <div className="w-full px-6 bg-white">
-        <div className="w-full">
+      <div>
+        <div>
           <Topsection />
         </div>
 

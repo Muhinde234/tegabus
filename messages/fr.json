@@ -265,7 +265,7 @@
       "button": "Commencer à Réserver"
     }
   },
-  "routes-dashboard": {
+  "route": {
     "title": "Gestion des Itinéraires",
     "showingRoutes": "Affichage de {displayed} sur {total} itinéraires",
     "noRoutesFound": "Aucun itinéraire trouvé",

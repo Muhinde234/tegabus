@@ -47,6 +47,7 @@
   }
 },
 
+
   "termsPage": {
     "title": "Terms and Conditions",
     "subtitle": "These Terms and Conditions govern your use of the VeloTick online booking platform and related services. Please read them carefully before proceeding with any booking.",
@@ -261,7 +262,7 @@
       "button": "Start Booking Now"
     }
   },
-  "routes-dashboard": {
+  "route": {
     "title": "Routes Management",
     "showingRoutes": "Showing {displayed} of {total} routes",
     "noRoutesFound": "No routes found",

@@ -91,9 +91,9 @@ export default function SettingsPage() {
     window.history.pushState({}, '', url);
   };
   return (
-    <div className="px-6 mt-8 max-h-screen bg-gray-50   overflow-y-auto ">
+    <div>
 
-      <div className="">
+      <div>
 
         <div className="flex justify-between items-center mb-3 ">
           <Greeting />

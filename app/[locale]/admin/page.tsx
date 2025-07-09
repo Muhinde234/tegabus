@@ -83,7 +83,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className=" mt-8 mb-4 px-2 lg:px-6 bg-white max-h-screen">
+    <div className="  ">
       <div className="flex justify-between">
         <Greeting />
         <div className="flex items-center gap-2 shrink-0 order-2 md:order-3 mb-8">
