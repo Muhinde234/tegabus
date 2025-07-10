@@ -17,7 +17,7 @@ interface Route {
 }
 
 const TableHeader: React.FC = () => {
-  const t = useTranslations("routes");
+  const t = useTranslations("route");
 
   return (
     <thead className="bg-gray-100">
@@ -108,7 +108,7 @@ const RoutesManagement: React.FC = () => {
     }))
   );
 
-  const t = useTranslations("routes");
+  const t = useTranslations("route");
 
   const handleAddRoute = useCallback((newRoute: Route) => {
     setRoutes(prev => [...prev, newRoute]);
@@ -128,7 +128,7 @@ const RoutesManagement: React.FC = () => {
   const totalRoutesCount = routes.length;
 
   return (
-    <div className="px-6 bg-gray-50 min-h-screen">
+    <div>
       <Topsection />
       <div className="py-6">
         <header className="flex justify-between items-center mb-6">

@@ -127,7 +127,7 @@ const Schedules: React.FC = () => {
   };
 
   return (
-    <div className=" px-6 bg-gray-50 ">
+    <div>
       <Topsection />
       <div className="">
         <div className="flex justify-between items-center mb-6">

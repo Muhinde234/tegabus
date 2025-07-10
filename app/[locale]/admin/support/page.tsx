@@ -78,7 +78,7 @@ export default function AdminHelpSupportPage() {
     : adminFaqs.filter(faq => faq.category === activeFaqCategory);
 
   return (
-    <div className="min-h-screen bg-gray-50 px-6 mt-8">
+    <div>
       <div >
         <div className="flex justify-between items-start mb-6">
           <div>

@@ -89,8 +89,8 @@ export default function ReportDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-6">
-      <div className="">
+    <div className="bg-gradient-to-br from-gray-50 to-gray-100 ">
+      <div>
         <div className="flex justify-between">
           <Greeting />
 

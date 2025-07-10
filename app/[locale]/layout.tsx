@@ -38,7 +38,7 @@ export default async function RootLayout({
   }
   return (
    <html lang={locale} suppressHydrationWarning>
-      <body className={`${outfit.className} bg-gray-100`}>
+      <body className={`${outfit.className} `}>
          <NextIntlClientProvider locale={locale} messages={messages}>
         
           <Providers>
