@@ -1,4 +1,5 @@
 import { Ticket } from 'lucide-react';
+import Link from 'next/link';
 
 interface BusCardProps {
   route: string;
@@ -25,7 +26,10 @@ const BusCard: React.FC<BusCardProps> = ({
     <div className="bg-white border border-gray-300  rounded-lg shadow-md p-4 w-full max-w-xs">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Ticket className="bg-[#0B3B2E] text-white w-8 h-8 p-1 rounded-lg" />
+          <Link href="/login">
+            <Ticket className="bg-[#0B3B2E] text-white w-8 h-8 p-1 rounded-lg" />
+          </Link>
+         
           <span className="font-semibold text-gray-700">{route}</span>
         </div>
         <span className="font-semibold text-gray-800">{price}</span>
