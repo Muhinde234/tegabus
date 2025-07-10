@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { Outfit } from "next/font/google";
 import Providers from '@/components/progressProvider';
+import { TooltipProvider } from "@/components/ui/tooltip"
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
@@ -42,7 +43,7 @@ export default async function RootLayout({
          <NextIntlClientProvider locale={locale} messages={messages}>
         
           <Providers>
-            {children}
+              <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
           </Providers>
           </NextIntlClientProvider>
       </body>

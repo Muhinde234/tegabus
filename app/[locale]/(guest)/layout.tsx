@@ -1,5 +1,6 @@
 import Footer from "@/components/common/footer";
 import Navbar from "@/components/common/navbar";
+import { FloatingChatWidget } from "@/components/features/chatbot/floating-chat-widget"
 
 export default function GuestLayout({
   children,
@@ -10,6 +11,7 @@ export default function GuestLayout({
     <div>
       <Navbar />
         {children}
+         <FloatingChatWidget />
       <Footer />
     </div>
   );
