@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { steps } from "../../../../helpers/data";
 import FeatureSection from "@/components/ui/featureSection";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const AboutPage: React.FC = () => {
   const t = useTranslations("about");
@@ -90,9 +91,12 @@ const AboutPage: React.FC = () => {
             <h2 className="text-3xl font-bold text-[#0B3B2E] mb-6">
               {t("cta.title")}
             </h2>
-            <Button variant="default" className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-[150px] sm:w-[190px] h-[40px] cursor-pointer py-2 px-2">
+            <Link href="/login">
+             <Button variant="default" className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-[150px] sm:w-[190px] h-[40px] cursor-pointer py-2 px-2">
               {t("cta.button")}
             </Button>
+            </Link>
+           
           </div>
         </section>
       </div>
@@ -100,7 +104,7 @@ const AboutPage: React.FC = () => {
   );
 };
 
-// Component to render step cards with translations
+
 const StepCard: React.FC<{ item: any; }> = ({ item }) => {
   const tSteps = useTranslations("steps");
 
