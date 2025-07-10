@@ -98,7 +98,7 @@ export function FloatingChatWidget() {
                 onChange={(v) => setInput(v)}
                 value={input}
                 placeholder="Type your message..."
-                className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm resize-none min-h-[36px] max-h-20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm resize-none min-h-[36px] max-h-20 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
               <Button type="submit" size="sm" disabled={!input.trim() || isLoading} className="h-9 w-9 p-0 rounded-lg">
                 <ArrowUpIcon size={16} />
@@ -116,7 +116,7 @@ export function FloatingChatWidget() {
               onClick={() => setIsOpen(!isOpen)}
               className={cn(
                 "fixed bottom-4 right-4 h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 z-40",
-                isOpen ? "bg-gray-500 hover:bg-gray-600" : "bg-blue-500 hover:bg-blue-600",
+                isOpen ? "bg-gray-500 hover:bg-gray-600" : "bg-green-500 hover:bg-green-200",
               )}
             >
               {isOpen ? <X size={24} className="text-white" /> : <MessageCircle size={24} className="text-white" />}
