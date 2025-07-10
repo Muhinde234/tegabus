@@ -9,7 +9,7 @@ export default function DashboardLayout({ children }: { children: ReactNode; }) 
       <AppSidebar />
       <div className="w-full">
         <SidebarTrigger />
-        <main className="bg-gray-50 w-full min-h-screen">
+        <main className=" px-6 w-full min-h-screen bg-white">
           {children}
         </main>
       </div>
