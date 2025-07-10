@@ -12,14 +12,14 @@ import { Input } from "@/components/ui/inputField";
 export default function LoginPage() {
   const t = useTranslations("auth.login");
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("dosta@gmail.com");
+  const [email, setEmail] = useState("admin@gmail.com");
   const [password, setPassword] = useState("password123");
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (email === "dosta@gmail.com" && password === "password123") {
+    if (email === "admin@gmail.com" && password === "password123") {
       router.push("/admin");
     } else {
       alert(t("invalidCredentials"));
