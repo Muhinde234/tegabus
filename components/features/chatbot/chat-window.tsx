@@ -47,7 +47,7 @@ export function ChatWindow({
   return (
     <div className="fixed bottom-20 right-4 w-80 h-96 bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col z-50">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-blue-500 text-white rounded-t-lg">
+      <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-green-500 text-white rounded-t-lg">
         <div className="flex items-center space-x-2">
           <MessageCircle size={20} />
           <span className="font-semibold">{chatConfig.title}</span>
@@ -56,7 +56,7 @@ export function ChatWindow({
           {/* Settings Popover */}
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="ghost" size="sm" className="text-white hover:bg-blue-600 h-6 w-6 p-0">
+              <Button variant="ghost" size="sm" className="text-white hover:bg-green-600 h-6 w-6 p-0">
                 <Settings size={16} />
               </Button>
             </PopoverTrigger>
@@ -95,7 +95,7 @@ export function ChatWindow({
               </div>
             </PopoverContent>
           </Popover>
-          <Button variant="ghost" size="sm" onClick={onClose} className="text-white hover:bg-blue-600 h-6 w-6 p-0">
+          <Button variant="ghost" size="sm" onClick={onClose} className="text-white hover:bg-green-600 h-6 w-6 p-0">
             <X size={16} />
           </Button>
         </div>
@@ -120,7 +120,7 @@ export function ChatWindow({
               key={index}
               className={cn(
                 "max-w-[80%] rounded-lg px-3 py-2 text-sm",
-                message.role === "user" ? "bg-blue-500 text-white ml-auto" : "bg-gray-100 text-gray-900",
+                message.role === "user" ? "bg-green-500 text-white ml-auto" : "bg-gray-100 text-gray-900",
               )}
             >
               {message.content}
@@ -138,7 +138,7 @@ export function ChatWindow({
             onChange={(v) => setInput(v)}
             value={input}
             placeholder={chatConfig.inputPlaceholder}
-            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm resize-none min-h-[36px] max-h-20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm resize-none min-h-[36px] max-h-20 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
           />
           <Button type="submit" size="sm" disabled={!input.trim() || isLoading} className="h-9 w-9 p-0 rounded-lg">
             <ArrowUpIcon size={16} />
