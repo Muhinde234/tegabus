@@ -1,47 +1,79 @@
 "use client";
 
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Logo from "@/components/common/logo";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/inputField";
 import { Button } from "@/components/ui/button";
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
   SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import type { RegisterRequest } from "@/lib/types";
+import { authService } from "@/api/authService";
 
 export default function RegisterPage() {
   const t = useTranslations("auth.register");
   const router = useRouter();
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    country: "",
-    password: "",
-    confirmPassword: "",
+
+  // build schema with dynamic messages
+  const registerFormSchema = z
+    .object({
+      firstName: z.string().nonempty(t("firstNameRequired")),
+      lastName: z.string().nonempty(t("lastNameRequired")),
+      email: z.string().nonempty(t("emailRequired")).email(t("emailInvalid")),
+      phoneNumber: z
+        .string()
+        .nonempty(t("phoneRequired"))
+        .regex(/^\+?\d{10,15}$/, t("phoneInvalid")),
+      nationality: z.string().nonempty(t("countryPlaceholder")),
+      password: z
+        .string()
+        .nonempty(t("passwordRequired"))
+        .min(8, t("passwordTooShort")),
+      confirmPassword: z.string().nonempty(t("confirmPasswordRequired")),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+      path: ["confirmPassword"],
+      message: t("passwordMismatch"),
+    });
+
+  type RegisterFormValues = z.infer<typeof registerFormSchema>;
+
+  const form = useForm<RegisterFormValues>({
+    resolver: zodResolver(registerFormSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      nationality: "",
+      password: "",
+      confirmPassword: "",
+    },
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleRegister = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (formData.password !== formData.confirmPassword) {
-      alert(t("passwordMismatch"));
-      return;
-    }
-
-    console.log("User registered:", formData);
-    router.push("/login");
+  const onSubmit = (data: RegisterFormValues) => {
+    const { confirmPassword, ...submitData } = data;
+    authService.signup(submitData).then(() => {
+      router.push("/login");
+    });
   };
 
   return (
@@ -51,100 +83,155 @@ export default function RegisterPage() {
           <Logo />
         </Link>
 
-        <form className="space-y-4" onSubmit={handleRegister}>
-          <div className="flex gap-4">
-            <div className="w-1/2">
-              <label className="block text-sm mb-1">{t("firstName")}</label>
-              <Input
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <div className="flex gap-4">
+              <FormField
+                control={form.control}
                 name="firstName"
-                placeholder={t("firstNamePlaceholder")}
-                value={formData.firstName}
-                onChange={handleChange}
-                required
+                render={({ field }) => (
+                  <FormItem className="w-1/2">
+                    <FormLabel>{t("firstName")}</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder={t("firstNamePlaceholder")}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
-            </div>
-            <div className="w-1/2">
-              <label className="block text-sm mb-1">{t("lastName")}</label>
-              <Input
+              <FormField
+                control={form.control}
                 name="lastName"
-                placeholder={t("lastNamePlaceholder")}
-                value={formData.lastName}
-                onChange={handleChange}
-                required
+                render={({ field }) => (
+                  <FormItem className="w-1/2">
+                    <FormLabel>{t("lastName")}</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder={t("lastNamePlaceholder")}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
             </div>
-          </div>
 
-          <div>
-            <label className="block text-sm mb-1">{t("email")}</label>
-            <Input
-              type="email"
+            <FormField
+              control={form.control}
               name="email"
-              placeholder={t("emailPlaceholder")}
-              value={formData.email}
-              onChange={handleChange}
-              required
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("email")}</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="email"
+                      placeholder={t("emailPlaceholder")}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
 
-          <div>
-            <label className="block text-sm mb-1">{t("phone")}</label>
-            <Input
-              type="tel"
-              name="phone"
-              placeholder={t("phonePlaceholder")}
-              value={formData.phone}
-              onChange={handleChange}
-              required
+            <FormField
+              control={form.control}
+              name="phoneNumber"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("phone")}</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="tel"
+                      placeholder={t("phonePlaceholder")}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
 
-          <div>
-            <label className="block text-sm mb-1">{t("country")}</label>
-            <Select
-              required
-              onValueChange={(value) => setFormData({ ...formData, country: value })}
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder={t("countryPlaceholder")} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="rwanda">{t("countries.rwanda")}</SelectItem>
-                <SelectItem value="uganda">{t("countries.uganda")}</SelectItem>
-                <SelectItem value="kenya">{t("countries.kenya")}</SelectItem>
-                <SelectItem value="tanzania">{t("countries.tanzania")}</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+            <FormField
+              control={form.control}
+              name="nationality"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("country")}</FormLabel>
+                  <FormControl>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder={t("countryPlaceholder")} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="rwanda">
+                          {t("countries.rwanda")}
+                        </SelectItem>
+                        <SelectItem value="uganda">
+                          {t("countries.uganda")}
+                        </SelectItem>
+                        <SelectItem value="kenya">
+                          {t("countries.kenya")}
+                        </SelectItem>
+                        <SelectItem value="tanzania">
+                          {t("countries.tanzania")}
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <div>
-            <label className="block text-sm mb-1">{t("password")}</label>
-            <Input
-              type="password"
+            <FormField
+              control={form.control}
               name="password"
-              placeholder={t("passwordPlaceholder")}
-              value={formData.password}
-              onChange={handleChange}
-              required
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("password")}</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder={t("passwordPlaceholder")}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
 
-          <div>
-            <label className="block text-sm mb-1">{t("confirmPassword")}</label>
-            <Input
-              type="password"
+            <FormField
+              control={form.control}
               name="confirmPassword"
-              placeholder={t("confirmPasswordPlaceholder")}
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("confirmPassword")}</FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="password"
+                      placeholder={t("confirmPasswordPlaceholder")}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
 
-          <Button type="submit" className="w-full mt-4 bg-[#0B3B2E] hover:bg-green-700">
-            {t("registerButton")}
-          </Button>
-        </form>
+            <Button
+              type="submit"
+              className="w-full mt-4 bg-[#0B3B2E] hover:bg-green-700"
+            >
+              {t("registerButton")}
+            </Button>
+          </form>
+        </Form>
 
         <p className="mt-6 text-center text-sm text-gray-600">
           {t("haveAccount")}{" "}

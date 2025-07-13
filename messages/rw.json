@@ -182,43 +182,70 @@
        },
        "auth": {
          "login": {
-           "title": "Kwinjira kw'Umukoresha",
-           "subtitle": "Uzuza amakuru yawe kugira ngo winjire",
-           "email": "Imeyili",
-           "password": "Ijambo ry'ibanga",
-           "emailPlaceholder": "urugero: dosta@gmail.com",
-           "passwordPlaceholder": "Andika ijambo ryawe ry'ibanga",
-           "forgotPassword": "Wibagiwe ijambo ry'ibanga?",
-           "loginButton": "Injira",
-           "noAccount": "Ntufite konti?",
-           "registerLink": "Iyandikishe",
-           "invalidCredentials": "Amakuru atari yo"
+          
+  "title": "Injira muri konti yawe",
+  "subtitle": "Andika imeyili na ijambo ry'ibanga",
+  "email": "Imeyili",
+  "emailPlaceholder": "Andika imeyili yawe",
+  "emailRequired": "Imeyili irakenewe",
+  "emailInvalid": "Imeyili yanditse nabi",
+  "password": "Ijambo ry’ibanga",
+  "passwordPlaceholder": "Andika ijambo ry'ibanga",
+  "passwordRequired": "Ijambo ry'ibanga rirakenewe",
+  "forgotPassword": "Wibagiwe ijambo ry'ibanga?",
+  "loginButton": "Injira",
+  "loggingIn": "Urimo kwinjira...",
+  "noAccount": "Nta konti ufite?",
+  "registerLink": "Iyandikishe",
+  "invalidCredentials": "Imeyili cyangwa ijambo ry'ibanga si byo",
+  "loginFailed": "Kwinjira byanze"
+
+
          },
          "register": {
-           "firstName": "Izina rya mbere",
-           "lastName": "Izina ry'umuryango",
-           "email": "Imeyili",
-           "phone": "Numero ya telefoni",
-           "country": "Igihugu cyawe",
-           "password": "Ijambo ry'ibanga",
-           "confirmPassword": "Menya ijambo ry'ibanga",
-           "firstNamePlaceholder": "urugero: Yohana",
-           "lastNamePlaceholder": "urugero: Mukamana",
-           "emailPlaceholder": "urugero: yohanamukamana@gmail.com",
-           "phonePlaceholder": "urugero: +250788123456",
-           "countryPlaceholder": "Hitamo igihugu",
-           "passwordPlaceholder": "Andika ijambo ryawe ry'ibanga",
-           "confirmPasswordPlaceholder": "Ongera wandike ijambo ryawe ry'ibanga",
-           "registerButton": "Iyandikishe",
-           "haveAccount": "Usanzwe ufite konti?",
-           "loginLink": "Injira",
-           "passwordMismatch": "Amagambo y'ibanga ntabwo ahura",
-           "countries": {
-             "rwanda": "U Rwanda",
-             "uganda": "Ubugande",
-             "kenya": "Keniya",
-             "tanzania": "Tanzaniya"
-           }
+        
+  "firstName": "Izina rya mbere",
+  "firstNamePlaceholder": "Andika izina rya mbere",
+  "firstNameRequired": "Izina rya mbere rirakenewe",
+
+  "lastName": "Izina rya nyuma",
+  "lastNamePlaceholder": "Andika izina rya nyuma",
+  "lastNameRequired": "Izina rya nyuma rirakenewe",
+
+  "email": "Imeyili",
+  "emailPlaceholder": "Andika aderesi yawe ya imeyili",
+  "emailRequired": "Imeyili irakenewe",
+  "emailInvalid": "Imeyili yanditswe nabi",
+
+  "phone": "Telefone",
+  "phonePlaceholder": "Andika nimero ya telefone",
+  "phoneRequired": "Telefone irakenewe",
+  "phoneInvalid": "Telefone yanditswe nabi",
+
+  "country": "Igihugu",
+  "countryPlaceholder": "Hitamo igihugu cyawe",
+  "countries": {
+    "rwanda": "Rwanda",
+    "uganda": "Uganda",
+    "kenya": "Kenya",
+    "tanzania": "Tanzaniya"
+  },
+
+  "password": "Ijambo ry’ibanga",
+  "passwordPlaceholder": "Andika ijambo ry’ibanga",
+  "passwordRequired": "Ijambo ry’ibanga rirakenewe",
+  "passwordTooShort": "Ijambo ry’ibanga rigomba kuba nibura inyuguti 8",
+
+  "confirmPassword": "Emeza ijambo ry’ibanga",
+  "confirmPasswordPlaceholder": "Andika ijambo ry’ibanga bwa kabiri",
+  "confirmPasswordRequired": "Kwemeza ijambo ry’ibanga birakenewe",
+  "passwordMismatch": "Amagambo y'ibanga ntabwo ahuye",
+
+  "registerButton": "Iyandikishe",
+  "haveAccount": "Ufite konti?",
+  "loginLink": "Injira"
+
+
          },
          "forgotPassword": {
            "title": "Wibagiwe Ijambo ry'Ibanga",

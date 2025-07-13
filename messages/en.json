@@ -178,43 +178,71 @@
   },
   "auth": {
     "login": {
-      "title": "User Login",
-      "subtitle": "Fill in your credentials to login",
-      "email": "Email",
-      "password": "Password",
-      "emailPlaceholder": "e.g. dosta@gmail.com",
-      "passwordPlaceholder": "Enter your password",
-      "forgotPassword": "Forgot password?",
-      "loginButton": "Login",
-      "noAccount": "Don't have an account?",
-      "registerLink": "Register",
-      "invalidCredentials": "Invalid credentials"
+     
+  "title": "Sign in to your account",
+  "subtitle": "Please enter your email and password",
+  "email": "Email",
+  "emailPlaceholder": "Enter your email",
+  "emailRequired": "Email is required",
+  "emailInvalid": "Invalid email address",
+  "password": "Password",
+  "passwordPlaceholder": "Enter your password",
+  "passwordRequired": "Password is required",
+  "forgotPassword": "Forgot password?",
+  "loginButton": "Log in",
+  "loggingIn": "Logging in...",
+  "noAccount": "Don't have an account?",
+  "registerLink": "Register",
+  "invalidCredentials": "Invalid email or password",
+  "loginFailed": "Login failed"
+
+ 
+      
     },
     "register": {
-      "firstName": "First name",
-      "lastName": "Last name",
-      "email": "Email",
-      "phone": "Phone number",
-      "country": "Country of origin",
-      "password": "Password",
-      "confirmPassword": "Confirm password",
-      "firstNamePlaceholder": "e.g. John",
-      "lastNamePlaceholder": "e.g. Doe",
-      "emailPlaceholder": "e.g. johndoe@gmail.com",
-      "phonePlaceholder": "e.g. +250788123456",
-      "countryPlaceholder": "Select the country",
-      "passwordPlaceholder": "Enter your password",
-      "confirmPasswordPlaceholder": "Re-enter your password",
-      "registerButton": "Register",
-      "haveAccount": "Already have an account?",
-      "loginLink": "Login",
-      "passwordMismatch": "Passwords don't match",
-      "countries": {
-        "rwanda": "Rwanda",
-        "uganda": "Uganda",
-        "kenya": "Kenya",
-        "tanzania": "Tanzania"
-      }
+     
+  "firstName": "First Name",
+  "firstNamePlaceholder": "Enter your first name",
+  "firstNameRequired": "First name is required",
+
+  "lastName": "Last Name",
+  "lastNamePlaceholder": "Enter your last name",
+  "lastNameRequired": "Last name is required",
+
+  "email": "Email",
+  "emailPlaceholder": "Enter your email",
+  "emailRequired": "Email is required",
+  "emailInvalid": "Invalid email format",
+
+  "phone": "Phone",
+  "phonePlaceholder": "Enter your phone number",
+  "phoneRequired": "Phone number is required",
+  "phoneInvalid": "Invalid phone number",
+
+  "country": "Country",
+  "countryPlaceholder": "Select your country",
+  "countries": {
+    "rwanda": "Rwanda",
+    "uganda": "Uganda",
+    "kenya": "Kenya",
+    "tanzania": "Tanzania"
+  },
+
+  "password": "Password",
+  "passwordPlaceholder": "Enter your password",
+  "passwordRequired": "Password is required",
+  "passwordTooShort": "Password must be at least 8 characters",
+
+  "confirmPassword": "Confirm Password",
+  "confirmPasswordPlaceholder": "Re-enter your password",
+  "confirmPasswordRequired": "Password confirmation is required",
+  "passwordMismatch": "Passwords do not match",
+
+  "registerButton": "Register",
+  "haveAccount": "Already have an account?",
+  "loginLink": "Log in"
+
+
     },
     "forgotPassword": {
       "title": "Forgot Password",

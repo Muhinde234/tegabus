@@ -5,6 +5,9 @@ import { TooltipProvider } from "@/components/ui/tooltip"
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { UserProvider } from "@/context/userContext";
+import { QueryClient } from "@tanstack/react-query";
+import { ReactQueryProvider } from "@/context/reqct-query-provider";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -36,13 +39,21 @@ export default async function RootLayout({
   } catch {
     notFound();
   }
+
+  const queryClient = new QueryClient();
   return (
    <html lang={locale} suppressHydrationWarning>
       <body className={`${outfit.className} `}>
          <NextIntlClientProvider locale={locale} messages={messages}>
         
           
-              <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
+              <ReactQueryProvider>
+                <TooltipProvider delayDuration={0}>
+                <UserProvider>
+                  {children}
+                </UserProvider>
+              </TooltipProvider>
+              </ReactQueryProvider>
           
           </NextIntlClientProvider>
       </body>

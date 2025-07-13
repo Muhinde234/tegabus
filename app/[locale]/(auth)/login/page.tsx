@@ -1,29 +1,71 @@
 "use client";
 
 import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import Logo from "@/components/common/logo";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/inputField"; 
+import { Input } from "@/components/ui/inputField";
+import useLogin from "@/hooks/useLogin";
+import { useUser } from "@/context/userContext";
+import type { User } from "@/lib/types";
+
+type LoginResponse = {
+  user: User;
+  token: string;
+};
+
+type LoginFormInputs = {
+  email: string;
+  password: string;
+  server?: {
+    type: string;
+    message: string;
+  };
+};
 
 export default function LoginPage() {
   const t = useTranslations("auth.login");
-  const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("dosta@gmail.com");
-  const [password, setPassword] = useState("password123");
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
+  const { login } = useUser();
+  const { error, isPending, mutate } = useLogin();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    setError,
+  } = useForm<LoginFormInputs>();
 
-    if (email === "dosta@gmail.com" && password === "password123") {
-      router.push("/admin");
-    } else {
-      alert(t("invalidCredentials"));
-    }
+  const onSubmit: SubmitHandler<LoginFormInputs> = (formData) => {
+    mutate(formData, {
+      onSuccess: (response) => {
+        const { user, token } = response;
+
+        login(user, token);
+
+        // TODO: They should also return the user after the login for simplicity when logging in
+        if (user) {
+          router.push("/");
+        } else {
+          router.push("/admin");
+        }
+      },
+      onError: (error: unknown) => {
+        const errorMessage =
+          error instanceof Error
+            ? error.message
+            : "Login failed. Please try again.";
+        setError("server", {
+          type: "manual",
+          message: errorMessage,
+        });
+      },
+    });
   };
 
   return (
@@ -42,19 +84,34 @@ export default function LoginPage() {
 
         <hr className="mb-6 border-gray-200" />
 
-        <form className="space-y-5" onSubmit={handleSubmit}>
+        {error && (
+          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
+            <p className="text-red-600 text-sm">
+              {error instanceof Error ? error.message : "Something went wrong"}
+            </p>
+          </div>
+        )}
+
+        <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
               {t("email")}
             </label>
             <Input
-              type="email"
               id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="email"
               placeholder={t("emailPlaceholder")}
-              required
+              {...register("email", {
+                required: t("emailRequired"),
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: t("emailInvalid"),
+                },
+              })}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+            )}
           </div>
 
           <div>
@@ -63,12 +120,12 @@ export default function LoginPage() {
             </label>
             <div className="relative">
               <Input
-                type={showPassword ? "text" : "password"}
                 id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                type={showPassword ? "text" : "password"}
                 placeholder={t("passwordPlaceholder")}
-                required
+                {...register("password", {
+                  required: t("passwordRequired"),
+                })}
                 className="pr-10"
               />
               <Button
@@ -91,8 +148,9 @@ export default function LoginPage() {
           <Button
             type="submit"
             className="w-full bg-[#0B3B2E] text-white py-2 rounded hover:bg-green-700 transition-colors"
+            disabled={isSubmitting || isPending}
           >
-            {t("loginButton")}
+            {isSubmitting || isPending ? t("loggingIn") : t("loginButton")}
           </Button>
         </form>
 
