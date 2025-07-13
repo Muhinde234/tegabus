@@ -194,7 +194,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-6">
+            <div className="overflow-hidden rounded-md flex flex-col gap-6">
               <div
                 className="border border-gray-200 flex justify-center items-center h-full relative z-1">
                 <Map width={500} height={200} center={DEFAULT_CENTER} zoom={6} className="rounded-lg " />
@@ -202,7 +202,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="flex justify-between items-center mt-4 rounded-xl shadow-sm bg-white p-8">
+          <div className="flex justify-between items-center mt-4 rounded-xl shadow-sm bg-white p-8 mb-4">
             <div className="flex flex-col gap-2">
               <h1 className="font-bold">{t("booking")}</h1>
          
@@ -225,7 +225,7 @@ const Dashboard = () => {
           <BusSchedules />
         </div>
 
-        <div className="w-[30%] group">
+        <div className="lg:w-[30%] group">
           <div className="relative">
             <Image
               src={person}

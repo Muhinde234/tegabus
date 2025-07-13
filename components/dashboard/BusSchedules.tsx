@@ -47,10 +47,10 @@ const BusSchedules = () => {
                     width={40}
                   />
 
-                  <div>
-                    <div className="font-medium text-gray-900">
+                  <div className="pe-4">
+                    <span className="max-w-[100px] block md:w-full font-medium truncate text-gray-900">
                       {ticket.holder_firstname + " " + ticket.holder_lastname}
-                    </div>
+                    </span>
                     <div className="text-gray-500 text-xs">
                       {ticket.holder_phonenumber}
                     </div>

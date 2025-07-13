@@ -26,7 +26,7 @@ const Hero = () => {
     <>
 
       <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-28 mt-16 sm:mt-20 md:mt-[84px]">
-        <section className="relative w-full h-[500px] sm:h-[400px] md:h-[500px] lg:h-[700px] rounded-3xl overflow-hidden">
+        <section className="relative top-12 md:top-0 w-full h-[500px] sm:h-[400px] md:h-[500px] lg:h-[700px] rounded-3xl overflow-hidden">
           <Image
             src={home}
             alt="Bus travel background"
@@ -35,23 +35,25 @@ const Hero = () => {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/50 flex flex-col px-4 sm:px-8 md:px-14 pt-8 sm:pt-10 md:pt-14">
-            <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 mt-12 sm:mt-16 md:mt-24">
-              {t("title")}
-            </h1>
-            <p className="text-white text-sm sm:text-md md:text-lg lg:w-[930px] mb-4 sm:mb-6">
-              {t("description")}
-            </p>
-            <Link href="/route">
-              <Button
-                variant="default"
-                className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-[140px] sm:w-[190px] h-[35px] cursor-pointer"
-              >
-                {t("viewSchedules")}
-              </Button>
-            </Link>
+            <div className="absolute -top-3">
+              <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 mt-12 sm:mt-16 md:mt-24">
+                {t("title")}
+              </h1>
+              <p className="text-white text-sm sm:text-md md:text-lg lg:w-[930px] mb-4 sm:mb-6">
+                {t("description")}
+              </p>
+              <Link href="/route">
+                <Button
+                    variant="default"
+                    className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-[140px] sm:w-[190px] h-[35px] cursor-pointer"
+                >
+                  {t("viewSchedules")}
+                </Button>
+              </Link>
+            </div>
           </div>
 
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] bg-white rounded-t-xl p-3 sm:p-4 md:p-6 flex flex-col sm:flex-row flex-wrap items-center justify-between gap-3 sm:gap-4 md:gap-6">
+          <div className="bottom-4 rounded-xl absolute md:bottom-0 left-1/2 transform -translate-x-1/2 w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] bg-white md:rounded-b-none md:rounded-t-xl p-3 sm:p-4 md:p-6 flex flex-col sm:flex-row flex-wrap items-center justify-between gap-3 sm:gap-4 md:gap-6">
             <Select>
               <SelectTrigger className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
                 <SelectValue placeholder={t("search.from")} />
@@ -75,7 +77,7 @@ const Hero = () => {
               className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               defaultValue="2025-05-25"
             />
-            <div className="">
+            <div className="w-full">
               <Link href="/login">
                 <Button
                   variant="secondary"
