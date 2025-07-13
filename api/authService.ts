@@ -1,5 +1,5 @@
 
-import type { LoginRequest, LoginResponse } from "@/lib/types";
+import type { LoginRequest, LoginResponse, MessageResponse, RegisterRequest } from "@/lib/types";
 import API from "@/api/axios";
 
 export const authService = {
@@ -11,5 +11,11 @@ export const authService = {
   logout: () => {
     localStorage.removeItem("auth_token");
     // Optionally clear user info
+  },
+
+  signup: async (data: RegisterRequest) => {
+    const response = await API.post<MessageResponse>("/auth/sign-up", data);
+    return response.data;
   }
+
 };

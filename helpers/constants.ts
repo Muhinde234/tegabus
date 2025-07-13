@@ -10,7 +10,7 @@ import {
   Users,
 } from "lucide-react";
 
-// These labels are now translation keys, to be used with useTranslations("navigation")
+
 export const links = [
   { path: "/", label: "home" },
   { path: "/about", label: "about" },

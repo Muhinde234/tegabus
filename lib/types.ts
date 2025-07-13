@@ -1,4 +1,5 @@
 
+
 export interface Route {
   origin: string;
   destination: string;
@@ -86,6 +87,14 @@ export interface User {
   phone: string;
   role: UserRole;
 }
+export interface RegisterRequest {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  nationality: string;
+  password: string;
+}
 
 export interface CreateUser {
   name: string;
@@ -104,4 +113,18 @@ export interface LoginRequest {
 export interface LoginResponse {
   token: string;
   user: User;
+}
+
+
+export interface MessageResponse {
+  message: string;
+}
+
+export interface ApiError {
+  type: string;
+  title: string;
+  status: number;
+  detail: string;
+  timestamp: string;
+  instance: string;
 }

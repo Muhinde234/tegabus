@@ -180,43 +180,70 @@
   
   "auth": {
     "login": {
-      "title": "Connexion Utilisateur",
-      "subtitle": "Saisissez vos identifiants pour vous connecter",
-      "email": "Email",
-      "password": "Mot de passe",
-      "emailPlaceholder": "ex. dosta@gmail.com",
-      "passwordPlaceholder": "Entrez votre mot de passe",
-      "forgotPassword": "Mot de passe oublié?",
-      "loginButton": "Se connecter",
-      "noAccount": "Vous n'avez pas de compte?",
-      "registerLink": "S'inscrire",
-      "invalidCredentials": "Identifiants invalides"
+    
+  "title": "Connectez-vous à votre compte",
+  "subtitle": "Veuillez entrer votre email et votre mot de passe",
+  "email": "Email",
+  "emailPlaceholder": "Entrez votre email",
+  "emailRequired": "L'email est requis",
+  "emailInvalid": "Adresse email invalide",
+  "password": "Mot de passe",
+  "passwordPlaceholder": "Entrez votre mot de passe",
+  "passwordRequired": "Le mot de passe est requis",
+  "forgotPassword": "Mot de passe oublié ?",
+  "loginButton": "Se connecter",
+  "loggingIn": "Connexion en cours...",
+  "noAccount": "Vous n'avez pas de compte ?",
+  "registerLink": "S'inscrire",
+  "invalidCredentials": "Email ou mot de passe incorrect",
+  "loginFailed": "Échec de la connexion"
+
+
     },
     "register": {
-      "firstName": "Prénom",
-      "lastName": "Nom de famille",
-      "email": "Email",
-      "phone": "Numéro de téléphone",
-      "country": "Pays d'origine",
-      "password": "Mot de passe",
-      "confirmPassword": "Confirmer le mot de passe",
-      "firstNamePlaceholder": "ex. Jean",
-      "lastNamePlaceholder": "ex. Dupont",
-      "emailPlaceholder": "ex. jeandupont@gmail.com",
-      "phonePlaceholder": "ex. +250788123456",
-      "countryPlaceholder": "Sélectionnez le pays",
-      "passwordPlaceholder": "Entrez votre mot de passe",
-      "confirmPasswordPlaceholder": "Ressaisissez votre mot de passe",
-      "registerButton": "S'inscrire",
-      "haveAccount": "Vous avez déjà un compte?",
-      "loginLink": "Se connecter",
-      "passwordMismatch": "Les mots de passe ne correspondent pas",
-      "countries": {
-        "rwanda": "Rwanda",
-        "uganda": "Uganda",
-        "kenya": "Kenya",
-        "tanzania": "Tanzanie"
-      }
+      
+  "firstName": "Prénom",
+  "firstNamePlaceholder": "Entrez votre prénom",
+  "firstNameRequired": "Le prénom est requis",
+
+  "lastName": "Nom",
+  "lastNamePlaceholder": "Entrez votre nom",
+  "lastNameRequired": "Le nom est requis",
+
+  "email": "Email",
+  "emailPlaceholder": "Entrez votre adresse email",
+  "emailRequired": "L'email est requis",
+  "emailInvalid": "Format d'email invalide",
+
+  "phone": "Téléphone",
+  "phonePlaceholder": "Entrez votre numéro de téléphone",
+  "phoneRequired": "Le numéro de téléphone est requis",
+  "phoneInvalid": "Numéro de téléphone invalide",
+
+  "country": "Pays",
+  "countryPlaceholder": "Sélectionnez votre pays",
+  "countries": {
+    "rwanda": "Rwanda",
+    "uganda": "Ouganda",
+    "kenya": "Kenya",
+    "tanzania": "Tanzanie"
+  },
+
+  "password": "Mot de passe",
+  "passwordPlaceholder": "Entrez votre mot de passe",
+  "passwordRequired": "Le mot de passe est requis",
+  "passwordTooShort": "Le mot de passe doit comporter au moins 8 caractères",
+
+  "confirmPassword": "Confirmer le mot de passe",
+  "confirmPasswordPlaceholder": "Ressaisissez votre mot de passe",
+  "confirmPasswordRequired": "La confirmation du mot de passe est requise",
+  "passwordMismatch": "Les mots de passe ne correspondent pas",
+
+  "registerButton": "S'inscrire",
+  "haveAccount": "Vous avez déjà un compte ?",
+  "loginLink": "Se connecter"
+
+
     },
     "forgotPassword": {
       "title": "Mot de passe oublié",
