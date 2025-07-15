@@ -1,161 +1,140 @@
 "use client";
 
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
-import { Eye, EyeOff } from "lucide-react";
+import {useState} from "react";
+import {useForm} from "react-hook-form";
+import {useRouter} from "next/navigation";
+import {useTranslations} from "next-intl";
+import {Eye, EyeOff} from "lucide-react";
 import Link from "next/link";
 import Logo from "@/components/common/logo";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/inputField";
-import useLogin from "@/hooks/useLogin";
-import { useUser } from "@/context/userContext";
-import type { User } from "@/lib/types";
+import {Button} from "@/components/ui/button";
+import {Input} from "@/components/ui/inputField";
+import {z} from "zod";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {useLogin} from "@/hooks/useAuth";
+import {toast} from "sonner";
 
-type LoginResponse = {
-  user: User;
-  token: string;
-};
+const loginSchema = z.object({
+  email: z
+      .string()
+      .min(1, { message: "Email is required" })
+      .email({ message: "Invalid email address" }),
+  password: z
+      .string()
+      .min(1, { message: "Password is required" })
+      .min(8, { message: "Password must be at least 8 characters" }),
+});
 
-type LoginFormInputs = {
-  email: string;
-  password: string;
-  server?: {
-    type: string;
-    message: string;
-  };
-};
+
+type LoginFormInputs = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const t = useTranslations("auth.login");
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const { login } = useUser();
-  const { error, isPending, mutate } = useLogin();
+  const {mutate, isPending} = useLogin();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    setError,
-  } = useForm<LoginFormInputs>();
+  const form = useForm<LoginFormInputs>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: { email: "", password: "" },
+  });
 
-  const onSubmit: SubmitHandler<LoginFormInputs> = (formData) => {
-    mutate(formData, {
+  const onSubmit = (data: LoginFormInputs) => {
+    mutate(data, {
       onSuccess: (response) => {
-        const { user, token } = response;
-
-        login(user, token);
-
-        // TODO: They should also return the user after the login for simplicity when logging in
-        if (user) {
+        const {user} = response;
+        if (user.role === "PASSENGER") {
           router.push("/");
+          toast.success("Login successfull");
         } else {
           router.push("/admin");
+          toast.success("Login successfull");
         }
-      },
-      onError: (error: unknown) => {
-        const errorMessage =
-          error instanceof Error
-            ? error.message
-            : "Login failed. Please try again.";
-        setError("server", {
-          type: "manual",
-          message: errorMessage,
-        });
-      },
-    });
+      }
+    })
   };
 
   return (
-    <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center px-4">
-      <div className="border border-gray-300 bg-white rounded-lg shadow-sm md:shadow-md w-full max-w-md p-8">
-        <div className="flex justify-center mb-6">
-          <Link href="/">
-            <Logo />
-          </Link>
-        </div>
-
-        <div className="text-center mb-6">
-          <h2 className="text-xl font-semibold text-gray-800">{t("title")}</h2>
-          <p className="mt-1 text-gray-500 text-sm">{t("subtitle")}</p>
-        </div>
-
-        <hr className="mb-6 border-gray-200" />
-
-        {error && (
-          <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
-            <p className="text-red-600 text-sm">
-              {error instanceof Error ? error.message : "Something went wrong"}
-            </p>
+      <div className="min-h-screen w-full bg-gray-50 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white border border-gray-200 rounded-lg shadow p-8">
+          <div className="flex justify-center mb-6">
+            <Link href="/">
+              <Logo />
+            </Link>
           </div>
-        )}
+          <h2 className="text-2xl font-semibold text-center mb-2">{t("title")}</h2>
+          <p className="text-center text-sm text-gray-500 mb-6">{t("subtitle")}</p>
 
-        <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              {t("email")}
-            </label>
-            <Input
-              id="email"
-              type="email"
-              placeholder={t("emailPlaceholder")}
-              {...register("email", {
-                required: t("emailRequired"),
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: t("emailInvalid"),
-                },
-              })}
-            />
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-            )}
-          </div>
-
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-              {t("password")}
-            </label>
-            <div className="relative">
-              <Input
-                id="password"
-                type={showPassword ? "text" : "password"}
-                placeholder={t("passwordPlaceholder")}
-                {...register("password", {
-                  required: t("passwordRequired"),
-                })}
-                className="pr-10"
+          <Form {...form}>
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-5"
+            >
+              <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field, fieldState }) => (
+                      <FormItem>
+                        <FormLabel>{t("email")}</FormLabel>
+                        <FormControl>
+                          <Input
+                              placeholder={t("emailPlaceholder")}
+                              {...field}
+                              type="email"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                  )}
               />
+
+              <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{t("password")}</FormLabel>
+                        <div className="relative">
+                          <FormControl>
+                            <Input
+                                {...field}
+                                type={showPassword ? "text" : "password"}
+                                placeholder={t("passwordPlaceholder")}
+                                className="pr-10"
+                            />
+                          </FormControl>
+                          <Button
+                              variant="ghost"
+                              type="button"
+                              onClick={() => setShowPassword((v) => !v)}
+                              className="absolute inset-y-0 right-0 px-2 flex items-center"
+                          >
+                            {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                          </Button>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                  )}
+              />
+
+              {form.formState.errors.root && (
+                  <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-600 text-sm">
+                    {form.formState.errors.root.message}
+                  </div>
+              )}
+
               <Button
-                variant="ghost"
-                type="button"
-                onClick={() => setShowPassword((prev) => !prev)}
-                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 hover:bg-white"
+                  type="submit"
+                  className="w-full"
+                  disabled={isPending}
               >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                {isPending ? t("loggingIn") : t("loginButton")}
               </Button>
-            </div>
+            </form>
+          </Form>
 
-            <div className="text-right mt-2">
-              <Link href="/forgot-password" className="text-sm text-green-700 hover:underline">
-                {t("forgotPassword")}
-              </Link>
-            </div>
-          </div>
-
-          <Button
-            type="submit"
-            className="w-full bg-[#0B3B2E] text-white py-2 rounded hover:bg-green-700 transition-colors"
-            disabled={isSubmitting || isPending}
-          >
-            {isSubmitting || isPending ? t("loggingIn") : t("loginButton")}
-          </Button>
-        </form>
-
-        <div className="mt-6 text-center text-sm text-gray-600">
-          <p>
+          <p className="mt-6 text-center text-sm text-gray-600">
             {t("noAccount")}{" "}
             <Link href="/register" className="text-green-700 hover:underline">
               {t("registerLink")}
@@ -163,6 +142,5 @@ export default function LoginPage() {
           </p>
         </div>
       </div>
-    </div>
   );
 }

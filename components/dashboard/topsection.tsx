@@ -6,6 +6,7 @@ import avatar from "@/public/images/avatar.png";
 import { Bell } from "lucide-react";
 import Image from "next/image";
 import { getGreeting } from "@/utils/getGreeting";
+import {useUser} from "@/context/userContext";
 
 const Greeting = () => {
   const [greeting, setGreeting] = useState("");
@@ -22,6 +23,7 @@ const Greeting = () => {
 };
 
 const Topsection = () => {
+  const {user} = useUser();
   return (
     <>
       <div className="w-full mb-8 flex flex-col items-center justify-between  gap-4">
@@ -40,7 +42,7 @@ const Topsection = () => {
                 alt="User avatar"
               />
               <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
-                Dositha
+                {user?.fullName}
               </span>
             </div>
           </div>

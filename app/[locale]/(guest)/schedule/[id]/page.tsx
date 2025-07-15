@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, {useMemo, useState} from 'react';
 import { useTranslations } from "next-intl";
 import { Star, Shield, Clock, MapPin, Route, Bus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,75 +9,68 @@ import Container from '@/components/ui/container';
 import Map from "@/components/dashboard/map";
 import Image from 'next/image';
 import getStripe from "@/utils/get-stripejs";
+import {useScheduleSeats} from "@/hooks/useSchedule";
+import {useParams} from "next/navigation";
+import Loader from "@/components/ui/loader";
+import {formatTimeOnly} from "@/lib/utils";
 
 const DEFAULT_CENTER: [number, number] = [-1.9499500, 30.0588500];
 
-interface SeatStatus {
-  id: string;
-  status: 'available' | 'reserved' | 'selected';
-  row: number;
-  position: string;
-}
-
 const SeatSelectionPage: React.FC = () => {
   const t = useTranslations("schedule");
+
+  const params = useParams();
+  const id = Number(params?.id);
+  const { data, isLoading } = useScheduleSeats(id);
+
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
-  const initializeSeats = (): SeatStatus[] => {
-    const seats: SeatStatus[] = [];
-    const positions = ['A', 'B', 'C', 'D', 'E', 'F'];
-    const reservedSeats = ['3C', '3D', '7A', '8E', '9B'];
-
-    for (let row = 1; row <= 10; row++) {
-      for (const pos of positions) {
-        const seatId = `${row}${pos}`;
-        seats.push({
-          id: seatId,
-          status: reservedSeats.includes(seatId) ? 'reserved' : 'available',
-          row,
-          position: pos
-        });
-      }
-    }
-    return seats;
-  };
-
-  const [seats, setSeats] = useState<SeatStatus[]>(initializeSeats());
-
-  const handleSeatClick = (seatId: string) => {
-    const seat = seats.find(s => s.id === seatId);
-    if (!seat || seat.status === 'reserved') return;
-
-    setSeats(prevSeats =>
-      prevSeats.map(s => {
-        if (s.id === seatId) {
-          const newStatus = s.status === 'selected' ? 'available' : 'selected';
-          return { ...s, status: newStatus };
-        }
-        return s;
-      })
-    );
+  const handleSeatClick = (seatNumber: string) => {
+    const seat = data?.seats.find(s => s.seatNumber === seatNumber);
+    if (!seat || seat.booked) return;
 
     setSelectedSeats(prev =>
-      prev.includes(seatId)
-        ? prev.filter(id => id !== seatId)
-        : [...prev, seatId]
+        prev.includes(seatNumber)
+            ? prev.filter(id => id !== seatNumber)
+            : [...prev, seatNumber]
     );
   };
 
-  const getSeatClassName = (status: string) => {
+  const getSeatClassName = (seatNumber: string) => {
+    const seat = data?.seats.find(s => s.seatNumber === seatNumber);
     const baseClasses = 'w-9 h-9 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg relative';
-    switch (status) {
-      case 'reserved':
-        return `${baseClasses} bg-gray-400 border-gray-500 cursor-not-allowed opacity-70`;
-      case 'selected':
-        return `${baseClasses} bg-gradient-to-br from-yellow-400 to-yellow-500 border-yellow-600 shadow-lg ring-2 ring-yellow-300`;
-      default:
-        return `${baseClasses} bg-gradient-to-br from-white to-gray-50 border-gray-300 hover:border-blue-400 hover:bg-blue-50`;
+    if (!seat) return baseClasses;
+    if (seat.booked) {
+      return `${baseClasses} bg-gray-400 border-gray-500 cursor-not-allowed opacity-70`;
     }
+    if (selectedSeats.includes(seatNumber)) {
+      return `${baseClasses} bg-gradient-to-br from-yellow-400 to-yellow-500 border-yellow-600 shadow-lg ring-2 ring-yellow-300`;
+    }
+    return `${baseClasses} bg-gradient-to-br from-white to-gray-50 border-gray-300 hover:border-blue-400 hover:bg-blue-50`;
   };
 
-  const totalPrice = selectedSeats.length * 2500;
+  const groupedSeats = useMemo(() => {
+    if (!data) return {};
+
+    const groups: Record<string, string[]> = {};
+    data.seats.forEach(seat => {
+      const letter = seat.seatNumber.charAt(0);
+      if (!groups[letter]) groups[letter] = [];
+      groups[letter].push(seat.seatNumber);
+    });
+
+    Object.keys(groups).forEach(letter => {
+      groups[letter].sort((a, b) => {
+        const numA = parseInt(a.slice(1));
+        const numB = parseInt(b.slice(1));
+        return numA - numB;
+      });
+    });
+
+    return groups;
+  }, [data]);
+
+  const totalPrice = selectedSeats.length * (data?.pricePerSeat || 0);
 
 
   const handleBooking = async () => {
@@ -110,6 +103,10 @@ const SeatSelectionPage: React.FC = () => {
     }
 
   };
+
+  if (isLoading || !data) {
+    return <Loader />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50">
@@ -173,52 +170,21 @@ const SeatSelectionPage: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-rows-10 gap-3 max-w-md mx-auto">
-                    {Array.from({ length: 10 }, (_, rowIndex) => (
-                      <div key={rowIndex} className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-sm font-bold text-green-700">
-                          {rowIndex + 1}
-                        </div>
-                        <div className="flex gap-2">
-                          {['A', 'B', 'C'].map(pos => {
-                            const seatId = `${rowIndex + 1}${pos}`;
-                            const seat = seats.find(s => s.id === seatId);
-                            return (
+                  <div className="grid grid-cols-5 max-w-md mx-auto gap-3 items-end">
+                    {Object.entries(groupedSeats).map(([letter, seatNumbers]) => (
+                        <div key={letter} className="flex flex-col items-center gap-2 justify-end">
+                          <span className="font-bold">{letter}</span>
+                          {seatNumbers.map(seatNumber => (
                               <button
-                                key={seatId}
-                                onClick={() => handleSeatClick(seatId)}
-                                className={getSeatClassName(seat?.status || 'available')}
-                                title={`${t("seatSelection.seat")} ${seatId}`}
+                                  key={seatNumber}
+                                  onClick={() => handleSeatClick(seatNumber)}
+                                  className={getSeatClassName(seatNumber)}
+                                  title={`${t("seatSelection.seat")} ${seatNumber}`}
                               >
-                                <span className="text-xs font-medium text-gray-600">
-                                  {pos}
-                                </span>
+                                <span className="text-xs text-gray-600 font-medium">{seatNumber.slice(1)}</span>
                               </button>
-                            );
-                          })}
+                          ))}
                         </div>
-                        <div className="w-12 flex justify-center">
-                          <div className="w-px h-6 bg-green-200"></div>
-                        </div>
-                        <div className="flex gap-2">
-                          {['D', 'E', 'F'].map(pos => {
-                            const seatId = `${rowIndex + 1}${pos}`;
-                            const seat = seats.find(s => s.id === seatId);
-                            return (
-                              <button
-                                key={seatId}
-                                onClick={() => handleSeatClick(seatId)}
-                                className={getSeatClassName(seat?.status || 'available')}
-                                title={`${t("seatSelection.seat")} ${seatId}`}
-                              >
-                                <span className="text-xs font-medium text-gray-600">
-                                  {pos}
-                                </span>
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
                     ))}
                   </div>
                 </div>
@@ -227,7 +193,7 @@ const SeatSelectionPage: React.FC = () => {
               <div className="lg:col-span-1 ">
                 <div className="bg-white rounded-2xl shadow-sm  p-6 border border-gray-100 sticky top-6">
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
-                    <span className="text-xl font-bold text-gray-800">{t("busInfo.busNumber")}</span>
+                    <span className="text-xl font-bold text-gray-800">{data.bus}</span>
                     <span className="bg-gradient-to-r from-lime-500 to-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                       {t("booking.active")}
                     </span>
@@ -244,8 +210,8 @@ const SeatSelectionPage: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <p className="font-bold text-gray-800">{t("busInfo.driver")}</p>
-                      <p className="text-sm text-gray-500">{t("busInfo.driverPhone")}</p>
+                      <p className="font-bold text-gray-800">{data.driverName || "No Name"}</p>
+                      <p className="text-sm text-gray-500">{data.driverPhone || "No Phone"}</p>
                     </div>
                   </div>
 
@@ -255,7 +221,7 @@ const SeatSelectionPage: React.FC = () => {
                       <Bus />
                       <div className='flex flex-col'>
                         <p className='text-sm'>{t("busInfo.totalSeats")}</p>
-                        <p>50</p>
+                        <p>{data.totalSeats}</p>
                       </div>
                     </div>
 
@@ -264,7 +230,7 @@ const SeatSelectionPage: React.FC = () => {
                       <Bus />
                       <div className='flex flex-col'>
                         <p className='text-sm'>{t("busInfo.availableSeats")}</p>
-                        <p>5</p>
+                        <p>{data.remainingSeats}</p>
                       </div>
                     </div>
                   </div>
@@ -273,7 +239,7 @@ const SeatSelectionPage: React.FC = () => {
                   <div className="text-center p-4 bg-gray-50 rounded-xl">
                     <div className="flex items-center justify-center gap-4 mb-3">
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-gray-800">50</div>
+                        <div className="text-2xl font-bold text-gray-800">{data.totalSeats}</div>
                         <div className="text-xs text-gray-500">{t("busInfo.seats")}</div>
                       </div>
                       <div className="flex-1 h-px bg-gradient-to-r from-blue-300 to-purple-300"></div>
@@ -287,9 +253,9 @@ const SeatSelectionPage: React.FC = () => {
                   <div className="p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
                     <div className="flex items-center gap-2 mb-2">
                       <MapPin className="w-4 h-4 text-green-600" />
-                      <p className="font-bold text-gray-800">{t("busInfo.route")}</p>
+                      <p className="font-bold text-gray-800">{data.from + " → "+ data.to}</p>
                     </div>
-                    <p className="text-sm text-gray-600">{t("busInfo.departure")} {t("busInfo.departureTime")} • {t("busInfo.arrival")} {t("busInfo.arrivalTime")}</p>
+                    <p className="text-sm text-gray-600">{t("busInfo.departure")} {formatTimeOnly(data.departureTime)} • {t("busInfo.arrival")} {formatTimeOnly(data.arrivalTime)}</p>
                   </div>
 
                   <div className="border border-gray-200 flex justify-center items-center h-full relative z-1 mt-6">
@@ -299,7 +265,7 @@ const SeatSelectionPage: React.FC = () => {
                   <div className="space-y-3 mb-6 p-4 bg-gray-50 rounded-xl mt-6">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600">{t("booking.pricePerSeat")}</span>
-                      <span className="font-bold text-lg">2,500 {t("booking.currency")}</span>
+                      <span className="font-bold text-lg">{data.pricePerSeat} {t("booking.currency")}</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600">{t("booking.selectedSeats")}</span>

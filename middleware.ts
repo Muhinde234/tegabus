@@ -13,8 +13,8 @@ export function middleware(request: NextRequest) {
   const token = request.cookies.get("token")?.value;
   
 
-  const isProtectedRoute = pathname.match(/^\/[a-z]{2}\/(dashboard|schedules)/) || 
-                          pathname.startsWith("/dashboard") || 
+  const isProtectedRoute = pathname.match(/^\/[a-z]{2}\/(admin|schedule)/) ||
+                          pathname.startsWith("/admin") ||
                           pathname.startsWith("/schedule");
   
   if (!token && isProtectedRoute) {

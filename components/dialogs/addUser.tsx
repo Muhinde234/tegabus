@@ -1,155 +1,160 @@
 "use client";
 
-import { useState } from "react";
+import {useState} from "react";
 import {
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogCancel,
-  AlertDialogAction,
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
 } from "@/components/ui/Dialog";
-import { Input } from "@/components/ui/inputField";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
+import {Input} from "@/components/ui/inputField";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select";
+import {Button} from "@/components/ui/button";
+import z from "zod";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {useCreateUser} from "@/hooks/useUsers";
+import {toast} from "sonner";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function AddUserForm({ onAddUser }: { onAddUser: (user: any) => void; }) {
+export function AddUserForm() {
   const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    role: "User",
-    country: "Rwanda",
+
+  const createUserSchema = z.object({
+    firstName: z.string().min(1),
+    lastName: z.string().min(1),
+    email: z.string().email(),
+    phoneNumber: z.string().min(10),
+    nationality: z.string().min(2),
+    role: z.enum(['ADMIN', 'PASSENGER', 'DRIVER', 'MANAGER', 'VERIFIER']),
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  type CreateUserFormValues = z.infer<typeof createUserSchema>;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onAddUser({
-      ...formData,
-      phone: formData.phone.startsWith("+") ? formData.phone : `+${formData.phone}`,
-    });
-    setFormData({
+  const form = useForm<CreateUserFormValues>({
+    resolver: zodResolver(createUserSchema),
+    defaultValues: {
       firstName: "",
       lastName: "",
-      phone: "",
-      role: "User",
-      country: "Rwanda",
+      email: "",
+      phoneNumber: "",
+      nationality: "",
+      role: "PASSENGER",
+    },
+  });
+
+  const { mutate: createUser, isPending } = useCreateUser();
+
+  const onSubmit = (data: CreateUserFormValues) => {
+    createUser(data, {
+      onSuccess: (res) => {
+        toast(res.message);
+        form.reset();
+      },
+      onError: (error) => {
+        toast(error.message);
+      },
     });
-    setOpen(false);
   };
 
-  return (
-    <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogTrigger asChild>
-        <Button
-          variant="ghost"
-          className="h-10 flex items-center px-4 py-2 text-white bg-[#1EA17E] hover:bg-green-700 rounded-full text-sm font-medium transition-colors whitespace-nowrap"
-        >
-          Add User<span className="ml-1 text-xl leading-none">＋</span>
-        </Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Add New User</AlertDialogTitle>
-          <AlertDialogDescription>
-            Fill in the details to create a new user account.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="firstName">First Name</Label>
-            <Input
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="lastName">Last Name</Label>
-            <Input
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="phone">Phone Number</Label>
-            <Input
-              id="phone"
-              name="phone"
-              type="tel"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="+25078XXXXXX"
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="role">Role</Label>
-            <Select
-              value={formData.role}
-              onValueChange={(value) =>
-                setFormData({ ...formData, role: value })
-              }
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select role" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Admin">Admin</SelectItem>
-                <SelectItem value="User">User</SelectItem>
-                <SelectItem value="Verifier">Verifier</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="country">Country</Label>
-            <Select
-              value={formData.country}
-              onValueChange={(value) =>
-                setFormData({ ...formData, country: value })
-              }
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select country" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Rwanda">Rwanda</SelectItem>
-                <SelectItem value="Kenya">Kenya</SelectItem>
-                <SelectItem value="Uganda">Uganda</SelectItem>
-                <SelectItem value="Tanzania">Tanzania</SelectItem>
-                <SelectItem value="DRC">DRC</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction type="submit">Add User</AlertDialogAction>
-          </AlertDialogFooter>
-        </form>
-      </AlertDialogContent>
-    </AlertDialog>
-  );
+
+    return (
+        <AlertDialog open={open} onOpenChange={setOpen}>
+            <AlertDialogTrigger asChild>
+                <Button>Create User</Button>
+            </AlertDialogTrigger>
+
+            <AlertDialogContent>
+                <AlertDialogHeader>
+                    <AlertDialogTitle>Create a new user</AlertDialogTitle>
+                    <AlertDialogDescription>
+                        Fill in the user details to create an account and send them a password creation email.
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+
+                <Form {...form}>
+                    <form
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="grid gap-4 py-4"
+                    >
+                        <FormField control={form.control} name="firstName" render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>First Name</FormLabel>
+                                <FormControl><Input {...field} /></FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )} />
+
+                        <FormField control={form.control} name="lastName" render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Last Name</FormLabel>
+                                <FormControl><Input {...field} /></FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )} />
+
+                        <FormField control={form.control} name="email" render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl><Input type="email" {...field} /></FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )} />
+
+                        <FormField control={form.control} name="phoneNumber" render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Phone Number</FormLabel>
+                                <FormControl><Input {...field} /></FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )} />
+
+                        <FormField control={form.control} name="nationality" render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Nationality</FormLabel>
+                                <FormControl><Input {...field} /></FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )} />
+
+                        <FormField control={form.control} name="role" render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Role</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <FormControl>
+                                        <SelectTrigger>
+                                            <SelectValue placeholder="Select role" />
+                                        </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                        <SelectItem value="ADMIN">Admin</SelectItem>
+                                        <SelectItem value="MANAGER">Manager</SelectItem>
+                                        <SelectItem value="PASSENGER">Passenger</SelectItem>
+                                        <SelectItem value="VERIFIER">Verifier</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                                <FormMessage />
+                            </FormItem>
+                        )} />
+                    </form>
+                </Form>
+
+                <AlertDialogFooter>
+                    <AlertDialogCancel disabled={isPending}>Cancel</AlertDialogCancel>
+                    <AlertDialogAction asChild>
+                        <Button type="submit" form="hook-form" onClick={form.handleSubmit(onSubmit)} disabled={isPending}>
+                            {isPending ? "Creating..." : "Add"}
+                        </Button>
+                    </AlertDialogAction>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
+    );
 }

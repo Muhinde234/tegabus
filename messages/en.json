@@ -5,7 +5,8 @@
     "routes": "Routes",
     "conditions": "Conditions",
     "language": "Language",
-    "getStarted": "Get started"
+    "getStarted": "Get started",
+    "logout": "Logout"
   },
   "dashboard": {
     "seats": "Seats",
@@ -294,6 +295,7 @@
     "title": "Routes Management",
     "showingRoutes": "Showing {displayed} of {total} routes",
     "noRoutesFound": "No routes found",
+    "noRoutesError": "Error fetching routes",
     "table": {
       "from": "From",
       "to": "To",

@@ -1,83 +1,97 @@
-
 "use client";
 
-import { useState } from "react";
+import {useState} from "react";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import * as z from "zod";
 import {
   AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogTitle,
-  AlertDialogDescription,
   AlertDialogCancel,
-  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
 } from "@/components/ui/Dialog";
-import { Input } from "@/components/ui/inputField";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage,} from "@/components/ui/form";
+import {Input} from "@/components/ui/inputField";
+import {Button} from "@/components/ui/button";
+import {useCreateBus} from "@/hooks/useBuses";
+import {toast} from "sonner";
 
+const busSchema = z.object({
+  plateNumber: z
+      .string()
+      .min(1, "Plate number is required")
+      .regex(
+          /^[A-Z]{3}\s\d{3}\s[A-Z]$/,
+          'Plate number must follow the format "ABC 123 D" (three letters, space, three digits, space, one letter)',
+      ),
+});
 
 export default function AddBusForm() {
-  const [form, setForm] = useState({
-    busNumber: "",
-    route: "",
-    driverName: "",
-    driverPhone: "",
+  const createBus = useCreateBus();
+  const [open, setOpen] = useState(false);
+
+  const form = useForm<z.infer<typeof busSchema>>({
+    resolver: zodResolver(busSchema),
+    defaultValues: {
+      plateNumber: "",
+    },
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = () => {
-    console.log("New Bus Added:", form);
-
+  const onSubmit = async (data: z.infer<typeof busSchema>) => {
+    try {
+      await createBus.mutateAsync(data);
+      toast.success("Bus created successfully");
+      form.reset();
+      setOpen(false);
+    } catch (error) {
+      toast.success("Failed to create bus");
+    }
   };
 
   return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button className="flex items-center px-4 py-2 text-white bg-[#1EA17E] hover:bg-green-700 rounded-full text-sm font-medium transition-colors">
-          Add Bus
-          <span className="ml-1 text-xl leading-none">＋</span>
-        </Button>
-      </AlertDialogTrigger>
+      <AlertDialog open={open} onOpenChange={setOpen}>
+        <AlertDialogTrigger asChild>
+          <Button className="flex items-center px-4 py-2 text-white bg-[#1EA17E] hover:bg-green-700 rounded-full text-sm font-medium transition-colors">
+            Add Bus
+            <span className="ml-1 text-xl leading-none">＋</span>
+          </Button>
+        </AlertDialogTrigger>
 
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Add New Bus</AlertDialogTitle>
-          <AlertDialogDescription>Enter the details to register a new bus.</AlertDialogDescription>
-        </AlertDialogHeader>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Add New Bus</AlertDialogTitle>
+            <AlertDialogDescription>Enter the details to register a new bus.</AlertDialogDescription>
+          </AlertDialogHeader>
 
-        <div className="space-y-4 mt-4">
-          <div className="space-y-1">
-            <Label htmlFor="busNumber" >Bus Number</Label>
-            <Input id="busNumber" name="busNumber" value={form.busNumber} onChange={handleChange} />
-          </div>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-4">
+              <FormField
+                  control={form.control}
+                  name="plateNumber"
+                  render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Plate Number</FormLabel>
+                        <FormControl>
+                          <Input {...field} placeholder="e.g., ABC-1234" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                  )}
+              />
 
-          <div className="space-y-1">
-            <Label htmlFor="route" >Route</Label>
-            <Input id="route" name="route" value={form.route} onChange={handleChange} />
-          </div>
-
-          <div className="space-y-1">
-            <Label htmlFor="driverName">Driver Name</Label>
-            <Input id="driverName" name="driverName" value={form.driverName} onChange={handleChange} />
-          </div>
-
-          <div className="space-y-1">
-            <Label htmlFor="driverPhone" >Driver Phone</Label>
-            <Input id="driverPhone" name="driverPhone" value={form.driverPhone} onChange={handleChange} />
-          </div>
-        </div>
-
-        <AlertDialogFooter className="mt-6">
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleSubmit}>Add Bus</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+              <AlertDialogFooter className="mt-6">
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <Button type="submit" disabled={createBus.isPending}>
+                  {createBus.isPending ? "Adding..." : "Add Bus"}
+                </Button>
+              </AlertDialogFooter>
+            </form>
+          </Form>
+        </AlertDialogContent>
+      </AlertDialog>
   );
 }

@@ -8,27 +8,16 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../../components/ui/select";
+} from "@/components/ui/select";
 import Topsection from "@/components/dashboard/topsection";
 import ActionButton from "@/components/dashboard/ActionButton";
 import { Button } from "@/components/ui/button";
 import AddScheduleForm from "@/components/dialogs/addSchedule";
+import {useSchedules} from "@/hooks/useSchedule";
+import {formatReadableDate, formatTimeOnly} from "@/lib/utils";
+import {useRoutes} from "@/hooks/useRoutes";
+import {useBuses} from "@/hooks/useBuses";
 
-interface Driver {
-  name: string;
-  phone: string;
-  avatar: string;
-}
-
-interface Schedule {
-  id: string;
-  busNumber: string;
-  route: string;
-  departureTime: string;
-  arrivalTime: string;
-  driver: Driver;
-  status: "On Time" | "Delayed" | "Cancelled";
-}
 
 const Schedules: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<string>("All");
@@ -36,37 +25,10 @@ const Schedules: React.FC = () => {
 
   const t = useTranslations("schedules");
 
-  const baseSchedule: Omit<Schedule, "id" | "status"> = {
-    busNumber: "RAC 456 C",
-    route: "Kigali to Bujumbura",
-    departureTime: "08:45",
-    arrivalTime: "14:45",
-    driver: {
-      name: "Muhinde Dosta",
-      phone: "+250791154390",
-      avatar: "string",
-    },
-  };
+  const {data:schedules, isLoading:schedulesLoading, error:schedulesError} = useSchedules();
+  const {data: routes, isLoading: routesLoading} = useRoutes();
+  const {data: buses, isLoading: busesLoading } = useBuses();
 
-  const [schedules] = useState<Schedule[]>(() => {
-    const statuses: ("On Time" | "Delayed" | "Cancelled")[] = [
-      "On Time",
-      "Delayed",
-      "Cancelled",
-    ];
-    return Array.from({ length: 20 }, (_, i) => ({
-      ...baseSchedule,
-      id: (i + 1).toString(),
-      status: statuses[i % statuses.length],
-      driver:
-        i % 5 === 0
-          ? {
-            ...baseSchedule.driver,
-            name: `Driver ${Math.floor(i / 5) + 1}`,
-          }
-          : baseSchedule.driver,
-    }));
-  });
 
   const filters = [
     { key: "All", label: t("filters.all") },
@@ -84,11 +46,6 @@ const Schedules: React.FC = () => {
     t("table.status"),
     t("table.actions"),
   ];
-
-  const getFilteredSchedules = () => {
-    if (activeFilter === "All") return schedules;
-    return schedules.filter((schedule) => schedule.status === activeFilter);
-  };
 
   const getStatusBadgeClass = (status: string) => {
     switch (status) {
@@ -135,7 +92,7 @@ const Schedules: React.FC = () => {
             {t("title")}
           </h1>
           <div className="flex gap-3 items-center">
-            <AddScheduleForm />
+            <AddScheduleForm buses={buses} routes={routes} />
 
             <Select value={timeFrame} onValueChange={setTimeFrame}>
               <SelectTrigger className="h-10 w-[120px] border border-green-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500">
@@ -188,52 +145,51 @@ const Schedules: React.FC = () => {
                 </tr>
               </thead>
               <tbody>
-                {getFilteredSchedules().map((schedule, index) => (
+                {schedules.map((schedule, index) => (
                   <tr
                     key={schedule.id}
                     className={`border-b border-gray-100 hover:bg-gray-50 ${index % 2 === 0 ? "bg-white" : "bg-gray-50/50"
                       }`}
                   >
                     <td className="py-4 px-4 font-medium text-gray-900">
-                      {schedule.busNumber}
+                      {schedule.bus}
                     </td>
                     <td className="py-4 px-4 text-gray-700">
-                      {schedule.route}
+                      {schedule.from + " - " + schedule.to}
                     </td>
                     <td className="py-4 px-4 text-gray-700">
-                      {schedule.departureTime}
+                      {formatReadableDate(schedule.departureTime) +" "+formatTimeOnly(schedule.departureTime)}
                     </td>
                     <td className="py-4 px-4 text-gray-700">
-                      {schedule.arrivalTime}
+                      {formatReadableDate(schedule.arrivalTime) +" "+formatTimeOnly(schedule.arrivalTime)}
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center">
                           <span className="text-white text-sm font-medium">
-                            {schedule.driver.name
+                            {schedule.driverName || " Driver Test"
                               .split(" ")
                               .map((n) => n[0])
                               .join("")
-                              .slice(0, 2)}
+                              .slice(0, 2)
+                            }
                           </span>
                         </div>
                         <div>
                           <div className="font-medium text-gray-900">
-                            {schedule.driver.name}
+                            {schedule.driverName || " Driver Test"}
                           </div>
                           <div className="text-sm text-gray-500">
-                            {schedule.driver.phone}
+                            {schedule.driverPhone || " Driver Phone Test"}
                           </div>
                         </div>
                       </div>
                     </td>
                     <td className="py-4 px-4">
                       <span
-                        className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${getStatusBadgeClass(
-                          schedule.status
-                        )}`}
+                        className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${getStatusBadgeClass("On Time")}`}
                       >
-                        {getStatusTranslation(schedule.status)}
+                        {getStatusTranslation("On Time")}
                       </span>
                     </td>
                     <td className="py-4 px-4">

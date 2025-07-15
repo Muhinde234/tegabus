@@ -15,9 +15,13 @@ import Logo from '@/components/common/logo';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
+import {Button} from "@/components/ui/button";
+import {LogOutIcon} from "lucide-react";
+import {useUser} from "@/context/userContext";
 
 export default function AppSidebar() {
   const pathname = usePathname();
+  const {logout} = useUser();
   const t = useTranslations("dashboard");
 
   return (
@@ -68,6 +72,22 @@ export default function AppSidebar() {
                 </SidebarMenuItem>
               );
             })}
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                  size="lg"
+                  className="text-md justify-start hover:bg-white/10"
+                  asChild
+              >
+                <Button
+                    variant="ghost"
+                    className="w-full justify-start text-white hover:bg-white/10"
+                    onClick={() => logout()}
+                >
+                  <LogOutIcon size={20} />
+                  <span>{t("sidebar.logout")}</span>
+                </Button>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>

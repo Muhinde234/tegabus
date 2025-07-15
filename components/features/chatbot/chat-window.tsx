@@ -11,6 +11,8 @@ import { LoadingIndicator } from "./loading-indicator"
 import { chatConfig, type AIProvider } from "@/utils/chat-config"
 import { systemPrompts, type SystemPromptType } from "@/utils/system-prompts"
 import type { Message } from "ai"
+import ReactMarkdown from "react-markdown";
+
 
 interface ChatWindowProps {
   messages: Message[]
@@ -45,7 +47,7 @@ export function ChatWindow({
   }
 
   return (
-    <div className="fixed bottom-20 right-4 w-80 h-96 bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col z-50">
+    <div className="fixed bottom-20 right-4 w-[440px] h-[640px] bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col z-50">
       {/* Header */}
       <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-green-500 text-white rounded-t-lg">
         <div className="flex items-center space-x-2">
@@ -115,17 +117,23 @@ export function ChatWindow({
             <p>{chatConfig.welcomeMessage.question}</p>
           </div>
         ) : (
-          messages.map((message, index) => (
-            <div
-              key={index}
-              className={cn(
-                "max-w-[80%] rounded-lg px-3 py-2 text-sm",
-                message.role === "user" ? "bg-green-500 text-white ml-auto" : "bg-gray-100 text-gray-900",
-              )}
-            >
-              {message.content}
-            </div>
-          ))
+            messages.map((message, index) => (
+                <div
+                    key={index}
+                    className={cn(
+                        "max-w-[80%] rounded-lg px-3 py-2 text-sm whitespace-pre-wrap",
+                        message.role === "user"
+                            ? "bg-green-500 text-white ml-auto"
+                            : "bg-gray-100 text-gray-900"
+                    )}
+                >
+                  {message.role === "assistant" ? (
+                      <ReactMarkdown>{message.content}</ReactMarkdown>
+                  ) : (
+                      message.content
+                  )}
+                </div>
+            ))
         )}
         {isLoading && <LoadingIndicator />}
       </div>

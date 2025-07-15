@@ -4,6 +4,8 @@ import { tickets } from "@/helpers/data";
 import avatar from "@/public/images/avatar.png";
 import Image from "next/image";
 import ActionButton from "./ActionButton";
+import {useBookings} from "@/hooks/useBooking";
+import {formatReadableDate} from "@/lib/utils";
 
 
 
@@ -18,6 +20,9 @@ const BusSchedules = () => {
   "seat",
   "Actions"
 ];
+
+
+  const {data: bookings, isLoading} = useBookings();
 
  
   return (
@@ -37,7 +42,7 @@ const BusSchedules = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {tickets.map((ticket, idx) => (
+            {bookings.map((ticket, idx) => (
               <tr key={idx} className="hover:bg-gray-50">
                 <td className="px-4 py-4 whitespace-nowrap sm:px-6 flex items-center gap-2 text-sm">
                   <Image
@@ -49,10 +54,10 @@ const BusSchedules = () => {
 
                   <div>
                     <div className="font-medium text-gray-900">
-                      {ticket.holder_firstname + " " + ticket.holder_lastname}
+                      {ticket.fullName}
                     </div>
                     <div className="text-gray-500 text-xs">
-                      {ticket.holder_phonenumber}
+                      {ticket.phoneNumber}
                     </div>
                   </div>
                 </td>
@@ -60,13 +65,13 @@ const BusSchedules = () => {
                   {ticket.origin + " to " + ticket.destination}
                 </td>
                 <td className="px-4 py-4 whitespace-nowrap sm:px-6 text-sm">
-                  {ticket.date}
+                  {formatReadableDate(ticket.departureTime)}
                 </td>
                 <td className="px-4 py-4 whitespace-nowrap sm:px-6 text-sm">
-                  {ticket.time}
+                  {formatReadableDate(ticket.bookingDate)}
                 </td>
                 <td className="px-4 py-4 whitespace-nowrap sm:px-6 cursor-pointer text-sm">
-                  {ticket.seats}
+                  {ticket.seatNumber}
                 </td>
                 <td className="px-4 py-4 whitespace-nowrap sm:px-6">
                   <ActionButton />
