@@ -1,30 +1,19 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import {useTranslations} from "next-intl";
 import ActionButton from "@/components/dashboard/ActionButton";
 import StatsCard from "@/components/dashboard/statCard";
 import Topsection from "@/components/dashboard/topsection";
-import { AddUserForm } from "@/components/dialogs/addUser";
-import { useState, useEffect } from "react";
+import {AddUserForm} from "@/components/dialogs/addUser";
+import React from "react";
+import {useRoleStats, useUsers} from "@/hooks/useUsers";
 
-type User = {
-  firstName: string;
-  lastName: string;
-  phone: string;
-  role: "Admin" | "User" | "Verifier";
-  country: string;
-};
-
-const generatePhoneNumber = () => `+250${Math.floor(10000000 + Math.random() * 90000000)}`;
 
 export default function UsersPage() {
-  const [users, setUsers] = useState<User[]>([]);
-  const [stats, setStats] = useState({
-    passengers: 30,
-    managers: 20,
-    administrators: 1,
-    verifiers: 2,
-  });
+  const {data, isLoading:usersLoading, isError:usersError} = useUsers();
+  const {data:stats, isLoading, isError} = useRoleStats();
+
+  const apiUsers = data?.content ?? [];
 
   const t = useTranslations("users");
 
@@ -37,49 +26,6 @@ export default function UsersPage() {
     t("table.actions"),
   ];
 
-  useEffect(() => {
-
-    const roles: Array<"Admin" | "User" | "Verifier"> = ["Admin", "User", "Verifier"];
-    const countries = ["Rwanda", "Tanzania", "Uganda", "Burundi", "Kenya", "Rwanda"];
-
-    const sampleUsers = Array.from({ length: 20 }, (_, i) => ({
-      firstName: `User${i + 1}`,
-      lastName: `Last${i + 1}`,
-      phone: generatePhoneNumber(),
-      role: roles[i % roles.length],
-      country: countries[i % countries.length]
-    }));
-
-    setUsers(sampleUsers);
-    setStats(prev => ({
-      ...prev,
-      administrators: prev.administrators + sampleUsers.filter(u => u.role === "Admin").length,
-      verifiers: prev.verifiers + sampleUsers.filter(u => u.role === "Verifier").length
-    }));
-  }, []);
-
-  const handleAddUser = (newUser: User) => {
-    setUsers(prevUsers => [...prevUsers, {
-      ...newUser,
-      phone: generatePhoneNumber()
-    }]);
-
-    setStats(prev => {
-      const updatedStats = { ...prev };
-      switch (newUser.role) {
-        case "Admin":
-          updatedStats.administrators += 1;
-          break;
-        case "User":
-          updatedStats.passengers += 1;
-          break;
-        case "Verifier":
-          updatedStats.verifiers += 1;
-          break;
-      }
-      return updatedStats;
-    });
-  };
 
   const getRoleTranslation = (role: string) => {
     switch (role) {
@@ -99,33 +45,33 @@ export default function UsersPage() {
       <Topsection />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <StatsCard
-          title={t("stats.passengers")}
-          value={stats.passengers}
-          description={t("stats.passengersDescription")}
-          color="green"
+            title={t("stats.passengers")}
+            value={stats?.roleCounts.PASSENGER ?? 0}
+            description={t("stats.passengersDescription")}
+            color="green"
         />
         <StatsCard
-          title={t("stats.managers")}
-          value={stats.managers}
-          description={t("stats.managersDescription")}
-          color="blue"
+            title={t("stats.managers")}
+            value={stats?.roleCounts.MANAGER ?? 0}
+            description={t("stats.managersDescription")}
+            color="blue"
         />
         <StatsCard
-          title={t("stats.administrator")}
-          value={stats.administrators}
-          description={t("stats.administratorDescription")}
-          color="orange"
+            title={t("stats.administrator")}
+            value={stats?.roleCounts.ADMIN ?? 0}
+            description={t("stats.administratorDescription")}
+            color="orange"
         />
         <StatsCard
-          title={t("stats.verifiers")}
-          value={stats.verifiers}
-          description={t("stats.verifiersDescription")}
-          color="teal"
+            title={t("stats.verifiers")}
+            value={stats?.roleCounts.VERIFIER ?? 0}
+            description={t("stats.verifiersDescription")}
+            color="teal"
         />
       </div>
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">{t("title")}</h1>
-        <AddUserForm onAddUser={handleAddUser} />
+        <AddUserForm />
       </div>
       <div className="border border-gray-200 rounded-lg overflow-hidden">
         <div className="overflow-x-auto">
@@ -143,27 +89,27 @@ export default function UsersPage() {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {users.map((user, index) => (
+            {apiUsers.map((user, index) => (
                 <tr key={index}>
                   <td className="py-4 px-6 whitespace-nowrap">{user.firstName}</td>
                   <td className="py-4 px-6 whitespace-nowrap">{user.lastName}</td>
-                  <td className="py-4 px-6 whitespace-nowrap">{user.phone}</td>
+                  <td className="py-4 px-6 whitespace-nowrap">{user.phoneNumber}</td>
                   <td className="py-4 px-6 whitespace-nowrap">
-                    <span className={`px-2 py-1 text-xs rounded-full ${user.role === "Admin"
+                    <span className={`px-2 py-1 text-xs rounded-full ${user.role === "ADMIN"
                         ? "bg-orange-100 text-orange-800"
-                        : user.role === "Verifier"
-                          ? "bg-teal-100 text-teal-800"
-                          : "bg-blue-100 text-blue-800"
-                      }`}>
+                        : user.role === "PASSENGER"
+                            ? "bg-teal-100 text-teal-800"
+                            : "bg-blue-100 text-blue-800"
+                    }`}>
                       {getRoleTranslation(user.role)}
                     </span>
                   </td>
-                  <td className="py-4 px-6 whitespace-nowrap">{user.country}</td>
+                  <td className="py-4 px-6 whitespace-nowrap capitalize">{user.nationality}</td>
                   <td className="py-4 px-6 whitespace-nowrap">
                     <ActionButton />
                   </td>
                 </tr>
-              ))}
+            ))}
             </tbody>
           </table>
         </div>

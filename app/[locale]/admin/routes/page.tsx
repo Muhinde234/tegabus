@@ -1,20 +1,15 @@
 "use client";
 
-import React, { useState, useCallback, useMemo } from 'react';
-import { useTranslations } from "next-intl";
+import React, {useCallback, useMemo} from 'react';
+import {useTranslations} from "next-intl";
 import Topsection from '@/components/dashboard/topsection';
 import ActionButton from '@/components/dashboard/ActionButton';
-import { AddRouteForm } from '@/components/dialogs/addRoute';
+import {AddRouteForm} from '@/components/dialogs/addRoute';
+import {RouteResponse} from "@/lib/types";
+import {useDeleteRoute, useRoutes} from "@/hooks/useRoutes";
+import {formatDuration} from "@/lib/utils";
+import Loader from "@/components/ui/loader";
 
-
-interface Route {
-  id: string;
-  from: string;
-  to: string;
-  priceRwf: number;
-  travelTime: string;
-  distance: string;
-}
 
 const TableHeader: React.FC = () => {
   const t = useTranslations("route");
@@ -62,70 +57,65 @@ const TableHeader: React.FC = () => {
 };
 
 interface TableRowProps {
-  route: Route;
+  route: RouteResponse;
   index: number;
-  onEdit: (route: Route) => void;
-  onDelete: (routeId: string) => void;
+  onEdit: (route: RouteResponse) => void;
+  onDelete: (routeId: number) => void;
 }
 
 const TableRow: React.FC<TableRowProps> = ({
   route,
   index,
-  // onEdit,
-  // onDelete
+  onEdit,
+  onDelete
 }) => {
-  // const handleEdit = useCallback(() => onEdit(route), [route, onEdit]);
-  // const handleDelete = useCallback(() => onDelete(route.id), [route.id, onDelete]);
+  const handleEdit = useCallback(() => onEdit(route), [route, onEdit]);
+  const handleDelete = useCallback(() => onDelete(route.id), [route.id, onDelete]);
 
   return (
     <tr
       className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'
         }`}
     >
-      <td className="py-4 px-4 text-gray-900 font-medium whitespace-nowrap">{route.from}</td>
-      <td className="py-4 px-4 text-gray-700 whitespace-nowrap">{route.to}</td>
+      <td className="py-4 px-4 text-gray-900 font-medium whitespace-nowrap">{route.startLocation}</td>
+      <td className="py-4 px-4 text-gray-700 whitespace-nowrap">{route.endLocation}</td>
       <td className="py-4 px-4 text-gray-700 whitespace-nowrap">
-        {route.priceRwf.toLocaleString()}
+        {route.price.toLocaleString()}
       </td>
-      <td className="py-4 px-4 text-gray-700 whitespace-nowrap">{route.travelTime}</td>
-      <td className="py-4 px-4 text-gray-700 whitespace-nowrap">{route.distance}</td>
+      <td className="py-4 px-4 text-gray-700 whitespace-nowrap">{formatDuration(route.travelTime)}</td>
+      <td className="py-4 px-4 text-gray-700 whitespace-nowrap">{route.distance} km</td>
       <td className="py-4 px-4 whitespace-nowrap">
-        <ActionButton />
+        <ActionButton onEdit={handleEdit} onDelete={handleDelete} />
       </td>
     </tr>
   );
 };
 
 const RoutesManagement: React.FC = () => {
-  const [routes, setRoutes] = useState<Route[]>(() =>
-    Array.from({ length: 11 }, (_, index) => ({
-      id: `route-${index + 1}`,
-      from: 'Kigali',
-      to: ['Uganda', 'Tanzania', 'Burundi', 'DRC'][index % 4],
-      priceRwf: 15000 + (index * 2000),
-      travelTime: `${8 + index % 4}h ${30 + (index * 10) % 60}min`,
-      distance: `${100 + (index * 20)} km`
-    }))
-  );
 
   const t = useTranslations("route");
 
-  const handleAddRoute = useCallback((newRoute: Route) => {
-    setRoutes(prev => [...prev, newRoute]);
-  }, []);
+  const {data, isLoading: routesLoading, error: routesError} = useRoutes();
+  const deleteRouteMutation = useDeleteRoute();
 
-  const handleEditRoute = useCallback((route: Route) => {
+  const routesLength = data?.length ?? 0;
+  const routes = data ?? [];
+
+
+
+  const handleEditRoute = useCallback((route: RouteResponse) => {
     console.log('Edit route:', route);
 
   }, []);
 
-  const handleDeleteRoute = useCallback((routeId: string) => {
-    console.log('Delete route:', routeId);
+  const handleDeleteRoute = useCallback(
+      (routeId: number) => {
+        deleteRouteMutation.mutate(routeId);
+      },
+      [deleteRouteMutation]
+  );
 
-  }, []);
-
-  const displayedRoutesCount = useMemo(() => routes.length, [routes]);
-  const totalRoutesCount = routes.length;
+  const displayedRoutesCount = useMemo(() => routesLength, [routesLength]);
 
   return (
     <div>
@@ -137,10 +127,10 @@ const RoutesManagement: React.FC = () => {
               {t("title")}
             </h1>
             <p className="text-sm text-gray-500">
-              {t("showingRoutes", { displayed: displayedRoutesCount, total: totalRoutesCount })}
+              {t("showingRoutes", { displayed: displayedRoutesCount, total: routesLength })}
             </p>
           </div>
-          <AddRouteForm onAddRoute={handleAddRoute} />
+          <AddRouteForm  />
         </header>
 
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
@@ -148,26 +138,43 @@ const RoutesManagement: React.FC = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <TableHeader />
               <tbody>
-                {routes.map((route, index) => (
-                  <TableRow
-                    key={route.id}
-                    route={route}
-                    index={index}
-                    onEdit={handleEditRoute}
-                    onDelete={handleDeleteRoute}
-                  />
-                ))}
+              {
+                routes.map((route, index) => (
+                    <TableRow
+                        key={route.id}
+                        route={route}
+                        index={index}
+                        onEdit={handleEditRoute}
+                        onDelete={handleDeleteRoute}
+                    />
+                ))
+              }
               </tbody>
             </table>
           </div>
         </div>
 
-        {routes.length === 0 && (
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
-            <p className="text-gray-500 text-lg mb-4">{t("noRoutesFound")}</p>
-            <AddRouteForm onAddRoute={handleAddRoute} />
-          </div>
+        {!routesError && !routesLoading && routes?.length === 0 && (
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+              <p className="text-gray-500 text-lg mb-4">{t("noRoutesFound")}</p>
+              <AddRouteForm />
+            </div>
         )}
+
+        {routesLoading && (
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+              <Loader />
+            </div>
+        )}
+
+        {
+          routesError && (
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
+                <p className="text-red-500 text-lg mb-4">{t("noRoutesError")}</p>
+              </div>
+            )
+        }
+
       </div>
     </div>
   );

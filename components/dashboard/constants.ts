@@ -1,14 +1,4 @@
-import {
-  BusFront,
-  ChartLine,
-  Clock,
-  HelpCircle,
-  House,
-  Settings,
-  Ticket,
-  Users,
-  LogOutIcon
-} from "lucide-react";
+import {BusFront, ChartLine, Clock, HelpCircle, House, Settings, Ticket, Users} from "lucide-react";
 
 export type UserRole = 'admin' | 'manager' | 'user';
 
@@ -33,6 +23,5 @@ export const navItems: NavItem[] = [
 export const bottomNavItems: NavItem[] = [
   { path: "/admin/settings", icon: Settings, label: "sidebar.settings" },
   { path: "/admin/support", icon: HelpCircle, label: "sidebar.helpSupport" },
-  { path: "/login", icon: LogOutIcon, label: "sidebar.logout" }
 ];
 

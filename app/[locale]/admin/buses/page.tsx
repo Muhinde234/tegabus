@@ -1,22 +1,17 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 "use client";
 
-import React, { useState, useCallback, useMemo } from "react";
+import React, {useCallback, useMemo, useState} from "react";
 
 import StatsCard from "@/components/dashboard/statCard";
 import BusTableRow from "@/components/dashboard/BusTableRow";
-import BusDetailsCard from "@/components/dashboard/BusDetailsCard";
-import { Bus, BusStats } from "../../../../types/type";
+import {Bus, BusStats} from "@/types/type";
 import Topsection from "@/components/dashboard/topsection";
 import AddBusForm from "@/components/dialogs/addBus";
+import {Bus as MyBus} from "@/lib/types";
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../../../components/ui/select";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue,} from "@/components/ui/select";
+import {useBuses} from "@/hooks/useBuses";
 
 const BusManagementDashboard: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<"All" | Bus["status"]>(
@@ -30,30 +25,13 @@ const BusManagementDashboard: React.FC = () => {
     availableBuses: 50,
   });
 
-  const tableHeads = ["Bus-number", "Status", "Route", "Driver", "Actions"];
+  const tableHeads = ["Bus-number", "Status", "Actions"];
 
-  const [buses] = useState<Bus[]>(() =>
-    Array.from({ length: 9 }, (_, index) => ({
-      id: `bus-${index + 1}`,
-      busNumber: "RAC 456 C",
-      status: "Active" as const,
-      route: "Kigali to Bujumbura",
-      driver: {
-        id: `driver-${index + 1}`,
-        name: "Muhinde Doata",
-        phone: "+250791154390",
-      },
-    }))
-  );
-
-  const filteredBuses = useMemo(() => {
-    if (activeFilter === "All") return buses;
-    return buses.filter((bus) => bus.status === activeFilter);
-  }, [buses, activeFilter]);
+  const {data: buses, isLoading} = useBuses();
 
   const selectedBus = useMemo(() => buses[0], [buses]);
 
-  const handleEditBus = useCallback((bus: Bus) => {
+  const handleEditBus = useCallback((bus: MyBus) => {
     console.log("Edit bus:", bus);
   }, []);
 
@@ -92,15 +70,15 @@ const BusManagementDashboard: React.FC = () => {
           />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1  gap-6">
+          <div >
             <div className="flex justify-between items-center mb-6">
               <div>
                 <h2 className="text-xl font-semibold text-gray-900 mb-1">
                   Bus List
                 </h2>
                 <p className="text-sm text-gray-500">
-                  Showing {filteredBuses.length} of {buses.length} buses
+                  Showing {buses.length} of {buses.length} buses
                 </p>
               </div>
               <div className="flex gap-3">
@@ -140,7 +118,7 @@ const BusManagementDashboard: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredBuses.map((bus, index) => (
+                    {buses.map((bus, index) => (
                       <BusTableRow
                         key={bus.id}
                         bus={bus}
@@ -155,19 +133,19 @@ const BusManagementDashboard: React.FC = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-1">
-            <BusDetailsCard
-              bus={selectedBus}
-              totalSeats={50}
-              availableSeats={8}
-              route={{
-                from: "Kigali",
-                to: "Uganda",
-                departure: "10:00 am",
-                arrival: "12:00 am",
-              }}
-            />
-          </div>
+          {/*<div className="lg:col-span-1">*/}
+          {/*  <BusDetailsCard*/}
+          {/*    bus={selectedBus}*/}
+          {/*    totalSeats={50}*/}
+          {/*    availableSeats={8}*/}
+          {/*    route={{*/}
+          {/*      from: "Kigali",*/}
+          {/*      to: "Uganda",*/}
+          {/*      departure: "10:00 am",*/}
+          {/*      arrival: "12:00 am",*/}
+          {/*    }}*/}
+          {/*  />*/}
+          {/*</div>*/}
         </div>
       </div>
     </div>

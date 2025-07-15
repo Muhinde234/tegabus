@@ -1,36 +1,55 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
-import { cn } from "@/lib/utils"
-import { useChat } from "ai/react"
-import { MessageCircle, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip"
-import { ChatWindow } from "./chat-window"
-import { chatConfig, type AIProvider } from "@/utils/chat-config"
-import type { SystemPromptType } from "@/utils/system-prompts"
+import {useState} from "react"
+import {cn} from "@/lib/utils"
+import {MessageCircle, X} from "lucide-react"
+import {Button} from "@/components/ui/button"
+import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip"
+import {ChatWindow} from "./chat-window"
+import {type AIProvider, chatConfig} from "@/utils/chat-config"
+import type {SystemPromptType} from "@/utils/system-prompts"
+import {Message} from "ai";
+import {useTegaBusChat} from "@/hooks/useChat";
 
 export function FloatingChatWidget() {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedProvider, setSelectedProvider] = useState<AIProvider>(chatConfig.defaultProvider)
   const [systemPromptType, setSystemPromptType] = useState<SystemPromptType>("default")
 
-  const { messages, input, setInput, append, isLoading } = useChat({
-    api: "/api/chat",
-    body: {
-      provider: selectedProvider,
-      systemPromptType: systemPromptType,
-    },
-  })
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState("");
+  const { mutate: sendMessage, isPending } = useTegaBusChat();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (input.trim()) {
-      void append({ content: input, role: "user" })
-      setInput("")
-    }
-  }
+    e.preventDefault();
+
+    const newMessage: Message = {
+      id: Date.now().toString(),
+      role: "user",
+      content: input,
+    };
+
+    setMessages((prev) => [...prev, newMessage]);
+
+    sendMessage(
+        { message: input },
+        {
+          onSuccess: (data) => {
+            setMessages((prev) => [
+              ...prev,
+              {
+                id: Date.now().toString() + "-bot",
+                role: "assistant",
+                content: data.reply,
+              },
+            ]);
+          },
+        }
+    );
+
+    setInput("");
+  };
 
   return (
     <>
@@ -41,7 +60,7 @@ export function FloatingChatWidget() {
           input={input}
           setInput={setInput}
           onSubmit={handleSubmit}
-          isLoading={isLoading}
+          isLoading={isPending}
           onClose={() => setIsOpen(false)}
           selectedProvider={selectedProvider}
           onProviderChange={setSelectedProvider}

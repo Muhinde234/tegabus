@@ -72,7 +72,7 @@ export default function RegisterPage() {
   const onSubmit = (data: RegisterFormValues) => {
     const { confirmPassword, ...submitData } = data;
     authService.signup(submitData).then(() => {
-      router.push("/login");
+      router.push("/email-sent");
     });
   };
 

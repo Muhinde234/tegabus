@@ -27,6 +27,7 @@ import { BookingFormDialog } from "@/components/dialogs/bookingForm";
 import AddBusForm from "@/components/dialogs/addBus";
 import Map from "@/components/dashboard/map";
 import { useTranslations } from "next-intl";
+import {useUser} from "@/context/userContext";
 
 const DEFAULT_CENTER: [number, number] = [-1.9499500, 30.0588500];
 
@@ -48,6 +49,7 @@ const Greeting = () => {
 const Dashboard = () => {
   const [timeFrame, setTimeFrame] = useState("monthly");
   const t = useTranslations("dashboard");
+  const {user} = useUser();
 
   const stats = [
     {
@@ -102,7 +104,7 @@ const Dashboard = () => {
               alt="User avatar"
             />
             <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
-              Dositha
+              {user?.fullName}
             </span>
           </div>
         </div>

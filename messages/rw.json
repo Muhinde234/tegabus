@@ -5,12 +5,11 @@
          "routes": "Amaroute",
          "conditions": "Amategeko",
          "language": "Ururimi",
-         "getStarted": "Tangira"
+         "getStarted": "Tangira",
+         "logout": "Sohoka"
        },
        "nav":{
         "notifications": "Amakuru"
-
-    
        },
 
        "dashboard": {
@@ -295,6 +294,7 @@
          "title": "Gucunga Inzira",
          "showingRoutes": "Erekana {displayed} kuri {total} inzira",
          "noRoutesFound": "Nta nzira yabonetse",
+         "noRoutesError": "Habaye ikibazo mukugaragaza imihanda.",
          "table": {
            "from": "Kuva",
            "to": "Kuri",

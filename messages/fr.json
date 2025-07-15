@@ -5,7 +5,8 @@
     "routes": "Itinéraires",
     "conditions": "Conditions",
     "language": "Langue",
-    "getStarted": "Commencer"
+    "getStarted": "Commencer",
+    "logout": "Se déconnecter"
   },
  "nav":{
   "notifications": "Notifications"
@@ -296,6 +297,7 @@
     "title": "Gestion des Itinéraires",
     "showingRoutes": "Affichage de {displayed} sur {total} itinéraires",
     "noRoutesFound": "Aucun itinéraire trouvé",
+    "noRoutesError": "Erreur lors de la récupération des itinéraires",
     "table": {
       "from": "De",
       "to": "À",

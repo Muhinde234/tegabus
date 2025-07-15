@@ -1,50 +1,30 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import type { Schedule, CreateSchedule } from "@/lib/types";
-import { scheduleService } from "@/api/scheduleService";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
+import {scheduleService} from "@/api/schedule";
+import {ScheduleParams, ScheduleRequest, ScheduleResponse, SeatLayoutResponse} from "@/lib/types";
 
-export const useSchedules = () => {
-  return useQuery<Schedule[]>({
-    queryKey: ["schedules"],
-    queryFn: scheduleService.getAll,
-  });
-};
-
-export const useSchedule = (id: string) => {
-  return useQuery<Schedule>({
-    queryKey: ["schedule", id],
-    queryFn: () => scheduleService.getById(id),
-    enabled: !!id,
-  });
+export const useSchedules = (params?: ScheduleParams) => {
+    return useQuery<ScheduleResponse[]>({
+        queryKey: ["schedules", params],
+        queryFn: () => scheduleService.getAll(params),
+        initialData: []
+    });
 };
 
 export const useCreateSchedule = () => {
-  const queryClient = useQueryClient();
-  return useMutation<Schedule, Error, CreateSchedule>({
-    mutationFn: scheduleService.create,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["schedules"] });
-    },
-  });
-};
+    const queryClient = useQueryClient();
 
-export const useUpdateSchedule = () => {
-  const queryClient = useQueryClient();
-  return useMutation<Schedule, Error, { id: string; data: Partial<CreateSchedule> }>({
-    mutationFn: ({ id, data }) => scheduleService.update(id, data),
-    onSuccess: (_, variables) => {
-      queryClient.invalidateQueries({ queryKey: ["schedules"] });
-      queryClient.invalidateQueries({ queryKey: ["schedule", variables.id] });
-    },
-  });
-};
+    return useMutation<ScheduleResponse, Error, ScheduleRequest>({
+        mutationFn: scheduleService.create,
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({queryKey: ["schedules"]})
+        }
+    })
+}
 
-export const useDeleteSchedule = () => {
-  const queryClient = useQueryClient();
-  return useMutation<void, Error, string>({
-    mutationFn: scheduleService.delete,
-    onSuccess: (_, id) => {
-      queryClient.invalidateQueries({ queryKey: ["schedules"] });
-      queryClient.removeQueries({ queryKey: ["schedule", id] });
-    },
-  });
-};
+export const useScheduleSeats = (id: number) => {
+    return useQuery<SeatLayoutResponse>({
+        queryKey: ['schedules', id],
+        queryFn: () => scheduleService.scheduleSeats(id),
+        enabled: !!id
+    })
+}
