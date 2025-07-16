@@ -1,6 +1,6 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { bottomNavItems, navItems } from './constants';
 import {
   Sidebar,
@@ -21,15 +21,22 @@ import {useUser} from "@/context/userContext";
 
 export default function AppSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const {logout} = useUser();
   const t = useTranslations("dashboard");
+
+
+  const handleLogout = () => {
+    logout();
+    router.push("/");
+  }
 
   return (
     <Sidebar className="bg-[#0B3B2E] text-white">
       <SidebarContent>
         <SidebarGroup>
           <SidebarHeader>
-            <Link href="/admin" className="flex items-center gap-3 mb-3">
+            <Link href="/" className="flex items-center gap-3 mb-3">
               <Logo />
             </Link>
           </SidebarHeader>
@@ -81,7 +88,7 @@ export default function AppSidebar() {
                 <Button
                     variant="ghost"
                     className="w-full justify-start text-white hover:bg-white/10"
-                    onClick={() => logout()}
+                    onClick={handleLogout}
                 >
                   <LogOutIcon size={20} />
                   <span>{t("sidebar.logout")}</span>

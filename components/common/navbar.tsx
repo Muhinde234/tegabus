@@ -36,7 +36,11 @@ const Navbar = () => {
     setIsLanguageOpen(false);
     setIsMenuOpen(false);
   };
+   const navigate = () => {
+    router.push("/admin"); 
+  };
 
+ 
   const handleLogout = () => {
     logout();
     toast.warning("Logout successful");
@@ -129,6 +133,13 @@ const Navbar = () => {
                         <DropdownMenuItem onClick={handleLogout}>
                           {t("logout")}
                         </DropdownMenuItem>
+                        {
+                          user.role == "ADMIN" && (
+                            <DropdownMenuItem onClick={navigate}>
+                                Go to Dashboard
+                             </DropdownMenuItem>
+                          )
+                        }
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </>

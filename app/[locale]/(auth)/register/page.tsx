@@ -7,7 +7,6 @@ import Logo from "@/components/common/logo";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -25,12 +24,13 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import type { RegisterRequest } from "@/lib/types";
 import { authService } from "@/api/authService";
+import { useSignUp } from "@/hooks/useAuth";
 
 export default function RegisterPage() {
   const t = useTranslations("auth.register");
   const router = useRouter();
+  const{mutate,isPending}=useSignUp();
 
   // build schema with dynamic messages
   const registerFormSchema = z
@@ -226,9 +226,11 @@ export default function RegisterPage() {
 
             <Button
               type="submit"
+              disabled={isPending}
               className="w-full mt-4 bg-[#0B3B2E] hover:bg-green-700"
             >
-              {t("registerButton")}
+              
+               {isPending ? t("register") : t("registerButton")}
             </Button>
           </form>
         </Form>

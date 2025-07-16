@@ -26,7 +26,6 @@ const loginSchema = z.object({
       .min(8, { message: "Password must be at least 8 characters" }),
 });
 
-
 type LoginFormInputs = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
@@ -52,7 +51,7 @@ export default function LoginPage() {
           toast.success("Login successfull");
         }
       }
-    })
+    });
   };
 
   return (
@@ -67,14 +66,11 @@ export default function LoginPage() {
           <p className="text-center text-sm text-gray-500 mb-6">{t("subtitle")}</p>
 
           <Form {...form}>
-            <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="space-y-5"
-            >
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
               <FormField
                   control={form.control}
                   name="email"
-                  render={({ field, fieldState }) => (
+                  render={({ field }) => (
                       <FormItem>
                         <FormLabel>{t("email")}</FormLabel>
                         <FormControl>
@@ -113,6 +109,9 @@ export default function LoginPage() {
                             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                           </Button>
                         </div>
+                        <Link href="/forgot-password" className="text-sm text-green-700 hover:underline mt-2 inline-block text-right">
+                          {t("forgotPassword")}
+                        </Link>
                         <FormMessage />
                       </FormItem>
                   )}

@@ -205,7 +205,7 @@
   "firstName": "First Name",
   "firstNamePlaceholder": "Enter your first name",
   "firstNameRequired": "First name is required",
-
+  
   "lastName": "Last Name",
   "lastNamePlaceholder": "Enter your last name",
   "lastNameRequired": "Last name is required",
@@ -240,6 +240,7 @@
   "passwordMismatch": "Passwords do not match",
 
   "registerButton": "Register",
+  "register":"registering ..",
   "haveAccount": "Already have an account?",
   "loginLink": "Log in"
 
