@@ -206,6 +206,7 @@
   "firstName": "Prénom",
   "firstNamePlaceholder": "Entrez votre prénom",
   "firstNameRequired": "Le prénom est requis",
+"register": "enregistrement en cours..",
 
   "lastName": "Nom",
   "lastNamePlaceholder": "Entrez votre nom",

@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useMemo, useState} from 'react';
+import React, { useMemo, useState } from 'react';
 import { useTranslations } from "next-intl";
 import { Star, Shield, Clock, MapPin, Route, Bus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,10 +9,10 @@ import Container from '@/components/ui/container';
 import Map from "@/components/dashboard/map";
 import Image from 'next/image';
 import getStripe from "@/utils/get-stripejs";
-import {useScheduleSeats} from "@/hooks/useSchedule";
-import {useParams} from "next/navigation";
+import { useScheduleSeats } from "@/hooks/useSchedule";
+import { useParams } from "next/navigation";
 import Loader from "@/components/ui/loader";
-import {formatTimeOnly} from "@/lib/utils";
+import { formatTimeOnly } from "@/lib/utils";
 
 const DEFAULT_CENTER: [number, number] = [-1.9499500, 30.0588500];
 
@@ -29,11 +29,17 @@ const SeatSelectionPage: React.FC = () => {
     const seat = data?.seats.find(s => s.seatNumber === seatNumber);
     if (!seat || seat.booked) return;
 
-    setSelectedSeats(prev =>
-        prev.includes(seatNumber)
-            ? prev.filter(id => id !== seatNumber)
-            : [...prev, seatNumber]
-    );
+    setSelectedSeats(prev => {
+      if (prev.includes(seatNumber)) {
+        
+        return prev.filter(id => id !== seatNumber);
+      }
+   
+      if (prev.length >= 2) {
+        return prev; 
+      }
+      return [...prev, seatNumber];
+    });
   };
 
   const getSeatClassName = (seatNumber: string) => {
@@ -72,7 +78,6 @@ const SeatSelectionPage: React.FC = () => {
 
   const totalPrice = selectedSeats.length * (data?.pricePerSeat || 0);
 
-
   const handleBooking = async () => {
     if (selectedSeats.length === 0) return;
 
@@ -88,7 +93,6 @@ const SeatSelectionPage: React.FC = () => {
         }),
       });
 
-
       const { sessionId } = await response.json();
 
       const stripe = await getStripe();
@@ -101,13 +105,10 @@ const SeatSelectionPage: React.FC = () => {
     } catch (error) {
       console.error('Error:', error);
     }
-
   };
 
-  if (isLoading || !data) {
-    return <Loader />;
-  }
-
+ 
+ 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50">
       <div className="overflow-hidden bg-[#0B3B2E] text-white py-20 pt-38 sm:px-6 lg:px-32">
@@ -137,7 +138,13 @@ const SeatSelectionPage: React.FC = () => {
         </Container>
       </div>
 
+       {isLoading || !data ? (
+                  <div className='relative'>
+                    <Loader  />
+                  </div>
+                   ) : (
       <div className="p-6">
+      
         <Container>
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -161,7 +168,7 @@ const SeatSelectionPage: React.FC = () => {
                     <span className="text-sm font-medium text-gray-700">{t("seatSelection.legend.selected")}</span>
                   </div>
                 </div>
-
+               
                 <div className="relative bg-gradient-to-b from-blue-50 to-white p-6 rounded-2xl border-2 border-dashed border-blue-200">
                   <div className="flex justify-center mb-6">
                     <div className="bg-gradient-to-r from-green-300 to-green-700 text-white px-6 py-3 rounded-full flex items-center gap-2 shadow-lg">
@@ -172,26 +179,28 @@ const SeatSelectionPage: React.FC = () => {
 
                   <div className="grid grid-cols-5 max-w-md mx-auto gap-3 items-end">
                     {Object.entries(groupedSeats).map(([letter, seatNumbers]) => (
-                        <div key={letter} className="flex flex-col items-center gap-2 justify-end">
-                          <span className="font-bold">{letter}</span>
-                          {seatNumbers.map(seatNumber => (
-                              <button
-                                  key={seatNumber}
-                                  onClick={() => handleSeatClick(seatNumber)}
-                                  className={getSeatClassName(seatNumber)}
-                                  title={`${t("seatSelection.seat")} ${seatNumber}`}
-                              >
-                                <span className="text-xs text-gray-600 font-medium">{seatNumber.slice(1)}</span>
-                              </button>
-                          ))}
-                        </div>
+                      <div key={letter} className="flex flex-col items-center gap-2 justify-end">
+                        <span className="font-bold">{letter}</span>
+                        {seatNumbers.map(seatNumber => (
+                          <button
+                            key={seatNumber}
+                            onClick={() => handleSeatClick(seatNumber)}
+                            className={getSeatClassName(seatNumber)}
+                            title={`${t("seatSelection.seat")} ${seatNumber}`}
+                            disabled={selectedSeats.length >= 2 && !selectedSeats.includes(seatNumber)} // Disable buttons if 2 seats are selected
+                          >
+                            <span className="text-xs text-gray-600 font-medium">{seatNumber.slice(1)}</span>
+                          </button>
+                        ))}
+                      </div>
                     ))}
                   </div>
                 </div>
               </div>
-
-              <div className="lg:col-span-1 ">
-                <div className="bg-white rounded-2xl shadow-sm  p-6 border border-gray-100 sticky top-6">
+                  
+            
+              <div className="lg:col-span-1">
+                <div className="bg-white rounded-2xl shadow-sm p-6 border border-gray-100 sticky top-6">
                   <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-100">
                     <span className="text-xl font-bold text-gray-800">{data.bus}</span>
                     <span className="bg-gradient-to-r from-lime-500 to-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
@@ -215,26 +224,23 @@ const SeatSelectionPage: React.FC = () => {
                     </div>
                   </div>
 
-
                   <div className="flex items-center justify-between text-sm p-3 rounded-lg">
-                    <div className='flex gap-2 border border-dashed border-green-300 p-2'>
+                    <div className="flex gap-2 border border-dashed border-green-300 p-2">
                       <Bus />
-                      <div className='flex flex-col'>
-                        <p className='text-sm'>{t("busInfo.totalSeats")}</p>
+                      <div className="flex flex-col">
+                        <p className="text-sm">{t("busInfo.totalSeats")}</p>
                         <p>{data.totalSeats}</p>
                       </div>
                     </div>
 
-
-                    <div className='flex gap-2  border border-dashed border-lime-300 p-2'>
+                    <div className="flex gap-2 border border-dashed border-lime-300 p-2">
                       <Bus />
-                      <div className='flex flex-col'>
-                        <p className='text-sm'>{t("busInfo.availableSeats")}</p>
+                      <div className="flex flex-col">
+                        <p className="text-sm">{t("busInfo.availableSeats")}</p>
                         <p>{data.remainingSeats}</p>
                       </div>
                     </div>
                   </div>
-
 
                   <div className="text-center p-4 bg-gray-50 rounded-xl">
                     <div className="flex items-center justify-center gap-4 mb-3">
@@ -253,7 +259,7 @@ const SeatSelectionPage: React.FC = () => {
                   <div className="p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
                     <div className="flex items-center gap-2 mb-2">
                       <MapPin className="w-4 h-4 text-green-600" />
-                      <p className="font-bold text-gray-800">{data.from + " → "+ data.to}</p>
+                      <p className="font-bold text-gray-800">{data.from + " → " + data.to}</p>
                     </div>
                     <p className="text-sm text-gray-600">{t("busInfo.departure")} {formatTimeOnly(data.departureTime)} • {t("busInfo.arrival")} {formatTimeOnly(data.arrivalTime)}</p>
                   </div>
@@ -282,7 +288,7 @@ const SeatSelectionPage: React.FC = () => {
                     className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 transform ${selectedSeats.length > 0
                       ? 'bg-gradient-to-r from-green-600 to-green-700 text-white hover:from-green-700 hover:to-green-800 hover:scale-105 shadow-xl hover:shadow-2xl'
                       : 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                      }`}
+                    }`}
                     disabled={selectedSeats.length === 0}
                   >
                     {t("booking.bookButton")}
@@ -297,10 +303,13 @@ const SeatSelectionPage: React.FC = () => {
                   )}
                 </div>
               </div>
+                   
             </div>
           </div>
         </Container>
+    
       </div>
+      )}
     </div>
   );
 };
