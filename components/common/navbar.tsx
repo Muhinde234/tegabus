@@ -13,7 +13,7 @@ import {useUser} from "@/context/userContext";
 import {Avatar, AvatarFallback} from "@/components/ui/avatar";
 import {toast} from "sonner";
 
-const Navbar = () => {
+const Navbar = () => {``
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const pathname = usePathname();
@@ -53,7 +53,7 @@ const Navbar = () => {
     { path: "/conditions", label: t("conditions") },
   ];
 
-  // Generate initials from user's name
+ 
   const getInitials = (name: string) => {
     return name
         .split(" ")
@@ -116,7 +116,7 @@ const Navbar = () => {
               {user ? (
                   <>
                     <Link
-                        href="/dashboard"
+                        href="/login"
                         className="bg-[#0B3B2E] rounded-full py-2 px-4 text-white hover:bg-green-700 text-sm md:text-base"
                     >
                       {t("getStarted")}
