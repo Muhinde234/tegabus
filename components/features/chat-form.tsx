@@ -2,12 +2,13 @@
 
 import { cn } from "@/lib/utils"
 
-import { useChat } from "ai/react"
+
 
 import { ArrowUpIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { AutoResizeTextarea } from "./autoresize-textarea"
+import { useChat } from "ai/react"
 
 export function ChatForm({ className, ...props }: React.ComponentProps<"form">) {
   const { messages, input, setInput, append } = useChat({
