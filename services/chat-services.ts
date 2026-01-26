@@ -6,9 +6,6 @@ import { chatConfig, type AIProvider } from "../utils/chat-config"
 import { systemPrompts, type SystemPromptType } from "../utils/system-prompts"
 
 export const chatService = {
-  /**
-   * Get the model/client instance based on the AI provider
-   */
   getModel(provider: AIProvider) {
     switch (provider) {
       case "openai":
@@ -22,9 +19,6 @@ export const chatService = {
     }
   },
 
-  /**
-   * Handle a chat request from the client
-   */
   async handleChatRequest(req: Request) {
     try {
       const {
@@ -40,16 +34,16 @@ export const chatService = {
       const providerConfig = chatConfig.providers[provider]
       const systemPrompt = systemPrompts[systemPromptType]
 
-      // ✅ Correct usage of AIStream with current SDK
+      // ✅ AIStream returns a ReadableStream<Uint8Array>
       const stream = AIStream({
-        client: this.getModel(provider), // Use 'client' instead of 'model'
+        model: this.getModel(provider),
         system: systemPrompt,
         messages,
         maxTokens: providerConfig.maxTokens,
         temperature: providerConfig.temperature,
       })
 
-      // Return as standard Response for streaming
+      // ✅ Pass the stream to the Response constructor
       return new Response(stream, {
         headers: { "Content-Type": "text/event-stream" },
       })
@@ -59,16 +53,10 @@ export const chatService = {
     }
   },
 
-  /**
-   * Validate a single chat message
-   */
   validateMessage(message: string): boolean {
     return message.trim().length > 0 && message.length <= 1000
   },
 
-  /**
-   * Format a message with role and content
-   */
   formatMessage(content: string, role: "user" | "assistant"): CreateMessage {
     return {
       role,
@@ -76,9 +64,6 @@ export const chatService = {
     }
   },
 
-  /**
-   * List all available AI providers with their descriptions
-   */
   getAvailableProviders() {
     return Object.entries(chatConfig.providers).map(([key, config]) => ({
       id: key as AIProvider,
