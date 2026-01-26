@@ -7,7 +7,7 @@ import { systemPrompts, type SystemPromptType } from "../utils/system-prompts"
 
 export const chatService = {
   /**
-   * Get the model instance based on the AI provider
+   * Get the model/client instance based on the AI provider
    */
   getModel(provider: AIProvider) {
     switch (provider) {
@@ -40,16 +40,19 @@ export const chatService = {
       const providerConfig = chatConfig.providers[provider]
       const systemPrompt = systemPrompts[systemPromptType]
 
-      // Use AIStream for streaming responses
-      const result = AIStream({
-        model: this.getModel(provider),
+      // ✅ Correct usage of AIStream with current SDK
+      const stream = AIStream({
+        client: this.getModel(provider), // Use 'client' instead of 'model'
         system: systemPrompt,
         messages,
         maxTokens: providerConfig.maxTokens,
         temperature: providerConfig.temperature,
       })
 
-      return result.toDataStreamResponse()
+      // Return as standard Response for streaming
+      return new Response(stream, {
+        headers: { "Content-Type": "text/event-stream" },
+      })
     } catch (error) {
       console.error("Chat service error:", error)
       return new Response("Internal Server Error", { status: 500 })
