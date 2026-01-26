@@ -1,4 +1,4 @@
-import { type CoreMessage, streamText } from "ai"
+import { type CreateMessage, AIStream } from "ai"
 import { openai } from "@ai-sdk/openai"
 import { google } from "@ai-sdk/google"
 import { anthropic } from "@ai-sdk/anthropic"
@@ -6,6 +6,9 @@ import { chatConfig, type AIProvider } from "../utils/chat-config"
 import { systemPrompts, type SystemPromptType } from "../utils/system-prompts"
 
 export const chatService = {
+  /**
+   * Get the model instance based on the AI provider
+   */
   getModel(provider: AIProvider) {
     switch (provider) {
       case "openai":
@@ -19,6 +22,9 @@ export const chatService = {
     }
   },
 
+  /**
+   * Handle a chat request from the client
+   */
   async handleChatRequest(req: Request) {
     try {
       const {
@@ -26,7 +32,7 @@ export const chatService = {
         provider = chatConfig.defaultProvider,
         systemPromptType = "default",
       }: {
-        messages: CoreMessage[]
+        messages: CreateMessage[]
         provider?: AIProvider
         systemPromptType?: SystemPromptType
       } = await req.json()
@@ -34,7 +40,8 @@ export const chatService = {
       const providerConfig = chatConfig.providers[provider]
       const systemPrompt = systemPrompts[systemPromptType]
 
-      const result = streamText({
+      // Use AIStream for streaming responses
+      const result = AIStream({
         model: this.getModel(provider),
         system: systemPrompt,
         messages,
@@ -49,17 +56,26 @@ export const chatService = {
     }
   },
 
+  /**
+   * Validate a single chat message
+   */
   validateMessage(message: string): boolean {
     return message.trim().length > 0 && message.length <= 1000
   },
 
-  formatMessage(content: string, role: "user" | "assistant"): CoreMessage {
+  /**
+   * Format a message with role and content
+   */
+  formatMessage(content: string, role: "user" | "assistant"): CreateMessage {
     return {
       role,
       content: content.trim(),
     }
   },
 
+  /**
+   * List all available AI providers with their descriptions
+   */
   getAvailableProviders() {
     return Object.entries(chatConfig.providers).map(([key, config]) => ({
       id: key as AIProvider,
