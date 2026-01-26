@@ -1,9 +1,10 @@
-import { type CreateMessage, AIStream } from "ai"
+import { type CoreMessage, streamText } from "ai"
 import { openai } from "@ai-sdk/openai"
 import { google } from "@ai-sdk/google"
 import { anthropic } from "@ai-sdk/anthropic"
 import { chatConfig, type AIProvider } from "../utils/chat-config"
 import { systemPrompts, type SystemPromptType } from "../utils/system-prompts"
+import { type CreateMessage } from "../utils/create-message"
 
 export const chatService = {
   getModel(provider: AIProvider) {
@@ -26,7 +27,7 @@ export const chatService = {
         provider = chatConfig.defaultProvider,
         systemPromptType = "default",
       }: {
-        messages: CreateMessage[]
+        messages: CoreMessage[]
         provider?: AIProvider
         systemPromptType?: SystemPromptType
       } = await req.json()
@@ -34,8 +35,8 @@ export const chatService = {
       const providerConfig = chatConfig.providers[provider]
       const systemPrompt = systemPrompts[systemPromptType]
 
-      // ✅ AIStream returns a ReadableStream<Uint8Array>
-      const stream = AIStream({
+      // ✅ Use streamText with correct AI SDK v6 API
+      const result = streamText({
         model: this.getModel(provider),
         system: systemPrompt,
         messages,
@@ -43,10 +44,8 @@ export const chatService = {
         temperature: providerConfig.temperature,
       })
 
-      // ✅ Pass the stream to the Response constructor
-      return new Response(stream, {
-        headers: { "Content-Type": "text/event-stream" },
-      })
+      // ✅ Return the readable stream from streamText
+      return result.toTextStreamResponse()
     } catch (error) {
       console.error("Chat service error:", error)
       return new Response("Internal Server Error", { status: 500 })
