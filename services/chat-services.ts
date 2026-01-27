@@ -1,10 +1,13 @@
-import { type CoreMessage, streamText } from "ai"
+import {
+  streamText,
+  convertToModelMessages,
+  type UIMessage,
+} from "ai"
 import { openai } from "@ai-sdk/openai"
 import { google } from "@ai-sdk/google"
 import { anthropic } from "@ai-sdk/anthropic"
 import { chatConfig, type AIProvider } from "../utils/chat-config"
 import { systemPrompts, type SystemPromptType } from "../utils/system-prompts"
-import { type CreateMessage } from "../utils/create-message"
 
 export const chatService = {
   getModel(provider: AIProvider) {
@@ -27,7 +30,7 @@ export const chatService = {
         provider = chatConfig.defaultProvider,
         systemPromptType = "default",
       }: {
-        messages: CoreMessage[]
+        messages: UIMessage[]
         provider?: AIProvider
         systemPromptType?: SystemPromptType
       } = await req.json()
@@ -35,17 +38,22 @@ export const chatService = {
       const providerConfig = chatConfig.providers[provider]
       const systemPrompt = systemPrompts[systemPromptType]
 
+      // ✅ Convert UIMessage to ModelMessage using convertToModelMessages
+      const modelMessages = await convertToModelMessages(messages)
+
       // ✅ Use streamText with correct AI SDK v6 API
       const result = streamText({
         model: this.getModel(provider),
         system: systemPrompt,
-        messages,
+        messages: modelMessages,
         maxTokens: providerConfig.maxTokens,
         temperature: providerConfig.temperature,
       })
 
-      // ✅ Return the readable stream from streamText
-      return result.toTextStreamResponse()
+      // ✅ Return the stream response
+      return result.toUIMessageStreamResponse({
+        originalMessages: messages,
+      })
     } catch (error) {
       console.error("Chat service error:", error)
       return new Response("Internal Server Error", { status: 500 })
@@ -56,10 +64,11 @@ export const chatService = {
     return message.trim().length > 0 && message.length <= 1000
   },
 
-  formatMessage(content: string, role: "user" | "assistant"): CreateMessage {
+  formatMessage(content: string, role: "user" | "assistant"): UIMessage {
     return {
       role,
-      content: content.trim(),
+      parts: [{ type: "text", text: content.trim() }],
+      id: crypto.randomUUID(),
     }
   },
 
