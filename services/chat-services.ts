@@ -38,7 +38,6 @@ export const chatService = {
       const providerConfig = chatConfig.providers[provider]
       const systemPrompt = systemPrompts[systemPromptType]
 
-      // ✅ Convert UIMessage to ModelMessage using convertToModelMessages
       const modelMessages = await convertToModelMessages(messages)
 
       // ✅ Use streamText with correct AI SDK v6 API
