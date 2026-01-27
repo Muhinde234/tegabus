@@ -40,7 +40,7 @@ export const chatService = {
 
       const modelMessages = await convertToModelMessages(messages)
 
-      // ✅ Use streamText with correct AI SDK v6 API
+      
       const result = streamText({
         model: this.getModel(provider),
         system: systemPrompt,
@@ -49,7 +49,7 @@ export const chatService = {
         temperature: providerConfig.temperature,
       })
 
-      // ✅ Return the stream response
+  
       return result.toUIMessageStreamResponse({
         originalMessages: messages,
       })
