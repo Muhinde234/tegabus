@@ -48,12 +48,12 @@ const AboutPage: React.FC = () => {
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link href="/route">
-                  <Button className="bg-[#062d23] text-white hover:bg-[#0b3b2e]">
+                  <Button className="rounded-full bg-white text-[#062d23]">
                     {t("cta.button")}
                   </Button>
                 </Link>
                 <Link href="/login">
-                  <Button variant="outline" className="border-white/30 bg-white/10 text-white hover:bg-white/20">
+                  <Button variant="outline" className="rounded-full border-white/30 bg-white/10 text-white hover:bg-white/20">
                     {t("cta.title")}
                   </Button>
                 </Link>
@@ -122,7 +122,7 @@ const AboutPage: React.FC = () => {
               {t("cta.title")}
             </h2>
             <Link href="/login">
-             <Button variant="default" className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-37.5 sm:w-47.5 h-10 cursor-pointer py-2 px-2">
+             <Button variant="default" className="rounded-full bg-[#0B3B2E] text-white font-semibold transition hover:bg-green-700 w-37.5 sm:w-47.5 h-10 cursor-pointer py-2 px-2">
               {t("cta.button")}
             </Button>
             </Link>
