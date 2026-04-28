@@ -7,7 +7,7 @@ import { Input } from "../ui/inputField";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Logo from "./logo";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Apple, Smartphone, Facebook, Twitter, Linkedin, Instagram} from "lucide-react";
 
 const Footer = () => {
@@ -16,8 +16,47 @@ const Footer = () => {
   const [subscribe, setSubscribe] = useState(false);
   const [emailAlert, setEmailAlert] = useState("");
   const pathname = usePathname();
+  const locale = useLocale();
   const t = useTranslations("footer");
   const nav = useTranslations("navigation");
+
+  const footerLabels = {
+    en: {
+      pages: "Pages",
+      highlights: "Highlights",
+      account: "My Account",
+      downloadApp: "Download App",
+      dashboard: "User Dashboard",
+      appStore: "Download on the App Store",
+      googlePlay: "Get it on Google Play",
+      followUs: "Follow us",
+      myAccount: "My account",
+    },
+    fr: {
+      pages: "Pages",
+      highlights: "À la une",
+      account: "Mon Compte",
+      downloadApp: "Télécharger l'application",
+      dashboard: "Tableau de bord",
+      appStore: "Disponible sur l'App Store",
+      googlePlay: "Disponible sur Google Play",
+      followUs: "Suivez-nous",
+      myAccount: "Mon compte",
+    },
+    rw: {
+      pages: "Amapaji",
+      highlights: "Iby'ingenzi",
+      account: "Konti Yanjye",
+      downloadApp: "Kuramo Porogaramu",
+      dashboard: "Dashboard",
+      appStore: "Kuboneka kuri App Store",
+      googlePlay: "Kuboneka kuri Google Play",
+      followUs: "Dukurikirane",
+      myAccount: "Konti yanjye",
+    },
+  } as const;
+
+  const copy = footerLabels[locale as keyof typeof footerLabels] ?? footerLabels.en;
 
   const translatedLinks = [
     { path: "/", label: nav("home") },
@@ -74,7 +113,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">{t("navigation.pages") || t("quickLinks")}</h4>
+            <h4 className="font-semibold mb-4">{copy.pages}</h4>
             <ul className="space-y-2 text-gray-300">
               {translatedLinks.map((link, idx) => (
                 <li key={idx}>
@@ -85,7 +124,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">{t("highlights") || t("services")}</h4>
+            <h4 className="font-semibold mb-4">{copy.highlights}</h4>
             <ul className="space-y-2 text-gray-300">
               <li><Link href="/routes" className="hover:text-white">{t("bus_routes")}</Link></li>
               <li><Link href="/booking" className="hover:text-white">{t("ticket_booking")}</Link></li>
@@ -95,47 +134,46 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">{t("account") || "My Account"}</h4>
+            <h4 className="font-semibold mb-4">{copy.account}</h4>
             <ul className="space-y-2 text-gray-300">
-              <li><Link href="/dashboard" className="hover:text-white">{t("dashboard") || "User Dashboard"}</Link></li>
-              <li><Link href="/account" className="hover:text-white">{t("navigation.getStarted") || "My account"}</Link></li>
+              <li><Link href="/dashboard" className="hover:text-white">{copy.dashboard}</Link></li>
+              <li><Link href="/account" className="hover:text-white">{copy.myAccount}</Link></li>
               <li><Link href="/listings" className="hover:text-white">My Listings</Link></li>
               <li><Link href="/favorites" className="hover:text-white">Favorites</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">{t("downloadApp") || "Download App"}</h4>
+            <h4 className="font-semibold mb-4">{copy.downloadApp}</h4>
             <div className="space-y-3">
-              <a href="#" className="flex items-center gap-3 border border-gray-700 rounded-lg p-3 hover:bg-white/5">
+              <a href="https://apps.apple.com/app/idYOUR_APP_ID" target="_blank" rel="noreferrer" className="flex items-center gap-3 border border-gray-700 rounded-lg p-3 hover:bg-white/5">
                 <div className="p-3 bg-[#062d23] rounded-md">
                   <Apple className="text-white" />
                 </div>
                 <div className="text-left">
                   <div className="text-xs text-gray-400">App Store</div>
-                  <div className="font-semibold">{t("download.appStore") || "Download on the App Store"}</div>
+                  <div className="font-semibold">{copy.appStore}</div>
                 </div>
               </a>
 
-              <a href="#" className="flex items-center gap-3 border border-gray-700 rounded-lg p-3 hover:bg-white/5">
+              <a href="https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME" target="_blank" rel="noreferrer" className="flex items-center gap-3 border border-gray-700 rounded-lg p-3 hover:bg-white/5">
                 <div className="p-3 bg-[#062d23] rounded-md">
                   <Smartphone className="text-white" />
                 </div>
                 <div className="text-left">
                   <div className="text-xs text-gray-400">Google Play</div>
-                  <div className="font-semibold">{t("download.googlePlay") || "Get it on Google Play"}</div>
+                  <div className="font-semibold">{copy.googlePlay}</div>
                 </div>
               </a>
             </div>
 
             <div className="mt-6">
-              <h4 className="font-semibold mb-2">Follow us</h4>
+              <h4 className="font-semibold mb-2">{copy.followUs}</h4>
               <div className="flex items-center gap-3">
-                <Link href="#" className="p-2 rounded bg-white/5"><Facebook size={18} /></Link>
-                <Link href="#" className="p-2 rounded bg-white/5"><Twitter size={18} /></Link>
-                <Link href="#" className="p-2 rounded bg-white/5"><Linkedin size={18} /></Link>
-                <Link href="#" className="p-2 rounded bg-white/5"><Instagram size={18} /></Link>
-               
+                <Link href="https://facebook.com/tegabus" target="_blank" rel="noreferrer" className="p-2 rounded bg-white/5"><Facebook size={18} /></Link>
+                <Link href="https://twitter.com/tegabus" target="_blank" rel="noreferrer" className="p-2 rounded bg-white/5"><Twitter size={18} /></Link>
+                <Link href="https://linkedin.com/company/tegabus" target="_blank" rel="noreferrer" className="p-2 rounded bg-white/5"><Linkedin size={18} /></Link>
+                <Link href="https://instagram.com/tegabus" target="_blank" rel="noreferrer" className="p-2 rounded bg-white/5"><Instagram size={18} /></Link>
               </div>
             </div>
           </div>
@@ -146,7 +184,7 @@ const Footer = () => {
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-between py-6 text-sm text-gray-300">
             <div>© 2025 {t("companyName")}. {t("allRightsReserved")}</div>
-            <div className="mt-3 md:mt-0">Designed by Creative Layers</div>
+            <div className="mt-3 md:mt-0">Designed by 360 Hive by Queens</div>
           </div>
         </Container>
       </div>

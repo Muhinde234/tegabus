@@ -1,6 +1,7 @@
 {
        "navigation": {
-         "home": "Ahabanza",
+        "home": "Ahabanza",
+        "pages": "Amapaji",
          "about": "Ibituranga",
          "routes": "Amaroute",
          "conditions": "Amategeko",
@@ -179,7 +180,19 @@
 
 
        },
-       "auth": {
+
+         "navigation": {
+           "pages": "Amapaji"
+         },
+         "highlights": "Iby'ingenzi",
+         "account": "Konti Yanjye",
+         "downloadApp": "Kuramo Porogaramu",
+         "download": {
+           "appStore": "Kuboneka kuri App Store",
+           "googlePlay": "Kuboneka kuri Google Play"
+         },
+        "dashboard": "Dashboard",
+      "auth": {
          "login": {
           
   "title": "Injira muri konti yawe",

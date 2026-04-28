@@ -1,6 +1,7 @@
 {
   "navigation": {
     "home": "Home",
+    "pages": "Pages",
     "about": "About",
     "routes": "Routes",
     "conditions": "Conditions",
@@ -867,6 +868,21 @@
 "company":{
    "buses_label": "Buses: {count}",
   "view_routes": "View Routes"
+}
+
+},
+"footer": {
+  "navigation": {
+    "pages": "Pages"
+  },
+  "highlights": "Highlights",
+  "account": "My Account",
+  "downloadApp": "Download App",
+  "download": {
+    "appStore": "Download on the App Store",
+    "googlePlay": "Get it on Google Play"
+  },
+  "dashboard": "User Dashboard"
 }
 
 }

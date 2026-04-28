@@ -1,6 +1,7 @@
 {
   "navigation": {
     "home": "Accueil",
+    "pages": "Pages",
     "about": "À propos",
     "routes": "Itinéraires",
     "conditions": "Conditions",
@@ -176,6 +177,18 @@
   "phone_label": "Téléphone",
   "address_label": "Adresse"
 
+  ,
+  "navigation": {
+    "pages": "Pages"
+  },
+  "highlights": "À la une",
+  "account": "Mon Compte",
+  "downloadApp": "Télécharger l'application",
+  "download": {
+    "appStore": "Disponible sur l'App Store",
+    "googlePlay": "Disponible sur Google Play"
+  },
+  "dashboard": "Tableau de bord"
 
   },
   
