@@ -1,23 +1,37 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Container from "@/components/ui/container";
 import TermsCard from "../../../../components/termsCard";
 import { termsData } from "@/helpers/data";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import conditionsImage from "../../../../public/images/about.png";
 
 export default function TermsPage() {
   const t = useTranslations("conditions");
 
 
   return (
-    <main className="">
-      <section className="bg-[#0B3B2E] text-white py-20 pt-42  sm:px-6 lg:px-32">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-3xl  font-bold mb-6">{t("hero.title")}</h1>
-          <p className=" max-w-3xl mx-auto">{t("hero.description")}</p>
-          <p>{t("hero.tagline")}</p>
+    <main className="bg-gray-50">
+      <section className="relative isolate -mt-20 overflow-hidden bg-[#0B3B2E] pt-20 text-white md:-mt-24 md:pt-24">
+        <div className="absolute inset-0">
+          <Image
+            src={conditionsImage}
+            alt="Conditions background"
+            fill
+            priority
+            className="object-cover object-center opacity-30"
+          />
+        </div>
+
+        <div className="absolute inset-0 bg-linear-to-b from-[#0B3B2E]/95 via-[#0B3B2E]/85 to-[#0B3B2E]/95" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-32">
+          <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">{t("hero.title")}</h1>
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-white/85 sm:text-lg">{t("hero.description")}</p>
+          <p className="mt-4 text-base leading-7 text-white/80 sm:text-lg">{t("hero.tagline")}</p>
         </div>
       </section>
       <Container>

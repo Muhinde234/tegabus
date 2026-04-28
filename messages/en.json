@@ -814,6 +814,7 @@
   },
   "routes": {
     "pageTitle": "Find Your Perfect Bus",
+    "pageDescription": "Search schedules, compare options, and plan your next trip with the same smooth experience across every route.",
     "search": {
       "from": "From",
       "to": "To",

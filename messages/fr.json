@@ -833,6 +833,7 @@
   },
   "routes": {
     "pageTitle": "Itinéraires de Bus",
+    "pageDescription": "Recherchez les horaires, comparez les options et planifiez votre prochain trajet avec la même expérience fluide sur chaque itinéraire.",
     "search": {
       "from": "De",
       "to": "À",
