@@ -1,4 +1,4 @@
-import {Ticket} from 'lucide-react';
+﻿import {Ticket} from 'lucide-react';
 import Link from 'next/link';
 import {ScheduleResponse} from "@/lib/types";
 import {formatReadableDate, formatTimeOnly} from "@/lib/utils";
@@ -11,7 +11,7 @@ const BusCard = ({ticket}: {ticket: ScheduleResponse}) => {
             <div className="bg-white border border-gray-300  rounded-lg shadow-md p-4 w-full">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                        <Ticket className="bg-[#0B3B2E] text-white w-8 h-8 p-1 rounded-lg"/>
+                        <Ticket className="bg-green-600 text-white w-8 h-8 p-1 rounded-lg"/>
                         <span className="font-semibold text-gray-700">{ticket.bus}</span>
                     </div>
                     <span className="font-semibold text-gray-800">{ticket.price} Rwf</span>

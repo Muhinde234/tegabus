@@ -13,39 +13,75 @@ const TripCard: React.FC<tripProps> = ({ trips, rating, departures }) => {
   const t = useTranslations("hero");
 
   return (
-    <div>
-      <div className="container mt-18 mx-auto md:m-w-7xl p-6">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-          {/* Trips */}
-          <div className="text-center flex gap-2">
-            <p className="text-3xl md:text-5xl font-bold">{trips}</p>
-            <p className="text-black mt-2">{t("safe_trips")}</p>
-          </div>
-
-          <div className="text-center">
-            <div className="flex gap-2 justify-center items-center">
-              <p className="text-3xl md:text-5xl font-bold mr-2">{rating}</p>
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-6 h-6 text-lime-400"
-                    fill="currentColor"
-                  />
-                ))}
-              </div>
-            </div>
-            <p className="ml-18 text-black">{t("customer_ratings")}</p>
-          </div>
-
+    <div className=" container mx-auto w-full py-4 flex justify-center">
+      <div className=" container max-w-9xl w-full grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 rounded-2xl overflow-hidden">
         
-          <div className="text-center flex">
-            <p className="text-3xl md:text-5xl font-bold border-r border-gray-400 p-2">
-              {departures}
+        {/* Safe Trips */}
+        <div className="flex items-center justify-center  gap-4 md:gap-6 px-6 md:px-8 py-4 md:py-6 bg-white">
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
+              {trips}
             </p>
-            <p className="text-black p-3">{t("on_time_departures")}</p>
+          </div>
+          <div className="hidden md:block text-right">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
+              {t("safe_trips")}
+            </p>
+          </div>
+          <div className="md:hidden text-center">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
+              {t("safe_trips")}
+            </p>
           </div>
         </div>
+
+        {/* Customer Rating */}
+        <div className="flex items-center justify-center  gap-4 md:gap-6 px-6 md:px-8 py-4 md:py-6 bg-lime-50 md:bg-lime-50">
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <p className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
+              {rating}
+            </p>
+            <div className="flex items-center gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className="w-4 h-4 md:w-5 md:h-5 text-amber-500"
+                  fill="currentColor"
+                />
+              ))}
+            </div>
+          </div>
+          <div className="hidden md:block text-right">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
+              {t("customer_ratings")}
+            </p>
+          </div>
+          <div className="md:hidden text-center">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
+              {t("customer_ratings")}
+            </p>
+          </div>
+        </div>
+
+        {/* On-time Departures */}
+        <div className="flex items-center justify-center  gap-4 md:gap-6w px-6 md:px-8 py-4 md:py-6 bg-white">
+          <div>
+            <p className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
+              {departures}
+            </p>
+          </div>
+          <div className="hidden md:block text-right">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
+              {t("on_time_departures")}
+            </p>
+          </div>
+          <div className="md:hidden text-center">
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest">
+              {t("on_time_departures")}
+            </p>
+          </div>
+        </div>
+
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -33,7 +33,7 @@ export function SupportContactCard({
           <p className="text-xs text-gray-500 mt-1">{description}</p>
         </div>
       </div>
-      <Button variant="outline" className="border-[#0B3B2E] text-[#0B3B2E] hover:bg-[#0B3B2E]/10 w-full">
+      <Button variant="outline" className="border-green-500 text-green-500 hover:bg-green-700/10 w-full">
         {buttonIcon} {buttonText}
       </Button>
     </div>

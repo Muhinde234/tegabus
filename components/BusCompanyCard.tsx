@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { BusCompany } from "@/types/bus";
 import { Button } from "./ui/button";
@@ -21,7 +21,7 @@ const BusCompanyCard: React.FC<Props> = ({ company }) => {
 
       <Button
         variant="default"
-        className="bg-[#0B3B2E] text-white px-4 py-2 rounded hover:bg-green-600 cursor-pointer"
+        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 cursor-pointer"
       >
         {t("view_routes")}
       </Button>

@@ -1,9 +1,14 @@
-import { type CoreMessage, streamText } from "ai"
+import { streamText } from "ai"
 import { openai } from "@ai-sdk/openai"
 import { google } from "@ai-sdk/google"
 import { anthropic } from "@ai-sdk/anthropic"
 import { chatConfig, type AIProvider } from "../utils/chat-config"
 import { systemPrompts, type SystemPromptType } from "../utils/system-prompts"
+
+interface Message {
+  role: "user" | "assistant"
+  content: string
+}
 
 export const chatService = {
   getModel(provider: AIProvider) {
@@ -26,7 +31,7 @@ export const chatService = {
         provider = chatConfig.defaultProvider,
         systemPromptType = "default",
       }: {
-        messages: CoreMessage[]
+        messages: Message[]
         provider?: AIProvider
         systemPromptType?: SystemPromptType
       } = await req.json()
@@ -34,7 +39,8 @@ export const chatService = {
       const providerConfig = chatConfig.providers[provider]
       const systemPrompt = systemPrompts[systemPromptType]
 
-      const result = streamText({
+      // ✅ Use streamText with simple message format
+      const result = await streamText({
         model: this.getModel(provider),
         system: systemPrompt,
         messages,
@@ -42,7 +48,8 @@ export const chatService = {
         temperature: providerConfig.temperature,
       })
 
-      return result.toDataStreamResponse()
+      // ✅ Return the text stream response
+      return result.toTextStreamResponse()
     } catch (error) {
       console.error("Chat service error:", error)
       return new Response("Internal Server Error", { status: 500 })
@@ -53,7 +60,7 @@ export const chatService = {
     return message.trim().length > 0 && message.length <= 1000
   },
 
-  formatMessage(content: string, role: "user" | "assistant"): CoreMessage {
+  formatMessage(content: string, role: "user" | "assistant"): Message {
     return {
       role,
       content: content.trim(),

@@ -1,4 +1,4 @@
-
+﻿
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -27,7 +27,7 @@ export function FAQItem({ question, answer, isExpanded, onToggle }: FAQItemProps
       {isExpanded && (
         <div className="p-4 pt-0 text-gray-600 bg-gray-50 border-t border-gray-200">
           <p className="mb-3">{answer}</p>
-          <Button variant="outline" size="sm" className="border-[#0B3B2E] text-[#0B3B2E] hover:bg-[#0B3B2E]/10">
+          <Button variant="outline" size="sm" className="border-green-500 text-green-500 hover:bg-green-700/10">
             Related Documentation
           </Button>
         </div>

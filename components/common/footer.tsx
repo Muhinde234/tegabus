@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
@@ -7,7 +7,8 @@ import { Input } from "../ui/inputField";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Logo from "./logo";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { Apple, Smartphone, Facebook, Twitter, Linkedin, Instagram} from "lucide-react";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -15,8 +16,47 @@ const Footer = () => {
   const [subscribe, setSubscribe] = useState(false);
   const [emailAlert, setEmailAlert] = useState("");
   const pathname = usePathname();
+  const locale = useLocale();
   const t = useTranslations("footer");
   const nav = useTranslations("navigation");
+
+  const footerLabels = {
+    en: {
+      pages: "Pages",
+      highlights: "Highlights",
+      account: "My Account",
+      downloadApp: "Download App",
+      dashboard: "User Dashboard",
+      appStore: "Download on the App Store",
+      googlePlay: "Get it on Google Play",
+      followUs: "Follow us",
+      myAccount: "My account",
+    },
+    fr: {
+      pages: "Pages",
+      highlights: "À la une",
+      account: "Mon Compte",
+      downloadApp: "Télécharger l'application",
+      dashboard: "Tableau de bord",
+      appStore: "Disponible sur l'App Store",
+      googlePlay: "Disponible sur Google Play",
+      followUs: "Suivez-nous",
+      myAccount: "Mon compte",
+    },
+    rw: {
+      pages: "Amapaji",
+      highlights: "Iby'ingenzi",
+      account: "Konti Yanjye",
+      downloadApp: "Kuramo Porogaramu",
+      dashboard: "Dashboard",
+      appStore: "Kuboneka kuri App Store",
+      googlePlay: "Kuboneka kuri Google Play",
+      followUs: "Dukurikirane",
+      myAccount: "Konti yanjye",
+    },
+  } as const;
+
+  const copy = footerLabels[locale as keyof typeof footerLabels] ?? footerLabels.en;
 
   const translatedLinks = [
     { path: "/", label: nav("home") },
@@ -57,115 +97,97 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0B3B2E] text-white p-4 lg:p-0">
-      <Container className="pt-20 pb-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        <div className="flex flex-col gap-3">
-          <Link href="/">
-            <Logo />
-          </Link>
-          <p>{t("latestTips")}</p>
-          <p>{t("subscribe")}</p>
+    <footer className="bg-[#0B3B2E] text-white">
+      <Container className="pt-16 pb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="space-y-4">
+            <Link href="/">
+              <Logo />
+            </Link>
+            <p className="text-gray-300 max-w-xs">{t("companyDescription")}</p>
+            <div className="text-sm text-gray-400">
+              <div>{t("address_label")}: Kigali, Rwanda</div>
+              <div>{t("phone_label")}: (+250) 780 396 766</div>
+              <div>{t("email_label")} : support@tegabus.com</div>
+            </div>
+          </div>
 
-          <Input
-            name="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder={t("emailPlaceholder")}
-            className="border-b border-white"
-          />
-          {emailAlert && (
-            <p className="text-red-400 text-sm mt-1">{emailAlert}</p>
-          )}
+          <div>
+            <h4 className="font-semibold mb-4">{copy.pages}</h4>
+            <ul className="space-y-2 text-gray-300">
+              {translatedLinks.map((link, idx) => (
+                <li key={idx}>
+                  <Link href={link.path} className="hover:text-white">{link.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-2">
-            <div className="relative w-5 h-5">
-              <Input
-                type="checkbox"
-                onChange={(e) => setSubscribe(e.target.checked)}
-                checked={!!subscribe}
-                id="newsletter"
-                className="peer appearance-none w-full h-full border border-white rounded-sm checked:bg-green-600 checked:border-transparent focus:outline-none cursor-pointer"
-              />
-              <svg
-                className="absolute top-1 left-1 w-3 h-3 text-white pointer-events-none hidden peer-checked:block"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
+          <div>
+            <h4 className="font-semibold mb-4">{copy.highlights}</h4>
+            <ul className="space-y-2 text-gray-300">
+              <li><Link href="/routes" className="hover:text-white">{t("bus_routes")}</Link></li>
+              <li><Link href="/booking" className="hover:text-white">{t("ticket_booking")}</Link></li>
+              <li><Link href="/support" className="hover:text-white">{t("customer_support")}</Link></li>
+              <li><Link href="/updates" className="hover:text-white">{t("real_time_updates")}</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4">{copy.account}</h4>
+            <ul className="space-y-2 text-gray-300">
+              <li><Link href="/dashboard" className="hover:text-white">{copy.dashboard}</Link></li>
+              <li><Link href="/account" className="hover:text-white">{copy.myAccount}</Link></li>
+              <li><Link href="/listings" className="hover:text-white">My Listings</Link></li>
+              <li><Link href="/favorites" className="hover:text-white">Favorites</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-4">{copy.downloadApp}</h4>
+            <div className="space-y-3">
+              <a href="https://apps.apple.com/app/idYOUR_APP_ID" target="_blank" rel="noreferrer" className="flex items-center gap-3 border border-gray-700 rounded-lg p-3 hover:bg-white/5">
+                <div className="p-3 bg-[#062d23] rounded-md">
+                  <Apple className="text-white" />
+                </div>
+                <div className="text-left">
+                  <div className="text-xs text-gray-400">App Store</div>
+                  <div className="font-semibold">{copy.appStore}</div>
+                </div>
+              </a>
+
+              <a href="https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME" target="_blank" rel="noreferrer" className="flex items-center gap-3 border border-gray-700 rounded-lg p-3 hover:bg-white/5">
+                <div className="p-3 bg-[#062d23] rounded-md">
+                  <Smartphone className="text-white" />
+                </div>
+                <div className="text-left">
+                  <div className="text-xs text-gray-400">Google Play</div>
+                  <div className="font-semibold">{copy.googlePlay}</div>
+                </div>
+              </a>
             </div>
 
-            <span>{t("subscribeNewsletter")}</span>
-
-            <Button
-              onClick={handleSubscribe}
-              className="bg-lime-500 text-white rounded-full font-semibold transition hover:bg-lime-400  py-4 px-6 cursor-pointer "
-            >
-              Send
-            </Button>
-          </div>
-        </div>
-
-        <div className="flex flex-col mt-4">
-          <h3 className="font-semibold text-lg">{t("quickLinks")}</h3>
-          <div className="flex flex-col mt-4 gap-2">
-            {translatedLinks.map((link, idx) => (
-              <Link
-                key={idx}
-                href={link.path}
-                className={`hover:text-green-600 transition-colors duration-200 ${
-                  pathname === link.path ? "font-medium text-green-600" : ""
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex flex-col mt-4">
-          <h3 className="font-semibold text-lg">{t("services")}</h3>
-          <div className="flex flex-col gap-2 mt-4">
-            <Link href="/routes">{t("bus_routes")}</Link>
-            <Link href="/login">{t("ticket_booking")}</Link>
-            <Link href="/condition">{t("customer_support")}</Link>
-            <Link href="/routes">{t("real_time_updates")}</Link>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2 mt-4">
-          <h3 className="font-semibold text-lg">{t("contact")}</h3>
-          <div className="flex flex-col gap-2 mt-4">
-            <Link href="/">
-              <span className="text-gray-400">{t("email_label")}:</span>{" "}
-              support@tegabus.com
-            </Link>
-            <Link href="/">
-              <span className="text-gray-400">{t("phone_label")}:</span>{" "}
-              (+250)780396766
-            </Link>
-            <Link href="/">
-              <span className="text-gray-400">{t("address_label")}:</span>{" "}
-              Kigali, Rwanda
-            </Link>
+            <div className="mt-6">
+              <h4 className="font-semibold mb-2">{copy.followUs}</h4>
+              <div className="flex items-center gap-3">
+                <Link href="https://facebook.com/tegabus" target="_blank" rel="noreferrer" className="p-2 rounded bg-white/5"><Facebook size={18} /></Link>
+                <Link href="https://twitter.com/tegabus" target="_blank" rel="noreferrer" className="p-2 rounded bg-white/5"><Twitter size={18} /></Link>
+                <Link href="https://linkedin.com/company/tegabus" target="_blank" rel="noreferrer" className="p-2 rounded bg-white/5"><Linkedin size={18} /></Link>
+                <Link href="https://instagram.com/tegabus" target="_blank" rel="noreferrer" className="p-2 rounded bg-white/5"><Instagram size={18} /></Link>
+              </div>
+            </div>
           </div>
         </div>
       </Container>
 
-      <Container>
-        <div className="text-center text-sm text-white py-6 border-t border-green-800">
-          <p>
-            © 2025 {t("companyName")}. {t("allRightsReserved")}
-          </p>
-        </div>
-      </Container>
+      <div className="border-t border-green-900 mt-8">
+        <Container>
+          <div className="flex flex-col md:flex-row items-center justify-between py-6 text-sm text-gray-300">
+            <div>© 2025 {t("companyName")}. {t("allRightsReserved")}</div>
+            <div className="mt-3 md:mt-0">Designed by 360 Hive by Queens</div>
+          </div>
+        </Container>
+      </div>
     </footer>
   );
 };
