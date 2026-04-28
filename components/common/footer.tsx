@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Container from "../ui/container";
-import { Input } from "../ui/inputField";
-import { Button } from "../ui/button";
+
 import Link from "next/link";
 import Logo from "./logo";
 import { useLocale, useTranslations } from "next-intl";

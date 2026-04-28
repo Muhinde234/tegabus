@@ -174,7 +174,18 @@
   "real_time_updates": "Real-Time Updates",
    "email_label": "Email",
   "phone_label": "Phone",
-  "address_label": "Address"
+  "address_label": "Address",
+  "navigation": {
+    "pages": "Pages"
+  },
+  "highlights": "Highlights",
+  "account": "My Account",
+  "downloadApp": "Download App",
+  "download": {
+    "appStore": "Download on the App Store",
+    "googlePlay": "Get it on Google Play"
+  },
+  "dashboard": "User Dashboard"
 
 
   },
@@ -869,21 +880,6 @@
 "company":{
    "buses_label": "Buses: {count}",
   "view_routes": "View Routes"
-}
-
-},
-"footer": {
-  "navigation": {
-    "pages": "Pages"
-  },
-  "highlights": "Highlights",
-  "account": "My Account",
-  "downloadApp": "Download App",
-  "download": {
-    "appStore": "Download on the App Store",
-    "googlePlay": "Get it on Google Play"
-  },
-  "dashboard": "User Dashboard"
 }
 
 }
