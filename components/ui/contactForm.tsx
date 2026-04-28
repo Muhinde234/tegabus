@@ -19,7 +19,7 @@ const Contact = () => {
       <Container className="flex flex-col lg:flex-row justify-between items-start gap-12">
         {/* Contact Form */}
         <div className="flex flex-col gap-4 w-full lg:w-1/2 items-center text-center lg:items-start lg:text-left">
-          <h1 className="text-lime-400 font-bold">{t('contact_us')}</h1>
+          <h1 className="text-black font-bold">{t('contact_us')}</h1>
           <h1 className="text-2xl">{t('subtitle')}</h1>
 
           <form className="flex flex-col gap-4 mt-4 w-full max-w-md">
@@ -27,12 +27,12 @@ const Contact = () => {
               <Input
                 type="text"
                 placeholder={t('placeholders.name')}
-                className="border border-lime-400 rounded-md p-2 w-full"
+                className="border border-[#062d23] rounded-md p-2 w-full"
               />
               <Input
                 type="text"
                 placeholder={t('placeholders.phone')}
-                className="border border-lime-400 rounded-md p-2 w-full"
+                className="border border-[#062d23] rounded-md p-2 w-full"
               />
             </div>
 
@@ -40,21 +40,21 @@ const Contact = () => {
               <Input
                 type="text"
                 placeholder={t('placeholders.email')}
-                className="border border-lime-400 rounded-md p-2 w-full"
+                className="border border-[#062d23] rounded-md p-2 w-full"
               />
               <Input
                 type="text"
                 placeholder={t('placeholders.subject')}
-                className="border border-lime-400 rounded-md p-2 w-full"
+                className="border border-[#062d23] rounded-md p-2 w-full"
               />
             </div>
 
             <Textarea
               placeholder={t('placeholders.message')}
-              className="border border-lime-400 rounded-md p-2 min-h-[120px] w-full"
+              className="border border-[#062d23] rounded-md p-2 min-h-[120px] w-full"
             />
 
-            <Button variant="ghost" className="bg-lime-400">
+            <Button variant="ghost" className="bg-[#062d23] text-white  rounded-full font-bold py-3 px-6 ">
               {t('send_message')}
             </Button>
           </form>
@@ -66,7 +66,7 @@ const Contact = () => {
 
           <div className="flex flex-col gap-8 mt-8 w-full max-w-md space-y-6">
             <div className="flex gap-4 border-b border-dashed border-lime-400 pb-4">
-              <Phone size={50} className="text-lime-400 hover:text-white hover:bg-lime-400 rounded-full p-3 transition" />
+              <Phone size={50} className="text-lime-400 hover:text-white hover:bg-lime-600 rounded-full p-3 transition" />
               <div className="flex flex-col gap-1">
                 <h1 className="text-gray-700 font-medium">{t('call_us')}</h1>
                 <p>(+250) 780 396 766</p>
@@ -74,7 +74,7 @@ const Contact = () => {
             </div>
 
             <div className="flex gap-4 border-b border-dashed border-lime-400 pb-4">
-              <MailOpen size={50} className="text-lime-400 hover:text-white hover:bg-lime-400 rounded-full p-3 transition" />
+              <MailOpen size={50} className="text-lime-400 hover:text-white hover:bg-lime-600 rounded-full p-3 transition" />
               <div className="flex flex-col gap-1">
                 <h1 className="text-gray-700 font-medium">{t('email_us')}</h1>
                 <p>support@Tegabus.com</p>
@@ -82,7 +82,7 @@ const Contact = () => {
             </div>
 
             <div className="flex gap-4 border-b border-dashed border-lime-400 pb-4">
-              <MapPin size={50} className="text-lime-400 hover:text-white hover:bg-lime-400 rounded-full p-3 transition" />
+              <MapPin size={50} className="text-lime-400 hover:text-white hover:bg-lime-600 rounded-full p-3 transition" />
               <div className="flex flex-col gap-1">
                 <h1 className="text-gray-700 font-medium">{t('location')}</h1>
                 <p>{t('address')}</p>

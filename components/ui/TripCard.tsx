@@ -17,7 +17,7 @@ const TripCard: React.FC<tripProps> = ({ trips, rating, departures }) => {
       <div className=" container max-w-9xl w-full grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-0 rounded-2xl overflow-hidden">
         
         {/* Safe Trips */}
-        <div className="flex items-center justify-center md:justify-between gap-6 md:gap-8 px-6 md:px-8 py-4 md:py-6 bg-white">
+        <div className="flex items-center justify-center  gap-4 md:gap-6 px-6 md:px-8 py-4 md:py-6 bg-white">
           <div>
             <p className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
               {trips}
@@ -36,7 +36,7 @@ const TripCard: React.FC<tripProps> = ({ trips, rating, departures }) => {
         </div>
 
         {/* Customer Rating */}
-        <div className="flex items-center justify-center md:justify-between gap-6 md:gap-8 px-6 md:px-8 py-4 md:py-6 bg-blue-50 md:bg-blue-50">
+        <div className="flex items-center justify-center  gap-4 md:gap-6 px-6 md:px-8 py-4 md:py-6 bg-blue-50 md:bg-blue-50">
           <div className="flex flex-col items-center md:items-start gap-2">
             <p className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
               {rating}
@@ -64,7 +64,7 @@ const TripCard: React.FC<tripProps> = ({ trips, rating, departures }) => {
         </div>
 
         {/* On-time Departures */}
-        <div className="flex items-center justify-center md:justify-between gap-6 md:gap-8 px-6 md:px-8 py-4 md:py-6 bg-white">
+        <div className="flex items-center justify-center  gap-4 md:gap-6w px-6 md:px-8 py-4 md:py-6 bg-white">
           <div>
             <p className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
               {departures}

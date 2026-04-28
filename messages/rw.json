@@ -439,6 +439,27 @@
            "date": "Itariki yo Kugenda",
            "findBus": "Shakisha Imodoka"
          },
+         "companyCta": {
+           "eyebrow": "Ku Masosiyete Atwara Abagenzi",
+           "title": "Uko watangira nk'isosiyete",
+           "description": "Injira kuri TegaBus mu ntambwe nke zisobanutse kandi utangire kwakira ibitumbo by'ingendo mu karere hose.",
+           "primaryButton": "Fungura konti y'isosiyete",
+           "secondaryButton": "Vugisha ubufasha",
+           "steps": {
+             "create": {
+               "title": "Kora umwirondoro",
+               "description": "Iyandikishe nk'isosiyete hanyuma wongereho amakuru y'ingenzi y'ubucuruzi n'itumanaho."
+             },
+             "verify": {
+               "title": "Ohereza ibyangombwa",
+               "description": "Ohereza inyandiko zisabwa kugira ngo ikipe yacu yemeze konti yawe."
+             },
+             "publish": {
+               "title": "Shyira kuri sisiteme gahunda",
+               "description": "Ongeramo inzira, amamodoka n'amasaha yo guhaguruka kugira ngo utangire kugurisha amatike."
+             }
+           }
+         },
          "quickBooking": "Gutumiza Vuba",
          "popularRoutes": "Inzira Zikunda",
          "whyChoose": "Kuki Wahitamo TegaBus?",

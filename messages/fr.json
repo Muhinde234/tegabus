@@ -455,6 +455,27 @@
       "date": "Date de Départ",
       "findBus": "Trouver un Bus"
     },
+    "companyCta": {
+      "eyebrow": "Pour Les Entreprises De Bus",
+      "title": "Comment commencer en tant qu'entreprise",
+      "description": "Rejoignez TegaBus en quelques etapes simples et commencez a recevoir des reservations dans toute la region.",
+      "primaryButton": "Creer un compte entreprise",
+      "secondaryButton": "Contacter le support",
+      "steps": {
+        "create": {
+          "title": "Creer le profil",
+          "description": "Inscrivez votre entreprise et ajoutez les informations essentielles de contact et d'activite."
+        },
+        "verify": {
+          "title": "Envoyer la verification",
+          "description": "Telechargez les documents requis afin que notre equipe valide votre compte."
+        },
+        "publish": {
+          "title": "Publier les horaires",
+          "description": "Ajoutez vos lignes, vos bus et vos heures de depart pour commencer a vendre des billets."
+        }
+      }
+    },
     
       "safe_trips": "Voyages en toute sécurité",
       "customer_ratings": "Avis des clients",

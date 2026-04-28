@@ -450,6 +450,27 @@
       "date": "Departure Date",
       "findBus": "Find schedules"
     },
+    "companyCta": {
+      "eyebrow": "For Bus Companies",
+      "title": "How to get started as a company",
+      "description": "Join TegaBus in a few clear steps and start receiving bookings from travelers across the region.",
+      "primaryButton": "Create company account",
+      "secondaryButton": "Talk to support",
+      "steps": {
+        "create": {
+          "title": "Create profile",
+          "description": "Register your company and add key contact and business details."
+        },
+        "verify": {
+          "title": "Submit verification",
+          "description": "Upload required documents so our team can review and approve your account."
+        },
+        "publish": {
+          "title": "Publish schedules",
+          "description": "Add your routes, buses, and departure times to start selling tickets."
+        }
+      }
+    },
     "ready": "Ready to Ride?",
   "headline": "Book Your Next Journey with Confidence",
   "call_us": "Call us anytime",
