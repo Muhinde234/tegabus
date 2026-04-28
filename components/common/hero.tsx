@@ -45,157 +45,179 @@ const Hero = () => {
   }, [from]);
 
   return (
-      <>
-        <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-28 mt-16 sm:mt-20 md:mt-[84px]">
-          <section className="relative w-full h-[500px] sm:h-[400px] md:h-[500px] lg:h-[700px] rounded-3xl overflow-hidden">
-            <Image
-                src={home}
-                alt="Bus travel background"
-                fill
-                priority
-                className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/50 flex flex-col px-4 sm:px-8 md:px-14 pt-8 sm:pt-10 md:pt-14">
-              <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 mt-12 sm:mt-16 md:mt-24">
-                {t("title")}
-              </h1>
-              <p className="text-white text-sm sm:text-md md:text-lg lg:w-[930px] mb-4 sm:mb-6">
-                {t("description")}
-              </p>
-              <Link href="/route">
-                <Button
-                    variant="default"
-                    className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-[140px] sm:w-[190px] h-[35px] cursor-pointer"
-                >
-                  {t("viewSchedules")}
-                </Button>
-              </Link>
-            </div>
+    <>
+      {/* ── FULL-WIDTH HERO ── */}
+      <section className="relative w-full min-h-screen overflow-hidden">
+        {/* Background image */}
+        <Image
+          src={home}
+          alt="Bus travel background"
+          fill
+          priority
+          className="w-full h-full object-cover object-center"
+        />
 
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] bg-white rounded-t-xl p-3 sm:p-4 md:p-6 flex flex-col sm:flex-row flex-wrap items-center justify-between gap-3 sm:gap-4 md:gap-6">
-              <div className="relative w-full sm:w-[48%] md:w-[23%]">
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-linear-to-b from-black/75 via-black/55 to-black/80" />
+
+        {/* Centered hero content */}
+        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-8 pt-24 pb-16 text-center">
+
+          {/* Heading + description + CTA */}
+          <div className="max-w-4xl mx-auto mb-10 sm:mb-14">
+            <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-5 drop-shadow-lg">
+              {t("title")}
+            </h1>
+            <p className="text-white/85 text-base sm:text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
+              {t("description")}
+            </p>
+            <Link href="/route">
+              <Button
+                variant="default"
+                className="bg-[#0B3B2E] text-white rounded-full font-semibold transition-all duration-200 hover:bg-green-700 hover:scale-105 active:scale-95 px-10 py-3 h-auto text-base shadow-xl cursor-pointer"
+              >
+                {t("viewSchedules")}
+              </Button>
+            </Link>
+          </div>
+
+          {/* ── Modern search card ── */}
+          <div className="w-full max-w-5xl mx-auto">
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-3 sm:p-4 flex flex-col sm:flex-row flex-wrap items-center gap-3">
+
+              {/* From */}
+              <div className="relative w-full sm:flex-1 min-w-35">
                 <Select value={from} onValueChange={setFrom} disabled={originsLoading}>
-                  <SelectTrigger className="w-full border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 capitalize">
+                  <SelectTrigger className="w-full border border-green-200 rounded-xl h-12 capitalize focus:ring-2 focus:ring-green-500 transition-shadow hover:shadow-sm">
                     <SelectValue className="capitalize" placeholder={t("search.from")} />
                   </SelectTrigger>
                   <SelectContent>
                     {origins.map((origin, idx) => (
-                        <SelectItem className="capitalize" key={idx} value={origin}>
-                          {origin}
-                        </SelectItem>
+                      <SelectItem className="capitalize" key={idx} value={origin}>
+                        {origin}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
 
-              <div className="relative w-full sm:w-[48%] md:w-[23%]">
+              {/* To */}
+              <div className="relative w-full sm:flex-1 min-w-35">
                 <Select value={to} onValueChange={setTo} disabled={!from || destinationsLoading}>
-                  <SelectTrigger className="w-full border capitalize border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                  <SelectTrigger className="w-full border capitalize border-green-200 rounded-xl h-12 focus:ring-2 focus:ring-green-500 transition-shadow hover:shadow-sm">
                     <SelectValue className="capitalize" placeholder={t("search.to")} />
                   </SelectTrigger>
                   <SelectContent>
                     {destinations.map((dest, idx) => (
-                        <SelectItem className="capitalize" key={idx} value={dest}>
-                          {dest}
-                        </SelectItem>
+                      <SelectItem className="capitalize" key={idx} value={dest}>
+                        {dest}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
 
+              {/* Date */}
               <Input
-                  type="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  className="w-full sm:w-[48%] md:w-[23%] border border-green-300 p-2 sm:p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                className="w-full sm:flex-1 min-w-35 border border-green-200 rounded-xl h-12 focus:ring-2 focus:ring-green-500 focus:outline-none transition-shadow hover:shadow-sm px-3"
               />
 
-              <div className="w-full sm:w-[48%] md:w-[23%]">
+              {/* Search button */}
+              <div className="w-full sm:w-auto">
                 <Button
-                    variant="secondary"
-                    onClick={handleSearch}
-                    className="bg-[#0B3B2E] text-white rounded-lg font-semibold transition hover:bg-green-700 w-full h-[38px] cursor-pointer py-2 px-2"
+                  variant="secondary"
+                  onClick={handleSearch}
+                  className="bg-[#0B3B2E] text-white rounded-xl font-semibold transition-all duration-200 hover:bg-green-700 hover:scale-105 active:scale-95 w-full sm:w-auto px-10 h-12 shadow-lg cursor-pointer"
                 >
                   {t("search.findBus")}
                 </Button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTIONS BELOW HERO ── */}
+      <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-28">
+        <TripCard trips="500K+" rating={4.9} departures="99%" />
+
+        <Container>
+          <section className="mb-2 md:mb-32">
+            <div className="text-center mt-16 sm:mt-20 md:mt-24">
+              <h1 className="text-2xl sm:text-3xl font-extrabold">{t("whyChoose")}</h1>
+            </div>
+            <CardSection />
           </section>
-          <TripCard trips="500K+" rating={4.9} departures="99%" />
+
+          <div className="bg-[#0B3B2E] px-4 sm:px-8 lg:px-18 mt-20 py-12 text-white rounded">
+            <Container className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-10 text-center sm:text-left">
+              <div className="w-full sm:w-auto">
+                <h3 className="uppercase text-sm tracking-wide">{t("ready")}</h3>
+                <h1 className="text-2xl sm:text-3xl font-bold mt-2">{t("headline")}</h1>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto justify-center sm:justify-start">
+                <div className="flex items-center justify-center border border-lime-400 rounded-full w-16 h-16">
+                  <Phone size={30} className="text-lime-400" />
+                </div>
+                <div className="text-center sm:text-left">
+                  <p className="text-sm">{t("call_us")}</p>
+                  <h4 className="text-xl font-bold">{t("phone")}</h4>
+                </div>
+              </div>
+
+              <Link
+                href="#contact"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 border border-lime-400 rounded-full px-5 py-2 text-sm font-semibold hover:bg-lime-500 hover:text-white text-white transition"
+              >
+                <ThumbsUp className="text-lime-400" />
+                {t("contact_button")}
+              </Link>
+            </Container>
+          </div>
 
           <Container>
-            <section className="mb-2 md:mb-32">
-              <div className="text-center mt-16 sm:mt-20 md:mt-24">
-                <h1 className="text-2xl sm:text-3xl font-extrabold">{t("whyChoose")}</h1>
-              </div>
-              <CardSection />
-            </section>
-            <div className="bg-[#0B3B2E] px-4 sm:px-8 lg:px-18 mt-20 py-12 text-white rounded">
-              <Container className="flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-10 text-center sm:text-left">
-                <div className="w-full sm:w-auto">
-                  <h3 className="uppercase text-sm tracking-wide">{t("ready")}</h3>
-                  <h1 className="text-2xl sm:text-3xl font-bold mt-2">{t("headline")}</h1>
-                </div>
-
-                <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto justify-center sm:justify-start">
-                  <div className="flex items-center justify-center border border-lime-400 rounded-full w-16 h-16">
-                    <Phone size={30} className="text-lime-400" />
-                  </div>
-                  <div className="text-center sm:text-left">
-                    <p className="text-sm">{t("call_us")}</p>
-                    <h4 className="text-xl font-bold">{t("phone")}</h4>
-                  </div>
-                </div>
-
-                <Link
-                    href="#contact"
-                    className="w-full sm:w-auto flex items-center justify-center gap-2 border border-lime-400 rounded-full px-5 py-2 text-sm font-semibold hover:bg-lime-500 hover:text-white text-white transition"
-                >
-                  <ThumbsUp className="text-lime-400" />
-                  {t("contact_button")}
-                </Link>
-              </Container>
+            <h2 className="text-center text-3xl font-bold mt-20 mb-10">{t("patterns_title")}</h2>
+            <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 px-4 sm:px-0">
+              <Image
+                src="/images/logoipsum-380.png"
+                alt="logo"
+                width={100}
+                height={100}
+                className="rounded-full"
+              />
+              <Image
+                src="/images/logoipsum-380.png"
+                alt="logo"
+                width={100}
+                height={100}
+                className="rounded-full"
+              />
+              <Image
+                src="/images/logoipsum-380.png"
+                alt="logo"
+                width={100}
+                height={100}
+                className="rounded-full"
+              />
+              <Image
+                src="/images/logoipsum-380.png"
+                alt="logo"
+                width={100}
+                height={100}
+                className="rounded-full"
+              />
             </div>
-
-            <Container>
-              <h2 className="text-center text-3xl font-bold mt-20 mb-10">{t("patterns_title")}</h2>
-              <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 px-4 sm:px-0">
-                <Image
-                    src="/images/logoipsum-380.png"
-                    alt="logo"
-                    width={100}
-                    height={100}
-                    className="rounded-full"
-                />
-                <Image
-                    src="/images/logoipsum-380.png"
-                    alt="logo"
-                    width={100}
-                    height={100}
-                    className="rounded-full"
-                />
-                <Image
-                    src="/images/logoipsum-380.png"
-                    alt="logo"
-                    width={100}
-                    height={100}
-                    className="rounded-full"
-                />
-                <Image
-                    src="/images/logoipsum-380.png"
-                    alt="logo"
-                    width={100}
-                    height={100}
-                    className="rounded-full"
-                />
-              </div>
-            </Container>
-
-            <Contact />
-            <PopularRoutesSection />
           </Container>
-        </div>
-      </>
+
+          <Contact />
+          <PopularRoutesSection />
+        </Container>
+      </div>
+    </>
   );
 };
 
