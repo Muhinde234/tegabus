@@ -97,7 +97,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0B3B2E] text-yellow">
+    <footer className="bg-[#0B3B2E] text-lime-700">
       <Container className="pt-16 pb-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="space-y-4">
