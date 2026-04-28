@@ -36,7 +36,7 @@ const TripCard: React.FC<tripProps> = ({ trips, rating, departures }) => {
         </div>
 
         {/* Customer Rating */}
-        <div className="flex items-center justify-center  gap-4 md:gap-6 px-6 md:px-8 py-4 md:py-6 bg-blue-50 md:bg-blue-50">
+        <div className="flex items-center justify-center  gap-4 md:gap-6 px-6 md:px-8 py-4 md:py-6 bg-lime-50 md:bg-lime-50">
           <div className="flex flex-col items-center md:items-start gap-2">
             <p className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
               {rating}
