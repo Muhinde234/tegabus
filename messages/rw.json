@@ -820,6 +820,7 @@
        },
        "routes": {
          "pageTitle": "Inzira Z'Amamodoka",
+         "pageDescription": "Shakisha gahunda, gereranya uburyo, kandi utegure urugendo rwawe rukurikira ukoresheje uburyo bumwe bworoshye ku nzira zose.",
          "search": {
            "from": "Kuva",
            "to": "Kugera",

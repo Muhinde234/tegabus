@@ -48,7 +48,7 @@ const AboutPage: React.FC = () => {
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link href="/route">
-                  <Button className="rounded-full bg-white text-[#062d23]">
+                  <Button className="rounded-full bg-white text-[#062d23] hover:bg-[#0b3b2e]/90">
                     {t("cta.button")}
                   </Button>
                 </Link>

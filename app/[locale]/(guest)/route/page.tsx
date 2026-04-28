@@ -1,6 +1,7 @@
 "use client";
 
 import {useEffect, useState} from "react";
+import Image from "next/image";
 import {useTranslations} from "next-intl";
 import {Filter, Loader2, MapPin, X} from "lucide-react";
 import {Button} from "@/components/ui/button";
@@ -14,6 +15,7 @@ import {useSchedules} from "@/hooks/useSchedule";
 import {useEndLocation, useStartLocation} from "@/hooks/useRoutes";
 import {useRouter, useSearchParams} from "next/navigation";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
+import routeImage from "../../../../public/images/about.png";
 
 
 const RoutesPage = () => {
@@ -51,10 +53,25 @@ const RoutesPage = () => {
 
 
   return (
-      <div className="min-h-screen">
-        <div className="bg-[#0B3B2E] p-6 text-white pt-42">
-          <div className="max-w-7xl mx-auto">
+      <div className="min-h-screen bg-gray-50">
+        <section className="relative isolate -mt-20 overflow-hidden bg-[#0B3B2E] pt-20 text-white md:-mt-24  md:pt-24">
+          <div className="absolute inset-0">
+            <Image
+              src={routeImage}
+              alt="Routes background"
+              fill
+              priority
+              className="object-cover object-center opacity-30"
+            />
+          </div>
+
+          <div className="absolute inset-0 bg-linear-to-b from-[#0B3B2E]/95 via-[#0B3B2E]/85 to-[#0B3B2E]/95" />
+
+          <div className="relative z-10 mx-auto  min-h-135 max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
             <h1 className="text-3xl text-center font-bold mb-6">{t("pageTitle")}</h1>
+            <p className="mx-auto mb-8 max-w-3xl text-center text-base leading-7 text-white/85 sm:text-lg">
+              {t("pageDescription")}
+            </p>
 
             <div className="bg-white border border-gray-400 p-5 rounded-lg grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
               <div className="relative">
@@ -123,7 +140,7 @@ const RoutesPage = () => {
               </Button>
             </div>
           </div>
-        </div>
+        </section>
 
         {showFilters && (
             <div className="border border-gray-300 rounded-lg shadow-md p-2">
