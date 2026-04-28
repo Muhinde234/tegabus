@@ -267,8 +267,7 @@ const Hero = () => {
                   </Select>
                 </div>
 
-                
-                {/* To */}
+               
                 <div>
                   <label className="block text-xs font-semibold text-gray-700 mb-2">
                     <div className="flex items-center gap-1">
