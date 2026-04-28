@@ -1,4 +1,4 @@
-// components/resource-card.tsx
+﻿// components/resource-card.tsx
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -21,7 +21,7 @@ export function ResourceCard({ icon, title, description }: ResourceCardProps) {
           <h4 className="font-medium text-gray-900 mb-1">{title}</h4>
           <p className="text-sm text-gray-600 mb-3">{description}</p>
           <div className="flex gap-2">
-            <Button variant="outline" size="sm" className="border-[#0B3B2E] text-[#0B3B2E] hover:bg-[#0B3B2E]/10">
+            <Button variant="outline" size="sm" className="border-green-500 text-green-500 hover:bg-green-700/10">
               View Online
             </Button>
             <Button variant="outline" size="sm" className="border-gray-300 hover:bg-gray-50">

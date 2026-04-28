@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import type React from "react"
 
@@ -46,7 +46,7 @@ export function FloatingChatWidget() {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(false)}
-              className="text-white bg-lime-500 hover:bg-green-600 h-6 w-6 p-0"
+              className="text-white bg-lime-500 hover:bg-green-700 h-6 w-6 p-0"
             >
               <X size={16} />
             </Button>
@@ -66,7 +66,7 @@ export function FloatingChatWidget() {
                   key={index}
                   className={cn(
                     "max-w-[80%] rounded-lg px-3 py-2 text-sm",
-                    message.role === "user" ? "bg-green-500 text-white ml-auto" : "bg-gray-100 text-gray-900",
+                    message.role === "user" ? "bg-green-600 text-white ml-auto" : "bg-gray-100 text-gray-900",
                   )}
                 >
                   {message.content}
@@ -116,7 +116,7 @@ export function FloatingChatWidget() {
               onClick={() => setIsOpen(!isOpen)}
               className={cn(
                 "fixed bottom-4 right-4 h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 z-40",
-                isOpen ? "bg-gray-500 hover:bg-gray-600" : "bg-green-500 hover:bg-green-200",
+                isOpen ? "bg-gray-500 hover:bg-gray-600" : "bg-green-600 hover:bg-green-200",
               )}
             >
               {isOpen ? <X size={24} className="text-white" /> : <MessageCircle size={24} className="text-white" />}

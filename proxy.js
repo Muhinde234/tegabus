@@ -1,7 +1,26 @@
 import createMiddleware from 'next-intl/middleware';
+import { NextResponse } from "next/server";
 import { routing } from './i18n/routing';
 
-export default createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing);
+
+export default function middleware(request) {
+  const pathname = request.nextUrl.pathname;
+  const token = request.cookies.get("token")?.value;
+
+  const isProtectedRoute =
+    pathname.match(/^\/[a-z]{2}\/(admin|schedule)/) ||
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/schedule");
+
+  if (!token && isProtectedRoute) {
+    const locale = pathname.match(/^\/([a-z]{2})\//)?.[1];
+    const loginUrl = locale ? `/${locale}/login` : "/login";
+    return NextResponse.redirect(new URL(loginUrl, request.url));
+  }
+
+  return intlMiddleware(request);
+}
 
 export const config = {
   matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'

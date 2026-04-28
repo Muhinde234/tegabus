@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -7,7 +7,7 @@ import Container from "../ui/container";
 import Link from "next/link";
 import TripCard from "../ui/TripCard";
 import CardSection from "../ui/cardSection";
-import { Phone, ThumbsUp } from "lucide-react";
+import { Phone, ThumbsUp, MapPin, Calendar, Search } from "lucide-react";
 import Contact from "../ui/contactForm";
 import { Button } from "@/components/ui/button";
 import {
@@ -46,9 +46,9 @@ const Hero = () => {
 
   return (
     <>
-      {/* ── FULL-WIDTH HERO ── */}
-      <section className="relative w-full min-h-screen overflow-hidden">
-        {/* Background image */}
+      
+      <section className="relative w-full h-[700] overflow-hidden">
+    
         <Image
           src={home}
           alt="Bus travel background"
@@ -57,13 +57,12 @@ const Hero = () => {
           className="w-full h-full object-cover object-center"
         />
 
-        {/* Dark gradient overlay */}
-        <div className="absolute inset-0 bg-linear-to-b from-black/75 via-black/55 to-black/80" />
+     
+        <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90" />
 
-        {/* Centered hero content */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-8 pt-24 pb-16 text-center">
+        
+        <div className="relative z-10 flex flex-col items-center justify-center h-200 px-4 sm:px-8 pt-24 pb-16 text-center">
 
-          {/* Heading + description + CTA */}
           <div className="max-w-4xl mx-auto mb-10 sm:mb-14">
             <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-5 drop-shadow-lg">
               {t("title")}
@@ -74,64 +73,247 @@ const Hero = () => {
             <Link href="/route">
               <Button
                 variant="default"
-                className="bg-[#0B3B2E] text-white rounded-full font-semibold transition-all duration-200 hover:bg-green-700 hover:scale-105 active:scale-95 px-10 py-3 h-auto text-base shadow-xl cursor-pointer"
+                className="bg-green-800 text-white rounded-full font-semibold transition-all duration-200 hover:bg-green-700 hover:scale-105 active:scale-95 px-10 py-3 h-auto text-base shadow-xl cursor-pointer"
               >
                 {t("viewSchedules")}
               </Button>
             </Link>
           </div>
 
-          {/* ── Modern search card ── */}
-          <div className="w-full max-w-5xl mx-auto">
-            <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-3 sm:p-4 flex flex-col sm:flex-row flex-wrap items-center gap-3">
+    
+          <div className="w-full max-w-5xl mx-auto px-2 sm:px-4 md:px-0">
+            <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl p-6 sm:p-8 md:p-10 border-2 border-green-900">
+              
+              {/* Desktop Layout - Grid */}
+              <div className="hidden md:grid grid-cols-12 gap-4 items-end">
+                
+                {/* From Location */}
+                <div className="col-span-3">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <div className="flex items-center gap-2">
+                      <MapPin size={16} className="text-green-600" />
+                      {t("search.from")}
+                    </div>
+                  </label>
+                  <Select value={from} onValueChange={setFrom} disabled={originsLoading}>
+                    <SelectTrigger className="w-full border-2 border-green-500 rounded-xl h-14 capitalize text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all hover:border-green-600">
+                      <SelectValue className="capitalize" placeholder={t("search.from")} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {origins.map((origin, idx) => (
+                        <SelectItem className="capitalize" key={idx} value={origin}>
+                          {origin}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
 
-              {/* From */}
-              <div className="relative w-full sm:flex-1 min-w-35">
-                <Select value={from} onValueChange={setFrom} disabled={originsLoading}>
-                  <SelectTrigger className="w-full border border-green-200 rounded-xl h-12 capitalize focus:ring-2 focus:ring-green-500 transition-shadow hover:shadow-sm">
-                    <SelectValue className="capitalize" placeholder={t("search.from")} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {origins.map((origin, idx) => (
-                      <SelectItem className="capitalize" key={idx} value={origin}>
-                        {origin}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                
+                {/* To Location */}
+                <div className="col-span-3">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <div className="flex items-center gap-2">
+                      <MapPin size={16} className="text-green-600" />
+                      {t("search.to")}
+                    </div>
+                  </label>
+                  <Select value={to} onValueChange={setTo} disabled={!from || destinationsLoading}>
+                    <SelectTrigger className="w-full border-2 border-green-500 rounded-xl h-14 capitalize text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all hover:border-green-600">
+                      <SelectValue className="capitalize" placeholder={t("search.to")} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {destinations.map((dest, idx) => (
+                        <SelectItem className="capitalize" key={idx} value={dest}>
+                          {dest}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+               
+                {/* Date */}
+                <div className="col-span-2">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <div className="flex items-center gap-2">
+                      <Calendar size={16} className="text-green-600" />
+                      {t("search.date")}
+                    </div>
+                  </label>
+                  <Input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    className="w-full border-2 border-green-500 rounded-xl h-14 text-base focus:ring-2 focus:ring-green-500 focus:border-green-500 focus:outline-none transition-all hover:border-green-600 px-4"
+                  />
+                </div>
+
+                
+                {/* Search Button */}
+                <div className="col-span-4 flex gap-2">
+                  <Button
+                    onClick={handleSearch}
+                    className="w-full bg-gradient-to-r from-green-700 to-green-800 text-white rounded-xl font-bold transition-all duration-200 hover:from-green-600 hover:to-green-700 hover:shadow-lg active:scale-95 h-14 text-base flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+                  >
+                    <Search size={18} />
+                    {t("search.findBus")}
+                  </Button>
+                </div>
               </div>
 
-              {/* To */}
-              <div className="relative w-full sm:flex-1 min-w-35">
-                <Select value={to} onValueChange={setTo} disabled={!from || destinationsLoading}>
-                  <SelectTrigger className="w-full border capitalize border-green-200 rounded-xl h-12 focus:ring-2 focus:ring-green-500 transition-shadow hover:shadow-sm">
-                    <SelectValue className="capitalize" placeholder={t("search.to")} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {destinations.map((dest, idx) => (
-                      <SelectItem className="capitalize" key={idx} value={dest}>
-                        {dest}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+              
+              {/* Tablet Layout */}
+              <div className="hidden sm:grid md:hidden grid-cols-2 gap-4 items-end">
+                
+                {/* From */}
+                <div className="col-span-1">
+                  <label className="block text-xs font-semibold text-gray-700 mb-2">
+                    <div className="flex items-center gap-1">
+                      <MapPin size={14} className="text-green-600" />
+                      {t("search.from")}
+                    </div>
+                  </label>
+                  <Select value={from} onValueChange={setFrom} disabled={originsLoading}>
+                    <SelectTrigger className="w-full border-2 border-green-500 rounded-lg h-12 capitalize text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all hover:border-green-600">
+                      <SelectValue className="capitalize" placeholder={t("search.from")} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {origins.map((origin, idx) => (
+                        <SelectItem className="capitalize" key={idx} value={origin}>
+                          {origin}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                
+                {/* To */}
+                <div className="col-span-1">
+                  <label className="block text-xs font-semibold text-gray-700 mb-2">
+                    <div className="flex items-center gap-1">
+                      <MapPin size={14} className="text-green-600" />
+                      {t("search.to")}
+                    </div>
+                  </label>
+                  <Select value={to} onValueChange={setTo} disabled={!from || destinationsLoading}>
+                    <SelectTrigger className="w-full border-2 border-green-500 rounded-lg h-12 capitalize text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all hover:border-green-600">
+                      <SelectValue className="capitalize" placeholder={t("search.to")} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {destinations.map((dest, idx) => (
+                        <SelectItem className="capitalize" key={idx} value={dest}>
+                          {dest}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                
+                {/* Date */}
+                <div className="col-span-1">
+                  <label className="block text-xs font-semibold text-gray-700 mb-2">
+                    <div className="flex items-center gap-1">
+                      <Calendar size={14} className="text-green-600" />
+                      {t("search.date")}
+                    </div>
+                  </label>
+                  <Input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    className="w-full border-2 border-green-500 rounded-lg h-12 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 focus:outline-none transition-all hover:border-green-600 px-3"
+                  />
+                </div>
+
+                
+                {/* Button */}
+                <div className="col-span-1">
+                  <Button
+                    onClick={handleSearch}
+                    className="w-full bg-gradient-to-r from-green-700 to-green-800 text-white rounded-lg font-bold transition-all duration-200 hover:from-green-600 hover:to-green-700 hover:shadow-lg active:scale-95 h-12 text-sm flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+                  >
+                    <Search size={16} />
+                    {t("search.findBus")}
+                  </Button>
+                </div>
               </div>
 
-              {/* Date */}
-              <Input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                className="w-full sm:flex-1 min-w-35 border border-green-200 rounded-xl h-12 focus:ring-2 focus:ring-green-500 focus:outline-none transition-shadow hover:shadow-sm px-3"
-              />
+              
+              {/* Mobile Layout - Stacked */}
+              <div className="sm:hidden flex flex-col gap-3">
+                
+                {/* From */}
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-2">
+                    <div className="flex items-center gap-1">
+                      <MapPin size={14} className="text-green-600" />
+                      {t("search.from")}
+                    </div>
+                  </label>
+                  <Select value={from} onValueChange={setFrom} disabled={originsLoading}>
+                    <SelectTrigger className="w-full border-2 border-green-500 rounded-lg h-12 capitalize text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all hover:border-green-600">
+                      <SelectValue className="capitalize" placeholder={t("search.from")} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {origins.map((origin, idx) => (
+                        <SelectItem className="capitalize" key={idx} value={origin}>
+                          {origin}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
 
-              {/* Search button */}
-              <div className="w-full sm:w-auto">
+                
+                {/* To */}
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-2">
+                    <div className="flex items-center gap-1">
+                      <MapPin size={14} className="text-green-600" />
+                      {t("search.to")}
+                    </div>
+                  </label>
+                  <Select value={to} onValueChange={setTo} disabled={!from || destinationsLoading}>
+                    <SelectTrigger className="w-full border-2 border-green-500 rounded-lg h-12 capitalize text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all hover:border-green-600">
+                      <SelectValue className="capitalize" placeholder={t("search.to")} />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {destinations.map((dest, idx) => (
+                        <SelectItem className="capitalize" key={idx} value={dest}>
+                          {dest}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                
+                {/* Date */}
+                <div>
+                  <label className="block text-xs font-semibold text-gray-700 mb-2">
+                    <div className="flex items-center gap-1">
+                      <Calendar size={14} className="text-green-600" />
+                      {t("search.date")}
+                    </div>
+                  </label>
+                  <Input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    className="w-full border-2 border-green-500 rounded-lg h-12 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 focus:outline-none transition-all hover:border-green-600 px-3"
+                  />
+                </div>
+
+                
+                {/* Button */}
                 <Button
-                  variant="secondary"
                   onClick={handleSearch}
-                  className="bg-[#0B3B2E] text-white rounded-xl font-semibold transition-all duration-200 hover:bg-green-700 hover:scale-105 active:scale-95 w-full sm:w-auto px-10 h-12 shadow-lg cursor-pointer"
+                  className="w-full bg-gradient-to-r from-green-700 to-green-800 text-white rounded-lg font-bold transition-all duration-200 hover:from-green-600 hover:to-green-700 hover:shadow-lg active:scale-95 h-12 text-sm flex items-center justify-center gap-2 shadow-lg cursor-pointer mt-1"
                 >
+                  <Search size={16} />
                   {t("search.findBus")}
                 </Button>
               </div>
@@ -140,7 +322,7 @@ const Hero = () => {
         </div>
       </section>
 
-      {/* ── SECTIONS BELOW HERO ── */}
+    
       <div className="mx-4 sm:mx-8 md:mx-16 lg:mx-28">
         <TripCard trips="500K+" rating={4.9} departures="99%" />
 

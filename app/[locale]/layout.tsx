@@ -1,5 +1,5 @@
 import type {Metadata} from "next";
-
+import "../globals.css";
 import {Outfit} from "next/font/google";
 import {TooltipProvider} from "@/components/ui/tooltip"
 import {hasLocale, NextIntlClientProvider} from 'next-intl';

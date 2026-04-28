@@ -6,7 +6,7 @@ const Logo = () => {
     <div>
       <div className="flex items-center gap-4">
         <Image src={image} alt="logo picture" width={48} height={48} />
-        <h1 className="text-3xl font-bold">TegaBus</h1>
+      
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { cn } from "@/lib/utils"
 
@@ -66,7 +66,7 @@ export function ChatForm({ className, ...props }: React.ComponentProps<"form">) 
       <div className="flex-1 content-center overflow-y-auto px-6">{messages.length ? messageList : header}</div>
       <form
         onSubmit={handleSubmit}
-        className="border-input bg-green-500 focus-within:ring-ring/10 relative mx-6 mb-6 flex items-center rounded-[16px] border px-3 py-1.5 pr-8 text-sm focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-0"
+        className="border-input bg-green-600 focus-within:ring-ring/10 relative mx-6 mb-6 flex items-center rounded-[16px] border px-3 py-1.5 pr-8 text-sm focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-0"
       >
         <AutoResizeTextarea
           onKeyDown={handleKeyDown}

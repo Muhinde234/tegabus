@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import type React from "react"
 import {useState} from "react"
@@ -77,7 +77,7 @@ export function FloatingChatWidget() {
               onClick={() => setIsOpen(!isOpen)}
               className={cn(
                 "fixed bottom-4 right-4 h-16 w-16 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 z-40",
-                isOpen ? "bg-gray-500 hover:bg-gray-600" : "bg-green-700 hover:bg-green-600",
+                isOpen ? "bg-gray-500 hover:bg-gray-600" : "bg-green-700 hover:bg-green-700",
               )}
             >
               {isOpen ? <X size={24} className="text-white" /> : <MessageCircle size={24} className="text-white" />}

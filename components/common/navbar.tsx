@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
@@ -86,7 +86,7 @@ const Navbar = () => {
             <Logo />
           </Link>
 
-          {/* Desktop nav links */}
+       
           <nav className="hidden md:flex items-center gap-6 text-[18px] lg:text-[17px]">
             {translatedLinks.map((link, idx) => (
               <Link
@@ -105,14 +105,14 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* Desktop right actions */}
+        
           <div className="hidden md:flex items-center gap-4">
             <div className="relative language-selector">
               <button
                 onClick={() => setIsLanguageOpen(!isLanguageOpen)}
                 className={`p-2 border rounded-full transition-colors duration-200 ${
                   scrolled
-                    ? "border-lime-300 text-gray-700 hover:text-green-600"
+                    ? "border-lime-800 text-gray-700 hover:text-green-600"
                     : "border-white/50 text-white hover:text-green-300"
                 }`}
                 aria-label={t("language")}
@@ -129,7 +129,7 @@ const Navbar = () => {
                       onClick={() => handleChangeLocale(lang.code)}
                       className={`w-full text-left px-4 py-2 text-sm hover:bg-gray-50 ${
                         currentLocale === lang.code
-                          ? "text-green-600 font-medium"
+                          ? "text-green-700 font-medium"
                           : "text-gray-700"
                       }`}
                     >
@@ -146,7 +146,7 @@ const Navbar = () => {
                   href="/login"
                   className={`rounded-full py-2 px-4 text-sm md:text-base font-medium transition-all duration-200 hover:scale-105 ${
                     scrolled
-                      ? "bg-[#0B3B2E] text-white hover:bg-green-700"
+                      ? "bg-green-800 text-white hover:bg-green-700"
                       : "bg-white/15 backdrop-blur-sm text-white border border-white/40 hover:bg-white/25"
                   }`}
                 >
@@ -155,7 +155,7 @@ const Navbar = () => {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Avatar className="h-10 w-10 cursor-pointer">
-                      <AvatarFallback className="bg-[#0B3B2E] text-white">
+                      <AvatarFallback className="bg-green-600 text-white">
                         {getInitials(user.fullName || "User")}
                       </AvatarFallback>
                     </Avatar>
@@ -177,7 +177,7 @@ const Navbar = () => {
                 href="/login"
                 className={`rounded-full py-2 px-4 text-sm md:text-base font-medium transition-all duration-200 hover:scale-105 ${
                   scrolled
-                    ? "bg-[#0B3B2E] text-white hover:bg-green-700"
+                    ? "bg-green-800 text-white hover:bg-green-700"
                     : "bg-white/15 backdrop-blur-sm text-white border border-white/40 hover:bg-white/25"
                 }`}
               >

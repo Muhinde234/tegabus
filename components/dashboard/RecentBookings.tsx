@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { Booking } from '@/types/type';
 import { Plus } from 'lucide-react';
@@ -72,7 +72,7 @@ const RecentBookings = () => {
           <p className="text-sm text-gray-500">Showing 10 of 50 bookings</p>
         </div>
         <div className="flex items-center gap-4">
-          <button className="flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium transition">
+          <button className="flex items-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full text-sm font-medium transition">
             Add <Plus className="ml-2 w-4 h-4" />
           </button>
           <select
