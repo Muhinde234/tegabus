@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('messages/rw.json','utf8'\\)\\); console.log\\('valid'\\)\")"
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('messages/rw.json','utf8'\\)\\); console.log\\('valid'\\)\")",
+      "Bash(node -e \"const d=JSON.parse\\(require\\('fs'\\).readFileSync\\('messages/rw.json','utf8'\\)\\); console.log\\('navigation keys:', Object.keys\\(d.navigation || {}\\)\\); console.log\\('has home:', 'home' in \\(d.navigation||{}\\)\\);\")",
+      "Bash(node -e \"const d=JSON.parse\\(require\\('fs'\\).readFileSync\\('messages/en.json','utf8'\\)\\); console.log\\('navigation keys:', Object.keys\\(d.navigation||{}\\)\\);\")",
+      "Bash(node -e ' *)"
     ]
   }
 }

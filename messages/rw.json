@@ -176,11 +176,7 @@
         "real_time_updates": "Amakuru kugihe",
          "email_label": "Imeyili",
         "phone_label": "Telefoni",
-        "address_label": "Aho duherereye"
-
-
-       },
-
+        "address_label": "Aho duherereye",
          "navigation": {
            "pages": "Amapaji"
          },
@@ -191,7 +187,8 @@
            "appStore": "Kuboneka kuri App Store",
            "googlePlay": "Kuboneka kuri Google Play"
          },
-        "dashboard": "Dashboard",
+        "dashboard": "Dashboard"
+       },
       "auth": {
          "login": {
           

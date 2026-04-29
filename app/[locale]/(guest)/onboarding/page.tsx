@@ -20,15 +20,15 @@ export default async function OnboardingPage() {
   ];
 
   return (
-    <div className="min-h-[calc(100vh-160px)] bg-gray-50">
-      {/* Hero banner */}
-      <div className="bg-[#0B3B2E] text-white py-12 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-xs font-medium mb-4 border border-white/20">
+    <div className="min-h-[calc(100vh-160px)] bg-gray-50 ">
+   
+      <div className="bg-[#0B3B2E] text-white py-12 px-4 ">
+        <div className="max-w-3xl mx-auto text-center mt-12">
+          <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-lg font-medium mb-4 border border-white/20">
             {t('page.badge')}
           </span>
           <h1 className="text-3xl sm:text-4xl font-bold mb-3">{t('page.title')}</h1>
-          <p className="text-green-100 text-sm sm:text-base max-w-xl mx-auto">
+          <p className="text-green-100 text-sm sm:text-lg max-w-xl mx-auto">
             {t('page.description')}
           </p>
 
@@ -43,8 +43,8 @@ export default async function OnboardingPage() {
                   <Icon size={18} />
                 </div>
                 <div>
-                  <p className="font-semibold text-sm">{title}</p>
-                  <p className="text-xs text-green-200 mt-0.5">{text}</p>
+                  <p className="font-semibold text-lg">{title}</p>
+                  <p className="text-sm text-green-200 mt-0.5">{text}</p>
                 </div>
               </div>
             ))}
