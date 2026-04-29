@@ -207,12 +207,27 @@
   "noAccount": "Nta konti ufite?",
   "registerLink": "Iyandikishe",
   "invalidCredentials": "Imeyili cyangwa ijambo ry'ibanga si byo",
-  "loginFailed": "Kwinjira byanze"
+  "loginFailed": "Kwinjira byanze",
+  "panel": {
+    "backToHome": "Garuka ahabanza",
+    "home": "Ahabanza",
+    "badge": "Urubuga rwa bisi #1 mu Rwanda",
+    "tagline1": "Genda neza,",
+    "tagline2": "bura vuba.",
+    "description": "Injira mu bagenzi ibihumbi bifata TegaBus nk'inzira nziza, ifite uburambe kandi ntagahabu mu Rwanda.",
+    "stats": {
+      "passengers": "Abagenzi",
+      "routes": "Inzira",
+      "rating": "Amanota"
+    },
+    "trust": "Ifite umutekano, yashyizweho ibanga, ikubahiriza ubuzima bwite"
+  }
 
 
          },
          "register": {
-        
+  "title": "Fungura konti yawe",
+  "subtitle": "Uzuza amakuru yawe kugirango utangire",
   "firstName": "Izina rya mbere",
   "firstNamePlaceholder": "Andika izina rya mbere",
   "firstNameRequired": "Izina rya mbere rirakenewe",
@@ -252,8 +267,24 @@
   "passwordMismatch": "Amagambo y'ibanga ntabwo ahuye",
 
   "registerButton": "Iyandikishe",
+  "register": "Birimo kwiyandikisha...",
   "haveAccount": "Ufite konti?",
-  "loginLink": "Injira"
+  "loginLink": "Injira",
+  "panel": {
+    "backToHome": "Garuka ahabanza",
+    "home": "Ahabanza",
+    "tagline1": "Urugendo rwawe",
+    "tagline2": "rutangira hano.",
+    "description": "Fungura konti yawe ubone uburyo bwo kugenda busa butagira ikibazo mu Rwanda no mu Burasirazuba bwa Afrika.",
+    "features": {
+      "routes": "Inzira 120+ mu Rwanda no hanze",
+      "tracking": "Gahunda y'igihe nyacyo no gukurikirana",
+      "payments": "Ubwishyu bwizewe na e-tiketi vuba"
+    },
+    "signIn": "Injira",
+    "personalInfo": "Amakuru bwite",
+    "accountSecurity": "Umutekano wa konti"
+  }
 
 
          },
