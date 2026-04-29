@@ -14,7 +14,7 @@ const Footer = () => {
   const [, setError] = useState("");
   const [subscribe, setSubscribe] = useState(false);
   const [emailAlert, setEmailAlert] = useState("");
-  const pathname = usePathname();
+  
   const locale = useLocale();
   const t = useTranslations("footer");
   const nav = useTranslations("navigation");
@@ -96,7 +96,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0B3B2E] text-lime-700">
+    <footer className="bg-[#0B3B2E] text-white">
       <Container className="pt-16 pb-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="space-y-4">

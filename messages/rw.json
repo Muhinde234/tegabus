@@ -884,10 +884,161 @@
 "company":{
    "buses_label": "Imodoka : {count}",
   "view_routes": "Reba imihanda"
+},
+"onboarding": {
+  "metadata": {
+    "title": "Fata bugufi na TegaBus | Andika Isosiyete Yawe",
+    "description": "Andika isosiyete yawe y'amamodoka kuri TegaBus kandi utangire gututmarizwa abagenzi ibihumbi mu Rwanda."
+  },
+  "page": {
+    "badge": "Gahunda y'Abafatanyabikorwa",
+    "title": "Fata bugufi na TegaBus",
+    "description": "Injira muri gahunda y'ubwikorezi bwihuse mu Rwanda. Andika isosiyete yawe maze utangire gutumarizwa abagenzi mu minota mike.",
+    "benefits": {
+      "reach": { "title": "Inama Cyane", "text": "Sohoza umuryango w'abagenzi ibihumbi buri munsi ku rubuga rumwe." },
+      "fleet": { "title": "Gucunga Imodoka Zawe", "text": "Gucunga gahunda n'imyanya mu gihe nyacyo uturutse kuri dashboard yawe." },
+      "payouts": { "title": "Kwishyurwa Bihamye", "text": "Kwishyurwa buri cyumweru bikora bwite hamwe n'amateka y'ibikorwa by'imari." }
+    }
+  },
+  "stepLabels": {
+    "companyInfo": "Amakuru y'Sosiyete",
+    "businessDetails": "Ibisobanuro by'Akazi",
+    "adminAccount": "Konti y'Umuyobozi",
+    "documents": "Inyandiko",
+    "agreement": "Amasezerano",
+    "review": "Kureba & Kohereza"
+  },
+  "nav": {
+    "back": "Subira",
+    "next": "Komeza",
+    "stepOf": "Intambwe {current} muri {total}",
+    "submit": "Kohereza Ubusabe",
+    "submitting": "Kohereza…"
+  },
+  "step1": {
+    "title": "Amakuru y'Isosiyete",
+    "description": "Tugezeho ibijyanye n'isosiyete yawe y'amamodoka — ibi bizaboneka mu ruhame.",
+    "companyName": { "label": "Izina ry'Isosiyete", "placeholder": "urugero: Rwanda Express Ltd" },
+    "registrationNumber": { "label": "Nimero yo Kwiyandikisha", "placeholder": "urugero: RCA/2024/12345" },
+    "companyEmail": { "label": "Imeri y'Isosiyete", "placeholder": "info@sosiyete.com" },
+    "phone": { "label": "Numero ya Telefone", "placeholder": "+250 780 000 000" },
+    "address": { "label": "Aderesi y'Isosiyete", "placeholder": "KG 10 Ave, Kigali, Rwanda" }
+  },
+  "step2": {
+    "title": "Ibisobanuro by'Akazi",
+    "description": "Dufashe gusobanukirwa ingano n'ubwoko bw'ibikorwa byawe.",
+    "transportType": { "label": "Ubwoko bw'Ubwikorezi", "placeholder": "Hitamo ubwoko..." },
+    "types": {
+      "intercity": "Imodoka iri hagati y'imijyi",
+      "intracity": "Imodoka yo mu gisagara",
+      "minibus": "Minibisi / Matatu",
+      "express": "Imodoka yihuta",
+      "shuttle": "Serivisi ya Shuttle",
+      "mixed": "Ubwoko butandukanye"
+    },
+    "numberOfBuses": { "label": "Umubare w'Amamodoka", "placeholder": "urugero: 12" },
+    "yearsOfOperation": { "label": "Imyaka yo Gukora", "placeholder": "urugero: 5" },
+    "routes": {
+      "label": "Inzira Zikoreshwa",
+      "description": "Ongeraho inzira zose isosiyete yawe ikoreraho",
+      "addButton": "Ongeraho Inzira",
+      "placeholder": "Inzira {index}, urugero: Kigali → Musanze"
+    }
+  },
+  "step3": {
+    "title": "Konti y'Umuyobozi",
+    "description": "Konti iyi izagenzura dashboard y'isosiyete yawe kuri TegaBus.",
+    "infoBanner": "Imeri n'ijambo ryibanga by'umuyobozi bizakoreshwa kwinjira mu portal y'abafatanyabikorwa ba TegaBus. Bika amakuru aya neza.",
+    "fullName": { "label": "Amazina yuzuye", "placeholder": "urugero: Jean Claude Nshimiyimana" },
+    "adminEmail": { "label": "Imeri y'Umuyobozi", "placeholder": "admin@sosiyete.com" },
+    "password": { "label": "Ijambo ryibanga", "placeholder": "Nibura inyuguti 6" },
+    "confirmPassword": { "label": "Emeza Ijambo ryibanga", "placeholder": "Ongera andika ijambo ryibanga" }
+  },
+  "step4": {
+    "title": "Kohereza Inyandiko",
+    "description": "Kohereza inyandiko za ofisiyo za sosiyete yawe kugira ngo zirerurwe. Inyandiko zose zibishyirwa mu buryo bw'umutekano.",
+    "clickToUpload": "Kanda kugira ngo wohereze",
+    "pdfLimit": "PDF hafi ya 5 MB",
+    "imageLimit": "PNG, JPG, SVG hafi ya 5 MB",
+    "removeFile": "Gukura dosiye",
+    "complianceNote": "Inyandiko zizarerurwa na komite y'imihangayiko ya TegaBus mu minsi 2 kugeza 3 y'akazi.",
+    "businessCertificate": {
+      "label": "Icyangombwa cy'Iyandikwa ry'Ubucuruzi",
+      "description": "Icyangombwa cyemewe gituruka ku Rwanda Development Board (RDB)"
+    },
+    "transportLicense": {
+      "label": "Uruhushya rw'Ubwikorezi",
+      "description": "Uruhushya rufite agaciro ruturuka ku Kigo gishinzwe Ubwikorezi mu Rwanda"
+    },
+    "companyLogo": {
+      "label": "Logo y'Isosiyete",
+      "description": "Logo nziza igaragara ku profile yawe ya TegaBus"
+    }
+  },
+  "step5": {
+    "title": "Amasezerano",
+    "description": "Nyamuneka soma kandi wemere amasezerano akurikira mbere yo kohereza ubusabe bwawe.",
+    "terms": {
+      "title": "Amategeko n'Amabwiriza",
+      "content1": "Mu kwiyandikisha nk'umunyamuryango wa TegaBus, wemera gukurikira amategeko yose ajyanye n'serivisi z'ubwikorezi mu Rwanda.",
+      "content2": "Wemeza ko amakuru yose watanze ari ukuri kandi yuzuye. TegaBus ifite uburenganzira bwo guhagarika cyangwa gukuraho ururengera rw'umunyamuryango iyo amabwiriza yaburijwe.",
+      "content3": "Abafatanyabikorwa bagomba kugira ubwishingizi bufite agaciro ku modoka zose kandi kwemeza ko abashoferi bafite impushya zikwiye.",
+      "checkboxLabel": "Nasomye kandi nemera Amategeko n'Amabwiriza ya TegaBus"
+    },
+    "commission": {
+      "title": "Imiterere y'Amakomisiyo",
+      "description": "TegaBus ifata amakomisiyo yo gukorana hagati ya 2 na 5% ku tikiti imwe iuzuzwa. Igipimo nyacyo gishingirwa ku mubare w'ama tikiti buri kwezi:",
+      "tier1": "0 – 500 tikiti/kwezi: 5%",
+      "tier2": "501 – 2.000 tikiti/kwezi: 3,5%",
+      "tier3": "2.001+ tikiti/kwezi: 2%",
+      "payoutInfo": "Amakomisiyo akurwa bwite mu mafaranga atangwa buri kwezi. Amafaranga atangwa mu minsi 7 y'akazi.",
+      "checkboxLabel": "Numva kandi nemeye imiterere y'amakomisiyo ya TegaBus (2–5%)"
+    }
+  },
+  "step6": {
+    "title": "Kureba & Kohereza",
+    "description": "Reba ubusabe bwawe mbere yo bukohereza. Ushobora gusubira inyuma kugira ngo uhindure icyo gice cyose.",
+    "editButton": "Hindura",
+    "missing": "Ikibuze",
+    "notUploaded": "Ntiyoherejwe",
+    "accepted": "Byemewe",
+    "notAccepted": "Ntibemewe",
+    "confirmText": "Ukanda «Kohereza Ubusabe», wemeza ko amakuru yose watanze ari ukuri kandi yuzuye.",
+    "sections": {
+      "companyInfo": "Amakuru y'Isosiyete",
+      "businessDetails": "Ibisobanuro by'Akazi",
+      "adminAccount": "Konti y'Umuyobozi",
+      "documents": "Inyandiko",
+      "agreements": "Amasezerano"
+    },
+    "rows": {
+      "companyName": "Izina ry'Isosiyete",
+      "registrationNumber": "N° yo Kwiyandikisha",
+      "email": "Imeri",
+      "phone": "Telefone",
+      "address": "Aderesi",
+      "transportType": "Ubwoko bw'Ubwikorezi",
+      "numberOfBuses": "Umubare w'Amamodoka",
+      "yearsOfOperation": "Imyaka yo Gukora",
+      "routes": "Inzira",
+      "fullName": "Amazina yuzuye",
+      "password": "Ijambo ryibanga",
+      "businessCertificate": "Icyangombwa cy'Ubucuruzi",
+      "transportLicense": "Uruhushya rw'Ubwikorezi",
+      "companyLogo": "Logo y'Isosiyete",
+      "termsAccepted": "Amategeko n'Amabwiriza",
+      "commissionAccepted": "Imiterere y'Amakomisiyo"
+    }
+  },
+  "success": {
+    "title": "Ubusabe Bwoherejwe!",
+    "description": "Ubusabe bwa {companyName} burarererurwa. Komite yacu izasubiza mu minsi 2 kugeza 3 y'akazi.",
+    "emailNote": "Uzahabwa imeri y'inyemezabuguzi konti yawe imaze kwemererwa.",
+    "returnHome": "Garuka ahabanza",
+    "learnMore": "Menya Byinshi kuri TegaBus",
+    "contact": "Ufite ikibazo? Twandikire kuri partners@tegabus.com"
+  }
 }
-
-
-
 
 }
      

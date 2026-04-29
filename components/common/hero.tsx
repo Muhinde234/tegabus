@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import home from "./../../public/images/home.jpg";
 import Container from "../ui/container";
 import Link from "next/link";
@@ -26,6 +26,7 @@ import { useState, useEffect } from "react";
 const Hero = () => {
   const t = useTranslations("hero");
   const routesT = useTranslations("routes");
+  const locale = useLocale();
   const router = useRouter();
   const searchParams = useSearchParams();
   const [from, setFrom] = useState(searchParams.get("from") || "");
@@ -164,12 +165,12 @@ const Hero = () => {
                 <div className="text-center sm:text-left lg:col-span-5">
                   <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-white">{t("companyCta.eyebrow")}</h3>
                   <h1 className="mt-3 text-2xl font-extrabold leading-tight sm:text-3xl lg:text-4xl">{t("companyCta.title")}</h1>
-                  <p className="mt-4 text-sm leading-relaxed text-emerald-50/85 sm:text-base">{t("companyCta.description")}</p>
+                  <p className="mt-4 text-lg leading-relaxed text-emerald-50/85 sm:text-base">{t("companyCta.description")}</p>
 
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
                     <Link
-                      href="/register"
-                      className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-[#062d23] transition hover:-translate-y-0.5 hover:bg-[#0b3b2e]"
+                    href={`/${locale}/onboarding`}
+                      className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-[#062d23] transition hover:-translate-y-0.5 "
                     >
                       <Building2 size={16} />
                       {t("companyCta.primaryButton")}
@@ -177,7 +178,7 @@ const Hero = () => {
                     </Link>
                     <Link
                       href="#contact"
-                      className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#062d23] transition hover:bg-[#0b3b2e]"
+                      className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-[#062d23] transition"
                     >
                       {t("companyCta.secondaryButton")}
                     </Link>

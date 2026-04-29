@@ -880,6 +880,160 @@
 "company":{
    "buses_label": "Buses: {count}",
   "view_routes": "View Routes"
+},
+"onboarding": {
+  "metadata": {
+    "title": "Partner with TegaBus | Register Your Company",
+    "description": "Register your bus company on TegaBus and start reaching thousands of passengers across Rwanda."
+  },
+  "page": {
+    "badge": "Partner Program",
+    "title": "Partner with TegaBus",
+    "description": "Join Rwanda's fastest-growing transport platform. Register your bus company and start serving passengers in minutes.",
+    "benefits": {
+      "reach": { "title": "Grow Your Reach", "text": "Access thousands of daily commuters on one platform." },
+      "fleet": { "title": "Manage Your Fleet", "text": "Real-time schedule & seat management from your dashboard." },
+      "payouts": { "title": "Secure Payouts", "text": "Automated weekly payouts with full transaction history." }
+    }
+  },
+  "stepLabels": {
+    "companyInfo": "Company Info",
+    "businessDetails": "Business Details",
+    "adminAccount": "Admin Account",
+    "documents": "Documents",
+    "agreement": "Agreement",
+    "review": "Review & Submit"
+  },
+  "nav": {
+    "back": "Back",
+    "next": "Next",
+    "stepOf": "Step {current} of {total}",
+    "submit": "Submit Application",
+    "submitting": "Submitting…"
+  },
+  "step1": {
+    "title": "Company Information",
+    "description": "Tell us about your bus company — this will be publicly visible.",
+    "companyName": { "label": "Company Name", "placeholder": "e.g. Rwanda Express Ltd" },
+    "registrationNumber": { "label": "Registration Number", "placeholder": "e.g. RCA/2024/12345" },
+    "companyEmail": { "label": "Company Email", "placeholder": "info@company.com" },
+    "phone": { "label": "Phone Number", "placeholder": "+250 780 000 000" },
+    "address": { "label": "Company Address", "placeholder": "KG 10 Ave, Kigali, Rwanda" }
+  },
+  "step2": {
+    "title": "Business Details",
+    "description": "Help us understand the scale and type of your operations.",
+    "transportType": { "label": "Transport Type", "placeholder": "Select type..." },
+    "types": {
+      "intercity": "Intercity Bus",
+      "intracity": "Intracity / Urban Bus",
+      "minibus": "Minibus / Matatu",
+      "express": "Express Coach",
+      "shuttle": "Shuttle Service",
+      "mixed": "Mixed Fleet"
+    },
+    "numberOfBuses": { "label": "Number of Buses", "placeholder": "e.g. 12" },
+    "yearsOfOperation": { "label": "Years of Operation", "placeholder": "e.g. 5" },
+    "routes": {
+      "label": "Operating Routes",
+      "description": "Add all routes your company currently operates",
+      "addButton": "Add Route",
+      "placeholder": "Route {index}, e.g. Kigali → Musanze"
+    }
+  },
+  "step3": {
+    "title": "Admin Account",
+    "description": "This account will manage your company dashboard on TegaBus.",
+    "infoBanner": "The admin email and password will be used to log into the TegaBus partner portal. Keep these credentials secure.",
+    "fullName": { "label": "Full Name", "placeholder": "e.g. Jean Claude Nshimiyimana" },
+    "adminEmail": { "label": "Admin Email", "placeholder": "admin@company.com" },
+    "password": { "label": "Password", "placeholder": "Min. 6 characters" },
+    "confirmPassword": { "label": "Confirm Password", "placeholder": "Re-enter password" }
+  },
+  "step4": {
+    "title": "Document Upload",
+    "description": "Upload your official company documents for verification. All documents are stored securely.",
+    "clickToUpload": "Click to upload",
+    "pdfLimit": "PDF up to 5 MB",
+    "imageLimit": "PNG, JPG, SVG up to 5 MB",
+    "removeFile": "Remove file",
+    "complianceNote": "Documents will be reviewed by the TegaBus compliance team within 2–3 business days.",
+    "businessCertificate": {
+      "label": "Business Registration Certificate",
+      "description": "Official certificate issued by the Rwanda Development Board (RDB)"
+    },
+    "transportLicense": {
+      "label": "Transport Operating License",
+      "description": "Valid license from the Rwanda Transport Authority"
+    },
+    "companyLogo": {
+      "label": "Company Logo",
+      "description": "High-quality logo displayed on your TegaBus company profile"
+    }
+  },
+  "step5": {
+    "title": "Agreement",
+    "description": "Please read and accept the following agreements before submitting your application.",
+    "terms": {
+      "title": "Terms & Conditions",
+      "content1": "By registering as a TegaBus partner, you agree to comply with all applicable laws governing transport services in Rwanda, including but not limited to Rwanda Transport Policy (2021) and related regulations.",
+      "content2": "You confirm that all information provided is accurate and complete. TegaBus reserves the right to suspend or terminate access to partner services for violation of these terms.",
+      "content3": "Partners must maintain valid insurance coverage for all vehicles listed on the platform and ensure drivers hold the appropriate licenses.",
+      "checkboxLabel": "I have read and agree to the TegaBus Terms & Conditions"
+    },
+    "commission": {
+      "title": "Commission Structure",
+      "description": "TegaBus charges a platform commission of 2–5% per ticket sold through the platform. The exact rate is determined by your monthly ticket volume:",
+      "tier1": "0 – 500 tickets/month: 5%",
+      "tier2": "501 – 2,000 tickets/month: 3.5%",
+      "tier3": "2,001+ tickets/month: 2%",
+      "payoutInfo": "Commissions are automatically deducted from monthly payouts. Payouts are processed within 7 business days.",
+      "checkboxLabel": "I understand and accept the TegaBus commission structure (2–5%)"
+    }
+  },
+  "step6": {
+    "title": "Review & Submit",
+    "description": "Review your application before submitting. You can go back to edit any section.",
+    "editButton": "Edit",
+    "missing": "Missing",
+    "notUploaded": "Not uploaded",
+    "accepted": "Accepted",
+    "notAccepted": "Not accepted",
+    "confirmText": "By clicking \"Submit Application\", you confirm that all information provided is accurate and complete.",
+    "sections": {
+      "companyInfo": "Company Information",
+      "businessDetails": "Business Details",
+      "adminAccount": "Admin Account",
+      "documents": "Documents",
+      "agreements": "Agreements"
+    },
+    "rows": {
+      "companyName": "Company Name",
+      "registrationNumber": "Registration No.",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "transportType": "Transport Type",
+      "numberOfBuses": "Number of Buses",
+      "yearsOfOperation": "Years of Operation",
+      "routes": "Routes",
+      "fullName": "Full Name",
+      "password": "Password",
+      "businessCertificate": "Business Certificate",
+      "transportLicense": "Transport License",
+      "companyLogo": "Company Logo",
+      "termsAccepted": "Terms & Conditions",
+      "commissionAccepted": "Commission Structure"
+    }
+  },
+  "success": {
+    "title": "Application Submitted!",
+    "description": "{companyName}'s application is now under review. Our compliance team will get back to you within 2–3 business days.",
+    "emailNote": "You will receive a confirmation email once your account is approved.",
+    "returnHome": "Return to Home",
+    "learnMore": "Learn About TegaBus",
+    "contact": "Need help? Contact us at partners@tegabus.com"
+  }
 }
 
 }
