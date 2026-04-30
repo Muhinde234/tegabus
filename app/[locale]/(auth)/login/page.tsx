@@ -1,29 +1,29 @@
 "use client";
 
-import {useState} from "react";
-import {useForm} from "react-hook-form";
-import {useRouter} from "next/navigation";
-import {useTranslations} from "next-intl";
-import {Eye, EyeOff, ArrowLeft, ShieldCheck, Star} from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { Eye, EyeOff, ArrowLeft, ShieldCheck, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/inputField";
-import {z} from "zod";
-import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form";
-import {zodResolver} from "@hookform/resolvers/zod";
-import {useLogin} from "@/hooks/useAuth";
-import {toast} from "sonner";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/inputField";
+import { z } from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useLogin } from "@/hooks/useAuth";
+import { toast } from "sonner";
 
 const loginSchema = z.object({
   email: z
-      .string()
-      .min(1, { message: "Email is required" })
-      .email({ message: "Invalid email address" }),
+    .string()
+    .min(1, { message: "Email is required" })
+    .email({ message: "Invalid email address" }),
   password: z
-      .string()
-      .min(1, { message: "Password is required" })
-      .min(8, { message: "Password must be at least 8 characters" }),
+    .string()
+    .min(1, { message: "Password is required" })
+    .min(8, { message: "Password must be at least 8 characters" }),
 });
 
 type LoginFormInputs = z.infer<typeof loginSchema>;
@@ -32,7 +32,7 @@ export default function LoginPage() {
   const t = useTranslations("auth.login");
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const {mutate, isPending} = useLogin();
+  const { mutate, isPending } = useLogin();
 
   const form = useForm<LoginFormInputs>({
     resolver: zodResolver(loginSchema),
@@ -42,7 +42,7 @@ export default function LoginPage() {
   const onSubmit = (data: LoginFormInputs) => {
     mutate(data, {
       onSuccess: (response) => {
-        const {user} = response;
+        const { user } = response;
         if (user.role === "PASSENGER") {
           router.push("/");
           toast.success("Login successfull");
@@ -50,35 +50,34 @@ export default function LoginPage() {
           router.push("/admin");
           toast.success("Login successfull");
         }
-      }
+      },
     });
   };
 
   return (
     <div className="min-h-screen w-full flex">
-      {/* Left panel — bus photo */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
+
+      {/* ── Left panel ── */}
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden sticky top-0 h-screen">
         <Image
           src="/images/home.jpg"
-          alt="TegaBus"
+          alt={t("panel.imageAlt")}
           fill
           className="object-cover"
           priority
         />
-        {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0B3B2E]/92 via-[#0B3B2E]/78 to-[#071f17]/90" />
 
         <div className="relative z-10 flex flex-col justify-between h-full p-10 xl:p-14 text-white">
-          {/* Back to Home */}
+
           <Link
             href="/"
-            className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-medium text-white hover:bg-white/20 transition-all backdrop-blur-sm"
+            className="self-start inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm font-medium hover:bg-white/20 transition-all backdrop-blur-sm"
           >
             <ArrowLeft size={14} />
             {t("panel.backToHome")}
           </Link>
 
-          {/* Tagline */}
           <div className="space-y-7">
             <div className="space-y-4">
               <div className="w-10 h-1 rounded-full bg-green-400" />
@@ -86,16 +85,15 @@ export default function LoginPage() {
                 <Star size={13} className="text-yellow-300 fill-yellow-300" />
                 {t("panel.badge")}
               </div>
-              <h1 className="text-4xl xl:text-5xl font-bold leading-[1.15]">
+              <h1 className="text-4xl xl:text-5xl font-bold leading-tight">
                 {t("panel.tagline1")}<br />
                 <span className="text-green-300">{t("panel.tagline2")}</span>
               </h1>
-              <p className="text-green-100/75 text-[15px] leading-relaxed max-w-[320px]">
+              <p className="text-sm text-green-100/75 leading-relaxed max-w-xs">
                 {t("panel.description")}
               </p>
             </div>
 
-            {/* Stats */}
             <div className="grid grid-cols-3 gap-3">
               {[
                 { value: "50K+", labelKey: "panel.stats.passengers" as const },
@@ -103,16 +101,15 @@ export default function LoginPage() {
                 { value: "4.9★", labelKey: "panel.stats.rating" as const },
               ].map(({ value, labelKey }) => (
                 <div key={labelKey} className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-3 text-center">
-                  <p className="text-lg font-bold text-white">{value}</p>
+                  <p className="text-base font-bold">{value}</p>
                   <p className="text-xs text-green-200 mt-0.5">{t(labelKey)}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Bottom: trust badge */}
           <div className="flex items-center gap-2.5 text-sm text-white/40">
-            <ShieldCheck size={15} className="text-green-300" />
+            <ShieldCheck size={15} className="text-green-300 shrink-0" />
             {t("panel.trust")}
           </div>
         </div>
@@ -123,7 +120,6 @@ export default function LoginPage() {
         <div className="flex items-center justify-center min-h-screen px-5 sm:px-10 py-10">
           <div className="w-full max-w-md">
 
-            {/* Mobile back link */}
             <div className="flex justify-end mb-10 lg:hidden">
               <Link href="/" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 transition-colors">
                 <ArrowLeft size={14} />
@@ -131,7 +127,6 @@ export default function LoginPage() {
               </Link>
             </div>
 
-            {/* Form card */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-7 sm:p-9">
               <div className="mb-7">
                 <h2 className="text-2xl font-bold text-gray-900">{t("title")}</h2>
@@ -141,48 +136,48 @@ export default function LoginPage() {
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                   <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-gray-700">{t("email")}</FormLabel>
-                            <FormControl>
-                              <Input placeholder={t("emailPlaceholder")} {...field} type="email" className="bg-gray-50 border-gray-200 focus:bg-white" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                      )}
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm text-gray-700">{t("email")}</FormLabel>
+                        <FormControl>
+                          <Input {...field} type="email" placeholder={t("emailPlaceholder")} className="bg-gray-50 border-gray-200 focus:bg-white" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
 
                   <FormField
-                      control={form.control}
-                      name="password"
-                      render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="text-gray-700">{t("password")}</FormLabel>
-                            <div className="relative">
-                              <FormControl>
-                                <Input {...field} type={showPassword ? "text" : "password"} placeholder={t("passwordPlaceholder")} className="pr-10 bg-gray-50 border-gray-200 focus:bg-white" />
-                              </FormControl>
-                              <Button variant="ghost" type="button" onClick={() => setShowPassword((v) => !v)} className="absolute inset-y-0 right-0 px-2 flex items-center">
-                                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                              </Button>
-                            </div>
-                            <Link href="/forgot-password" className="text-sm text-[#0B3B2E] hover:underline mt-2 inline-block">
-                              {t("forgotPassword")}
-                            </Link>
-                            <FormMessage />
-                          </FormItem>
-                      )}
+                    control={form.control}
+                    name="password"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-sm text-gray-700">{t("password")}</FormLabel>
+                        <div className="relative">
+                          <FormControl>
+                            <Input {...field} type={showPassword ? "text" : "password"} placeholder={t("passwordPlaceholder")} className="pr-10 bg-gray-50 border-gray-200 focus:bg-white" />
+                          </FormControl>
+                          <Button variant="ghost" type="button" onClick={() => setShowPassword((v) => !v)} className="absolute inset-y-0 right-0 px-2 flex items-center text-gray-400 hover:text-gray-700">
+                            {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                          </Button>
+                        </div>
+                        <Link href="/forgot-password" className="text-xs text-[#0B3B2E] hover:underline mt-1.5 inline-block">
+                          {t("forgotPassword")}
+                        </Link>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
 
                   {form.formState.errors.root && (
-                      <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-600 text-sm">
-                        {form.formState.errors.root.message}
-                      </div>
+                    <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                      {form.formState.errors.root.message}
+                    </div>
                   )}
 
-                  <Button type="submit" className="w-full h-11 bg-[#0B3B2E] hover:bg-[#0a3327] text-white text-sm font-semibold rounded-xl" disabled={isPending}>
+                  <Button type="submit" disabled={isPending} className="w-full h-11 bg-[#0B3B2E] hover:bg-[#0a3327] text-white text-sm font-semibold rounded-xl">
                     {isPending ? t("loggingIn") : t("loginButton")}
                   </Button>
                 </form>
