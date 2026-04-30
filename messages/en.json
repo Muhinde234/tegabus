@@ -207,13 +207,26 @@
   "noAccount": "Don't have an account?",
   "registerLink": "Register",
   "invalidCredentials": "Invalid email or password",
-  "loginFailed": "Login failed"
+  "loginFailed": "Login failed",
+  "panel": {
+    "backToHome": "Back to Home",
+    "home": "Home",
+    "badge": "Rwanda's #1 Bus Platform",
+    "tagline1": "Travel smarter,",
+    "tagline2": "book faster.",
+    "description": "Join thousands of passengers who trust TegaBus for safe, comfortable, and affordable bus journeys across Rwanda.",
+    "stats": {
+      "passengers": "Passengers",
+      "routes": "Routes",
+      "rating": "Rating"
+    },
+    "trust": "Secure, encrypted, and privacy-first"
+  }
 
- 
-      
     },
     "register": {
-     
+  "title": "Create your account",
+  "subtitle": "Fill in your details to get started",
   "firstName": "First Name",
   "firstNamePlaceholder": "Enter your first name",
   "firstNameRequired": "First name is required",
@@ -252,10 +265,24 @@
   "passwordMismatch": "Passwords do not match",
 
   "registerButton": "Register",
-  "register":"registering ..",
+  "register": "Registering...",
   "haveAccount": "Already have an account?",
-  "loginLink": "Log in"
-
+  "loginLink": "Log in",
+  "panel": {
+    "backToHome": "Back to Home",
+    "home": "Home",
+    "tagline1": "Your journey",
+    "tagline2": "starts here.",
+    "description": "Create your account and unlock seamless bus travel across Rwanda and East Africa.",
+    "features": {
+      "routes": "120+ routes across Rwanda & beyond",
+      "tracking": "Real-time schedules and live tracking",
+      "payments": "Safe payments & instant e-tickets"
+    },
+    "signIn": "Sign in",
+    "personalInfo": "Personal Info",
+    "accountSecurity": "Account Security"
+  }
 
     },
     "forgotPassword": {

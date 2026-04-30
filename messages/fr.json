@@ -210,12 +210,26 @@
   "noAccount": "Vous n'avez pas de compte ?",
   "registerLink": "S'inscrire",
   "invalidCredentials": "Email ou mot de passe incorrect",
-  "loginFailed": "Échec de la connexion"
-
+  "loginFailed": "Échec de la connexion",
+  "panel": {
+    "backToHome": "Retour à l'accueil",
+    "home": "Accueil",
+    "badge": "Plateforme de bus #1 au Rwanda",
+    "tagline1": "Voyagez plus intelligemment,",
+    "tagline2": "réservez plus vite.",
+    "description": "Rejoignez des milliers de passagers qui font confiance à TegaBus pour des trajets sûrs, confortables et abordables à travers le Rwanda.",
+    "stats": {
+      "passengers": "Passagers",
+      "routes": "Lignes",
+      "rating": "Note"
+    },
+    "trust": "Sécurisé, crypté et respectueux de la vie privée"
+  }
 
     },
     "register": {
-      
+  "title": "Créer votre compte",
+  "subtitle": "Remplissez vos informations pour commencer",
   "firstName": "Prénom",
   "firstNamePlaceholder": "Entrez votre prénom",
   "firstNameRequired": "Le prénom est requis",
@@ -255,9 +269,24 @@
   "passwordMismatch": "Les mots de passe ne correspondent pas",
 
   "registerButton": "S'inscrire",
+  "register": "Inscription en cours...",
   "haveAccount": "Vous avez déjà un compte ?",
-  "loginLink": "Se connecter"
-
+  "loginLink": "Se connecter",
+  "panel": {
+    "backToHome": "Retour à l'accueil",
+    "home": "Accueil",
+    "tagline1": "Votre voyage",
+    "tagline2": "commence ici.",
+    "description": "Créez votre compte et accédez à des voyages en bus sans effort à travers le Rwanda et l'Afrique de l'Est.",
+    "features": {
+      "routes": "120+ lignes à travers le Rwanda et au-delà",
+      "tracking": "Horaires en temps réel et suivi en direct",
+      "payments": "Paiements sécurisés et e-tickets instantanés"
+    },
+    "signIn": "Se connecter",
+    "personalInfo": "Informations personnelles",
+    "accountSecurity": "Sécurité du compte"
+  }
 
     },
     "forgotPassword": {
