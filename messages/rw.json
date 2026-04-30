@@ -209,6 +209,7 @@
   "invalidCredentials": "Imeyili cyangwa ijambo ry'ibanga si byo",
   "loginFailed": "Kwinjira byanze",
   "panel": {
+    "imageAlt": "Urugendo rwa bisi mu Rwanda",
     "backToHome": "Garuka ahabanza",
     "home": "Ahabanza",
     "badge": "Urubuga rwa bisi #1 mu Rwanda",
@@ -271,6 +272,7 @@
   "haveAccount": "Ufite konti?",
   "loginLink": "Injira",
   "panel": {
+    "imageAlt": "Urugendo rwa bisi mu Rwanda",
     "backToHome": "Garuka ahabanza",
     "home": "Ahabanza",
     "tagline1": "Urugendo rwawe",

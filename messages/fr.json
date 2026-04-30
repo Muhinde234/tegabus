@@ -212,6 +212,7 @@
   "invalidCredentials": "Email ou mot de passe incorrect",
   "loginFailed": "Échec de la connexion",
   "panel": {
+    "imageAlt": "Voyage en bus au Rwanda",
     "backToHome": "Retour à l'accueil",
     "home": "Accueil",
     "badge": "Plateforme de bus #1 au Rwanda",
@@ -273,6 +274,7 @@
   "haveAccount": "Vous avez déjà un compte ?",
   "loginLink": "Se connecter",
   "panel": {
+    "imageAlt": "Voyage en bus au Rwanda",
     "backToHome": "Retour à l'accueil",
     "home": "Accueil",
     "tagline1": "Votre voyage",

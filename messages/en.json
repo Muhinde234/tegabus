@@ -209,6 +209,7 @@
   "invalidCredentials": "Invalid email or password",
   "loginFailed": "Login failed",
   "panel": {
+    "imageAlt": "Bus travel in Rwanda",
     "backToHome": "Back to Home",
     "home": "Home",
     "badge": "Rwanda's #1 Bus Platform",
@@ -269,6 +270,7 @@
   "haveAccount": "Already have an account?",
   "loginLink": "Log in",
   "panel": {
+    "imageAlt": "Bus travel in Rwanda",
     "backToHome": "Back to Home",
     "home": "Home",
     "tagline1": "Your journey",

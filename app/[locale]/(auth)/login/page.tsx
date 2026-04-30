@@ -58,7 +58,7 @@ export default function LoginPage() {
     <div className="min-h-screen w-full flex">
 
       {/* ── Left panel ── */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden sticky top-0 h-screen">
+      <div className="hidden lg:flex lg:w-1/2 overflow-hidden sticky top-0 h-screen">
         <Image
           src="/images/home.jpg"
           alt={t("panel.imageAlt")}
@@ -66,7 +66,7 @@ export default function LoginPage() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B3B2E]/92 via-[#0B3B2E]/78 to-[#071f17]/90" />
+        <div className="absolute inset-0 bg-linear-to-br from-[#0B3B2E]/92 via-[#0B3B2E]/78 to-[#071f17]/90" />
 
         <div className="relative z-10 flex flex-col justify-between h-full p-10 xl:p-14 text-white">
 

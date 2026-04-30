@@ -87,7 +87,7 @@ const Navbar = () => {
           </Link>
 
        
-          <nav className="hidden md:flex items-center gap-6 text-[18px] lg:text-[17px]">
+          <nav className="hidden md:flex items-center gap-6 text-sm lg:text-base">
             {translatedLinks.map((link, idx) => (
               <Link
                 key={idx}
@@ -117,7 +117,7 @@ const Navbar = () => {
                 }`}
                 aria-label={t("language")}
               >
-                <Globe size={28} />
+                <Globe size={20} />
               </button>
 
               {isLanguageOpen && (
@@ -209,7 +209,7 @@ const Navbar = () => {
               scrolled ? "bg-white" : "bg-black/80 backdrop-blur-md"
             }`}
           >
-            <nav className="flex flex-col gap-4 text-[17px]">
+            <nav className="flex flex-col gap-4 text-base">
               {translatedLinks.map((link, idx) => (
                 <Link
                   key={idx}
@@ -269,7 +269,7 @@ const Navbar = () => {
                   </Link>
                   <Button
                     variant="ghost"
-                    className={`mt-2 w-full text-left py-2 px-3 text-[17px] ${
+                    className={`mt-2 w-full text-left py-2 px-3 text-base ${
                       scrolled ? "hover:bg-gray-50 text-gray-700" : "hover:bg-white/10 text-white"
                     }`}
                     onClick={() => {

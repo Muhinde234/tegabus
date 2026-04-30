@@ -80,16 +80,15 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen w-full flex">
       {/* Left panel — bus photo */}
-      <div className="hidden lg:flex lg:w-5/12 xl:w-1/2 relative overflow-hidden sticky top-0 h-screen">
+      <div className="hidden lg:flex lg:w-1/2 overflow-hidden sticky top-0 h-screen">
         <Image
           src="/images/home.jpg"
-          alt="TegaBus"
+          alt={t("panel.imageAlt")}
           fill
           className="object-cover"
           priority
         />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B3B2E]/92 via-[#0B3B2E]/78 to-[#071f17]/90" />
+        <div className="absolute inset-0 bg-linear-to-br from-[#0B3B2E]/92 via-[#0B3B2E]/78 to-[#071f17]/90" />
 
         <div className="relative z-10 flex flex-col justify-between h-full p-10 xl:p-14 text-white">
           {/* Back to Home */}
@@ -109,7 +108,7 @@ export default function RegisterPage() {
                 {t("panel.tagline1")}<br />
                 <span className="text-green-300">{t("panel.tagline2")}</span>
               </h1>
-              <p className="text-green-100/75 text-[15px] leading-relaxed max-w-[320px]">
+              <p className="text-sm text-green-100/75 leading-relaxed max-w-xs">
                 {t("panel.description")}
               </p>
             </div>
@@ -141,7 +140,7 @@ export default function RegisterPage() {
       </div>
 
       {/* ── Right panel ── */}
-      <div className="w-full lg:w-7/12 xl:w-1/2 bg-gray-50 overflow-y-auto">
+      <div className="w-full lg:w-1/2 bg-gray-50 overflow-y-auto">
         <div className="flex items-center justify-center min-h-screen px-5 sm:px-10 py-10">
           <div className="w-full max-w-lg">
 
@@ -163,7 +162,7 @@ export default function RegisterPage() {
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
 
-                  <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest">{t("panel.personalInfo")}</p>
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">{t("panel.personalInfo")}</p>
 
                   <div className="grid grid-cols-2 gap-4">
                     <FormField
@@ -248,7 +247,7 @@ export default function RegisterPage() {
                   </div>
 
                   <div className="border-t border-gray-100 pt-5">
-                    <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-5">{t("panel.accountSecurity")}</p>
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-5">{t("panel.accountSecurity")}</p>
                     <div className="grid grid-cols-2 gap-4">
                       <FormField
                         control={form.control}
