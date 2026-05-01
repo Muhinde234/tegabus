@@ -22,6 +22,11 @@ export const routeService = {
         return response.data;
     },
 
+    getAllEndLocations: async () => {
+        const response = await API.get<string[]>("/routes/end-locations");
+        return response.data;
+    },
+
     delete: async (id: number) => {
         const response = await API.delete<void>(`/routes/${id}`);
         return response.data;
@@ -31,5 +36,4 @@ export const routeService = {
         const response = await API.put(`/routes/${id}`, data);
         return response.data;
     }
-
 }

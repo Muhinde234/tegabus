@@ -14,6 +14,7 @@ import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useLogin} from "@/hooks/useAuth";
 import {toast} from "sonner";
+import bushero from "@/public/images/bushero.jpg";
 
 const loginSchema = z.object({
   email: z
@@ -56,17 +57,17 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen w-full flex">
-      {/* Left panel — bus photo */}
+      {/* Left panel — bus photo with bushero.jpg */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         <Image
-          src="/images/home.jpg"
+          src={bushero}
           alt="TegaBus"
           fill
           className="object-cover"
           priority
         />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B3B2E]/92 via-[#0B3B2E]/78 to-[#071f17]/90" />
+        {/* Gradient overlay - made darker for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B3B2E]/92 via-[#0B3B2E]/85 to-[#071f17]/95" />
 
         <div className="relative z-10 flex flex-col justify-between h-full p-10 xl:p-14 text-white">
           {/* Back to Home */}

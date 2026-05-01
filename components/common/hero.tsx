@@ -1,8 +1,8 @@
-﻿"use client";
+﻿﻿"use client";
 
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
-import home from "./../../public/images/home.jpg";
+import home from "./../../public/images/bushero.jpg";
 import Container from "../ui/container";
 import Link from "next/link";
 import TripCard from "../ui/TripCard";

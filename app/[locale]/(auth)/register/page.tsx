@@ -27,6 +27,7 @@ import * as z from "zod";
 import { authService } from "@/api/authService";
 import { useSignUp } from "@/hooks/useAuth";
 import { ArrowLeft, MapPin, Clock, ShieldCheck } from "lucide-react";
+import bushero from "@/public/images/bushero.jpg";
 
 export default function RegisterPage() {
   const t = useTranslations("auth.register");
@@ -79,17 +80,17 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen w-full flex">
-      {/* Left panel — bus photo */}
+      {/* Left panel — bus photo with bushero.jpg */}
       <div className="hidden lg:flex lg:w-5/12 xl:w-1/2 relative overflow-hidden sticky top-0 h-screen">
         <Image
-          src="/images/home.jpg"
+          src={bushero}
           alt="TegaBus"
           fill
           className="object-cover"
           priority
         />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0B3B2E]/92 via-[#0B3B2E]/78 to-[#071f17]/90" />
+        {/* Gradient overlay - made darker for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B3B2E]/92 via-[#0B3B2E]/85 to-[#071f17]/95" />
 
         <div className="relative z-10 flex flex-col justify-between h-full p-10 xl:p-14 text-white">
           {/* Back to Home */}

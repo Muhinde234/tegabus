@@ -2,9 +2,11 @@ import {ApiError} from '@/lib/types';
 import axios, {AxiosError} from 'axios';
 import {toast} from "sonner";
 
-
 const API = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  baseURL: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:8080/api/v1',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 // Authentication interceptor
@@ -41,6 +43,4 @@ API.interceptors.response.use(
     }
 );
 
-
 export default API;
-
