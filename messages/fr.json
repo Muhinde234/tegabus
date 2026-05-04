@@ -911,10 +911,16 @@
   "title_3": "Disponibilité en temps réel",
   "description_3": "Recevez des mises à jour instantanées sur les horaires de bus et la disponibilité des sièges"
 },
-"company":{
-   "buses_label": "Bus : {count}",
-  "view_routes": "Voir les itinéraires"
+"company": {
+  "buses_label": "Bus : {count}",
+  "view_routes": "Voir les Itinéraires",
+  "available_routes": "Itinéraires Disponibles",
+  "select_route": "Cliquez sur un itinéraire pour le sélectionner, puis appuyez sur Réserver Maintenant",
+  "book_now": "Réserver Maintenant",
+  "close": "Fermer",
+  "no_routes_available": "Aucun itinéraire disponible pour cette compagnie"
 },
+
 "onboarding": {
   "metadata": {
     "title": "Devenez partenaire TegaBus | Inscrivez votre société",
@@ -1068,6 +1074,11 @@
     "learnMore": "En savoir plus sur TegaBus",
     "contact": "Besoin d'aide ? Contactez-nous à partners@tegabus.com"
   }
+
+  
+  
 }
 
+
 }
+

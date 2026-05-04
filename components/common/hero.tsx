@@ -36,6 +36,15 @@ const Hero = () => {
   const { data: origins = [], isLoading: originsLoading } = useStartLocation();
   const { data: destinations = [], isLoading: destinationsLoading } = useEndLocation(from);
 
+  // Logo array for the marquee
+  const partnerLogos = [
+    { src: "/images/trinity.png", alt: "trinity Logo", width: 100, height: 100 },
+    { src: "/images/volcano_log.png", alt: "Volcon Logo", width: 100, height: 100 },
+    { src: "/images/ritco.png", alt: "Ritco Logo", width: 100, height: 100 },
+    { src: "/images/rtda.jpg", alt: "RTDA Logo", width: 100, height: 100 },
+    { src: "/images/horizon.png", alt: "Horizon Logo", width: 100, height: 100 },
+  ];
+
   const handleSearch = () => {
     const params = new URLSearchParams();
     if (from) params.set("from", from);
@@ -218,17 +227,33 @@ const Hero = () => {
             <h2 className="text-center text-3xl font-bold mt-20 mb-10">{t("patterns_title")}</h2>
             <div className="overflow-hidden px-4 sm:px-0">
               <div className="marquee-track flex w-max items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14 py-2">
+                {/* First set of logos */}
                 <div className="flex items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14">
-                  <Image src="/images/logoipsum-380.png" alt="logo" width={100} height={100} className="rounded-full" />
-                  <Image src="/images/logoipsum-380.png" alt="logo" width={100} height={100} className="rounded-full" />
-                  <Image src="/images/logoipsum-380.png" alt="logo" width={100} height={100} className="rounded-full" />
-                  <Image src="/images/logoipsum-380.png" alt="logo" width={100} height={100} className="rounded-full" />
+                  {partnerLogos.map((logo, idx) => (
+                    <div key={idx} className="flex-shrink-0">
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        width={logo.width}
+                        height={logo.height}
+                        className="rounded-full object-cover bg-white p-1"
+                      />
+                    </div>
+                  ))}
                 </div>
+                {/* Duplicate set for seamless looping */}
                 <div className="flex items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14" aria-hidden="true">
-                  <Image src="/images/logoipsum-380.png" alt="logo" width={100} height={100} className="rounded-full" />
-                  <Image src="/images/logoipsum-380.png" alt="logo" width={100} height={100} className="rounded-full" />
-                  <Image src="/images/logoipsum-380.png" alt="logo" width={100} height={100} className="rounded-full" />
-                  <Image src="/images/logoipsum-380.png" alt="logo" width={100} height={100} className="rounded-full" />
+                  {partnerLogos.map((logo, idx) => (
+                    <div key={`duplicate-${idx}`} className="flex-shrink-0">
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        width={logo.width}
+                        height={logo.height}
+                        className="rounded-full object-cover bg-white p-1"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

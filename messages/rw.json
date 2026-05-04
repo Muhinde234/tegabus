@@ -909,10 +909,17 @@
   "title_3": "Amakuru y'igihe nyacyo",
   "description_3": "Menya ako kanya gahunda z’imodoka n’intebe zitarashira"
 },
-"company":{
-   "buses_label": "Imodoka : {count}",
-  "view_routes": "Reba imihanda"
-},
+"company": {
+    "buses_label": "Bisi: {count}",
+    "view_routes": "Reba Inzira",
+    "available_routes": "Inzira Zihari",
+    "select_route": "Kanda kuri inzira uyihitamo, hanyuma ukande Bika",
+    "book_now": "Bika",
+    "close": "Funga",
+    "no_routes_available": "Nta nzira ihari",
+    "departure": "Kuva"
+  },
+
 "onboarding": {
   "metadata": {
     "title": "Fata bugufi na TegaBus | Andika Isosiyete Yawe",
@@ -1066,6 +1073,9 @@
     "learnMore": "Menya Byinshi kuri TegaBus",
     "contact": "Ufite ikibazo? Twandikire kuri partners@tegabus.com"
   }
+
+  
+  
 }
 
 }

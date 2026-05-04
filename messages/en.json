@@ -904,9 +904,16 @@
   "title_3": "Real-Time Availability",
   "description_3": "Get instant updates on bus schedules and seat availability"
 },
-"company":{
-   "buses_label": "Buses: {count}",
-  "view_routes": "View Routes"
+ "company": {
+  "buses_label": "Buses: {count}",
+  "view_routes": "View Routes",
+  "available_routes": "Available Routes",
+  "select_route": "Click on a route to select it, then press Book Now",
+  "book_now": "Book Now",
+  "close": "Close",
+  "no_routes_available": "No routes available for this company",
+  "departure": "Departure",
+  "selected_route": "Selected Route"
 },
 "onboarding": {
   "metadata": {
@@ -1061,6 +1068,12 @@
     "learnMore": "Learn About TegaBus",
     "contact": "Need help? Contact us at partners@tegabus.com"
   }
+
+  
+  
+ 
+
 }
+
 
 }
