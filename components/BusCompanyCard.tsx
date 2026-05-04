@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { BusCompany } from "@/types/bus";
 import { Button } from "./ui/button";
 import { useTranslations } from "next-intl";
@@ -24,7 +24,7 @@ interface Props {
 // Get destination photo based on city name
 const getDestinationPhoto = (cityName: string): string => {
   const photoMap: Record<string, string> = {
-    "Kigali": "/images/Kigali.jpg",
+    "Kigali": "/images/Kigali_city.jpeg",
     "Musanze": "/images/musanze.jpg",
     "Rubavu": "/images/rubavu.jpg",
     "Nyagatare": "/images/nyagatare.jpg",
@@ -46,6 +46,7 @@ const BusCompanyCard: React.FC<Props> = ({ company, images }) => {
   const t = useTranslations("company");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRoute, setSelectedRoute] = useState<any>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   // Map company names to their respective images
   const getCompanyImage = (companyName: string): string => {
@@ -95,6 +96,40 @@ const BusCompanyCard: React.FC<Props> = ({ company, images }) => {
 
   const routes = getCompanyRoutes(company.name);
 
+  // Handle click outside to close modal
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        setIsModalOpen(false);
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isModalOpen]);
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsModalOpen(false);
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener("keydown", handleEscKey);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscKey);
+    };
+  }, [isModalOpen]);
+
   return (
     <>
       <div className="border border-gray-300 rounded-lg shadow-sm p-6 mb-3 w-full sm:w-[300px] hover:shadow-md transition-shadow duration-200">
@@ -122,9 +157,9 @@ const BusCompanyCard: React.FC<Props> = ({ company, images }) => {
         </Button>
       </div>
 
-      {/* AlertDialog Modal for Routes */}
+      {/* AlertDialog Modal for Routes - Now closes when clicking outside */}
       <AlertDialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <AlertDialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto">
+        <AlertDialogContent className="max-w-3xl max-h-[85vh] overflow-y-auto" ref={modalRef}>
           <AlertDialogHeader>
             <AlertDialogTitle className="text-2xl font-bold text-[#0B3B2E]">
               {company.name} - {t("available_routes")}

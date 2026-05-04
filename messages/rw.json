@@ -917,7 +917,8 @@
     "book_now": "Bika",
     "close": "Funga",
     "no_routes_available": "Nta nzira ihari",
-    "departure": "Kuva"
+    "departure": "Kuva",
+    "selected_route": "Inzira Yahiswemo"
   },
 
 "onboarding": {

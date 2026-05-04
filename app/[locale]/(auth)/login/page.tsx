@@ -14,7 +14,7 @@ import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useLogin} from "@/hooks/useAuth";
 import {toast} from "sonner";
-import bushero from "@/public/images/bushero.jpg";
+import bus2 from "@/public/images/bus2.jpg";
 
 const loginSchema = z.object({
   email: z
@@ -60,7 +60,7 @@ export default function LoginPage() {
       {/* Left panel — bus photo with bushero.jpg */}
       <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden">
         <Image
-          src={bushero}
+          src={bus2}
           alt="TegaBus"
           fill
           className="object-cover"

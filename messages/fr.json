@@ -918,7 +918,9 @@
   "select_route": "Cliquez sur un itinéraire pour le sélectionner, puis appuyez sur Réserver Maintenant",
   "book_now": "Réserver Maintenant",
   "close": "Fermer",
-  "no_routes_available": "Aucun itinéraire disponible pour cette compagnie"
+  "no_routes_available": "Aucun itinéraire disponible pour cette compagnie",
+  "departure": "Départ"
+  
 },
 
 "onboarding": {
